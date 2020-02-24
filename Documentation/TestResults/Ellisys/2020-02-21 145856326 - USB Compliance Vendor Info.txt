@@ -1,0 +1,2707 @@
+$VIF_Producer                                   : "Ellisys USB Explorer 350 Examiner 3.1.7332"
+$VIF_Specification                              : "Revision 1.40 Version 1.0"
+$Vendor_Name                                    : "STMicroelectronics"
+$Product_Revision                               : "1.0"           
+$Model_Part_Number                              : "STM32F072_PD3_DRP"
+$TID                                            : "0"             
+$Port_Label                                     : "0"             
+
+; --------------------------------------------------------------------------------
+; General
+; --------------------------------------------------------------------------------
+
+VIF_Product_Type                                : 0               ; Port
+Connector_Type                                  : 2               ; Type-C
+USB_PD_Support                                  : Yes             
+BC_1_2_Support                                  : 0               ; None
+Port_Battery_Powered                            : No              
+
+; --------------------------------------------------------------------------------
+; USB Type-C Ports
+; --------------------------------------------------------------------------------
+
+Type_C_State_Machine                            : 2               ; DRP
+Captive_Cable                                   : No              
+Rp_Value                                        : 1               ; 1.5A @ 5V
+Type_C_Implements_Try_SRC                       : No              
+Type_C_Implements_Try_SNK                       : No              
+Type_C_Supports_DP_Alt_Mode_as_DFP_D            : No              
+Type_C_Supports_DP_Alt_Mode_as_UFP_D            : No              
+Type_C_Supports_Audio_Accessory                 : No              
+Master_Port                                     : Yes             
+Type_C_Is_Vconn_Powered_Accessory               : No              
+Type_C_Is_Alt_Mode_Controller                   : No              
+Type_C_Is_Debug_Target_SRC                      : Yes             
+Type_C_Is_Debug_Target_SNK                      : No              
+Type_C_Sources_Vconn                            : Yes             
+Type_C_Power_Source                             : 0               ; Externally Powered
+Type_C_Port_On_Hub                              : No              
+
+; --------------------------------------------------------------------------------
+; Product Power
+; --------------------------------------------------------------------------------
+
+Product_Total_Source_Power_mw                   : 0               ; 0 W
+Port_Source_Power_Type                          : 0               ; Assured
+
+; --------------------------------------------------------------------------------
+; PD General
+; --------------------------------------------------------------------------------
+
+PD_Port_Type                                    : 4               ; DRP
+PD_Specification_Revision                       : 2               ; v3.0
+
+; --------------------------------------------------------------------------------
+; PD SOP* Handling
+; --------------------------------------------------------------------------------
+
+SOP_Capable                                     : Yes             
+SOP_P_Capable                                   : Yes             
+SOP_PP_Capable                                  : No              
+SOP_P_Debug_Capable                             : No              
+SOP_PP_Debug_Capable                            : No              
+
+; --------------------------------------------------------------------------------
+; PD Source or Sink Devices
+; --------------------------------------------------------------------------------
+
+USB_Comms_Capable                               : No              
+DR_Swap_To_DFP_Supported                        : Yes             
+DR_Swap_To_UFP_Supported                        : Yes             
+VCONN_Swap_To_On_Supported                      : Yes             
+VCONN_Swap_To_Off_Supported                     : Yes             
+Responds_To_Discov_SOP_DFP                      : No              
+Responds_To_Discov_SOP_UFP                      : No              
+Attempts_Discov_SOP                             : No              
+Unconstrained_Power                             : No              
+Chunking_Implemented_SOP                        : Yes             
+Unchunked_Extended_Messages_Supported           : No              
+Security_Msgs_Supported_SOP                     : No              
+Manufacturer_Info_Supported_Port                : Yes             
+Manufacturer_Info_VID_Port                      : 0x0483          
+Manufacturer_Info_PID_Port                      : 0x0002          
+Num_Fixed_Batteries                             : 0               
+Num_Swappable_Battery_Slots                     : 0               
+
+; --------------------------------------------------------------------------------
+; PD Dual-role Devices
+; --------------------------------------------------------------------------------
+
+Accepts_PR_Swap_As_Src                          : Yes             
+Accepts_PR_Swap_As_Snk                          : Yes             
+Requests_PR_Swap_As_Src                         : No              
+Requests_PR_Swap_As_Snk                         : No              
+FR_Swap_Supported_As_Initial_Sink               : No              
+
+; --------------------------------------------------------------------------------
+; PD Source
+; --------------------------------------------------------------------------------
+
+PD_Power_as_Source                              : 7500            ; 7.5 W
+USB_Suspend_May_Be_Cleared                      : Yes             
+Sends_Pings                                     : No              
+FR_Swap_Type_C_Current_Capability_As_Initial_Sink: 0               ; FR_Swap not supported
+PD_OC_Protection                                : No              
+Num_Src_PDOs                                    : 1               
+
+; PDO 1
+Src_PDO_Supply_Type1                            : 0               ; Fixed
+Src_PDO_Voltage1                                : 100             ; 5 V
+Src_PDO_Peak_Current1                           : 0               ; 100% IOC
+Src_PDO_Max_Current1                            : 150             ; 1.5 A
+Src_PD_OCP_OC_Debounce1                         : 0               ; 0 s
+Src_PD_OCP_OC_Threshold1                        : 0               ; 0 A
+
+; --------------------------------------------------------------------------------
+; PD Sink
+; --------------------------------------------------------------------------------
+
+PD_Power_as_Sink                                : 7500            ; 7.5 W
+No_USB_Suspend_May_Be_Set                       : Yes             
+GiveBack_May_Be_Set                             : No              
+Higher_Capability_Set                           : No              
+FR_Swap_Reqd_Type_C_Current_As_Initial_Source   : 0               ; FR_Swap not supported
+Num_Snk_PDOs                                    : 1               
+
+; PDO 1
+Snk_PDO_Supply_Type1                            : 0               ; Fixed
+Snk_PDO_Voltage1                                : 100             ; 5 V
+Snk_PDO_Op_Current1                             : 150             ; 1.5 A
+
+; --------------------------------------------------------------------------------
+; Remaining fields (not relevant for selected configuration)
+; --------------------------------------------------------------------------------
+
+;~ Type_C_Can_Act_as_Host                       : No              
+;~ Type_C_Can_Act_as_Device                     : No              
+;~ Type_C_Supports_Vconn_Powered_Accessory      : No              
+;~ Type_C_Is_Alt_Mode_Adapter                   : No              
+;~ Port_Source_Power_Gang_Max_Power             : 0               ; 0 W
+;~ Retimer_Type                                 : 1               ; Bit-Level
+;~ Repeater_Two_Type                            : 0               ; SRIS Retimer
+;~ Host_Speed                                   : 1               ; USB 3.1 Gen1 x1 (1 x 5 Gbps)
+;~ Host_Contains_Captive_Retimer                : No              
+;~ Host_Truncates_DP_For_tDHPResponse           : No              
+;~ Host_Is_Embedded                             : No              
+;~ Host_Suspend_Supported                       : No              
+;~ Host_Supports_USB_Data                       : Yes             
+;~ Host_Gen1x1_tLinkTurnaround                  : 400             ; 400 ns
+;~ Host_Gen2x1_tLinkTurnaround                  : 700             ; 700 ns
+;~ Is_Dfp_On_Hub                                : No              
+;~ Hub_Port_Number                              : 1               
+;~ Device_Speed                                 : 1               ; USB 3.1 Gen1 x1 (1 x 5 Gbps)
+;~ Device_Contains_Captive_Retimer              : No              
+;~ Device_Truncates_DP_For_tDHPResponse         : No              
+;~ Device_Gen1x1_tLinkTurnaround                : 400             ; 400 ns
+;~ Device_Gen2x1_tLinkTurnaround                : 700             ; 700 ns
+;~ PD_OCP_Method                                : 0               ; Over-Current Response
+;~ Src_PDO_Min_Voltage1                         : 100             ; 5 V
+;~ Src_PDO_Max_Voltage1                         : 100             ; 5 V
+;~ Src_PDO_Max_Power1                           : 100             ; 25 W
+;~ Src_PD_OCP_UV_Debounce1                      : 0               ; 0 s
+;~ Src_PD_OCP_UV_Threshold_Type1                : 0               ; Value
+;~ Src_PD_OCP_UV_Threshold1                     : 0               ; 0 V
+;~ Src_PDO_Supply_Type2                         : 0               ; Fixed
+;~ Src_PDO_Voltage2                             : 100             ; 5 V
+;~ Src_PDO_Min_Voltage2                         : 100             ; 5 V
+;~ Src_PDO_Max_Voltage2                         : 100             ; 5 V
+;~ Src_PDO_Peak_Current2                        : 0               ; 100% IOC
+;~ Src_PDO_Max_Current2                         : 100             ; 1 A
+;~ Src_PDO_Max_Power2                           : 100             ; 25 W
+;~ Src_PD_OCP_OC_Debounce2                      : 0               ; 0 s
+;~ Src_PD_OCP_OC_Threshold2                     : 0               ; 0 A
+;~ Src_PD_OCP_UV_Debounce2                      : 0               ; 0 s
+;~ Src_PD_OCP_UV_Threshold_Type2                : 0               ; Value
+;~ Src_PD_OCP_UV_Threshold2                     : 0               ; 0 V
+;~ Src_PDO_Supply_Type3                         : 0               ; Fixed
+;~ Src_PDO_Voltage3                             : 100             ; 5 V
+;~ Src_PDO_Min_Voltage3                         : 100             ; 5 V
+;~ Src_PDO_Max_Voltage3                         : 100             ; 5 V
+;~ Src_PDO_Peak_Current3                        : 0               ; 100% IOC
+;~ Src_PDO_Max_Current3                         : 100             ; 1 A
+;~ Src_PDO_Max_Power3                           : 100             ; 25 W
+;~ Src_PD_OCP_OC_Debounce3                      : 0               ; 0 s
+;~ Src_PD_OCP_OC_Threshold3                     : 0               ; 0 A
+;~ Src_PD_OCP_UV_Debounce3                      : 0               ; 0 s
+;~ Src_PD_OCP_UV_Threshold_Type3                : 0               ; Value
+;~ Src_PD_OCP_UV_Threshold3                     : 0               ; 0 V
+;~ Src_PDO_Supply_Type4                         : 0               ; Fixed
+;~ Src_PDO_Voltage4                             : 100             ; 5 V
+;~ Src_PDO_Min_Voltage4                         : 100             ; 5 V
+;~ Src_PDO_Max_Voltage4                         : 100             ; 5 V
+;~ Src_PDO_Peak_Current4                        : 0               ; 100% IOC
+;~ Src_PDO_Max_Current4                         : 100             ; 1 A
+;~ Src_PDO_Max_Power4                           : 100             ; 25 W
+;~ Src_PD_OCP_OC_Debounce4                      : 0               ; 0 s
+;~ Src_PD_OCP_OC_Threshold4                     : 0               ; 0 A
+;~ Src_PD_OCP_UV_Debounce4                      : 0               ; 0 s
+;~ Src_PD_OCP_UV_Threshold_Type4                : 0               ; Value
+;~ Src_PD_OCP_UV_Threshold4                     : 0               ; 0 V
+;~ Src_PDO_Supply_Type5                         : 0               ; Fixed
+;~ Src_PDO_Voltage5                             : 100             ; 5 V
+;~ Src_PDO_Min_Voltage5                         : 100             ; 5 V
+;~ Src_PDO_Max_Voltage5                         : 100             ; 5 V
+;~ Src_PDO_Peak_Current5                        : 0               ; 100% IOC
+;~ Src_PDO_Max_Current5                         : 100             ; 1 A
+;~ Src_PDO_Max_Power5                           : 100             ; 25 W
+;~ Src_PD_OCP_OC_Debounce5                      : 0               ; 0 s
+;~ Src_PD_OCP_OC_Threshold5                     : 0               ; 0 A
+;~ Src_PD_OCP_UV_Debounce5                      : 0               ; 0 s
+;~ Src_PD_OCP_UV_Threshold_Type5                : 0               ; Value
+;~ Src_PD_OCP_UV_Threshold5                     : 0               ; 0 V
+;~ Src_PDO_Supply_Type6                         : 0               ; Fixed
+;~ Src_PDO_Voltage6                             : 100             ; 5 V
+;~ Src_PDO_Min_Voltage6                         : 100             ; 5 V
+;~ Src_PDO_Max_Voltage6                         : 100             ; 5 V
+;~ Src_PDO_Peak_Current6                        : 0               ; 100% IOC
+;~ Src_PDO_Max_Current6                         : 100             ; 1 A
+;~ Src_PDO_Max_Power6                           : 100             ; 25 W
+;~ Src_PD_OCP_OC_Debounce6                      : 0               ; 0 s
+;~ Src_PD_OCP_OC_Threshold6                     : 0               ; 0 A
+;~ Src_PD_OCP_UV_Debounce6                      : 0               ; 0 s
+;~ Src_PD_OCP_UV_Threshold_Type6                : 0               ; Value
+;~ Src_PD_OCP_UV_Threshold6                     : 0               ; 0 V
+;~ Src_PDO_Supply_Type7                         : 0               ; Fixed
+;~ Src_PDO_Voltage7                             : 100             ; 5 V
+;~ Src_PDO_Min_Voltage7                         : 100             ; 5 V
+;~ Src_PDO_Max_Voltage7                         : 100             ; 5 V
+;~ Src_PDO_Peak_Current7                        : 0               ; 100% IOC
+;~ Src_PDO_Max_Current7                         : 100             ; 1 A
+;~ Src_PDO_Max_Power7                           : 100             ; 25 W
+;~ Src_PD_OCP_OC_Debounce7                      : 0               ; 0 s
+;~ Src_PD_OCP_OC_Threshold7                     : 0               ; 0 A
+;~ Src_PD_OCP_UV_Debounce7                      : 0               ; 0 s
+;~ Src_PD_OCP_UV_Threshold_Type7                : 0               ; Value
+;~ Src_PD_OCP_UV_Threshold7                     : 0               ; 0 V
+;~ Snk_PDO_Min_Voltage1                         : 100             ; 5 V
+;~ Snk_PDO_Max_Voltage1                         : 100             ; 5 V
+;~ Snk_PDO_Op_Power1                            : 100             ; 25 W
+;~ Snk_PDO_Supply_Type2                         : 0               ; Fixed
+;~ Snk_PDO_Voltage2                             : 100             ; 5 V
+;~ Snk_PDO_Min_Voltage2                         : 100             ; 5 V
+;~ Snk_PDO_Max_Voltage2                         : 100             ; 5 V
+;~ Snk_PDO_Op_Current2                          : 100             ; 1 A
+;~ Snk_PDO_Op_Power2                            : 100             ; 25 W
+;~ Snk_PDO_Supply_Type3                         : 0               ; Fixed
+;~ Snk_PDO_Voltage3                             : 100             ; 5 V
+;~ Snk_PDO_Min_Voltage3                         : 100             ; 5 V
+;~ Snk_PDO_Max_Voltage3                         : 100             ; 5 V
+;~ Snk_PDO_Op_Current3                          : 100             ; 1 A
+;~ Snk_PDO_Op_Power3                            : 100             ; 25 W
+;~ Snk_PDO_Supply_Type4                         : 0               ; Fixed
+;~ Snk_PDO_Voltage4                             : 100             ; 5 V
+;~ Snk_PDO_Min_Voltage4                         : 100             ; 5 V
+;~ Snk_PDO_Max_Voltage4                         : 100             ; 5 V
+;~ Snk_PDO_Op_Current4                          : 100             ; 1 A
+;~ Snk_PDO_Op_Power4                            : 100             ; 25 W
+;~ Snk_PDO_Supply_Type5                         : 0               ; Fixed
+;~ Snk_PDO_Voltage5                             : 100             ; 5 V
+;~ Snk_PDO_Min_Voltage5                         : 100             ; 5 V
+;~ Snk_PDO_Max_Voltage5                         : 100             ; 5 V
+;~ Snk_PDO_Op_Current5                          : 100             ; 1 A
+;~ Snk_PDO_Op_Power5                            : 100             ; 25 W
+;~ Snk_PDO_Supply_Type6                         : 0               ; Fixed
+;~ Snk_PDO_Voltage6                             : 100             ; 5 V
+;~ Snk_PDO_Min_Voltage6                         : 100             ; 5 V
+;~ Snk_PDO_Max_Voltage6                         : 100             ; 5 V
+;~ Snk_PDO_Op_Current6                          : 100             ; 1 A
+;~ Snk_PDO_Op_Power6                            : 100             ; 25 W
+;~ Snk_PDO_Supply_Type7                         : 0               ; Fixed
+;~ Snk_PDO_Voltage7                             : 100             ; 5 V
+;~ Snk_PDO_Min_Voltage7                         : 100             ; 5 V
+;~ Snk_PDO_Max_Voltage7                         : 100             ; 5 V
+;~ Snk_PDO_Op_Current7                          : 100             ; 1 A
+;~ Snk_PDO_Op_Power7                            : 100             ; 25 W
+;~ Data_Capable_as_USB_Host_SOP                 : No              
+;~ Data_Capable_as_USB_Device_SOP               : No              
+;~ Product_Type_UFP_SOP                         : 5               ; Alternate Mode Adapter
+;~ Product_Type_DFP_SOP                         : 5               
+;~ Modal_Operation_Supported_SOP                : No              
+;~ USB_VID_SOP                                  : 0x0000          
+;~ PID_SOP                                      : 0x0000          
+;~ bcdDevice_SOP                                : 0x0100          
+;~ XID_SOP                                      : 0               
+;~ AMA_HW_Vers                                  : 0x0             
+;~ AMA_FW_Vers                                  : 0x0             
+;~ AMA_VCONN_power                              : 0               ; 1 W
+;~ AMA_VCONN_reqd                               : No              
+;~ AMA_VBUS_reqd                                : No              
+;~ AMA_Superspeed_Support                       : 1               ; USB 3.1 Gen 1
+;~ Num_SVIDs_min_SOP                            : 1               
+;~ Num_SVIDs_max_SOP                            : 1               
+;~ SVID_fixed_SOP                               : No              
+;~ SVID1_SOP                                    : 0x0000          
+;~ SVID1_num_modes_min_SOP                      : 1               
+;~ SVID1_num_modes_max_SOP                      : 1               
+;~ SVID1_modes_fixed_SOP                        : No              
+;~ SVID1_mode1_enter_SOP                        : No              
+;~ SVID1_mode1_recog_mask_SOP                   : 0x00000000      
+;~ SVID1_mode1_recog_value_SOP                  : 0x00000000      
+;~ SVID1_mode2_enter_SOP                        : No              
+;~ SVID1_mode2_recog_mask_SOP                   : 0x00000000      
+;~ SVID1_mode2_recog_value_SOP                  : 0x00000000      
+;~ SVID1_mode3_enter_SOP                        : No              
+;~ SVID1_mode3_recog_mask_SOP                   : 0x00000000      
+;~ SVID1_mode3_recog_value_SOP                  : 0x00000000      
+;~ SVID1_mode4_enter_SOP                        : No              
+;~ SVID1_mode4_recog_mask_SOP                   : 0x00000000      
+;~ SVID1_mode4_recog_value_SOP                  : 0x00000000      
+;~ SVID1_mode5_enter_SOP                        : No              
+;~ SVID1_mode5_recog_mask_SOP                   : 0x00000000      
+;~ SVID1_mode5_recog_value_SOP                  : 0x00000000      
+;~ SVID1_mode6_enter_SOP                        : No              
+;~ SVID1_mode6_recog_mask_SOP                   : 0x00000000      
+;~ SVID1_mode6_recog_value_SOP                  : 0x00000000      
+;~ SVID2_SOP                                    : 0x0000          
+;~ SVID2_num_modes_min_SOP                      : 1               
+;~ SVID2_num_modes_max_SOP                      : 1               
+;~ SVID2_modes_fixed_SOP                        : No              
+;~ SVID2_mode1_enter_SOP                        : No              
+;~ SVID2_mode1_recog_mask_SOP                   : 0x00000000      
+;~ SVID2_mode1_recog_value_SOP                  : 0x00000000      
+;~ SVID2_mode2_enter_SOP                        : No              
+;~ SVID2_mode2_recog_mask_SOP                   : 0x00000000      
+;~ SVID2_mode2_recog_value_SOP                  : 0x00000000      
+;~ SVID2_mode3_enter_SOP                        : No              
+;~ SVID2_mode3_recog_mask_SOP                   : 0x00000000      
+;~ SVID2_mode3_recog_value_SOP                  : 0x00000000      
+;~ SVID2_mode4_enter_SOP                        : No              
+;~ SVID2_mode4_recog_mask_SOP                   : 0x00000000      
+;~ SVID2_mode4_recog_value_SOP                  : 0x00000000      
+;~ SVID2_mode5_enter_SOP                        : No              
+;~ SVID2_mode5_recog_mask_SOP                   : 0x00000000      
+;~ SVID2_mode5_recog_value_SOP                  : 0x00000000      
+;~ SVID2_mode6_enter_SOP                        : No              
+;~ SVID2_mode6_recog_mask_SOP                   : 0x00000000      
+;~ SVID2_mode6_recog_value_SOP                  : 0x00000000      
+;~ SVID3_SOP                                    : 0x0000          
+;~ SVID3_num_modes_min_SOP                      : 1               
+;~ SVID3_num_modes_max_SOP                      : 1               
+;~ SVID3_modes_fixed_SOP                        : No              
+;~ SVID3_mode1_enter_SOP                        : No              
+;~ SVID3_mode1_recog_mask_SOP                   : 0x00000000      
+;~ SVID3_mode1_recog_value_SOP                  : 0x00000000      
+;~ SVID3_mode2_enter_SOP                        : No              
+;~ SVID3_mode2_recog_mask_SOP                   : 0x00000000      
+;~ SVID3_mode2_recog_value_SOP                  : 0x00000000      
+;~ SVID3_mode3_enter_SOP                        : No              
+;~ SVID3_mode3_recog_mask_SOP                   : 0x00000000      
+;~ SVID3_mode3_recog_value_SOP                  : 0x00000000      
+;~ SVID3_mode4_enter_SOP                        : No              
+;~ SVID3_mode4_recog_mask_SOP                   : 0x00000000      
+;~ SVID3_mode4_recog_value_SOP                  : 0x00000000      
+;~ SVID3_mode5_enter_SOP                        : No              
+;~ SVID3_mode5_recog_mask_SOP                   : 0x00000000      
+;~ SVID3_mode5_recog_value_SOP                  : 0x00000000      
+;~ SVID3_mode6_enter_SOP                        : No              
+;~ SVID3_mode6_recog_mask_SOP                   : 0x00000000      
+;~ SVID3_mode6_recog_value_SOP                  : 0x00000000      
+;~ SVID4_SOP                                    : 0x0000          
+;~ SVID4_num_modes_min_SOP                      : 1               
+;~ SVID4_num_modes_max_SOP                      : 1               
+;~ SVID4_modes_fixed_SOP                        : No              
+;~ SVID4_mode1_enter_SOP                        : No              
+;~ SVID4_mode1_recog_mask_SOP                   : 0x00000000      
+;~ SVID4_mode1_recog_value_SOP                  : 0x00000000      
+;~ SVID4_mode2_enter_SOP                        : No              
+;~ SVID4_mode2_recog_mask_SOP                   : 0x00000000      
+;~ SVID4_mode2_recog_value_SOP                  : 0x00000000      
+;~ SVID4_mode3_enter_SOP                        : No              
+;~ SVID4_mode3_recog_mask_SOP                   : 0x00000000      
+;~ SVID4_mode3_recog_value_SOP                  : 0x00000000      
+;~ SVID4_mode4_enter_SOP                        : No              
+;~ SVID4_mode4_recog_mask_SOP                   : 0x00000000      
+;~ SVID4_mode4_recog_value_SOP                  : 0x00000000      
+;~ SVID4_mode5_enter_SOP                        : No              
+;~ SVID4_mode5_recog_mask_SOP                   : 0x00000000      
+;~ SVID4_mode5_recog_value_SOP                  : 0x00000000      
+;~ SVID4_mode6_enter_SOP                        : No              
+;~ SVID4_mode6_recog_mask_SOP                   : 0x00000000      
+;~ SVID4_mode6_recog_value_SOP                  : 0x00000000      
+;~ SVID5_SOP                                    : 0x0000          
+;~ SVID5_num_modes_min_SOP                      : 1               
+;~ SVID5_num_modes_max_SOP                      : 1               
+;~ SVID5_modes_fixed_SOP                        : No              
+;~ SVID5_mode1_enter_SOP                        : No              
+;~ SVID5_mode1_recog_mask_SOP                   : 0x00000000      
+;~ SVID5_mode1_recog_value_SOP                  : 0x00000000      
+;~ SVID5_mode2_enter_SOP                        : No              
+;~ SVID5_mode2_recog_mask_SOP                   : 0x00000000      
+;~ SVID5_mode2_recog_value_SOP                  : 0x00000000      
+;~ SVID5_mode3_enter_SOP                        : No              
+;~ SVID5_mode3_recog_mask_SOP                   : 0x00000000      
+;~ SVID5_mode3_recog_value_SOP                  : 0x00000000      
+;~ SVID5_mode4_enter_SOP                        : No              
+;~ SVID5_mode4_recog_mask_SOP                   : 0x00000000      
+;~ SVID5_mode4_recog_value_SOP                  : 0x00000000      
+;~ SVID5_mode5_enter_SOP                        : No              
+;~ SVID5_mode5_recog_mask_SOP                   : 0x00000000      
+;~ SVID5_mode5_recog_value_SOP                  : 0x00000000      
+;~ SVID5_mode6_enter_SOP                        : No              
+;~ SVID5_mode6_recog_mask_SOP                   : 0x00000000      
+;~ SVID5_mode6_recog_value_SOP                  : 0x00000000      
+;~ SVID6_SOP                                    : 0x0000          
+;~ SVID6_num_modes_min_SOP                      : 1               
+;~ SVID6_num_modes_max_SOP                      : 1               
+;~ SVID6_modes_fixed_SOP                        : No              
+;~ SVID6_mode1_enter_SOP                        : No              
+;~ SVID6_mode1_recog_mask_SOP                   : 0x00000000      
+;~ SVID6_mode1_recog_value_SOP                  : 0x00000000      
+;~ SVID6_mode2_enter_SOP                        : No              
+;~ SVID6_mode2_recog_mask_SOP                   : 0x00000000      
+;~ SVID6_mode2_recog_value_SOP                  : 0x00000000      
+;~ SVID6_mode3_enter_SOP                        : No              
+;~ SVID6_mode3_recog_mask_SOP                   : 0x00000000      
+;~ SVID6_mode3_recog_value_SOP                  : 0x00000000      
+;~ SVID6_mode4_enter_SOP                        : No              
+;~ SVID6_mode4_recog_mask_SOP                   : 0x00000000      
+;~ SVID6_mode4_recog_value_SOP                  : 0x00000000      
+;~ SVID6_mode5_enter_SOP                        : No              
+;~ SVID6_mode5_recog_mask_SOP                   : 0x00000000      
+;~ SVID6_mode5_recog_value_SOP                  : 0x00000000      
+;~ SVID6_mode6_enter_SOP                        : No              
+;~ SVID6_mode6_recog_mask_SOP                   : 0x00000000      
+;~ SVID6_mode6_recog_value_SOP                  : 0x00000000      
+;~ SVID7_SOP                                    : 0x0000          
+;~ SVID7_num_modes_min_SOP                      : 1               
+;~ SVID7_num_modes_max_SOP                      : 1               
+;~ SVID7_modes_fixed_SOP                        : No              
+;~ SVID7_mode1_enter_SOP                        : No              
+;~ SVID7_mode1_recog_mask_SOP                   : 0x00000000      
+;~ SVID7_mode1_recog_value_SOP                  : 0x00000000      
+;~ SVID7_mode2_enter_SOP                        : No              
+;~ SVID7_mode2_recog_mask_SOP                   : 0x00000000      
+;~ SVID7_mode2_recog_value_SOP                  : 0x00000000      
+;~ SVID7_mode3_enter_SOP                        : No              
+;~ SVID7_mode3_recog_mask_SOP                   : 0x00000000      
+;~ SVID7_mode3_recog_value_SOP                  : 0x00000000      
+;~ SVID7_mode4_enter_SOP                        : No              
+;~ SVID7_mode4_recog_mask_SOP                   : 0x00000000      
+;~ SVID7_mode4_recog_value_SOP                  : 0x00000000      
+;~ SVID7_mode5_enter_SOP                        : No              
+;~ SVID7_mode5_recog_mask_SOP                   : 0x00000000      
+;~ SVID7_mode5_recog_value_SOP                  : 0x00000000      
+;~ SVID7_mode6_enter_SOP                        : No              
+;~ SVID7_mode6_recog_mask_SOP                   : 0x00000000      
+;~ SVID7_mode6_recog_value_SOP                  : 0x00000000      
+;~ SVID8_SOP                                    : 0x0000          
+;~ SVID8_num_modes_min_SOP                      : 1               
+;~ SVID8_num_modes_max_SOP                      : 1               
+;~ SVID8_modes_fixed_SOP                        : No              
+;~ SVID8_mode1_enter_SOP                        : No              
+;~ SVID8_mode1_recog_mask_SOP                   : 0x00000000      
+;~ SVID8_mode1_recog_value_SOP                  : 0x00000000      
+;~ SVID8_mode2_enter_SOP                        : No              
+;~ SVID8_mode2_recog_mask_SOP                   : 0x00000000      
+;~ SVID8_mode2_recog_value_SOP                  : 0x00000000      
+;~ SVID8_mode3_enter_SOP                        : No              
+;~ SVID8_mode3_recog_mask_SOP                   : 0x00000000      
+;~ SVID8_mode3_recog_value_SOP                  : 0x00000000      
+;~ SVID8_mode4_enter_SOP                        : No              
+;~ SVID8_mode4_recog_mask_SOP                   : 0x00000000      
+;~ SVID8_mode4_recog_value_SOP                  : 0x00000000      
+;~ SVID8_mode5_enter_SOP                        : No              
+;~ SVID8_mode5_recog_mask_SOP                   : 0x00000000      
+;~ SVID8_mode5_recog_value_SOP                  : 0x00000000      
+;~ SVID8_mode6_enter_SOP                        : No              
+;~ SVID8_mode6_recog_mask_SOP                   : 0x00000000      
+;~ SVID8_mode6_recog_value_SOP                  : 0x00000000      
+;~ SVID9_SOP                                    : 0x0000          
+;~ SVID9_num_modes_min_SOP                      : 1               
+;~ SVID9_num_modes_max_SOP                      : 1               
+;~ SVID9_modes_fixed_SOP                        : No              
+;~ SVID9_mode1_enter_SOP                        : No              
+;~ SVID9_mode1_recog_mask_SOP                   : 0x00000000      
+;~ SVID9_mode1_recog_value_SOP                  : 0x00000000      
+;~ SVID9_mode2_enter_SOP                        : No              
+;~ SVID9_mode2_recog_mask_SOP                   : 0x00000000      
+;~ SVID9_mode2_recog_value_SOP                  : 0x00000000      
+;~ SVID9_mode3_enter_SOP                        : No              
+;~ SVID9_mode3_recog_mask_SOP                   : 0x00000000      
+;~ SVID9_mode3_recog_value_SOP                  : 0x00000000      
+;~ SVID9_mode4_enter_SOP                        : No              
+;~ SVID9_mode4_recog_mask_SOP                   : 0x00000000      
+;~ SVID9_mode4_recog_value_SOP                  : 0x00000000      
+;~ SVID9_mode5_enter_SOP                        : No              
+;~ SVID9_mode5_recog_mask_SOP                   : 0x00000000      
+;~ SVID9_mode5_recog_value_SOP                  : 0x00000000      
+;~ SVID9_mode6_enter_SOP                        : No              
+;~ SVID9_mode6_recog_mask_SOP                   : 0x00000000      
+;~ SVID9_mode6_recog_value_SOP                  : 0x00000000      
+;~ SVID10_SOP                                   : 0x0000          
+;~ SVID10_num_modes_min_SOP                     : 1               
+;~ SVID10_num_modes_max_SOP                     : 1               
+;~ SVID10_modes_fixed_SOP                       : No              
+;~ SVID10_mode1_enter_SOP                       : No              
+;~ SVID10_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID10_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID10_mode2_enter_SOP                       : No              
+;~ SVID10_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID10_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID10_mode3_enter_SOP                       : No              
+;~ SVID10_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID10_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID10_mode4_enter_SOP                       : No              
+;~ SVID10_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID10_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID10_mode5_enter_SOP                       : No              
+;~ SVID10_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID10_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID10_mode6_enter_SOP                       : No              
+;~ SVID10_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID10_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID11_SOP                                   : 0x0000          
+;~ SVID11_num_modes_min_SOP                     : 1               
+;~ SVID11_num_modes_max_SOP                     : 1               
+;~ SVID11_modes_fixed_SOP                       : No              
+;~ SVID11_mode1_enter_SOP                       : No              
+;~ SVID11_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID11_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID11_mode2_enter_SOP                       : No              
+;~ SVID11_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID11_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID11_mode3_enter_SOP                       : No              
+;~ SVID11_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID11_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID11_mode4_enter_SOP                       : No              
+;~ SVID11_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID11_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID11_mode5_enter_SOP                       : No              
+;~ SVID11_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID11_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID11_mode6_enter_SOP                       : No              
+;~ SVID11_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID11_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID12_SOP                                   : 0x0000          
+;~ SVID12_num_modes_min_SOP                     : 1               
+;~ SVID12_num_modes_max_SOP                     : 1               
+;~ SVID12_modes_fixed_SOP                       : No              
+;~ SVID12_mode1_enter_SOP                       : No              
+;~ SVID12_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID12_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID12_mode2_enter_SOP                       : No              
+;~ SVID12_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID12_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID12_mode3_enter_SOP                       : No              
+;~ SVID12_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID12_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID12_mode4_enter_SOP                       : No              
+;~ SVID12_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID12_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID12_mode5_enter_SOP                       : No              
+;~ SVID12_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID12_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID12_mode6_enter_SOP                       : No              
+;~ SVID12_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID12_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID13_SOP                                   : 0x0000          
+;~ SVID13_num_modes_min_SOP                     : 1               
+;~ SVID13_num_modes_max_SOP                     : 1               
+;~ SVID13_modes_fixed_SOP                       : No              
+;~ SVID13_mode1_enter_SOP                       : No              
+;~ SVID13_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID13_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID13_mode2_enter_SOP                       : No              
+;~ SVID13_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID13_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID13_mode3_enter_SOP                       : No              
+;~ SVID13_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID13_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID13_mode4_enter_SOP                       : No              
+;~ SVID13_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID13_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID13_mode5_enter_SOP                       : No              
+;~ SVID13_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID13_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID13_mode6_enter_SOP                       : No              
+;~ SVID13_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID13_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID14_SOP                                   : 0x0000          
+;~ SVID14_num_modes_min_SOP                     : 1               
+;~ SVID14_num_modes_max_SOP                     : 1               
+;~ SVID14_modes_fixed_SOP                       : No              
+;~ SVID14_mode1_enter_SOP                       : No              
+;~ SVID14_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID14_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID14_mode2_enter_SOP                       : No              
+;~ SVID14_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID14_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID14_mode3_enter_SOP                       : No              
+;~ SVID14_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID14_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID14_mode4_enter_SOP                       : No              
+;~ SVID14_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID14_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID14_mode5_enter_SOP                       : No              
+;~ SVID14_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID14_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID14_mode6_enter_SOP                       : No              
+;~ SVID14_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID14_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID15_SOP                                   : 0x0000          
+;~ SVID15_num_modes_min_SOP                     : 1               
+;~ SVID15_num_modes_max_SOP                     : 1               
+;~ SVID15_modes_fixed_SOP                       : No              
+;~ SVID15_mode1_enter_SOP                       : No              
+;~ SVID15_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID15_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID15_mode2_enter_SOP                       : No              
+;~ SVID15_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID15_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID15_mode3_enter_SOP                       : No              
+;~ SVID15_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID15_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID15_mode4_enter_SOP                       : No              
+;~ SVID15_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID15_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID15_mode5_enter_SOP                       : No              
+;~ SVID15_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID15_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID15_mode6_enter_SOP                       : No              
+;~ SVID15_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID15_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID16_SOP                                   : 0x0000          
+;~ SVID16_num_modes_min_SOP                     : 1               
+;~ SVID16_num_modes_max_SOP                     : 1               
+;~ SVID16_modes_fixed_SOP                       : No              
+;~ SVID16_mode1_enter_SOP                       : No              
+;~ SVID16_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID16_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID16_mode2_enter_SOP                       : No              
+;~ SVID16_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID16_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID16_mode3_enter_SOP                       : No              
+;~ SVID16_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID16_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID16_mode4_enter_SOP                       : No              
+;~ SVID16_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID16_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID16_mode5_enter_SOP                       : No              
+;~ SVID16_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID16_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID16_mode6_enter_SOP                       : No              
+;~ SVID16_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID16_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID17_SOP                                   : 0x0000          
+;~ SVID17_num_modes_min_SOP                     : 1               
+;~ SVID17_num_modes_max_SOP                     : 1               
+;~ SVID17_modes_fixed_SOP                       : No              
+;~ SVID17_mode1_enter_SOP                       : No              
+;~ SVID17_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID17_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID17_mode2_enter_SOP                       : No              
+;~ SVID17_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID17_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID17_mode3_enter_SOP                       : No              
+;~ SVID17_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID17_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID17_mode4_enter_SOP                       : No              
+;~ SVID17_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID17_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID17_mode5_enter_SOP                       : No              
+;~ SVID17_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID17_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID17_mode6_enter_SOP                       : No              
+;~ SVID17_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID17_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID18_SOP                                   : 0x0000          
+;~ SVID18_num_modes_min_SOP                     : 1               
+;~ SVID18_num_modes_max_SOP                     : 1               
+;~ SVID18_modes_fixed_SOP                       : No              
+;~ SVID18_mode1_enter_SOP                       : No              
+;~ SVID18_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID18_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID18_mode2_enter_SOP                       : No              
+;~ SVID18_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID18_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID18_mode3_enter_SOP                       : No              
+;~ SVID18_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID18_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID18_mode4_enter_SOP                       : No              
+;~ SVID18_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID18_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID18_mode5_enter_SOP                       : No              
+;~ SVID18_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID18_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID18_mode6_enter_SOP                       : No              
+;~ SVID18_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID18_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID19_SOP                                   : 0x0000          
+;~ SVID19_num_modes_min_SOP                     : 1               
+;~ SVID19_num_modes_max_SOP                     : 1               
+;~ SVID19_modes_fixed_SOP                       : No              
+;~ SVID19_mode1_enter_SOP                       : No              
+;~ SVID19_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID19_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID19_mode2_enter_SOP                       : No              
+;~ SVID19_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID19_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID19_mode3_enter_SOP                       : No              
+;~ SVID19_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID19_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID19_mode4_enter_SOP                       : No              
+;~ SVID19_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID19_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID19_mode5_enter_SOP                       : No              
+;~ SVID19_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID19_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID19_mode6_enter_SOP                       : No              
+;~ SVID19_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID19_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID20_SOP                                   : 0x0000          
+;~ SVID20_num_modes_min_SOP                     : 1               
+;~ SVID20_num_modes_max_SOP                     : 1               
+;~ SVID20_modes_fixed_SOP                       : No              
+;~ SVID20_mode1_enter_SOP                       : No              
+;~ SVID20_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID20_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID20_mode2_enter_SOP                       : No              
+;~ SVID20_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID20_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID20_mode3_enter_SOP                       : No              
+;~ SVID20_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID20_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID20_mode4_enter_SOP                       : No              
+;~ SVID20_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID20_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID20_mode5_enter_SOP                       : No              
+;~ SVID20_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID20_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID20_mode6_enter_SOP                       : No              
+;~ SVID20_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID20_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID21_SOP                                   : 0x0000          
+;~ SVID21_num_modes_min_SOP                     : 1               
+;~ SVID21_num_modes_max_SOP                     : 1               
+;~ SVID21_modes_fixed_SOP                       : No              
+;~ SVID21_mode1_enter_SOP                       : No              
+;~ SVID21_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID21_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID21_mode2_enter_SOP                       : No              
+;~ SVID21_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID21_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID21_mode3_enter_SOP                       : No              
+;~ SVID21_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID21_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID21_mode4_enter_SOP                       : No              
+;~ SVID21_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID21_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID21_mode5_enter_SOP                       : No              
+;~ SVID21_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID21_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID21_mode6_enter_SOP                       : No              
+;~ SVID21_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID21_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID22_SOP                                   : 0x0000          
+;~ SVID22_num_modes_min_SOP                     : 1               
+;~ SVID22_num_modes_max_SOP                     : 1               
+;~ SVID22_modes_fixed_SOP                       : No              
+;~ SVID22_mode1_enter_SOP                       : No              
+;~ SVID22_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID22_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID22_mode2_enter_SOP                       : No              
+;~ SVID22_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID22_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID22_mode3_enter_SOP                       : No              
+;~ SVID22_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID22_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID22_mode4_enter_SOP                       : No              
+;~ SVID22_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID22_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID22_mode5_enter_SOP                       : No              
+;~ SVID22_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID22_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID22_mode6_enter_SOP                       : No              
+;~ SVID22_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID22_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID23_SOP                                   : 0x0000          
+;~ SVID23_num_modes_min_SOP                     : 1               
+;~ SVID23_num_modes_max_SOP                     : 1               
+;~ SVID23_modes_fixed_SOP                       : No              
+;~ SVID23_mode1_enter_SOP                       : No              
+;~ SVID23_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID23_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID23_mode2_enter_SOP                       : No              
+;~ SVID23_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID23_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID23_mode3_enter_SOP                       : No              
+;~ SVID23_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID23_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID23_mode4_enter_SOP                       : No              
+;~ SVID23_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID23_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID23_mode5_enter_SOP                       : No              
+;~ SVID23_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID23_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID23_mode6_enter_SOP                       : No              
+;~ SVID23_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID23_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID24_SOP                                   : 0x0000          
+;~ SVID24_num_modes_min_SOP                     : 1               
+;~ SVID24_num_modes_max_SOP                     : 1               
+;~ SVID24_modes_fixed_SOP                       : No              
+;~ SVID24_mode1_enter_SOP                       : No              
+;~ SVID24_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID24_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID24_mode2_enter_SOP                       : No              
+;~ SVID24_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID24_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID24_mode3_enter_SOP                       : No              
+;~ SVID24_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID24_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID24_mode4_enter_SOP                       : No              
+;~ SVID24_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID24_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID24_mode5_enter_SOP                       : No              
+;~ SVID24_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID24_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID24_mode6_enter_SOP                       : No              
+;~ SVID24_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID24_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID25_SOP                                   : 0x0000          
+;~ SVID25_num_modes_min_SOP                     : 1               
+;~ SVID25_num_modes_max_SOP                     : 1               
+;~ SVID25_modes_fixed_SOP                       : No              
+;~ SVID25_mode1_enter_SOP                       : No              
+;~ SVID25_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID25_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID25_mode2_enter_SOP                       : No              
+;~ SVID25_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID25_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID25_mode3_enter_SOP                       : No              
+;~ SVID25_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID25_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID25_mode4_enter_SOP                       : No              
+;~ SVID25_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID25_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID25_mode5_enter_SOP                       : No              
+;~ SVID25_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID25_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID25_mode6_enter_SOP                       : No              
+;~ SVID25_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID25_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID26_SOP                                   : 0x0000          
+;~ SVID26_num_modes_min_SOP                     : 1               
+;~ SVID26_num_modes_max_SOP                     : 1               
+;~ SVID26_modes_fixed_SOP                       : No              
+;~ SVID26_mode1_enter_SOP                       : No              
+;~ SVID26_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID26_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID26_mode2_enter_SOP                       : No              
+;~ SVID26_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID26_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID26_mode3_enter_SOP                       : No              
+;~ SVID26_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID26_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID26_mode4_enter_SOP                       : No              
+;~ SVID26_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID26_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID26_mode5_enter_SOP                       : No              
+;~ SVID26_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID26_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID26_mode6_enter_SOP                       : No              
+;~ SVID26_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID26_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID27_SOP                                   : 0x0000          
+;~ SVID27_num_modes_min_SOP                     : 1               
+;~ SVID27_num_modes_max_SOP                     : 1               
+;~ SVID27_modes_fixed_SOP                       : No              
+;~ SVID27_mode1_enter_SOP                       : No              
+;~ SVID27_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID27_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID27_mode2_enter_SOP                       : No              
+;~ SVID27_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID27_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID27_mode3_enter_SOP                       : No              
+;~ SVID27_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID27_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID27_mode4_enter_SOP                       : No              
+;~ SVID27_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID27_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID27_mode5_enter_SOP                       : No              
+;~ SVID27_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID27_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID27_mode6_enter_SOP                       : No              
+;~ SVID27_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID27_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID28_SOP                                   : 0x0000          
+;~ SVID28_num_modes_min_SOP                     : 1               
+;~ SVID28_num_modes_max_SOP                     : 1               
+;~ SVID28_modes_fixed_SOP                       : No              
+;~ SVID28_mode1_enter_SOP                       : No              
+;~ SVID28_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID28_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID28_mode2_enter_SOP                       : No              
+;~ SVID28_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID28_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID28_mode3_enter_SOP                       : No              
+;~ SVID28_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID28_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID28_mode4_enter_SOP                       : No              
+;~ SVID28_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID28_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID28_mode5_enter_SOP                       : No              
+;~ SVID28_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID28_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID28_mode6_enter_SOP                       : No              
+;~ SVID28_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID28_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID29_SOP                                   : 0x0000          
+;~ SVID29_num_modes_min_SOP                     : 1               
+;~ SVID29_num_modes_max_SOP                     : 1               
+;~ SVID29_modes_fixed_SOP                       : No              
+;~ SVID29_mode1_enter_SOP                       : No              
+;~ SVID29_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID29_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID29_mode2_enter_SOP                       : No              
+;~ SVID29_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID29_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID29_mode3_enter_SOP                       : No              
+;~ SVID29_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID29_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID29_mode4_enter_SOP                       : No              
+;~ SVID29_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID29_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID29_mode5_enter_SOP                       : No              
+;~ SVID29_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID29_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID29_mode6_enter_SOP                       : No              
+;~ SVID29_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID29_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID30_SOP                                   : 0x0000          
+;~ SVID30_num_modes_min_SOP                     : 1               
+;~ SVID30_num_modes_max_SOP                     : 1               
+;~ SVID30_modes_fixed_SOP                       : No              
+;~ SVID30_mode1_enter_SOP                       : No              
+;~ SVID30_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID30_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID30_mode2_enter_SOP                       : No              
+;~ SVID30_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID30_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID30_mode3_enter_SOP                       : No              
+;~ SVID30_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID30_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID30_mode4_enter_SOP                       : No              
+;~ SVID30_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID30_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID30_mode5_enter_SOP                       : No              
+;~ SVID30_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID30_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID30_mode6_enter_SOP                       : No              
+;~ SVID30_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID30_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID31_SOP                                   : 0x0000          
+;~ SVID31_num_modes_min_SOP                     : 1               
+;~ SVID31_num_modes_max_SOP                     : 1               
+;~ SVID31_modes_fixed_SOP                       : No              
+;~ SVID31_mode1_enter_SOP                       : No              
+;~ SVID31_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID31_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID31_mode2_enter_SOP                       : No              
+;~ SVID31_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID31_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID31_mode3_enter_SOP                       : No              
+;~ SVID31_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID31_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID31_mode4_enter_SOP                       : No              
+;~ SVID31_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID31_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID31_mode5_enter_SOP                       : No              
+;~ SVID31_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID31_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID31_mode6_enter_SOP                       : No              
+;~ SVID31_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID31_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID32_SOP                                   : 0x0000          
+;~ SVID32_num_modes_min_SOP                     : 1               
+;~ SVID32_num_modes_max_SOP                     : 1               
+;~ SVID32_modes_fixed_SOP                       : No              
+;~ SVID32_mode1_enter_SOP                       : No              
+;~ SVID32_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID32_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID32_mode2_enter_SOP                       : No              
+;~ SVID32_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID32_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID32_mode3_enter_SOP                       : No              
+;~ SVID32_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID32_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID32_mode4_enter_SOP                       : No              
+;~ SVID32_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID32_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID32_mode5_enter_SOP                       : No              
+;~ SVID32_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID32_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID32_mode6_enter_SOP                       : No              
+;~ SVID32_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID32_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID33_SOP                                   : 0x0000          
+;~ SVID33_num_modes_min_SOP                     : 1               
+;~ SVID33_num_modes_max_SOP                     : 1               
+;~ SVID33_modes_fixed_SOP                       : No              
+;~ SVID33_mode1_enter_SOP                       : No              
+;~ SVID33_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID33_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID33_mode2_enter_SOP                       : No              
+;~ SVID33_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID33_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID33_mode3_enter_SOP                       : No              
+;~ SVID33_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID33_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID33_mode4_enter_SOP                       : No              
+;~ SVID33_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID33_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID33_mode5_enter_SOP                       : No              
+;~ SVID33_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID33_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID33_mode6_enter_SOP                       : No              
+;~ SVID33_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID33_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID34_SOP                                   : 0x0000          
+;~ SVID34_num_modes_min_SOP                     : 1               
+;~ SVID34_num_modes_max_SOP                     : 1               
+;~ SVID34_modes_fixed_SOP                       : No              
+;~ SVID34_mode1_enter_SOP                       : No              
+;~ SVID34_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID34_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID34_mode2_enter_SOP                       : No              
+;~ SVID34_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID34_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID34_mode3_enter_SOP                       : No              
+;~ SVID34_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID34_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID34_mode4_enter_SOP                       : No              
+;~ SVID34_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID34_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID34_mode5_enter_SOP                       : No              
+;~ SVID34_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID34_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID34_mode6_enter_SOP                       : No              
+;~ SVID34_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID34_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID35_SOP                                   : 0x0000          
+;~ SVID35_num_modes_min_SOP                     : 1               
+;~ SVID35_num_modes_max_SOP                     : 1               
+;~ SVID35_modes_fixed_SOP                       : No              
+;~ SVID35_mode1_enter_SOP                       : No              
+;~ SVID35_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID35_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID35_mode2_enter_SOP                       : No              
+;~ SVID35_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID35_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID35_mode3_enter_SOP                       : No              
+;~ SVID35_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID35_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID35_mode4_enter_SOP                       : No              
+;~ SVID35_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID35_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID35_mode5_enter_SOP                       : No              
+;~ SVID35_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID35_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID35_mode6_enter_SOP                       : No              
+;~ SVID35_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID35_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID36_SOP                                   : 0x0000          
+;~ SVID36_num_modes_min_SOP                     : 1               
+;~ SVID36_num_modes_max_SOP                     : 1               
+;~ SVID36_modes_fixed_SOP                       : No              
+;~ SVID36_mode1_enter_SOP                       : No              
+;~ SVID36_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID36_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID36_mode2_enter_SOP                       : No              
+;~ SVID36_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID36_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID36_mode3_enter_SOP                       : No              
+;~ SVID36_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID36_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID36_mode4_enter_SOP                       : No              
+;~ SVID36_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID36_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID36_mode5_enter_SOP                       : No              
+;~ SVID36_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID36_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID36_mode6_enter_SOP                       : No              
+;~ SVID36_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID36_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID37_SOP                                   : 0x0000          
+;~ SVID37_num_modes_min_SOP                     : 1               
+;~ SVID37_num_modes_max_SOP                     : 1               
+;~ SVID37_modes_fixed_SOP                       : No              
+;~ SVID37_mode1_enter_SOP                       : No              
+;~ SVID37_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID37_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID37_mode2_enter_SOP                       : No              
+;~ SVID37_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID37_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID37_mode3_enter_SOP                       : No              
+;~ SVID37_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID37_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID37_mode4_enter_SOP                       : No              
+;~ SVID37_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID37_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID37_mode5_enter_SOP                       : No              
+;~ SVID37_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID37_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID37_mode6_enter_SOP                       : No              
+;~ SVID37_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID37_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID38_SOP                                   : 0x0000          
+;~ SVID38_num_modes_min_SOP                     : 1               
+;~ SVID38_num_modes_max_SOP                     : 1               
+;~ SVID38_modes_fixed_SOP                       : No              
+;~ SVID38_mode1_enter_SOP                       : No              
+;~ SVID38_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID38_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID38_mode2_enter_SOP                       : No              
+;~ SVID38_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID38_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID38_mode3_enter_SOP                       : No              
+;~ SVID38_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID38_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID38_mode4_enter_SOP                       : No              
+;~ SVID38_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID38_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID38_mode5_enter_SOP                       : No              
+;~ SVID38_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID38_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID38_mode6_enter_SOP                       : No              
+;~ SVID38_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID38_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID39_SOP                                   : 0x0000          
+;~ SVID39_num_modes_min_SOP                     : 1               
+;~ SVID39_num_modes_max_SOP                     : 1               
+;~ SVID39_modes_fixed_SOP                       : No              
+;~ SVID39_mode1_enter_SOP                       : No              
+;~ SVID39_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID39_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID39_mode2_enter_SOP                       : No              
+;~ SVID39_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID39_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID39_mode3_enter_SOP                       : No              
+;~ SVID39_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID39_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID39_mode4_enter_SOP                       : No              
+;~ SVID39_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID39_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID39_mode5_enter_SOP                       : No              
+;~ SVID39_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID39_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID39_mode6_enter_SOP                       : No              
+;~ SVID39_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID39_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID40_SOP                                   : 0x0000          
+;~ SVID40_num_modes_min_SOP                     : 1               
+;~ SVID40_num_modes_max_SOP                     : 1               
+;~ SVID40_modes_fixed_SOP                       : No              
+;~ SVID40_mode1_enter_SOP                       : No              
+;~ SVID40_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID40_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID40_mode2_enter_SOP                       : No              
+;~ SVID40_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID40_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID40_mode3_enter_SOP                       : No              
+;~ SVID40_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID40_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID40_mode4_enter_SOP                       : No              
+;~ SVID40_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID40_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID40_mode5_enter_SOP                       : No              
+;~ SVID40_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID40_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID40_mode6_enter_SOP                       : No              
+;~ SVID40_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID40_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID41_SOP                                   : 0x0000          
+;~ SVID41_num_modes_min_SOP                     : 1               
+;~ SVID41_num_modes_max_SOP                     : 1               
+;~ SVID41_modes_fixed_SOP                       : No              
+;~ SVID41_mode1_enter_SOP                       : No              
+;~ SVID41_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID41_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID41_mode2_enter_SOP                       : No              
+;~ SVID41_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID41_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID41_mode3_enter_SOP                       : No              
+;~ SVID41_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID41_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID41_mode4_enter_SOP                       : No              
+;~ SVID41_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID41_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID41_mode5_enter_SOP                       : No              
+;~ SVID41_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID41_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID41_mode6_enter_SOP                       : No              
+;~ SVID41_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID41_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID42_SOP                                   : 0x0000          
+;~ SVID42_num_modes_min_SOP                     : 1               
+;~ SVID42_num_modes_max_SOP                     : 1               
+;~ SVID42_modes_fixed_SOP                       : No              
+;~ SVID42_mode1_enter_SOP                       : No              
+;~ SVID42_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID42_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID42_mode2_enter_SOP                       : No              
+;~ SVID42_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID42_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID42_mode3_enter_SOP                       : No              
+;~ SVID42_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID42_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID42_mode4_enter_SOP                       : No              
+;~ SVID42_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID42_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID42_mode5_enter_SOP                       : No              
+;~ SVID42_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID42_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID42_mode6_enter_SOP                       : No              
+;~ SVID42_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID42_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID43_SOP                                   : 0x0000          
+;~ SVID43_num_modes_min_SOP                     : 1               
+;~ SVID43_num_modes_max_SOP                     : 1               
+;~ SVID43_modes_fixed_SOP                       : No              
+;~ SVID43_mode1_enter_SOP                       : No              
+;~ SVID43_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID43_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID43_mode2_enter_SOP                       : No              
+;~ SVID43_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID43_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID43_mode3_enter_SOP                       : No              
+;~ SVID43_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID43_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID43_mode4_enter_SOP                       : No              
+;~ SVID43_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID43_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID43_mode5_enter_SOP                       : No              
+;~ SVID43_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID43_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID43_mode6_enter_SOP                       : No              
+;~ SVID43_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID43_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID44_SOP                                   : 0x0000          
+;~ SVID44_num_modes_min_SOP                     : 1               
+;~ SVID44_num_modes_max_SOP                     : 1               
+;~ SVID44_modes_fixed_SOP                       : No              
+;~ SVID44_mode1_enter_SOP                       : No              
+;~ SVID44_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID44_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID44_mode2_enter_SOP                       : No              
+;~ SVID44_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID44_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID44_mode3_enter_SOP                       : No              
+;~ SVID44_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID44_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID44_mode4_enter_SOP                       : No              
+;~ SVID44_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID44_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID44_mode5_enter_SOP                       : No              
+;~ SVID44_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID44_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID44_mode6_enter_SOP                       : No              
+;~ SVID44_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID44_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID45_SOP                                   : 0x0000          
+;~ SVID45_num_modes_min_SOP                     : 1               
+;~ SVID45_num_modes_max_SOP                     : 1               
+;~ SVID45_modes_fixed_SOP                       : No              
+;~ SVID45_mode1_enter_SOP                       : No              
+;~ SVID45_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID45_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID45_mode2_enter_SOP                       : No              
+;~ SVID45_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID45_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID45_mode3_enter_SOP                       : No              
+;~ SVID45_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID45_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID45_mode4_enter_SOP                       : No              
+;~ SVID45_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID45_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID45_mode5_enter_SOP                       : No              
+;~ SVID45_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID45_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID45_mode6_enter_SOP                       : No              
+;~ SVID45_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID45_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID46_SOP                                   : 0x0000          
+;~ SVID46_num_modes_min_SOP                     : 1               
+;~ SVID46_num_modes_max_SOP                     : 1               
+;~ SVID46_modes_fixed_SOP                       : No              
+;~ SVID46_mode1_enter_SOP                       : No              
+;~ SVID46_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID46_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID46_mode2_enter_SOP                       : No              
+;~ SVID46_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID46_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID46_mode3_enter_SOP                       : No              
+;~ SVID46_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID46_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID46_mode4_enter_SOP                       : No              
+;~ SVID46_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID46_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID46_mode5_enter_SOP                       : No              
+;~ SVID46_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID46_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID46_mode6_enter_SOP                       : No              
+;~ SVID46_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID46_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID47_SOP                                   : 0x0000          
+;~ SVID47_num_modes_min_SOP                     : 1               
+;~ SVID47_num_modes_max_SOP                     : 1               
+;~ SVID47_modes_fixed_SOP                       : No              
+;~ SVID47_mode1_enter_SOP                       : No              
+;~ SVID47_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID47_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID47_mode2_enter_SOP                       : No              
+;~ SVID47_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID47_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID47_mode3_enter_SOP                       : No              
+;~ SVID47_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID47_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID47_mode4_enter_SOP                       : No              
+;~ SVID47_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID47_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID47_mode5_enter_SOP                       : No              
+;~ SVID47_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID47_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID47_mode6_enter_SOP                       : No              
+;~ SVID47_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID47_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID48_SOP                                   : 0x0000          
+;~ SVID48_num_modes_min_SOP                     : 1               
+;~ SVID48_num_modes_max_SOP                     : 1               
+;~ SVID48_modes_fixed_SOP                       : No              
+;~ SVID48_mode1_enter_SOP                       : No              
+;~ SVID48_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID48_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID48_mode2_enter_SOP                       : No              
+;~ SVID48_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID48_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID48_mode3_enter_SOP                       : No              
+;~ SVID48_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID48_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID48_mode4_enter_SOP                       : No              
+;~ SVID48_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID48_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID48_mode5_enter_SOP                       : No              
+;~ SVID48_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID48_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID48_mode6_enter_SOP                       : No              
+;~ SVID48_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID48_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID49_SOP                                   : 0x0000          
+;~ SVID49_num_modes_min_SOP                     : 1               
+;~ SVID49_num_modes_max_SOP                     : 1               
+;~ SVID49_modes_fixed_SOP                       : No              
+;~ SVID49_mode1_enter_SOP                       : No              
+;~ SVID49_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID49_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID49_mode2_enter_SOP                       : No              
+;~ SVID49_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID49_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID49_mode3_enter_SOP                       : No              
+;~ SVID49_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID49_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID49_mode4_enter_SOP                       : No              
+;~ SVID49_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID49_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID49_mode5_enter_SOP                       : No              
+;~ SVID49_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID49_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID49_mode6_enter_SOP                       : No              
+;~ SVID49_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID49_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID50_SOP                                   : 0x0000          
+;~ SVID50_num_modes_min_SOP                     : 1               
+;~ SVID50_num_modes_max_SOP                     : 1               
+;~ SVID50_modes_fixed_SOP                       : No              
+;~ SVID50_mode1_enter_SOP                       : No              
+;~ SVID50_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID50_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID50_mode2_enter_SOP                       : No              
+;~ SVID50_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID50_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID50_mode3_enter_SOP                       : No              
+;~ SVID50_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID50_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID50_mode4_enter_SOP                       : No              
+;~ SVID50_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID50_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID50_mode5_enter_SOP                       : No              
+;~ SVID50_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID50_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID50_mode6_enter_SOP                       : No              
+;~ SVID50_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID50_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID51_SOP                                   : 0x0000          
+;~ SVID51_num_modes_min_SOP                     : 1               
+;~ SVID51_num_modes_max_SOP                     : 1               
+;~ SVID51_modes_fixed_SOP                       : No              
+;~ SVID51_mode1_enter_SOP                       : No              
+;~ SVID51_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID51_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID51_mode2_enter_SOP                       : No              
+;~ SVID51_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID51_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID51_mode3_enter_SOP                       : No              
+;~ SVID51_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID51_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID51_mode4_enter_SOP                       : No              
+;~ SVID51_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID51_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID51_mode5_enter_SOP                       : No              
+;~ SVID51_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID51_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID51_mode6_enter_SOP                       : No              
+;~ SVID51_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID51_mode6_recog_value_SOP                 : 0x00000000      
+;~ SVID52_SOP                                   : 0x0000          
+;~ SVID52_num_modes_min_SOP                     : 1               
+;~ SVID52_num_modes_max_SOP                     : 1               
+;~ SVID52_modes_fixed_SOP                       : No              
+;~ SVID52_mode1_enter_SOP                       : No              
+;~ SVID52_mode1_recog_mask_SOP                  : 0x00000000      
+;~ SVID52_mode1_recog_value_SOP                 : 0x00000000      
+;~ SVID52_mode2_enter_SOP                       : No              
+;~ SVID52_mode2_recog_mask_SOP                  : 0x00000000      
+;~ SVID52_mode2_recog_value_SOP                 : 0x00000000      
+;~ SVID52_mode3_enter_SOP                       : No              
+;~ SVID52_mode3_recog_mask_SOP                  : 0x00000000      
+;~ SVID52_mode3_recog_value_SOP                 : 0x00000000      
+;~ SVID52_mode4_enter_SOP                       : No              
+;~ SVID52_mode4_recog_mask_SOP                  : 0x00000000      
+;~ SVID52_mode4_recog_value_SOP                 : 0x00000000      
+;~ SVID52_mode5_enter_SOP                       : No              
+;~ SVID52_mode5_recog_mask_SOP                  : 0x00000000      
+;~ SVID52_mode5_recog_value_SOP                 : 0x00000000      
+;~ SVID52_mode6_enter_SOP                       : No              
+;~ SVID52_mode6_recog_mask_SOP                  : 0x00000000      
+;~ SVID52_mode6_recog_value_SOP                 : 0x00000000      
+;~ Data_Capable_as_USB_Host                     : No              
+;~ Data_Capable_as_USB_Device                   : No              
+;~ Product_Type                                 : 3               ; Passive Cable
+;~ Modal_Operation_Supported                    : No              
+;~ USB_VID                                      : 0x0000          
+;~ PID                                          : 0x0000          
+;~ bcdDevice                                    : 0x0100          
+;~ XID                                          : 0               
+;~ Cable_HW_Vers                                : 0x0             
+;~ Cable_FW_Vers                                : 0x0             
+;~ Type_C_to_Type_A_B_C                         : 0x2             ; Type-C
+;~ Type_C_to_Type_C_Capt_Vdm_V2                 : 0x0             ; 0
+;~ Type_C_to_Plug_Receptacle                    : 0               ; Plug
+;~ Cable_Latency                                : 1               ; < 10 ns (~1 m)
+;~ Cable_Termination_Type                       : 1               ; Both ends Passive VCONN required
+;~ Cable_VBUS_Current                           : 0               ; 1.5 A (Deprecated)
+;~ VBUS_through_cable                           : No              
+;~ Max_VBUS_Voltage_Vdm_V2                      : 0               ; 20 V
+;~ Cable_SOP_PP_controller                      : No              
+;~ Cable_Superspeed_Support                     : 1               ; USB 3.1 Gen 1
+;~ Manufacturer_Info_Supported                  : No              
+;~ Manufacturer_Info_VID                        : 0x0000          
+;~ Manufacturer_Info_PID                        : 0               
+;~ Chunking_Implemented                         : No              
+;~ Security_Msgs_Supported                      : No              
+;~ Num_SVIDs_min                                : 1               
+;~ Num_SVIDs_max                                : 1               
+;~ SVID_fixed                                   : No              
+;~ SVID1                                        : 0x0000          
+;~ SVID1_num_modes_min                          : 1               
+;~ SVID1_num_modes_max                          : 1               
+;~ SVID1_modes_fixed                            : No              
+;~ SVID1_mode1_enter                            : No              
+;~ SVID1_mode1_recog_mask                       : 0x00000000      
+;~ SVID1_mode1_recog_value                      : 0x00000000      
+;~ SVID1_mode2_enter                            : No              
+;~ SVID1_mode2_recog_mask                       : 0x00000000      
+;~ SVID1_mode2_recog_value                      : 0x00000000      
+;~ SVID1_mode3_enter                            : No              
+;~ SVID1_mode3_recog_mask                       : 0x00000000      
+;~ SVID1_mode3_recog_value                      : 0x00000000      
+;~ SVID1_mode4_enter                            : No              
+;~ SVID1_mode4_recog_mask                       : 0x00000000      
+;~ SVID1_mode4_recog_value                      : 0x00000000      
+;~ SVID1_mode5_enter                            : No              
+;~ SVID1_mode5_recog_mask                       : 0x00000000      
+;~ SVID1_mode5_recog_value                      : 0x00000000      
+;~ SVID1_mode6_enter                            : No              
+;~ SVID1_mode6_recog_mask                       : 0x00000000      
+;~ SVID1_mode6_recog_value                      : 0x00000000      
+;~ SVID2                                        : 0x0000          
+;~ SVID2_num_modes_min                          : 1               
+;~ SVID2_num_modes_max                          : 1               
+;~ SVID2_modes_fixed                            : No              
+;~ SVID2_mode1_enter                            : No              
+;~ SVID2_mode1_recog_mask                       : 0x00000000      
+;~ SVID2_mode1_recog_value                      : 0x00000000      
+;~ SVID2_mode2_enter                            : No              
+;~ SVID2_mode2_recog_mask                       : 0x00000000      
+;~ SVID2_mode2_recog_value                      : 0x00000000      
+;~ SVID2_mode3_enter                            : No              
+;~ SVID2_mode3_recog_mask                       : 0x00000000      
+;~ SVID2_mode3_recog_value                      : 0x00000000      
+;~ SVID2_mode4_enter                            : No              
+;~ SVID2_mode4_recog_mask                       : 0x00000000      
+;~ SVID2_mode4_recog_value                      : 0x00000000      
+;~ SVID2_mode5_enter                            : No              
+;~ SVID2_mode5_recog_mask                       : 0x00000000      
+;~ SVID2_mode5_recog_value                      : 0x00000000      
+;~ SVID2_mode6_enter                            : No              
+;~ SVID2_mode6_recog_mask                       : 0x00000000      
+;~ SVID2_mode6_recog_value                      : 0x00000000      
+;~ SVID3                                        : 0x0000          
+;~ SVID3_num_modes_min                          : 1               
+;~ SVID3_num_modes_max                          : 1               
+;~ SVID3_modes_fixed                            : No              
+;~ SVID3_mode1_enter                            : No              
+;~ SVID3_mode1_recog_mask                       : 0x00000000      
+;~ SVID3_mode1_recog_value                      : 0x00000000      
+;~ SVID3_mode2_enter                            : No              
+;~ SVID3_mode2_recog_mask                       : 0x00000000      
+;~ SVID3_mode2_recog_value                      : 0x00000000      
+;~ SVID3_mode3_enter                            : No              
+;~ SVID3_mode3_recog_mask                       : 0x00000000      
+;~ SVID3_mode3_recog_value                      : 0x00000000      
+;~ SVID3_mode4_enter                            : No              
+;~ SVID3_mode4_recog_mask                       : 0x00000000      
+;~ SVID3_mode4_recog_value                      : 0x00000000      
+;~ SVID3_mode5_enter                            : No              
+;~ SVID3_mode5_recog_mask                       : 0x00000000      
+;~ SVID3_mode5_recog_value                      : 0x00000000      
+;~ SVID3_mode6_enter                            : No              
+;~ SVID3_mode6_recog_mask                       : 0x00000000      
+;~ SVID3_mode6_recog_value                      : 0x00000000      
+;~ SVID4                                        : 0x0000          
+;~ SVID4_num_modes_min                          : 1               
+;~ SVID4_num_modes_max                          : 1               
+;~ SVID4_modes_fixed                            : No              
+;~ SVID4_mode1_enter                            : No              
+;~ SVID4_mode1_recog_mask                       : 0x00000000      
+;~ SVID4_mode1_recog_value                      : 0x00000000      
+;~ SVID4_mode2_enter                            : No              
+;~ SVID4_mode2_recog_mask                       : 0x00000000      
+;~ SVID4_mode2_recog_value                      : 0x00000000      
+;~ SVID4_mode3_enter                            : No              
+;~ SVID4_mode3_recog_mask                       : 0x00000000      
+;~ SVID4_mode3_recog_value                      : 0x00000000      
+;~ SVID4_mode4_enter                            : No              
+;~ SVID4_mode4_recog_mask                       : 0x00000000      
+;~ SVID4_mode4_recog_value                      : 0x00000000      
+;~ SVID4_mode5_enter                            : No              
+;~ SVID4_mode5_recog_mask                       : 0x00000000      
+;~ SVID4_mode5_recog_value                      : 0x00000000      
+;~ SVID4_mode6_enter                            : No              
+;~ SVID4_mode6_recog_mask                       : 0x00000000      
+;~ SVID4_mode6_recog_value                      : 0x00000000      
+;~ SVID5                                        : 0x0000          
+;~ SVID5_num_modes_min                          : 1               
+;~ SVID5_num_modes_max                          : 1               
+;~ SVID5_modes_fixed                            : No              
+;~ SVID5_mode1_enter                            : No              
+;~ SVID5_mode1_recog_mask                       : 0x00000000      
+;~ SVID5_mode1_recog_value                      : 0x00000000      
+;~ SVID5_mode2_enter                            : No              
+;~ SVID5_mode2_recog_mask                       : 0x00000000      
+;~ SVID5_mode2_recog_value                      : 0x00000000      
+;~ SVID5_mode3_enter                            : No              
+;~ SVID5_mode3_recog_mask                       : 0x00000000      
+;~ SVID5_mode3_recog_value                      : 0x00000000      
+;~ SVID5_mode4_enter                            : No              
+;~ SVID5_mode4_recog_mask                       : 0x00000000      
+;~ SVID5_mode4_recog_value                      : 0x00000000      
+;~ SVID5_mode5_enter                            : No              
+;~ SVID5_mode5_recog_mask                       : 0x00000000      
+;~ SVID5_mode5_recog_value                      : 0x00000000      
+;~ SVID5_mode6_enter                            : No              
+;~ SVID5_mode6_recog_mask                       : 0x00000000      
+;~ SVID5_mode6_recog_value                      : 0x00000000      
+;~ SVID6                                        : 0x0000          
+;~ SVID6_num_modes_min                          : 1               
+;~ SVID6_num_modes_max                          : 1               
+;~ SVID6_modes_fixed                            : No              
+;~ SVID6_mode1_enter                            : No              
+;~ SVID6_mode1_recog_mask                       : 0x00000000      
+;~ SVID6_mode1_recog_value                      : 0x00000000      
+;~ SVID6_mode2_enter                            : No              
+;~ SVID6_mode2_recog_mask                       : 0x00000000      
+;~ SVID6_mode2_recog_value                      : 0x00000000      
+;~ SVID6_mode3_enter                            : No              
+;~ SVID6_mode3_recog_mask                       : 0x00000000      
+;~ SVID6_mode3_recog_value                      : 0x00000000      
+;~ SVID6_mode4_enter                            : No              
+;~ SVID6_mode4_recog_mask                       : 0x00000000      
+;~ SVID6_mode4_recog_value                      : 0x00000000      
+;~ SVID6_mode5_enter                            : No              
+;~ SVID6_mode5_recog_mask                       : 0x00000000      
+;~ SVID6_mode5_recog_value                      : 0x00000000      
+;~ SVID6_mode6_enter                            : No              
+;~ SVID6_mode6_recog_mask                       : 0x00000000      
+;~ SVID6_mode6_recog_value                      : 0x00000000      
+;~ SVID7                                        : 0x0000          
+;~ SVID7_num_modes_min                          : 1               
+;~ SVID7_num_modes_max                          : 1               
+;~ SVID7_modes_fixed                            : No              
+;~ SVID7_mode1_enter                            : No              
+;~ SVID7_mode1_recog_mask                       : 0x00000000      
+;~ SVID7_mode1_recog_value                      : 0x00000000      
+;~ SVID7_mode2_enter                            : No              
+;~ SVID7_mode2_recog_mask                       : 0x00000000      
+;~ SVID7_mode2_recog_value                      : 0x00000000      
+;~ SVID7_mode3_enter                            : No              
+;~ SVID7_mode3_recog_mask                       : 0x00000000      
+;~ SVID7_mode3_recog_value                      : 0x00000000      
+;~ SVID7_mode4_enter                            : No              
+;~ SVID7_mode4_recog_mask                       : 0x00000000      
+;~ SVID7_mode4_recog_value                      : 0x00000000      
+;~ SVID7_mode5_enter                            : No              
+;~ SVID7_mode5_recog_mask                       : 0x00000000      
+;~ SVID7_mode5_recog_value                      : 0x00000000      
+;~ SVID7_mode6_enter                            : No              
+;~ SVID7_mode6_recog_mask                       : 0x00000000      
+;~ SVID7_mode6_recog_value                      : 0x00000000      
+;~ SVID8                                        : 0x0000          
+;~ SVID8_num_modes_min                          : 1               
+;~ SVID8_num_modes_max                          : 1               
+;~ SVID8_modes_fixed                            : No              
+;~ SVID8_mode1_enter                            : No              
+;~ SVID8_mode1_recog_mask                       : 0x00000000      
+;~ SVID8_mode1_recog_value                      : 0x00000000      
+;~ SVID8_mode2_enter                            : No              
+;~ SVID8_mode2_recog_mask                       : 0x00000000      
+;~ SVID8_mode2_recog_value                      : 0x00000000      
+;~ SVID8_mode3_enter                            : No              
+;~ SVID8_mode3_recog_mask                       : 0x00000000      
+;~ SVID8_mode3_recog_value                      : 0x00000000      
+;~ SVID8_mode4_enter                            : No              
+;~ SVID8_mode4_recog_mask                       : 0x00000000      
+;~ SVID8_mode4_recog_value                      : 0x00000000      
+;~ SVID8_mode5_enter                            : No              
+;~ SVID8_mode5_recog_mask                       : 0x00000000      
+;~ SVID8_mode5_recog_value                      : 0x00000000      
+;~ SVID8_mode6_enter                            : No              
+;~ SVID8_mode6_recog_mask                       : 0x00000000      
+;~ SVID8_mode6_recog_value                      : 0x00000000      
+;~ SVID9                                        : 0x0000          
+;~ SVID9_num_modes_min                          : 1               
+;~ SVID9_num_modes_max                          : 1               
+;~ SVID9_modes_fixed                            : No              
+;~ SVID9_mode1_enter                            : No              
+;~ SVID9_mode1_recog_mask                       : 0x00000000      
+;~ SVID9_mode1_recog_value                      : 0x00000000      
+;~ SVID9_mode2_enter                            : No              
+;~ SVID9_mode2_recog_mask                       : 0x00000000      
+;~ SVID9_mode2_recog_value                      : 0x00000000      
+;~ SVID9_mode3_enter                            : No              
+;~ SVID9_mode3_recog_mask                       : 0x00000000      
+;~ SVID9_mode3_recog_value                      : 0x00000000      
+;~ SVID9_mode4_enter                            : No              
+;~ SVID9_mode4_recog_mask                       : 0x00000000      
+;~ SVID9_mode4_recog_value                      : 0x00000000      
+;~ SVID9_mode5_enter                            : No              
+;~ SVID9_mode5_recog_mask                       : 0x00000000      
+;~ SVID9_mode5_recog_value                      : 0x00000000      
+;~ SVID9_mode6_enter                            : No              
+;~ SVID9_mode6_recog_mask                       : 0x00000000      
+;~ SVID9_mode6_recog_value                      : 0x00000000      
+;~ SVID10                                       : 0x0000          
+;~ SVID10_num_modes_min                         : 1               
+;~ SVID10_num_modes_max                         : 1               
+;~ SVID10_modes_fixed                           : No              
+;~ SVID10_mode1_enter                           : No              
+;~ SVID10_mode1_recog_mask                      : 0x00000000      
+;~ SVID10_mode1_recog_value                     : 0x00000000      
+;~ SVID10_mode2_enter                           : No              
+;~ SVID10_mode2_recog_mask                      : 0x00000000      
+;~ SVID10_mode2_recog_value                     : 0x00000000      
+;~ SVID10_mode3_enter                           : No              
+;~ SVID10_mode3_recog_mask                      : 0x00000000      
+;~ SVID10_mode3_recog_value                     : 0x00000000      
+;~ SVID10_mode4_enter                           : No              
+;~ SVID10_mode4_recog_mask                      : 0x00000000      
+;~ SVID10_mode4_recog_value                     : 0x00000000      
+;~ SVID10_mode5_enter                           : No              
+;~ SVID10_mode5_recog_mask                      : 0x00000000      
+;~ SVID10_mode5_recog_value                     : 0x00000000      
+;~ SVID10_mode6_enter                           : No              
+;~ SVID10_mode6_recog_mask                      : 0x00000000      
+;~ SVID10_mode6_recog_value                     : 0x00000000      
+;~ SVID11                                       : 0x0000          
+;~ SVID11_num_modes_min                         : 1               
+;~ SVID11_num_modes_max                         : 1               
+;~ SVID11_modes_fixed                           : No              
+;~ SVID11_mode1_enter                           : No              
+;~ SVID11_mode1_recog_mask                      : 0x00000000      
+;~ SVID11_mode1_recog_value                     : 0x00000000      
+;~ SVID11_mode2_enter                           : No              
+;~ SVID11_mode2_recog_mask                      : 0x00000000      
+;~ SVID11_mode2_recog_value                     : 0x00000000      
+;~ SVID11_mode3_enter                           : No              
+;~ SVID11_mode3_recog_mask                      : 0x00000000      
+;~ SVID11_mode3_recog_value                     : 0x00000000      
+;~ SVID11_mode4_enter                           : No              
+;~ SVID11_mode4_recog_mask                      : 0x00000000      
+;~ SVID11_mode4_recog_value                     : 0x00000000      
+;~ SVID11_mode5_enter                           : No              
+;~ SVID11_mode5_recog_mask                      : 0x00000000      
+;~ SVID11_mode5_recog_value                     : 0x00000000      
+;~ SVID11_mode6_enter                           : No              
+;~ SVID11_mode6_recog_mask                      : 0x00000000      
+;~ SVID11_mode6_recog_value                     : 0x00000000      
+;~ SVID12                                       : 0x0000          
+;~ SVID12_num_modes_min                         : 1               
+;~ SVID12_num_modes_max                         : 1               
+;~ SVID12_modes_fixed                           : No              
+;~ SVID12_mode1_enter                           : No              
+;~ SVID12_mode1_recog_mask                      : 0x00000000      
+;~ SVID12_mode1_recog_value                     : 0x00000000      
+;~ SVID12_mode2_enter                           : No              
+;~ SVID12_mode2_recog_mask                      : 0x00000000      
+;~ SVID12_mode2_recog_value                     : 0x00000000      
+;~ SVID12_mode3_enter                           : No              
+;~ SVID12_mode3_recog_mask                      : 0x00000000      
+;~ SVID12_mode3_recog_value                     : 0x00000000      
+;~ SVID12_mode4_enter                           : No              
+;~ SVID12_mode4_recog_mask                      : 0x00000000      
+;~ SVID12_mode4_recog_value                     : 0x00000000      
+;~ SVID12_mode5_enter                           : No              
+;~ SVID12_mode5_recog_mask                      : 0x00000000      
+;~ SVID12_mode5_recog_value                     : 0x00000000      
+;~ SVID12_mode6_enter                           : No              
+;~ SVID12_mode6_recog_mask                      : 0x00000000      
+;~ SVID12_mode6_recog_value                     : 0x00000000      
+;~ SVID13                                       : 0x0000          
+;~ SVID13_num_modes_min                         : 1               
+;~ SVID13_num_modes_max                         : 1               
+;~ SVID13_modes_fixed                           : No              
+;~ SVID13_mode1_enter                           : No              
+;~ SVID13_mode1_recog_mask                      : 0x00000000      
+;~ SVID13_mode1_recog_value                     : 0x00000000      
+;~ SVID13_mode2_enter                           : No              
+;~ SVID13_mode2_recog_mask                      : 0x00000000      
+;~ SVID13_mode2_recog_value                     : 0x00000000      
+;~ SVID13_mode3_enter                           : No              
+;~ SVID13_mode3_recog_mask                      : 0x00000000      
+;~ SVID13_mode3_recog_value                     : 0x00000000      
+;~ SVID13_mode4_enter                           : No              
+;~ SVID13_mode4_recog_mask                      : 0x00000000      
+;~ SVID13_mode4_recog_value                     : 0x00000000      
+;~ SVID13_mode5_enter                           : No              
+;~ SVID13_mode5_recog_mask                      : 0x00000000      
+;~ SVID13_mode5_recog_value                     : 0x00000000      
+;~ SVID13_mode6_enter                           : No              
+;~ SVID13_mode6_recog_mask                      : 0x00000000      
+;~ SVID13_mode6_recog_value                     : 0x00000000      
+;~ SVID14                                       : 0x0000          
+;~ SVID14_num_modes_min                         : 1               
+;~ SVID14_num_modes_max                         : 1               
+;~ SVID14_modes_fixed                           : No              
+;~ SVID14_mode1_enter                           : No              
+;~ SVID14_mode1_recog_mask                      : 0x00000000      
+;~ SVID14_mode1_recog_value                     : 0x00000000      
+;~ SVID14_mode2_enter                           : No              
+;~ SVID14_mode2_recog_mask                      : 0x00000000      
+;~ SVID14_mode2_recog_value                     : 0x00000000      
+;~ SVID14_mode3_enter                           : No              
+;~ SVID14_mode3_recog_mask                      : 0x00000000      
+;~ SVID14_mode3_recog_value                     : 0x00000000      
+;~ SVID14_mode4_enter                           : No              
+;~ SVID14_mode4_recog_mask                      : 0x00000000      
+;~ SVID14_mode4_recog_value                     : 0x00000000      
+;~ SVID14_mode5_enter                           : No              
+;~ SVID14_mode5_recog_mask                      : 0x00000000      
+;~ SVID14_mode5_recog_value                     : 0x00000000      
+;~ SVID14_mode6_enter                           : No              
+;~ SVID14_mode6_recog_mask                      : 0x00000000      
+;~ SVID14_mode6_recog_value                     : 0x00000000      
+;~ SVID15                                       : 0x0000          
+;~ SVID15_num_modes_min                         : 1               
+;~ SVID15_num_modes_max                         : 1               
+;~ SVID15_modes_fixed                           : No              
+;~ SVID15_mode1_enter                           : No              
+;~ SVID15_mode1_recog_mask                      : 0x00000000      
+;~ SVID15_mode1_recog_value                     : 0x00000000      
+;~ SVID15_mode2_enter                           : No              
+;~ SVID15_mode2_recog_mask                      : 0x00000000      
+;~ SVID15_mode2_recog_value                     : 0x00000000      
+;~ SVID15_mode3_enter                           : No              
+;~ SVID15_mode3_recog_mask                      : 0x00000000      
+;~ SVID15_mode3_recog_value                     : 0x00000000      
+;~ SVID15_mode4_enter                           : No              
+;~ SVID15_mode4_recog_mask                      : 0x00000000      
+;~ SVID15_mode4_recog_value                     : 0x00000000      
+;~ SVID15_mode5_enter                           : No              
+;~ SVID15_mode5_recog_mask                      : 0x00000000      
+;~ SVID15_mode5_recog_value                     : 0x00000000      
+;~ SVID15_mode6_enter                           : No              
+;~ SVID15_mode6_recog_mask                      : 0x00000000      
+;~ SVID15_mode6_recog_value                     : 0x00000000      
+;~ SVID16                                       : 0x0000          
+;~ SVID16_num_modes_min                         : 1               
+;~ SVID16_num_modes_max                         : 1               
+;~ SVID16_modes_fixed                           : No              
+;~ SVID16_mode1_enter                           : No              
+;~ SVID16_mode1_recog_mask                      : 0x00000000      
+;~ SVID16_mode1_recog_value                     : 0x00000000      
+;~ SVID16_mode2_enter                           : No              
+;~ SVID16_mode2_recog_mask                      : 0x00000000      
+;~ SVID16_mode2_recog_value                     : 0x00000000      
+;~ SVID16_mode3_enter                           : No              
+;~ SVID16_mode3_recog_mask                      : 0x00000000      
+;~ SVID16_mode3_recog_value                     : 0x00000000      
+;~ SVID16_mode4_enter                           : No              
+;~ SVID16_mode4_recog_mask                      : 0x00000000      
+;~ SVID16_mode4_recog_value                     : 0x00000000      
+;~ SVID16_mode5_enter                           : No              
+;~ SVID16_mode5_recog_mask                      : 0x00000000      
+;~ SVID16_mode5_recog_value                     : 0x00000000      
+;~ SVID16_mode6_enter                           : No              
+;~ SVID16_mode6_recog_mask                      : 0x00000000      
+;~ SVID16_mode6_recog_value                     : 0x00000000      
+;~ SVID17                                       : 0x0000          
+;~ SVID17_num_modes_min                         : 1               
+;~ SVID17_num_modes_max                         : 1               
+;~ SVID17_modes_fixed                           : No              
+;~ SVID17_mode1_enter                           : No              
+;~ SVID17_mode1_recog_mask                      : 0x00000000      
+;~ SVID17_mode1_recog_value                     : 0x00000000      
+;~ SVID17_mode2_enter                           : No              
+;~ SVID17_mode2_recog_mask                      : 0x00000000      
+;~ SVID17_mode2_recog_value                     : 0x00000000      
+;~ SVID17_mode3_enter                           : No              
+;~ SVID17_mode3_recog_mask                      : 0x00000000      
+;~ SVID17_mode3_recog_value                     : 0x00000000      
+;~ SVID17_mode4_enter                           : No              
+;~ SVID17_mode4_recog_mask                      : 0x00000000      
+;~ SVID17_mode4_recog_value                     : 0x00000000      
+;~ SVID17_mode5_enter                           : No              
+;~ SVID17_mode5_recog_mask                      : 0x00000000      
+;~ SVID17_mode5_recog_value                     : 0x00000000      
+;~ SVID17_mode6_enter                           : No              
+;~ SVID17_mode6_recog_mask                      : 0x00000000      
+;~ SVID17_mode6_recog_value                     : 0x00000000      
+;~ SVID18                                       : 0x0000          
+;~ SVID18_num_modes_min                         : 1               
+;~ SVID18_num_modes_max                         : 1               
+;~ SVID18_modes_fixed                           : No              
+;~ SVID18_mode1_enter                           : No              
+;~ SVID18_mode1_recog_mask                      : 0x00000000      
+;~ SVID18_mode1_recog_value                     : 0x00000000      
+;~ SVID18_mode2_enter                           : No              
+;~ SVID18_mode2_recog_mask                      : 0x00000000      
+;~ SVID18_mode2_recog_value                     : 0x00000000      
+;~ SVID18_mode3_enter                           : No              
+;~ SVID18_mode3_recog_mask                      : 0x00000000      
+;~ SVID18_mode3_recog_value                     : 0x00000000      
+;~ SVID18_mode4_enter                           : No              
+;~ SVID18_mode4_recog_mask                      : 0x00000000      
+;~ SVID18_mode4_recog_value                     : 0x00000000      
+;~ SVID18_mode5_enter                           : No              
+;~ SVID18_mode5_recog_mask                      : 0x00000000      
+;~ SVID18_mode5_recog_value                     : 0x00000000      
+;~ SVID18_mode6_enter                           : No              
+;~ SVID18_mode6_recog_mask                      : 0x00000000      
+;~ SVID18_mode6_recog_value                     : 0x00000000      
+;~ SVID19                                       : 0x0000          
+;~ SVID19_num_modes_min                         : 1               
+;~ SVID19_num_modes_max                         : 1               
+;~ SVID19_modes_fixed                           : No              
+;~ SVID19_mode1_enter                           : No              
+;~ SVID19_mode1_recog_mask                      : 0x00000000      
+;~ SVID19_mode1_recog_value                     : 0x00000000      
+;~ SVID19_mode2_enter                           : No              
+;~ SVID19_mode2_recog_mask                      : 0x00000000      
+;~ SVID19_mode2_recog_value                     : 0x00000000      
+;~ SVID19_mode3_enter                           : No              
+;~ SVID19_mode3_recog_mask                      : 0x00000000      
+;~ SVID19_mode3_recog_value                     : 0x00000000      
+;~ SVID19_mode4_enter                           : No              
+;~ SVID19_mode4_recog_mask                      : 0x00000000      
+;~ SVID19_mode4_recog_value                     : 0x00000000      
+;~ SVID19_mode5_enter                           : No              
+;~ SVID19_mode5_recog_mask                      : 0x00000000      
+;~ SVID19_mode5_recog_value                     : 0x00000000      
+;~ SVID19_mode6_enter                           : No              
+;~ SVID19_mode6_recog_mask                      : 0x00000000      
+;~ SVID19_mode6_recog_value                     : 0x00000000      
+;~ SVID20                                       : 0x0000          
+;~ SVID20_num_modes_min                         : 1               
+;~ SVID20_num_modes_max                         : 1               
+;~ SVID20_modes_fixed                           : No              
+;~ SVID20_mode1_enter                           : No              
+;~ SVID20_mode1_recog_mask                      : 0x00000000      
+;~ SVID20_mode1_recog_value                     : 0x00000000      
+;~ SVID20_mode2_enter                           : No              
+;~ SVID20_mode2_recog_mask                      : 0x00000000      
+;~ SVID20_mode2_recog_value                     : 0x00000000      
+;~ SVID20_mode3_enter                           : No              
+;~ SVID20_mode3_recog_mask                      : 0x00000000      
+;~ SVID20_mode3_recog_value                     : 0x00000000      
+;~ SVID20_mode4_enter                           : No              
+;~ SVID20_mode4_recog_mask                      : 0x00000000      
+;~ SVID20_mode4_recog_value                     : 0x00000000      
+;~ SVID20_mode5_enter                           : No              
+;~ SVID20_mode5_recog_mask                      : 0x00000000      
+;~ SVID20_mode5_recog_value                     : 0x00000000      
+;~ SVID20_mode6_enter                           : No              
+;~ SVID20_mode6_recog_mask                      : 0x00000000      
+;~ SVID20_mode6_recog_value                     : 0x00000000      
+;~ SVID21                                       : 0x0000          
+;~ SVID21_num_modes_min                         : 1               
+;~ SVID21_num_modes_max                         : 1               
+;~ SVID21_modes_fixed                           : No              
+;~ SVID21_mode1_enter                           : No              
+;~ SVID21_mode1_recog_mask                      : 0x00000000      
+;~ SVID21_mode1_recog_value                     : 0x00000000      
+;~ SVID21_mode2_enter                           : No              
+;~ SVID21_mode2_recog_mask                      : 0x00000000      
+;~ SVID21_mode2_recog_value                     : 0x00000000      
+;~ SVID21_mode3_enter                           : No              
+;~ SVID21_mode3_recog_mask                      : 0x00000000      
+;~ SVID21_mode3_recog_value                     : 0x00000000      
+;~ SVID21_mode4_enter                           : No              
+;~ SVID21_mode4_recog_mask                      : 0x00000000      
+;~ SVID21_mode4_recog_value                     : 0x00000000      
+;~ SVID21_mode5_enter                           : No              
+;~ SVID21_mode5_recog_mask                      : 0x00000000      
+;~ SVID21_mode5_recog_value                     : 0x00000000      
+;~ SVID21_mode6_enter                           : No              
+;~ SVID21_mode6_recog_mask                      : 0x00000000      
+;~ SVID21_mode6_recog_value                     : 0x00000000      
+;~ SVID22                                       : 0x0000          
+;~ SVID22_num_modes_min                         : 1               
+;~ SVID22_num_modes_max                         : 1               
+;~ SVID22_modes_fixed                           : No              
+;~ SVID22_mode1_enter                           : No              
+;~ SVID22_mode1_recog_mask                      : 0x00000000      
+;~ SVID22_mode1_recog_value                     : 0x00000000      
+;~ SVID22_mode2_enter                           : No              
+;~ SVID22_mode2_recog_mask                      : 0x00000000      
+;~ SVID22_mode2_recog_value                     : 0x00000000      
+;~ SVID22_mode3_enter                           : No              
+;~ SVID22_mode3_recog_mask                      : 0x00000000      
+;~ SVID22_mode3_recog_value                     : 0x00000000      
+;~ SVID22_mode4_enter                           : No              
+;~ SVID22_mode4_recog_mask                      : 0x00000000      
+;~ SVID22_mode4_recog_value                     : 0x00000000      
+;~ SVID22_mode5_enter                           : No              
+;~ SVID22_mode5_recog_mask                      : 0x00000000      
+;~ SVID22_mode5_recog_value                     : 0x00000000      
+;~ SVID22_mode6_enter                           : No              
+;~ SVID22_mode6_recog_mask                      : 0x00000000      
+;~ SVID22_mode6_recog_value                     : 0x00000000      
+;~ SVID23                                       : 0x0000          
+;~ SVID23_num_modes_min                         : 1               
+;~ SVID23_num_modes_max                         : 1               
+;~ SVID23_modes_fixed                           : No              
+;~ SVID23_mode1_enter                           : No              
+;~ SVID23_mode1_recog_mask                      : 0x00000000      
+;~ SVID23_mode1_recog_value                     : 0x00000000      
+;~ SVID23_mode2_enter                           : No              
+;~ SVID23_mode2_recog_mask                      : 0x00000000      
+;~ SVID23_mode2_recog_value                     : 0x00000000      
+;~ SVID23_mode3_enter                           : No              
+;~ SVID23_mode3_recog_mask                      : 0x00000000      
+;~ SVID23_mode3_recog_value                     : 0x00000000      
+;~ SVID23_mode4_enter                           : No              
+;~ SVID23_mode4_recog_mask                      : 0x00000000      
+;~ SVID23_mode4_recog_value                     : 0x00000000      
+;~ SVID23_mode5_enter                           : No              
+;~ SVID23_mode5_recog_mask                      : 0x00000000      
+;~ SVID23_mode5_recog_value                     : 0x00000000      
+;~ SVID23_mode6_enter                           : No              
+;~ SVID23_mode6_recog_mask                      : 0x00000000      
+;~ SVID23_mode6_recog_value                     : 0x00000000      
+;~ SVID24                                       : 0x0000          
+;~ SVID24_num_modes_min                         : 1               
+;~ SVID24_num_modes_max                         : 1               
+;~ SVID24_modes_fixed                           : No              
+;~ SVID24_mode1_enter                           : No              
+;~ SVID24_mode1_recog_mask                      : 0x00000000      
+;~ SVID24_mode1_recog_value                     : 0x00000000      
+;~ SVID24_mode2_enter                           : No              
+;~ SVID24_mode2_recog_mask                      : 0x00000000      
+;~ SVID24_mode2_recog_value                     : 0x00000000      
+;~ SVID24_mode3_enter                           : No              
+;~ SVID24_mode3_recog_mask                      : 0x00000000      
+;~ SVID24_mode3_recog_value                     : 0x00000000      
+;~ SVID24_mode4_enter                           : No              
+;~ SVID24_mode4_recog_mask                      : 0x00000000      
+;~ SVID24_mode4_recog_value                     : 0x00000000      
+;~ SVID24_mode5_enter                           : No              
+;~ SVID24_mode5_recog_mask                      : 0x00000000      
+;~ SVID24_mode5_recog_value                     : 0x00000000      
+;~ SVID24_mode6_enter                           : No              
+;~ SVID24_mode6_recog_mask                      : 0x00000000      
+;~ SVID24_mode6_recog_value                     : 0x00000000      
+;~ SVID25                                       : 0x0000          
+;~ SVID25_num_modes_min                         : 1               
+;~ SVID25_num_modes_max                         : 1               
+;~ SVID25_modes_fixed                           : No              
+;~ SVID25_mode1_enter                           : No              
+;~ SVID25_mode1_recog_mask                      : 0x00000000      
+;~ SVID25_mode1_recog_value                     : 0x00000000      
+;~ SVID25_mode2_enter                           : No              
+;~ SVID25_mode2_recog_mask                      : 0x00000000      
+;~ SVID25_mode2_recog_value                     : 0x00000000      
+;~ SVID25_mode3_enter                           : No              
+;~ SVID25_mode3_recog_mask                      : 0x00000000      
+;~ SVID25_mode3_recog_value                     : 0x00000000      
+;~ SVID25_mode4_enter                           : No              
+;~ SVID25_mode4_recog_mask                      : 0x00000000      
+;~ SVID25_mode4_recog_value                     : 0x00000000      
+;~ SVID25_mode5_enter                           : No              
+;~ SVID25_mode5_recog_mask                      : 0x00000000      
+;~ SVID25_mode5_recog_value                     : 0x00000000      
+;~ SVID25_mode6_enter                           : No              
+;~ SVID25_mode6_recog_mask                      : 0x00000000      
+;~ SVID25_mode6_recog_value                     : 0x00000000      
+;~ SVID26                                       : 0x0000          
+;~ SVID26_num_modes_min                         : 1               
+;~ SVID26_num_modes_max                         : 1               
+;~ SVID26_modes_fixed                           : No              
+;~ SVID26_mode1_enter                           : No              
+;~ SVID26_mode1_recog_mask                      : 0x00000000      
+;~ SVID26_mode1_recog_value                     : 0x00000000      
+;~ SVID26_mode2_enter                           : No              
+;~ SVID26_mode2_recog_mask                      : 0x00000000      
+;~ SVID26_mode2_recog_value                     : 0x00000000      
+;~ SVID26_mode3_enter                           : No              
+;~ SVID26_mode3_recog_mask                      : 0x00000000      
+;~ SVID26_mode3_recog_value                     : 0x00000000      
+;~ SVID26_mode4_enter                           : No              
+;~ SVID26_mode4_recog_mask                      : 0x00000000      
+;~ SVID26_mode4_recog_value                     : 0x00000000      
+;~ SVID26_mode5_enter                           : No              
+;~ SVID26_mode5_recog_mask                      : 0x00000000      
+;~ SVID26_mode5_recog_value                     : 0x00000000      
+;~ SVID26_mode6_enter                           : No              
+;~ SVID26_mode6_recog_mask                      : 0x00000000      
+;~ SVID26_mode6_recog_value                     : 0x00000000      
+;~ SVID27                                       : 0x0000          
+;~ SVID27_num_modes_min                         : 1               
+;~ SVID27_num_modes_max                         : 1               
+;~ SVID27_modes_fixed                           : No              
+;~ SVID27_mode1_enter                           : No              
+;~ SVID27_mode1_recog_mask                      : 0x00000000      
+;~ SVID27_mode1_recog_value                     : 0x00000000      
+;~ SVID27_mode2_enter                           : No              
+;~ SVID27_mode2_recog_mask                      : 0x00000000      
+;~ SVID27_mode2_recog_value                     : 0x00000000      
+;~ SVID27_mode3_enter                           : No              
+;~ SVID27_mode3_recog_mask                      : 0x00000000      
+;~ SVID27_mode3_recog_value                     : 0x00000000      
+;~ SVID27_mode4_enter                           : No              
+;~ SVID27_mode4_recog_mask                      : 0x00000000      
+;~ SVID27_mode4_recog_value                     : 0x00000000      
+;~ SVID27_mode5_enter                           : No              
+;~ SVID27_mode5_recog_mask                      : 0x00000000      
+;~ SVID27_mode5_recog_value                     : 0x00000000      
+;~ SVID27_mode6_enter                           : No              
+;~ SVID27_mode6_recog_mask                      : 0x00000000      
+;~ SVID27_mode6_recog_value                     : 0x00000000      
+;~ SVID28                                       : 0x0000          
+;~ SVID28_num_modes_min                         : 1               
+;~ SVID28_num_modes_max                         : 1               
+;~ SVID28_modes_fixed                           : No              
+;~ SVID28_mode1_enter                           : No              
+;~ SVID28_mode1_recog_mask                      : 0x00000000      
+;~ SVID28_mode1_recog_value                     : 0x00000000      
+;~ SVID28_mode2_enter                           : No              
+;~ SVID28_mode2_recog_mask                      : 0x00000000      
+;~ SVID28_mode2_recog_value                     : 0x00000000      
+;~ SVID28_mode3_enter                           : No              
+;~ SVID28_mode3_recog_mask                      : 0x00000000      
+;~ SVID28_mode3_recog_value                     : 0x00000000      
+;~ SVID28_mode4_enter                           : No              
+;~ SVID28_mode4_recog_mask                      : 0x00000000      
+;~ SVID28_mode4_recog_value                     : 0x00000000      
+;~ SVID28_mode5_enter                           : No              
+;~ SVID28_mode5_recog_mask                      : 0x00000000      
+;~ SVID28_mode5_recog_value                     : 0x00000000      
+;~ SVID28_mode6_enter                           : No              
+;~ SVID28_mode6_recog_mask                      : 0x00000000      
+;~ SVID28_mode6_recog_value                     : 0x00000000      
+;~ SVID29                                       : 0x0000          
+;~ SVID29_num_modes_min                         : 1               
+;~ SVID29_num_modes_max                         : 1               
+;~ SVID29_modes_fixed                           : No              
+;~ SVID29_mode1_enter                           : No              
+;~ SVID29_mode1_recog_mask                      : 0x00000000      
+;~ SVID29_mode1_recog_value                     : 0x00000000      
+;~ SVID29_mode2_enter                           : No              
+;~ SVID29_mode2_recog_mask                      : 0x00000000      
+;~ SVID29_mode2_recog_value                     : 0x00000000      
+;~ SVID29_mode3_enter                           : No              
+;~ SVID29_mode3_recog_mask                      : 0x00000000      
+;~ SVID29_mode3_recog_value                     : 0x00000000      
+;~ SVID29_mode4_enter                           : No              
+;~ SVID29_mode4_recog_mask                      : 0x00000000      
+;~ SVID29_mode4_recog_value                     : 0x00000000      
+;~ SVID29_mode5_enter                           : No              
+;~ SVID29_mode5_recog_mask                      : 0x00000000      
+;~ SVID29_mode5_recog_value                     : 0x00000000      
+;~ SVID29_mode6_enter                           : No              
+;~ SVID29_mode6_recog_mask                      : 0x00000000      
+;~ SVID29_mode6_recog_value                     : 0x00000000      
+;~ SVID30                                       : 0x0000          
+;~ SVID30_num_modes_min                         : 1               
+;~ SVID30_num_modes_max                         : 1               
+;~ SVID30_modes_fixed                           : No              
+;~ SVID30_mode1_enter                           : No              
+;~ SVID30_mode1_recog_mask                      : 0x00000000      
+;~ SVID30_mode1_recog_value                     : 0x00000000      
+;~ SVID30_mode2_enter                           : No              
+;~ SVID30_mode2_recog_mask                      : 0x00000000      
+;~ SVID30_mode2_recog_value                     : 0x00000000      
+;~ SVID30_mode3_enter                           : No              
+;~ SVID30_mode3_recog_mask                      : 0x00000000      
+;~ SVID30_mode3_recog_value                     : 0x00000000      
+;~ SVID30_mode4_enter                           : No              
+;~ SVID30_mode4_recog_mask                      : 0x00000000      
+;~ SVID30_mode4_recog_value                     : 0x00000000      
+;~ SVID30_mode5_enter                           : No              
+;~ SVID30_mode5_recog_mask                      : 0x00000000      
+;~ SVID30_mode5_recog_value                     : 0x00000000      
+;~ SVID30_mode6_enter                           : No              
+;~ SVID30_mode6_recog_mask                      : 0x00000000      
+;~ SVID30_mode6_recog_value                     : 0x00000000      
+;~ SVID31                                       : 0x0000          
+;~ SVID31_num_modes_min                         : 1               
+;~ SVID31_num_modes_max                         : 1               
+;~ SVID31_modes_fixed                           : No              
+;~ SVID31_mode1_enter                           : No              
+;~ SVID31_mode1_recog_mask                      : 0x00000000      
+;~ SVID31_mode1_recog_value                     : 0x00000000      
+;~ SVID31_mode2_enter                           : No              
+;~ SVID31_mode2_recog_mask                      : 0x00000000      
+;~ SVID31_mode2_recog_value                     : 0x00000000      
+;~ SVID31_mode3_enter                           : No              
+;~ SVID31_mode3_recog_mask                      : 0x00000000      
+;~ SVID31_mode3_recog_value                     : 0x00000000      
+;~ SVID31_mode4_enter                           : No              
+;~ SVID31_mode4_recog_mask                      : 0x00000000      
+;~ SVID31_mode4_recog_value                     : 0x00000000      
+;~ SVID31_mode5_enter                           : No              
+;~ SVID31_mode5_recog_mask                      : 0x00000000      
+;~ SVID31_mode5_recog_value                     : 0x00000000      
+;~ SVID31_mode6_enter                           : No              
+;~ SVID31_mode6_recog_mask                      : 0x00000000      
+;~ SVID31_mode6_recog_value                     : 0x00000000      
+;~ SVID32                                       : 0x0000          
+;~ SVID32_num_modes_min                         : 1               
+;~ SVID32_num_modes_max                         : 1               
+;~ SVID32_modes_fixed                           : No              
+;~ SVID32_mode1_enter                           : No              
+;~ SVID32_mode1_recog_mask                      : 0x00000000      
+;~ SVID32_mode1_recog_value                     : 0x00000000      
+;~ SVID32_mode2_enter                           : No              
+;~ SVID32_mode2_recog_mask                      : 0x00000000      
+;~ SVID32_mode2_recog_value                     : 0x00000000      
+;~ SVID32_mode3_enter                           : No              
+;~ SVID32_mode3_recog_mask                      : 0x00000000      
+;~ SVID32_mode3_recog_value                     : 0x00000000      
+;~ SVID32_mode4_enter                           : No              
+;~ SVID32_mode4_recog_mask                      : 0x00000000      
+;~ SVID32_mode4_recog_value                     : 0x00000000      
+;~ SVID32_mode5_enter                           : No              
+;~ SVID32_mode5_recog_mask                      : 0x00000000      
+;~ SVID32_mode5_recog_value                     : 0x00000000      
+;~ SVID32_mode6_enter                           : No              
+;~ SVID32_mode6_recog_mask                      : 0x00000000      
+;~ SVID32_mode6_recog_value                     : 0x00000000      
+;~ SVID33                                       : 0x0000          
+;~ SVID33_num_modes_min                         : 1               
+;~ SVID33_num_modes_max                         : 1               
+;~ SVID33_modes_fixed                           : No              
+;~ SVID33_mode1_enter                           : No              
+;~ SVID33_mode1_recog_mask                      : 0x00000000      
+;~ SVID33_mode1_recog_value                     : 0x00000000      
+;~ SVID33_mode2_enter                           : No              
+;~ SVID33_mode2_recog_mask                      : 0x00000000      
+;~ SVID33_mode2_recog_value                     : 0x00000000      
+;~ SVID33_mode3_enter                           : No              
+;~ SVID33_mode3_recog_mask                      : 0x00000000      
+;~ SVID33_mode3_recog_value                     : 0x00000000      
+;~ SVID33_mode4_enter                           : No              
+;~ SVID33_mode4_recog_mask                      : 0x00000000      
+;~ SVID33_mode4_recog_value                     : 0x00000000      
+;~ SVID33_mode5_enter                           : No              
+;~ SVID33_mode5_recog_mask                      : 0x00000000      
+;~ SVID33_mode5_recog_value                     : 0x00000000      
+;~ SVID33_mode6_enter                           : No              
+;~ SVID33_mode6_recog_mask                      : 0x00000000      
+;~ SVID33_mode6_recog_value                     : 0x00000000      
+;~ SVID34                                       : 0x0000          
+;~ SVID34_num_modes_min                         : 1               
+;~ SVID34_num_modes_max                         : 1               
+;~ SVID34_modes_fixed                           : No              
+;~ SVID34_mode1_enter                           : No              
+;~ SVID34_mode1_recog_mask                      : 0x00000000      
+;~ SVID34_mode1_recog_value                     : 0x00000000      
+;~ SVID34_mode2_enter                           : No              
+;~ SVID34_mode2_recog_mask                      : 0x00000000      
+;~ SVID34_mode2_recog_value                     : 0x00000000      
+;~ SVID34_mode3_enter                           : No              
+;~ SVID34_mode3_recog_mask                      : 0x00000000      
+;~ SVID34_mode3_recog_value                     : 0x00000000      
+;~ SVID34_mode4_enter                           : No              
+;~ SVID34_mode4_recog_mask                      : 0x00000000      
+;~ SVID34_mode4_recog_value                     : 0x00000000      
+;~ SVID34_mode5_enter                           : No              
+;~ SVID34_mode5_recog_mask                      : 0x00000000      
+;~ SVID34_mode5_recog_value                     : 0x00000000      
+;~ SVID34_mode6_enter                           : No              
+;~ SVID34_mode6_recog_mask                      : 0x00000000      
+;~ SVID34_mode6_recog_value                     : 0x00000000      
+;~ SVID35                                       : 0x0000          
+;~ SVID35_num_modes_min                         : 1               
+;~ SVID35_num_modes_max                         : 1               
+;~ SVID35_modes_fixed                           : No              
+;~ SVID35_mode1_enter                           : No              
+;~ SVID35_mode1_recog_mask                      : 0x00000000      
+;~ SVID35_mode1_recog_value                     : 0x00000000      
+;~ SVID35_mode2_enter                           : No              
+;~ SVID35_mode2_recog_mask                      : 0x00000000      
+;~ SVID35_mode2_recog_value                     : 0x00000000      
+;~ SVID35_mode3_enter                           : No              
+;~ SVID35_mode3_recog_mask                      : 0x00000000      
+;~ SVID35_mode3_recog_value                     : 0x00000000      
+;~ SVID35_mode4_enter                           : No              
+;~ SVID35_mode4_recog_mask                      : 0x00000000      
+;~ SVID35_mode4_recog_value                     : 0x00000000      
+;~ SVID35_mode5_enter                           : No              
+;~ SVID35_mode5_recog_mask                      : 0x00000000      
+;~ SVID35_mode5_recog_value                     : 0x00000000      
+;~ SVID35_mode6_enter                           : No              
+;~ SVID35_mode6_recog_mask                      : 0x00000000      
+;~ SVID35_mode6_recog_value                     : 0x00000000      
+;~ SVID36                                       : 0x0000          
+;~ SVID36_num_modes_min                         : 1               
+;~ SVID36_num_modes_max                         : 1               
+;~ SVID36_modes_fixed                           : No              
+;~ SVID36_mode1_enter                           : No              
+;~ SVID36_mode1_recog_mask                      : 0x00000000      
+;~ SVID36_mode1_recog_value                     : 0x00000000      
+;~ SVID36_mode2_enter                           : No              
+;~ SVID36_mode2_recog_mask                      : 0x00000000      
+;~ SVID36_mode2_recog_value                     : 0x00000000      
+;~ SVID36_mode3_enter                           : No              
+;~ SVID36_mode3_recog_mask                      : 0x00000000      
+;~ SVID36_mode3_recog_value                     : 0x00000000      
+;~ SVID36_mode4_enter                           : No              
+;~ SVID36_mode4_recog_mask                      : 0x00000000      
+;~ SVID36_mode4_recog_value                     : 0x00000000      
+;~ SVID36_mode5_enter                           : No              
+;~ SVID36_mode5_recog_mask                      : 0x00000000      
+;~ SVID36_mode5_recog_value                     : 0x00000000      
+;~ SVID36_mode6_enter                           : No              
+;~ SVID36_mode6_recog_mask                      : 0x00000000      
+;~ SVID36_mode6_recog_value                     : 0x00000000      
+;~ SVID37                                       : 0x0000          
+;~ SVID37_num_modes_min                         : 1               
+;~ SVID37_num_modes_max                         : 1               
+;~ SVID37_modes_fixed                           : No              
+;~ SVID37_mode1_enter                           : No              
+;~ SVID37_mode1_recog_mask                      : 0x00000000      
+;~ SVID37_mode1_recog_value                     : 0x00000000      
+;~ SVID37_mode2_enter                           : No              
+;~ SVID37_mode2_recog_mask                      : 0x00000000      
+;~ SVID37_mode2_recog_value                     : 0x00000000      
+;~ SVID37_mode3_enter                           : No              
+;~ SVID37_mode3_recog_mask                      : 0x00000000      
+;~ SVID37_mode3_recog_value                     : 0x00000000      
+;~ SVID37_mode4_enter                           : No              
+;~ SVID37_mode4_recog_mask                      : 0x00000000      
+;~ SVID37_mode4_recog_value                     : 0x00000000      
+;~ SVID37_mode5_enter                           : No              
+;~ SVID37_mode5_recog_mask                      : 0x00000000      
+;~ SVID37_mode5_recog_value                     : 0x00000000      
+;~ SVID37_mode6_enter                           : No              
+;~ SVID37_mode6_recog_mask                      : 0x00000000      
+;~ SVID37_mode6_recog_value                     : 0x00000000      
+;~ SVID38                                       : 0x0000          
+;~ SVID38_num_modes_min                         : 1               
+;~ SVID38_num_modes_max                         : 1               
+;~ SVID38_modes_fixed                           : No              
+;~ SVID38_mode1_enter                           : No              
+;~ SVID38_mode1_recog_mask                      : 0x00000000      
+;~ SVID38_mode1_recog_value                     : 0x00000000      
+;~ SVID38_mode2_enter                           : No              
+;~ SVID38_mode2_recog_mask                      : 0x00000000      
+;~ SVID38_mode2_recog_value                     : 0x00000000      
+;~ SVID38_mode3_enter                           : No              
+;~ SVID38_mode3_recog_mask                      : 0x00000000      
+;~ SVID38_mode3_recog_value                     : 0x00000000      
+;~ SVID38_mode4_enter                           : No              
+;~ SVID38_mode4_recog_mask                      : 0x00000000      
+;~ SVID38_mode4_recog_value                     : 0x00000000      
+;~ SVID38_mode5_enter                           : No              
+;~ SVID38_mode5_recog_mask                      : 0x00000000      
+;~ SVID38_mode5_recog_value                     : 0x00000000      
+;~ SVID38_mode6_enter                           : No              
+;~ SVID38_mode6_recog_mask                      : 0x00000000      
+;~ SVID38_mode6_recog_value                     : 0x00000000      
+;~ SVID39                                       : 0x0000          
+;~ SVID39_num_modes_min                         : 1               
+;~ SVID39_num_modes_max                         : 1               
+;~ SVID39_modes_fixed                           : No              
+;~ SVID39_mode1_enter                           : No              
+;~ SVID39_mode1_recog_mask                      : 0x00000000      
+;~ SVID39_mode1_recog_value                     : 0x00000000      
+;~ SVID39_mode2_enter                           : No              
+;~ SVID39_mode2_recog_mask                      : 0x00000000      
+;~ SVID39_mode2_recog_value                     : 0x00000000      
+;~ SVID39_mode3_enter                           : No              
+;~ SVID39_mode3_recog_mask                      : 0x00000000      
+;~ SVID39_mode3_recog_value                     : 0x00000000      
+;~ SVID39_mode4_enter                           : No              
+;~ SVID39_mode4_recog_mask                      : 0x00000000      
+;~ SVID39_mode4_recog_value                     : 0x00000000      
+;~ SVID39_mode5_enter                           : No              
+;~ SVID39_mode5_recog_mask                      : 0x00000000      
+;~ SVID39_mode5_recog_value                     : 0x00000000      
+;~ SVID39_mode6_enter                           : No              
+;~ SVID39_mode6_recog_mask                      : 0x00000000      
+;~ SVID39_mode6_recog_value                     : 0x00000000      
+;~ SVID40                                       : 0x0000          
+;~ SVID40_num_modes_min                         : 1               
+;~ SVID40_num_modes_max                         : 1               
+;~ SVID40_modes_fixed                           : No              
+;~ SVID40_mode1_enter                           : No              
+;~ SVID40_mode1_recog_mask                      : 0x00000000      
+;~ SVID40_mode1_recog_value                     : 0x00000000      
+;~ SVID40_mode2_enter                           : No              
+;~ SVID40_mode2_recog_mask                      : 0x00000000      
+;~ SVID40_mode2_recog_value                     : 0x00000000      
+;~ SVID40_mode3_enter                           : No              
+;~ SVID40_mode3_recog_mask                      : 0x00000000      
+;~ SVID40_mode3_recog_value                     : 0x00000000      
+;~ SVID40_mode4_enter                           : No              
+;~ SVID40_mode4_recog_mask                      : 0x00000000      
+;~ SVID40_mode4_recog_value                     : 0x00000000      
+;~ SVID40_mode5_enter                           : No              
+;~ SVID40_mode5_recog_mask                      : 0x00000000      
+;~ SVID40_mode5_recog_value                     : 0x00000000      
+;~ SVID40_mode6_enter                           : No              
+;~ SVID40_mode6_recog_mask                      : 0x00000000      
+;~ SVID40_mode6_recog_value                     : 0x00000000      
+;~ SVID41                                       : 0x0000          
+;~ SVID41_num_modes_min                         : 1               
+;~ SVID41_num_modes_max                         : 1               
+;~ SVID41_modes_fixed                           : No              
+;~ SVID41_mode1_enter                           : No              
+;~ SVID41_mode1_recog_mask                      : 0x00000000      
+;~ SVID41_mode1_recog_value                     : 0x00000000      
+;~ SVID41_mode2_enter                           : No              
+;~ SVID41_mode2_recog_mask                      : 0x00000000      
+;~ SVID41_mode2_recog_value                     : 0x00000000      
+;~ SVID41_mode3_enter                           : No              
+;~ SVID41_mode3_recog_mask                      : 0x00000000      
+;~ SVID41_mode3_recog_value                     : 0x00000000      
+;~ SVID41_mode4_enter                           : No              
+;~ SVID41_mode4_recog_mask                      : 0x00000000      
+;~ SVID41_mode4_recog_value                     : 0x00000000      
+;~ SVID41_mode5_enter                           : No              
+;~ SVID41_mode5_recog_mask                      : 0x00000000      
+;~ SVID41_mode5_recog_value                     : 0x00000000      
+;~ SVID41_mode6_enter                           : No              
+;~ SVID41_mode6_recog_mask                      : 0x00000000      
+;~ SVID41_mode6_recog_value                     : 0x00000000      
+;~ SVID42                                       : 0x0000          
+;~ SVID42_num_modes_min                         : 1               
+;~ SVID42_num_modes_max                         : 1               
+;~ SVID42_modes_fixed                           : No              
+;~ SVID42_mode1_enter                           : No              
+;~ SVID42_mode1_recog_mask                      : 0x00000000      
+;~ SVID42_mode1_recog_value                     : 0x00000000      
+;~ SVID42_mode2_enter                           : No              
+;~ SVID42_mode2_recog_mask                      : 0x00000000      
+;~ SVID42_mode2_recog_value                     : 0x00000000      
+;~ SVID42_mode3_enter                           : No              
+;~ SVID42_mode3_recog_mask                      : 0x00000000      
+;~ SVID42_mode3_recog_value                     : 0x00000000      
+;~ SVID42_mode4_enter                           : No              
+;~ SVID42_mode4_recog_mask                      : 0x00000000      
+;~ SVID42_mode4_recog_value                     : 0x00000000      
+;~ SVID42_mode5_enter                           : No              
+;~ SVID42_mode5_recog_mask                      : 0x00000000      
+;~ SVID42_mode5_recog_value                     : 0x00000000      
+;~ SVID42_mode6_enter                           : No              
+;~ SVID42_mode6_recog_mask                      : 0x00000000      
+;~ SVID42_mode6_recog_value                     : 0x00000000      
+;~ SVID43                                       : 0x0000          
+;~ SVID43_num_modes_min                         : 1               
+;~ SVID43_num_modes_max                         : 1               
+;~ SVID43_modes_fixed                           : No              
+;~ SVID43_mode1_enter                           : No              
+;~ SVID43_mode1_recog_mask                      : 0x00000000      
+;~ SVID43_mode1_recog_value                     : 0x00000000      
+;~ SVID43_mode2_enter                           : No              
+;~ SVID43_mode2_recog_mask                      : 0x00000000      
+;~ SVID43_mode2_recog_value                     : 0x00000000      
+;~ SVID43_mode3_enter                           : No              
+;~ SVID43_mode3_recog_mask                      : 0x00000000      
+;~ SVID43_mode3_recog_value                     : 0x00000000      
+;~ SVID43_mode4_enter                           : No              
+;~ SVID43_mode4_recog_mask                      : 0x00000000      
+;~ SVID43_mode4_recog_value                     : 0x00000000      
+;~ SVID43_mode5_enter                           : No              
+;~ SVID43_mode5_recog_mask                      : 0x00000000      
+;~ SVID43_mode5_recog_value                     : 0x00000000      
+;~ SVID43_mode6_enter                           : No              
+;~ SVID43_mode6_recog_mask                      : 0x00000000      
+;~ SVID43_mode6_recog_value                     : 0x00000000      
+;~ SVID44                                       : 0x0000          
+;~ SVID44_num_modes_min                         : 1               
+;~ SVID44_num_modes_max                         : 1               
+;~ SVID44_modes_fixed                           : No              
+;~ SVID44_mode1_enter                           : No              
+;~ SVID44_mode1_recog_mask                      : 0x00000000      
+;~ SVID44_mode1_recog_value                     : 0x00000000      
+;~ SVID44_mode2_enter                           : No              
+;~ SVID44_mode2_recog_mask                      : 0x00000000      
+;~ SVID44_mode2_recog_value                     : 0x00000000      
+;~ SVID44_mode3_enter                           : No              
+;~ SVID44_mode3_recog_mask                      : 0x00000000      
+;~ SVID44_mode3_recog_value                     : 0x00000000      
+;~ SVID44_mode4_enter                           : No              
+;~ SVID44_mode4_recog_mask                      : 0x00000000      
+;~ SVID44_mode4_recog_value                     : 0x00000000      
+;~ SVID44_mode5_enter                           : No              
+;~ SVID44_mode5_recog_mask                      : 0x00000000      
+;~ SVID44_mode5_recog_value                     : 0x00000000      
+;~ SVID44_mode6_enter                           : No              
+;~ SVID44_mode6_recog_mask                      : 0x00000000      
+;~ SVID44_mode6_recog_value                     : 0x00000000      
+;~ SVID45                                       : 0x0000          
+;~ SVID45_num_modes_min                         : 1               
+;~ SVID45_num_modes_max                         : 1               
+;~ SVID45_modes_fixed                           : No              
+;~ SVID45_mode1_enter                           : No              
+;~ SVID45_mode1_recog_mask                      : 0x00000000      
+;~ SVID45_mode1_recog_value                     : 0x00000000      
+;~ SVID45_mode2_enter                           : No              
+;~ SVID45_mode2_recog_mask                      : 0x00000000      
+;~ SVID45_mode2_recog_value                     : 0x00000000      
+;~ SVID45_mode3_enter                           : No              
+;~ SVID45_mode3_recog_mask                      : 0x00000000      
+;~ SVID45_mode3_recog_value                     : 0x00000000      
+;~ SVID45_mode4_enter                           : No              
+;~ SVID45_mode4_recog_mask                      : 0x00000000      
+;~ SVID45_mode4_recog_value                     : 0x00000000      
+;~ SVID45_mode5_enter                           : No              
+;~ SVID45_mode5_recog_mask                      : 0x00000000      
+;~ SVID45_mode5_recog_value                     : 0x00000000      
+;~ SVID45_mode6_enter                           : No              
+;~ SVID45_mode6_recog_mask                      : 0x00000000      
+;~ SVID45_mode6_recog_value                     : 0x00000000      
+;~ SVID46                                       : 0x0000          
+;~ SVID46_num_modes_min                         : 1               
+;~ SVID46_num_modes_max                         : 1               
+;~ SVID46_modes_fixed                           : No              
+;~ SVID46_mode1_enter                           : No              
+;~ SVID46_mode1_recog_mask                      : 0x00000000      
+;~ SVID46_mode1_recog_value                     : 0x00000000      
+;~ SVID46_mode2_enter                           : No              
+;~ SVID46_mode2_recog_mask                      : 0x00000000      
+;~ SVID46_mode2_recog_value                     : 0x00000000      
+;~ SVID46_mode3_enter                           : No              
+;~ SVID46_mode3_recog_mask                      : 0x00000000      
+;~ SVID46_mode3_recog_value                     : 0x00000000      
+;~ SVID46_mode4_enter                           : No              
+;~ SVID46_mode4_recog_mask                      : 0x00000000      
+;~ SVID46_mode4_recog_value                     : 0x00000000      
+;~ SVID46_mode5_enter                           : No              
+;~ SVID46_mode5_recog_mask                      : 0x00000000      
+;~ SVID46_mode5_recog_value                     : 0x00000000      
+;~ SVID46_mode6_enter                           : No              
+;~ SVID46_mode6_recog_mask                      : 0x00000000      
+;~ SVID46_mode6_recog_value                     : 0x00000000      
+;~ SVID47                                       : 0x0000          
+;~ SVID47_num_modes_min                         : 1               
+;~ SVID47_num_modes_max                         : 1               
+;~ SVID47_modes_fixed                           : No              
+;~ SVID47_mode1_enter                           : No              
+;~ SVID47_mode1_recog_mask                      : 0x00000000      
+;~ SVID47_mode1_recog_value                     : 0x00000000      
+;~ SVID47_mode2_enter                           : No              
+;~ SVID47_mode2_recog_mask                      : 0x00000000      
+;~ SVID47_mode2_recog_value                     : 0x00000000      
+;~ SVID47_mode3_enter                           : No              
+;~ SVID47_mode3_recog_mask                      : 0x00000000      
+;~ SVID47_mode3_recog_value                     : 0x00000000      
+;~ SVID47_mode4_enter                           : No              
+;~ SVID47_mode4_recog_mask                      : 0x00000000      
+;~ SVID47_mode4_recog_value                     : 0x00000000      
+;~ SVID47_mode5_enter                           : No              
+;~ SVID47_mode5_recog_mask                      : 0x00000000      
+;~ SVID47_mode5_recog_value                     : 0x00000000      
+;~ SVID47_mode6_enter                           : No              
+;~ SVID47_mode6_recog_mask                      : 0x00000000      
+;~ SVID47_mode6_recog_value                     : 0x00000000      
+;~ SVID48                                       : 0x0000          
+;~ SVID48_num_modes_min                         : 1               
+;~ SVID48_num_modes_max                         : 1               
+;~ SVID48_modes_fixed                           : No              
+;~ SVID48_mode1_enter                           : No              
+;~ SVID48_mode1_recog_mask                      : 0x00000000      
+;~ SVID48_mode1_recog_value                     : 0x00000000      
+;~ SVID48_mode2_enter                           : No              
+;~ SVID48_mode2_recog_mask                      : 0x00000000      
+;~ SVID48_mode2_recog_value                     : 0x00000000      
+;~ SVID48_mode3_enter                           : No              
+;~ SVID48_mode3_recog_mask                      : 0x00000000      
+;~ SVID48_mode3_recog_value                     : 0x00000000      
+;~ SVID48_mode4_enter                           : No              
+;~ SVID48_mode4_recog_mask                      : 0x00000000      
+;~ SVID48_mode4_recog_value                     : 0x00000000      
+;~ SVID48_mode5_enter                           : No              
+;~ SVID48_mode5_recog_mask                      : 0x00000000      
+;~ SVID48_mode5_recog_value                     : 0x00000000      
+;~ SVID48_mode6_enter                           : No              
+;~ SVID48_mode6_recog_mask                      : 0x00000000      
+;~ SVID48_mode6_recog_value                     : 0x00000000      
+;~ SVID49                                       : 0x0000          
+;~ SVID49_num_modes_min                         : 1               
+;~ SVID49_num_modes_max                         : 1               
+;~ SVID49_modes_fixed                           : No              
+;~ SVID49_mode1_enter                           : No              
+;~ SVID49_mode1_recog_mask                      : 0x00000000      
+;~ SVID49_mode1_recog_value                     : 0x00000000      
+;~ SVID49_mode2_enter                           : No              
+;~ SVID49_mode2_recog_mask                      : 0x00000000      
+;~ SVID49_mode2_recog_value                     : 0x00000000      
+;~ SVID49_mode3_enter                           : No              
+;~ SVID49_mode3_recog_mask                      : 0x00000000      
+;~ SVID49_mode3_recog_value                     : 0x00000000      
+;~ SVID49_mode4_enter                           : No              
+;~ SVID49_mode4_recog_mask                      : 0x00000000      
+;~ SVID49_mode4_recog_value                     : 0x00000000      
+;~ SVID49_mode5_enter                           : No              
+;~ SVID49_mode5_recog_mask                      : 0x00000000      
+;~ SVID49_mode5_recog_value                     : 0x00000000      
+;~ SVID49_mode6_enter                           : No              
+;~ SVID49_mode6_recog_mask                      : 0x00000000      
+;~ SVID49_mode6_recog_value                     : 0x00000000      
+;~ SVID50                                       : 0x0000          
+;~ SVID50_num_modes_min                         : 1               
+;~ SVID50_num_modes_max                         : 1               
+;~ SVID50_modes_fixed                           : No              
+;~ SVID50_mode1_enter                           : No              
+;~ SVID50_mode1_recog_mask                      : 0x00000000      
+;~ SVID50_mode1_recog_value                     : 0x00000000      
+;~ SVID50_mode2_enter                           : No              
+;~ SVID50_mode2_recog_mask                      : 0x00000000      
+;~ SVID50_mode2_recog_value                     : 0x00000000      
+;~ SVID50_mode3_enter                           : No              
+;~ SVID50_mode3_recog_mask                      : 0x00000000      
+;~ SVID50_mode3_recog_value                     : 0x00000000      
+;~ SVID50_mode4_enter                           : No              
+;~ SVID50_mode4_recog_mask                      : 0x00000000      
+;~ SVID50_mode4_recog_value                     : 0x00000000      
+;~ SVID50_mode5_enter                           : No              
+;~ SVID50_mode5_recog_mask                      : 0x00000000      
+;~ SVID50_mode5_recog_value                     : 0x00000000      
+;~ SVID50_mode6_enter                           : No              
+;~ SVID50_mode6_recog_mask                      : 0x00000000      
+;~ SVID50_mode6_recog_value                     : 0x00000000      
+;~ SVID51                                       : 0x0000          
+;~ SVID51_num_modes_min                         : 1               
+;~ SVID51_num_modes_max                         : 1               
+;~ SVID51_modes_fixed                           : No              
+;~ SVID51_mode1_enter                           : No              
+;~ SVID51_mode1_recog_mask                      : 0x00000000      
+;~ SVID51_mode1_recog_value                     : 0x00000000      
+;~ SVID51_mode2_enter                           : No              
+;~ SVID51_mode2_recog_mask                      : 0x00000000      
+;~ SVID51_mode2_recog_value                     : 0x00000000      
+;~ SVID51_mode3_enter                           : No              
+;~ SVID51_mode3_recog_mask                      : 0x00000000      
+;~ SVID51_mode3_recog_value                     : 0x00000000      
+;~ SVID51_mode4_enter                           : No              
+;~ SVID51_mode4_recog_mask                      : 0x00000000      
+;~ SVID51_mode4_recog_value                     : 0x00000000      
+;~ SVID51_mode5_enter                           : No              
+;~ SVID51_mode5_recog_mask                      : 0x00000000      
+;~ SVID51_mode5_recog_value                     : 0x00000000      
+;~ SVID51_mode6_enter                           : No              
+;~ SVID51_mode6_recog_mask                      : 0x00000000      
+;~ SVID51_mode6_recog_value                     : 0x00000000      
+;~ SVID52                                       : 0x0000          
+;~ SVID52_num_modes_min                         : 1               
+;~ SVID52_num_modes_max                         : 1               
+;~ SVID52_modes_fixed                           : No              
+;~ SVID52_mode1_enter                           : No              
+;~ SVID52_mode1_recog_mask                      : 0x00000000      
+;~ SVID52_mode1_recog_value                     : 0x00000000      
+;~ SVID52_mode2_enter                           : No              
+;~ SVID52_mode2_recog_mask                      : 0x00000000      
+;~ SVID52_mode2_recog_value                     : 0x00000000      
+;~ SVID52_mode3_enter                           : No              
+;~ SVID52_mode3_recog_mask                      : 0x00000000      
+;~ SVID52_mode3_recog_value                     : 0x00000000      
+;~ SVID52_mode4_enter                           : No              
+;~ SVID52_mode4_recog_mask                      : 0x00000000      
+;~ SVID52_mode4_recog_value                     : 0x00000000      
+;~ SVID52_mode5_enter                           : No              
+;~ SVID52_mode5_recog_mask                      : 0x00000000      
+;~ SVID52_mode5_recog_value                     : 0x00000000      
+;~ SVID52_mode6_enter                           : No              
+;~ SVID52_mode6_recog_mask                      : 0x00000000      
+;~ SVID52_mode6_recog_value                     : 0x00000000      
+;~ BC_1_2_Charging_Port_Type                    : 0               ; DCP
+;~ DP_is_CtoDP_cable                            : No              
+;~ DP_Modes_Count                               : 1               
+;~ DP_mode1_Port_Cap                            : 1               ; UFP_D Capable
+;~ DP_mode1_Support_DPv13                       : No              
+;~ DP_mode1_Support_UsbGen2                     : No              
+;~ DP_mode1_Receptacle                          : No              ; DP on Type-C Plug
+;~ DP_mode1_Usb20_Not_Used                      : No              
+;~ DP_mode1_Dfp_D_A_Supported                   : No              
+;~ DP_mode1_Dfp_D_B_Supported                   : No              
+;~ DP_mode1_Dfp_D_C_Supported                   : No              
+;~ DP_mode1_Dfp_D_D_Supported                   : No              
+;~ DP_mode1_Dfp_D_E_Supported                   : No              
+;~ DP_mode1_Dfp_D_F_Supported                   : No              
+;~ DP_mode1_Ufp_D_A_Supported                   : No              
+;~ DP_mode1_Ufp_D_B_Supported                   : No              
+;~ DP_mode1_Ufp_D_C_Supported                   : No              
+;~ DP_mode1_Ufp_D_D_Supported                   : No              
+;~ DP_mode1_Ufp_D_E_Supported                   : No              
+;~ DP_mode2_Port_Cap                            : 1               ; UFP_D Capable
+;~ DP_mode2_Support_DPv13                       : No              
+;~ DP_mode2_Support_UsbGen2                     : No              
+;~ DP_mode2_Receptacle                          : No              ; DP on Type-C Plug
+;~ DP_mode2_Usb20_Not_Used                      : No              
+;~ DP_mode2_Dfp_D_A_Supported                   : No              
+;~ DP_mode2_Dfp_D_B_Supported                   : No              
+;~ DP_mode2_Dfp_D_C_Supported                   : No              
+;~ DP_mode2_Dfp_D_D_Supported                   : No              
+;~ DP_mode2_Dfp_D_E_Supported                   : No              
+;~ DP_mode2_Dfp_D_F_Supported                   : No              
+;~ DP_mode2_Ufp_D_A_Supported                   : No              
+;~ DP_mode2_Ufp_D_B_Supported                   : No              
+;~ DP_mode2_Ufp_D_C_Supported                   : No              
+;~ DP_mode2_Ufp_D_D_Supported                   : No              
+;~ DP_mode2_Ufp_D_E_Supported                   : No              
+;~ DP_mode3_Port_Cap                            : 1               ; UFP_D Capable
+;~ DP_mode3_Support_DPv13                       : No              
+;~ DP_mode3_Support_UsbGen2                     : No              
+;~ DP_mode3_Receptacle                          : No              ; DP on Type-C Plug
+;~ DP_mode3_Usb20_Not_Used                      : No              
+;~ DP_mode3_Dfp_D_A_Supported                   : No              
+;~ DP_mode3_Dfp_D_B_Supported                   : No              
+;~ DP_mode3_Dfp_D_C_Supported                   : No              
+;~ DP_mode3_Dfp_D_D_Supported                   : No              
+;~ DP_mode3_Dfp_D_E_Supported                   : No              
+;~ DP_mode3_Dfp_D_F_Supported                   : No              
+;~ DP_mode3_Ufp_D_A_Supported                   : No              
+;~ DP_mode3_Ufp_D_B_Supported                   : No              
+;~ DP_mode3_Ufp_D_C_Supported                   : No              
+;~ DP_mode3_Ufp_D_D_Supported                   : No              
+;~ DP_mode3_Ufp_D_E_Supported                   : No              
+;~ DP_mode4_Port_Cap                            : 1               ; UFP_D Capable
+;~ DP_mode4_Support_DPv13                       : No              
+;~ DP_mode4_Support_UsbGen2                     : No              
+;~ DP_mode4_Receptacle                          : No              ; DP on Type-C Plug
+;~ DP_mode4_Usb20_Not_Used                      : No              
+;~ DP_mode4_Dfp_D_A_Supported                   : No              
+;~ DP_mode4_Dfp_D_B_Supported                   : No              
+;~ DP_mode4_Dfp_D_C_Supported                   : No              
+;~ DP_mode4_Dfp_D_D_Supported                   : No              
+;~ DP_mode4_Dfp_D_E_Supported                   : No              
+;~ DP_mode4_Dfp_D_F_Supported                   : No              
+;~ DP_mode4_Ufp_D_A_Supported                   : No              
+;~ DP_mode4_Ufp_D_B_Supported                   : No              
+;~ DP_mode4_Ufp_D_C_Supported                   : No              
+;~ DP_mode4_Ufp_D_D_Supported                   : No              
+;~ DP_mode4_Ufp_D_E_Supported                   : No              
+;~ DP_mode5_Port_Cap                            : 1               ; UFP_D Capable
+;~ DP_mode5_Support_DPv13                       : No              
+;~ DP_mode5_Support_UsbGen2                     : No              
+;~ DP_mode5_Receptacle                          : No              ; DP on Type-C Plug
+;~ DP_mode5_Usb20_Not_Used                      : No              
+;~ DP_mode5_Dfp_D_A_Supported                   : No              
+;~ DP_mode5_Dfp_D_B_Supported                   : No              
+;~ DP_mode5_Dfp_D_C_Supported                   : No              
+;~ DP_mode5_Dfp_D_D_Supported                   : No              
+;~ DP_mode5_Dfp_D_E_Supported                   : No              
+;~ DP_mode5_Dfp_D_F_Supported                   : No              
+;~ DP_mode5_Ufp_D_A_Supported                   : No              
+;~ DP_mode5_Ufp_D_B_Supported                   : No              
+;~ DP_mode5_Ufp_D_C_Supported                   : No              
+;~ DP_mode5_Ufp_D_D_Supported                   : No              
+;~ DP_mode5_Ufp_D_E_Supported                   : No              
+;~ DP_mode6_Port_Cap                            : 1               ; UFP_D Capable
+;~ DP_mode6_Support_DPv13                       : No              
+;~ DP_mode6_Support_UsbGen2                     : No              
+;~ DP_mode6_Receptacle                          : No              ; DP on Type-C Plug
+;~ DP_mode6_Usb20_Not_Used                      : No              
+;~ DP_mode6_Dfp_D_A_Supported                   : No              
+;~ DP_mode6_Dfp_D_B_Supported                   : No              
+;~ DP_mode6_Dfp_D_C_Supported                   : No              
+;~ DP_mode6_Dfp_D_D_Supported                   : No              
+;~ DP_mode6_Dfp_D_E_Supported                   : No              
+;~ DP_mode6_Dfp_D_F_Supported                   : No              
+;~ DP_mode6_Ufp_D_A_Supported                   : No              
+;~ DP_mode6_Ufp_D_B_Supported                   : No              
+;~ DP_mode6_Ufp_D_C_Supported                   : No              
+;~ DP_mode6_Ufp_D_D_Supported                   : No              
+;~ DP_mode6_Ufp_D_E_Supported                   : No              

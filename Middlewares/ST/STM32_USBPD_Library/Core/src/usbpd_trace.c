@@ -6,54 +6,26 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics International N.V.
+  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
-  * Redistribution and use in source and binary forms, with or without
-  * modification, are permitted, provided that the following conditions are met:
-  *
-  * 1. Redistribution of source code must retain the above copyright notice,
-  *    this list of conditions and the following disclaimer.
-  * 2. Redistributions in binary form must reproduce the above copyright notice,
-  *    this list of conditions and the following disclaimer in the documentation
-  *    and/or other materials provided with the distribution.
-  * 3. Neither the name of STMicroelectronics nor the names of other
-  *    contributors to this software may be used to endorse or promote products
-  *    derived from this software without specific written permission.
-  * 4. This software, including modifications and/or derivative works of this
-  *    software, must execute solely and exclusively on microcontroller or
-  *    microprocessor devices manufactured by or for STMicroelectronics.
-  * 5. Redistribution and use of this software other than as permitted under
-  *    this license is void and will automatically terminate your rights under
-  *    this license.
-  *
-  * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT
-  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-  * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
-  * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT
-  * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
-  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  * This software component is licensed by ST under Ultimate Liberty license
+  * SLA0044, the "License"; You may not use this file except in compliance with
+  * the License. You may obtain a copy of the License at:
+  *                             www.st.com/SLA0044
   *
   ******************************************************************************
   */
 
 /* Includes ------------------------------------------------------------------*/
-#if defined(_TRACE)||defined(_GUI_INTERFACE)
 #define USBPD_TRACE_C
 
-#include "stm32f0xx.h"
-#include "core_cm0.h"            /* Cortex-M0 processor and core peripherals */
-#include "core_cmFunc.h"
 #include "usbpd_def.h"
 #include "usbpd_core.h"
 #include "usbpd_trace.h"
-#include "usbpd_bsp_trace.h"
+#ifdef _TRACE
+#include "tracer_emb.h"
+#endif
 
 /** @addtogroup STM32_USBPD_LIBRARY
   * @{
@@ -70,17 +42,16 @@
 /* Private enums -------------------------------------------------------------*/
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
-/** @defgroup USBPD_CORE_TRACE_Private_Macros USBPD TRACE Private Defines
+/** @defgroup USBPD_CORE_TRACE_Private_Defines USBPD TRACE Private Defines
   * @{
   */
-#define TRACE_SIZE_BUFFER_TX      1024u
 
 #define TRACE_SIZE_HEADER_TRACE   9u      /* Type + Time x 2 + PortNum + Sop + Size */
 
 #define TRACE_PORT_BIT_POSITION   5u      /* Bit position of port number in TAG id */
 
-#define TLV_SOF                   0xFDu
-#define TLV_EOF                   0xA5u
+#define TLV_SOF                   (uint8_t)0xFDu
+#define TLV_EOF                   (uint8_t)0xA5u
 #define TLV_SIZE_MAX              256u
 #define TLV_HEADER_SIZE           3u /* Size of TLV header (TAG(1) + LENGTH(2)  */
 #define TLV_SOF_SIZE              4u /* TLV_SOF * 4                             */
@@ -95,43 +66,22 @@
 /** @defgroup USBPD_CORE_TRACE_Private_Macros USBPD TRACE Private Macros
   * @{
   */
-#define __TRACE_SET_TAG_ID(_PORT_, _TAG_)  ((_PORT_) << TRACE_PORT_BIT_POSITION | (_TAG_))
-#define TRACE_WRITE_DATA(_POSITION_,_DATA_)  PtrDataTx[_POSITION_] = _DATA_;                     \
-                                             _POSITION_ = (_POSITION_ + 1) % TRACE_SIZE_BUFFER_TX;
+#define __TRACE_SET_TAG_ID(_PORT_, _TAG_)  (((_PORT_) << TRACE_PORT_BIT_POSITION) | (_TAG_))
 
-#define TRACE_ENTER_CRITICAL_SECTION()    __disable_irq()
-#define TRACE_LEAVE_CRITICAL_SECTION()    __enable_irq()
+#define TRACER_EMB_WRITE_DATA(_POSITION_,_DATA_)  TRACER_EMB_WriteData((_POSITION_),(_DATA_));\
+                                                  (_POSITION_) = ((_POSITION_) + 1u);
+
 /**
   * @}
   */
 
 /* Private function prototypes -----------------------------------------------*/
-/** @defgroup USBPD_CORE_TRACE_Private_Functions USBPD TRACE Private Functions
-  * @{
-  */
-
-void      TRACE_CALLBACK_TX(void);
-uint32_t  TRACE_CALLBACK_RX(uint8_t character, uint8_t error);
-static int32_t   TRACE_AllocateBufer(uint32_t Size);
-static void      TRACE_Lock(void);
-static void      TRACE_UnLock(void);
-static uint8_t   TRACE_CheckLook(uint32_t *Begin, uint32_t *End);
-
-/**
-  * @}
-  */
-
 /* Private variables ---------------------------------------------------------*/
 /** @defgroup USBPD_CORE_TRACE_Private_Variables USBPD TRACE Private Variables
   * @{
   */
-
-uint8_t PtrDataTx[TRACE_SIZE_BUFFER_TX];
-static uint32_t PtrReadTx, PtrWriteTx;
-static volatile uint32_t Counter = 0;
-static uint32_t SizeSent = 0;
 extern uint32_t HAL_GetTick(void);
-
+extern void     USBPD_DPM_TraceWakeUp(void);
 /**
   * @}
   */
@@ -144,128 +94,103 @@ extern uint32_t HAL_GetTick(void);
   */
 void USBPD_TRACE_Init(void)
 {
-  /* initialize the Ptr for Read/Write */
-  PtrReadTx = PtrWriteTx = 0;
-  /* Initialize trace BUS */
-  BSP_TRACE_Init(TRACE_CALLBACK_TX, NULL);
-  USBPD_PE_SetTrace((void*)USBPD_TRACE_Add, 3);
+#if defined(_TRACE)
+  /* initialize tracer module */
+  TRACER_EMB_Init();
+
+  /* Initialize PE trace */
+  USBPD_PE_SetTrace(USBPD_TRACE_Add, 3u);
+#else
+  return;
+#endif  
+}
+
+void USBPD_TRACE_DeInit(void)
+{
+  /* Nothing to do */
+  return;
 }
 
 void USBPD_TRACE_Add(TRACE_EVENT Type, uint8_t PortNum, uint8_t Sop, uint8_t *Ptr, uint32_t Size)
 {
-  int32_t _time;
+#if defined(_TRACE)
+  uint32_t _time;
   int32_t _writepos;
+  uint16_t _writepos2;
   uint8_t *data_to_write;
-  uint32_t index = 0;
-  uint32_t total_size = 0;
+  uint32_t index;
+  uint32_t total_size;
 
-  /* If it's a trace, we encapsulate it in a TLV string*/
-  if (USBPD_TRACE_FORMAT_TLV != Type)
-  {
-#if !defined(_TRACE)
-    /* Do not send debug traces */
-    return;
-#else
-    /* Allocate buffer Size */
-    total_size = Size + TRACE_SIZE_HEADER_TRACE + TLV_HEADER_SIZE + TLV_SOF_SIZE + TLV_EOF_SIZE;
-    _writepos = TRACE_AllocateBufer(total_size);
-#endif /*_TRACE*/
-  }
-  else
-  {
-    /* If Type = 0, then it's a ready-to-go TLV string */
-    _writepos = TRACE_AllocateBufer(Size);
-  }
+  TRACER_EMB_Lock();
+
+  /* Data are encapsulate inside a TLV string*/
+  /* Allocate buffer Size */
+  total_size = Size + TRACE_SIZE_HEADER_TRACE + TLV_HEADER_SIZE + TLV_SOF_SIZE + TLV_EOF_SIZE;
+  _writepos = TRACER_EMB_AllocateBufer(total_size);
 
   /* Check allocation */
-  if (_writepos  == -1)
+  if (_writepos  != -1)
   {
-    /* Not enough space avaible to store the data */
-    return;
-  }
+    _writepos2 = (uint16_t)_writepos;
+    data_to_write = Ptr;
 
-  TRACE_Lock();
-
-  data_to_write = Ptr;
-  if (USBPD_TRACE_FORMAT_TLV != Type)
-  {
     /* Copy SOF bytes */
-    for(index = 0; index < TLV_SOF_SIZE; index++)
+    for (index = 0u; index < TLV_SOF_SIZE; index++)
     {
-      TRACE_WRITE_DATA(_writepos, TLV_SOF);
+      TRACER_EMB_WRITE_DATA(_writepos2, TLV_SOF);
     }
     /* Copy the TAG */
-    TRACE_WRITE_DATA(_writepos, __TRACE_SET_TAG_ID((PortNum + 1), DEBUG_STACK_MESSAGE));
+    TRACER_EMB_WRITE_DATA(_writepos2, __TRACE_SET_TAG_ID((PortNum + 1u), DEBUG_STACK_MESSAGE));
     /* Copy the LENGTH */
-    TRACE_WRITE_DATA(_writepos, ((total_size - TLV_HEADER_SIZE - TLV_SOF_SIZE - TLV_EOF_SIZE) >> 8) & 0xFFu);
-    TRACE_WRITE_DATA(_writepos, (total_size - TLV_HEADER_SIZE - TLV_SOF_SIZE - TLV_EOF_SIZE) & 0xFFu);
-    TRACE_WRITE_DATA(_writepos, Type);
+    TRACER_EMB_WRITE_DATA(_writepos2, (uint8_t)((total_size - TLV_HEADER_SIZE - TLV_SOF_SIZE - TLV_EOF_SIZE) >> 8u));
+    TRACER_EMB_WRITE_DATA(_writepos2, (uint8_t)(total_size - TLV_HEADER_SIZE - TLV_SOF_SIZE - TLV_EOF_SIZE));
+    TRACER_EMB_WRITE_DATA(_writepos2, (uint8_t)Type);
 
     _time = HAL_GetTick();
 
-    TRACE_WRITE_DATA(_writepos, _time         & 0xFFu);
-    TRACE_WRITE_DATA(_writepos, (_time >> 8)  & 0xFFu);
-    TRACE_WRITE_DATA(_writepos, (_time >> 16) & 0xFFu);
-    TRACE_WRITE_DATA(_writepos, (_time >> 24) & 0xFFu);
+    TRACER_EMB_WRITE_DATA(_writepos2, (uint8_t)_time);
+    TRACER_EMB_WRITE_DATA(_writepos2, (uint8_t)(_time >> 8u));
+    TRACER_EMB_WRITE_DATA(_writepos2, (uint8_t)(_time >> 16u));
+    TRACER_EMB_WRITE_DATA(_writepos2, (uint8_t)(_time >> 24u));
 
-    TRACE_WRITE_DATA(_writepos, PortNum);
-    TRACE_WRITE_DATA(_writepos, Sop);
+    TRACER_EMB_WRITE_DATA(_writepos2, PortNum);
+    TRACER_EMB_WRITE_DATA(_writepos2, Sop);
 
-    TRACE_WRITE_DATA(_writepos, (Size >> 8) & 0xFFu);
-    TRACE_WRITE_DATA(_writepos, Size & 0xFFu);
+    TRACER_EMB_WRITE_DATA(_writepos2, (uint8_t)(Size >> 8u));
+    TRACER_EMB_WRITE_DATA(_writepos2, (uint8_t)Size);
 
     /* initialize the Ptr for Read/Write */
-    for (index = 0; index < Size; index++)
+    for (index = 0u; index < Size; index++)
     {
-      TRACE_WRITE_DATA(_writepos, data_to_write[index]);
+      TRACER_EMB_WRITE_DATA(_writepos2, data_to_write[index]);
     }
 
     /* Copy EOF bytes */
-    for(index = 0; index < TLV_EOF_SIZE; index++)
+    for (index = 0u; index < TLV_EOF_SIZE; index++)
     {
-      TRACE_WRITE_DATA(_writepos, TLV_EOF);
+      TRACER_EMB_WRITE_DATA(_writepos2, TLV_EOF);
     }
   }
-  else
+
+  TRACER_EMB_UnLock();
+  
+  if (__get_IPSR() == 0 )
   {
-    /* initialize the Ptr for Read/Write */
-    for (index = 0; index < Size; index++)
-    {
-      TRACE_WRITE_DATA(_writepos, data_to_write[index]);
-    }
+    /* Wakeup the trace system, only for trace outside interrupt context */
+    USBPD_DPM_TraceWakeUp();
   }
-  TRACE_UnLock();
+#else
+  return;
+#endif  
 }
 
 uint32_t USBPD_TRACE_TX_Process(void)
 {
-  uint32_t _timing = 2;
-  uint32_t _begin, _end;
-
-  if (TRACE_CheckLook(&_begin, &_end))
-  {
-    if (_begin == _end)
-    {
-      /* nothing to do */
-      _timing = 0xFFFFFFFF;
-    }
-    else
-    {
-      TRACE_Lock();
-      /*  */
-      if (_end > _begin)
-      {
-        SizeSent = _end - _begin;
-      }
-      else  /* _begin > _end */
-      {
-        SizeSent = TRACE_SIZE_BUFFER_TX - _begin;
-      }
-      BSP_TRACE_SendData(&PtrDataTx[_begin], SizeSent);
-    }
-  }
-
-  return _timing;
+#ifdef _TRACE  
+  return TRACER_EMB_TX_Process();
+#else
+  return 0xFFFFFFFF;
+#endif  
 }
 
 /**
@@ -277,106 +202,6 @@ uint32_t USBPD_TRACE_TX_Process(void)
   */
 
 /**
-  * @brief  callback called to end a transfert.
-  * @param  None.
-  * @retval None.
-  */
-void TRACE_CALLBACK_TX(void)
-{
-  TRACE_ENTER_CRITICAL_SECTION();
-  PtrReadTx = (PtrReadTx + SizeSent) % TRACE_SIZE_BUFFER_TX;
-  TRACE_LEAVE_CRITICAL_SECTION();
-  TRACE_UnLock();
-}
-
-/**
-  * @brief  Lock the trace buffer.
-  * @param  None.
-  * @retval None.
-  */
-static void TRACE_Lock(void)
-{
-  TRACE_ENTER_CRITICAL_SECTION();
-  Counter++;
-  TRACE_LEAVE_CRITICAL_SECTION();
-}
-
-/**
-  * @brief  UnLock the trace buffer.
-  * @param  None.
-  * @retval None.
-  */
-static void TRACE_UnLock(void)
-{
-  TRACE_ENTER_CRITICAL_SECTION();
-  Counter--;
-  TRACE_LEAVE_CRITICAL_SECTION();
-}
-
-/**
-  * @brief  if buffer is not locked return a Begin / end @ to transfert over the media.
-  * @param  address begin of the data
-  * @param  address end of the data
-  * @retval USBPD_TRUE if a transfer can be execute else USBPD_FALSE.
-  */
-static uint8_t TRACE_CheckLook(uint32_t *Begin, uint32_t *End)
-{
-  uint8_t _status = USBPD_FALSE;
-
-  TRACE_ENTER_CRITICAL_SECTION();
-
-  if (0 == Counter)
-  {
-    *Begin = PtrReadTx;
-    *End = PtrWriteTx;
-    _status = USBPD_TRUE;
-  }
-
-  TRACE_LEAVE_CRITICAL_SECTION();
-
-  return _status;
-}
-
-/**
-  * @brief  allocate space inside the buffer to push data
-  * @param  data size
-  * @retval write position inside the buffer is -1 no space available.
-  */
-static int32_t TRACE_AllocateBufer(uint32_t Size)
-{
-  int32_t _pos = -1;
-  uint32_t _freesize;
-  TRACE_ENTER_CRITICAL_SECTION();
-
-  if (PtrWriteTx == PtrReadTx)
-  {
-    _freesize = TRACE_SIZE_BUFFER_TX;
-  }
-  else
-  {
-    if (PtrWriteTx > PtrReadTx)
-    {
-      _freesize = TRACE_SIZE_BUFFER_TX - PtrWriteTx + PtrReadTx;
-    }
-    else
-    {
-      _freesize = PtrReadTx - PtrWriteTx;
-    }
-  }
-
-  if (_freesize > Size)
-  {
-    _pos = PtrWriteTx;
-
-    PtrWriteTx = (PtrWriteTx + Size) % TRACE_SIZE_BUFFER_TX;
-  }
-
-  TRACE_LEAVE_CRITICAL_SECTION();
-
-  return _pos;
-}
-
-/**
   * @}
   */
 
@@ -391,8 +216,5 @@ static int32_t TRACE_AllocateBufer(uint32_t Size)
 /**
   * @}
   */
-
-#endif /* _TRACE || _GUI_INTERFACE*/
-
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
 

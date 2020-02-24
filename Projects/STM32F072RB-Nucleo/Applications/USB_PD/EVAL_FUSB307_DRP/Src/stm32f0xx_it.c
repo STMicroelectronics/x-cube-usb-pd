@@ -1,106 +1,129 @@
+/* USER CODE BEGIN Header */
 /**
   ******************************************************************************
   * @file    stm32f0xx_it.c
-  * @author  MCD Application Team
-  * @brief   Main Interrupt Service Routines.
-  *          This file provides template for all exceptions handler and
-  *          peripherals interrupt service routine.
+  * @brief   Interrupt Service Routines.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics International N.V.
+  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
-  * Redistribution and use in source and binary forms, with or without 
-  * modification, are permitted, provided that the following conditions are met:
-  *
-  * 1. Redistribution of source code must retain the above copyright notice, 
-  *    this list of conditions and the following disclaimer.
-  * 2. Redistributions in binary form must reproduce the above copyright notice,
-  *    this list of conditions and the following disclaimer in the documentation
-  *    and/or other materials provided with the distribution.
-  * 3. Neither the name of STMicroelectronics nor the names of other
-  *    contributors to this software may be used to endorse or promote products 
-  *    derived from this software without specific written permission.
-  * 4. This software, including modifications and/or derivative works of this 
-  *    software, must execute solely and exclusively on microcontroller or
-  *    microprocessor devices manufactured by or for STMicroelectronics.
-  * 5. Redistribution and use of this software other than as permitted under 
-  *    this license is void and will automatically terminate your rights under 
-  *    this license. 
-  *
-  * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT 
-  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
-  * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
-  * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT 
-  * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
-  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
-  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  * This software component is licensed by ST under BSD 3-Clause license,
+  * the "License"; You may not use this file except in compliance with the
+  * License. You may obtain a copy of the License at:
+  *                        opensource.org/licenses/BSD-3-Clause
   *
   ******************************************************************************
   */
+/* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
+#if defined(_TRACE)
+#include "tracer_emb.h"
+#endif /* _TRACE */
 #include "usbpd_tcpci.h"
 #include "stm32f0xx_it.h"
 
 #if defined(_TRACE)
 #include "usbpd_trace.h"
 #endif /* _TRACE */
-/** @addtogroup STM32F0xx_HAL_Examples
+/* USER CODE END Includes */
+
+/** @addtogroup STM32_USBPD_APPLICATION
   * @{
   */
 
+/** @addtogroup STM32_USBPD_APPLICATION_IT
+  * @{
+  */
 
 /* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN TD */
+
+/* USER CODE END TD */
+
 /* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+ 
+/* USER CODE END PD */
+
 /* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
+
+/* USER CODE END PM */
+
 /* Private variables ---------------------------------------------------------*/
+/* USER CODE BEGIN PV */
+/* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
-/* Private functions ---------------------------------------------------------*/
+/* USER CODE BEGIN PFP */
+/* USER CODE BEGIN PFP */
+
+/* USER CODE END PFP */
+
+/* Private user code ---------------------------------------------------------*/
+/* USER CODE BEGIN 0 */
+
+/* USER CODE END 0 */
+
+/* External variables --------------------------------------------------------*/
+/* USER CODE BEGIN EV */
+
+/* USER CODE END EV */
 
 /******************************************************************************/
-/*            Cortex-M0 Processor Exceptions Handlers                         */
+/*            Cortex-M0 Processor Processor  Interruption and Exception Handlers                         */
 /******************************************************************************/
-
 /**
-  * @brief  This function handles NMI exception.
-  * @param  None
-  * @retval None
+  * @brief This function handles Non maskable interrupt.
   */
 void NMI_Handler(void)
 {
+  /* USER CODE BEGIN NonMaskableInt_IRQn 0 */
+
+  /* USER CODE END NonMaskableInt_IRQn 0 */
+  /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
+
+  /* USER CODE END NonMaskableInt_IRQn 1 */
 }
 
 /**
-  * @brief  This function handles Hard Fault exception.
-  * @param  None
-  * @retval None
+  * @brief This function handles Hard fault interrupt.
   */
 void HardFault_Handler(void)
 {
+  /* USER CODE BEGIN HardFault_IRQn 0 */
+
   /* Go to infinite loop when Hard Fault exception occurs */
+  /* USER CODE END HardFault_IRQn 0 */
   while (1)
   {
+    /* USER CODE BEGIN W1_HardFault_IRQn 0 */
+    /* USER CODE END W1_HardFault_IRQn 0 */
   }
 }
 
 /**
   * @brief  This function handles SysTick Handler.
-  * @param  None
   * @retval None
   */
 void SysTick_Handler(void)
 {
-  HAL_IncTick();
+  /* USER CODE BEGIN SysTick_IRQn 0 */
   USBPD_DPM_TimerCounter();
+#if defined(_GUI_INTERFACE)
+  GUI_TimerCounter();
+#endif /* _GUI_INTERFACE */
+  /* USER CODE END SysTick_IRQn 0 */
+  HAL_IncTick();
+  /* USER CODE BEGIN SysTick_IRQn 1 */
+
+  /* USER CODE END SysTick_IRQn 1 */
 }
 
 /******************************************************************************/
@@ -112,38 +135,52 @@ void SysTick_Handler(void)
 
 
 /**
-  * @brief  This function handles EXTI line 4_15 interrupts.
+  * @brief  This function handles EXTI line interrupt corresponding to ALERT IT
   * @param  None
   * @retval None
   */
-void EXTI4_15_IRQHandler(void)
+void ALERT_PORT0_EXTI_IRQHandler(void)
 {
 #if defined(_TRACE)
-  USBPD_TRACE_Add(USBPD_TRACE_DEBUG, 0, 0, "ALERT IT", sizeof("ALERT IT")-1);
+  USBPD_TRACE_Add(USBPD_TRACE_DEBUG, 0, 0, (uint8_t*)"ALERT IT", sizeof("ALERT IT")-1);
 #endif /* _TRACE */
   HAL_NVIC_DisableIRQ(ALERT_PORT0_EXTI_IRQn);
   HAL_GPIO_EXTI_IRQHandler(ALERT_PORT0_GPIO_PIN);
 }
 
-#if defined(_TRACE)
-void TRACE_TX_DMA_IRQ_HAND(void)
+#if defined(_TRACE)||defined(_GUI_INTERFACE)
+#if TRACER_EMB_DMA_MODE == 1UL
+void TRACER_EMB_TX_DMA_IRQHANDLER(void)
 {
-   BSP_TRACE_IRQHandlerDMA();
+   TRACER_EMB_IRQHandlerDMA();
 }
+#endif
 
 #endif /* _TRACE */
-#if defined(_TRACE)
+#if defined(_TRACE)||defined(_GUI_INTERFACE)
 /**
   * @brief  This function handles USART exception.
   * @param  None
   * @retval None
   */
-void TRACE_USART_IRQ_HAND(void)
+void TRACER_EMB_USART_IRQHANDLER(void)
 {
-  BSP_TRACE_IRQHandlerUSART();
+  TRACER_EMB_IRQHandlerUSART();
 }
 #else
 #endif /* _TRACE */
 
+
+/* USER CODE BEGIN 1 */
+
+/* USER CODE END 1 */
+
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -6,39 +6,13 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics International N.V.
+  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
-  * Redistribution and use in source and binary forms, with or without
-  * modification, are permitted, provided that the following conditions are met:
-  *
-  * 1. Redistribution of source code must retain the above copyright notice,
-  *    this list of conditions and the following disclaimer.
-  * 2. Redistributions in binary form must reproduce the above copyright notice,
-  *    this list of conditions and the following disclaimer in the documentation
-  *    and/or other materials provided with the distribution.
-  * 3. Neither the name of STMicroelectronics nor the names of other
-  *    contributors to this software may be used to endorse or promote products
-  *    derived from this software without specific written permission.
-  * 4. This software, including modifications and/or derivative works of this
-  *    software, must execute solely and exclusively on microcontroller or
-  *    microprocessor devices manufactured by or for STMicroelectronics.
-  * 5. Redistribution and use of this software other than as permitted under
-  *    this license is void and will automatically terminate your rights under
-  *    this license.
-  *
-  * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT
-  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-  * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
-  * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT
-  * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
-  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  * This software component is licensed by ST under Ultimate Liberty license
+  * SLA0044, the "License"; You may not use this file except in compliance with
+  * the License. You may obtain a copy of the License at:
+  *                             www.st.com/SLA0044
   *
   ******************************************************************************
   */
@@ -72,29 +46,6 @@ extern "C" {
   */
 
 /* Exported constants --------------------------------------------------------*/
-/** @defgroup USBPD_CORE_TCPM_Exported_Constants USBPD CORE TCPM Exported Types Constants
-  * @{
-  */
-/**
-  * @brief TCPM State value @ref USBPD_CORE_TCPM
-  */
-// typedef enum
-// {
-//   USBPD_TCPM_STATE_RESET,         /*!< USBPD TCPM State Reset                                */
-//   USBPD_TCPM_STATE_DETACHED,      /*!< USBPD TCPM State No cable detected                    */
-//   USBPD_TCPM_STATE_ATTACHED_WAIT, /*!< USBPD TCPM State Port partner detected                */
-//   USBPD_TCPM_STATE_ATTACHED,      /*!< USBPD TCPM State Port partner attached                */
-//   USBPD_TCPM_STATE_EMC,           /*!< USBPD TCPM State Electronically Marked Cable detected */
-//   USBPD_TCPM_STATE_ATTEMC,        /*!< USBPD TCPM State Port Partner detected throug EMC     */
-//   USBPD_TCPM_STATE_ACCESSORY,     /*!< USBPD TCPM State Accessory detected                   */
-//   USBPD_TCPM_STATE_DEBUG,         /*!< USBPD TCPM State Debug detected                       */
-//   USPPD_TCPM_STATE_UNKNOW         /*!< USBPD TCPM State Unknown                              */
-// } USBPD_TCPM_STATE;
-
-/**
-  * @}
-  */
-
 /* Exported types ------------------------------------------------------------*/
 /** @defgroup USBPD_CORE_TCPM_Exported_TypesDefinitions USBPD CORE TCPM Exported Types Definitions
   * @{
@@ -130,14 +81,6 @@ typedef struct
   void (*USBPD_TCPM_ResetCompleted)(uint8_t hport, USBPD_SOPType_TypeDef Type);
 
   /**
-    * @brief  Reports the TCPM layer discarded last message to sent because the bus is not idle.
-    * @param  hport:    The handle of the port
-    * @retval None
-    * @note See Section 5.7 of USB Power Delivery specification Rev2, V1.1
-    */
-  void (*USBPD_TCPM_ChannelIdleAfterBusy)(uint8_t hport);
-
-  /**
     * @brief  Reports to the PRL that a Bist operation has been completed.
     * @param  hport:    The handle of the port
     * @param  Type:    The type of Bist performed
@@ -161,7 +104,7 @@ typedef struct
 typedef struct
 {
   uint8_t   *pRxBuffer;             /*!< Pointer to @ref USBPD_CORE_PRL RX Buffer for the current port */
-  USBPD_PHY_Callbacks *pCallbacks;  /*!< TCPM Callbacks */
+  const USBPD_PHY_Callbacks *pCallbacks;  /*!< TCPM Callbacks */
 } USBPD_TCPM_HandleTypeDef;
 /**
   * @}
@@ -179,7 +122,7 @@ typedef struct
   */
 /**
   * @brief  Initialize TCPC devices
-  * @param  PortNum     Port number value
+  * @param  PortNum     Number of the port
   * @param  pCallbacks  TCPM callbacks
   * @param  pRxBuffer   Pointer on the RX buffer
   * @param  PowerRole   Power role can be one of the following values:
@@ -188,7 +131,7 @@ typedef struct
   * @param  SupportedSOP  Supported SOP
   * @retval HAL status
   */
-USBPD_StatusTypeDef  USBPD_PHY_Init(uint8_t PortNum, USBPD_PHY_Callbacks *pCallbacks, uint8_t *pRxBuffer, USBPD_PortPowerRole_TypeDef PowerRole, uint32_t SupportedSOP);
+USBPD_StatusTypeDef  USBPD_PHY_Init(uint8_t PortNum, const USBPD_PHY_Callbacks *pCallbacks, uint8_t *pRxBuffer, USBPD_PortPowerRole_TypeDef PowerRole, uint32_t SupportedSOP);
 
 /**
   * @brief  Reset the PHY of a specified port.
@@ -203,44 +146,46 @@ void                 USBPD_PHY_Reset(uint8_t PortNum);
   * @param  SOPSupported  List of the supported SOP
   * @retval None.
   */
-void                 USBPD_PHY_SOPSupported(uint8_t PortNum,uint32_t SOPSupported);
+void                 USBPD_PHY_SOPSupported(uint8_t PortNum, uint32_t SOPSupported);
 
 /**
   * @brief  De-initialize TCPC devices
-  * @param  PortNum Port number value
+  * @param  PortNum Number of the port
   * @retval None
   */
-void                 USBPD_TCPM_DeInit(uint8_t Port);
+void                 USBPD_TCPM_DeInit(uint8_t PortNum);
 
 /**
   * @brief  Get CC line for PD connection
-  * @param  PortNum Port number value
+  * @param  PortNum Number of the port
   * @param  CC1_Level Pointer of status of the CC1 line
   * @param  CC2_Level Pointer of status of the CC2 line
   * @retval USBPD status
   */
-USBPD_StatusTypeDef  USBPD_TCPM_get_cc(uint32_t Port, uint32_t *cc1, uint32_t *cc2);
+USBPD_StatusTypeDef  USBPD_TCPM_get_cc(uint32_t PortNum, uint32_t *CC1_Level, uint32_t *CC2_Level);
 
 /**
   * @brief  Set the polarity of the CC lines
-  * @param  PortNum Port number value
-  * @param  Polarity Polarity
+  * @param  PortNum   Number of the port
+  * @param  Polarity  Polarity
   * @retval USBPD status
   */
-USBPD_StatusTypeDef  USBPD_TCPM_set_polarity(uint32_t Port, uint32_t polarity);
+USBPD_StatusTypeDef  USBPD_TCPM_set_polarity(uint32_t PortNum, uint32_t Polarity);
 
 /**
   * @brief  Set power and data role et PD message header
-  * @param  PortNum      Port number value
-  * @param  PowerRole Power role
-  * @param  DataRole  Data role
+  * @param  PortNum        Number of the port
+  * @param  PowerRole      Power role
+  * @param  DataRole       Data role
+  * @param  Specification  PD Specification version
   * @retval USBPD status
   */
-USBPD_StatusTypeDef  USBPD_TCPM_set_msg_header(uint32_t Port, USBPD_PortPowerRole_TypeDef PowerRole, USBPD_PortDataRole_TypeDef DataRole);
+USBPD_StatusTypeDef  USBPD_TCPM_set_msg_header(uint32_t PortNum, USBPD_PortPowerRole_TypeDef PowerRole, USBPD_PortDataRole_TypeDef DataRole, USBPD_SpecRev_TypeDef Specification);
 
 /**
   * @brief  Enable or disable PD reception
-  * @param  PortNum       Port number value
+  * @param  PortNum       Number of the port
+  * @param  Pull          Value of the CC pin to configure based on @ref TCPC_CC_Pull_TypeDef
   * @param  State         Activation or deactivation of RX
   * @param  SupportedSOP  Supported SOP by PRL
   * @param  HardReset     Hard reset status based on @ref TCPC_hard_reset
@@ -250,29 +195,29 @@ USBPD_StatusTypeDef  USBPD_TCPM_set_rx_state(uint32_t PortNum, TCPC_CC_Pull_Type
 
 /**
   * @brief  Retrieve the PD message
-  * @param  PortNum Port number value
+  * @param  PortNum Number of the port
   * @param  Payload Pointer on the payload
-  * @param  Type Pointer on the message type
+  * @param  Type    Pointer on the message type
   * @retval USBPD status
   */
-USBPD_StatusTypeDef  USBPD_TCPM_get_message(uint32_t Port, uint8_t *payload, uint8_t *Type);
+USBPD_StatusTypeDef  USBPD_TCPM_get_message(uint32_t PortNum, uint8_t *Payload, uint8_t *Type);
 
 /**
   * @brief  Transmit the PD message
-  * @param  PortNum Port number value
-  * @param  Type Message type
-  * @param  pData Pointer on the data message
+  * @param  PortNum     Number of the port
+  * @param  Type        Message type
+  * @param  pData       Pointer on the data message
   * @param  RetryNumber Number of retry
   * @retval USBPD status
   */
-USBPD_StatusTypeDef  USBPD_TCPM_transmit(uint32_t Port, USBPD_SOPType_TypeDef Type, const uint8_t *data, uint32_t RetryNumber);
+USBPD_StatusTypeDef  USBPD_TCPM_transmit(uint32_t PortNum, USBPD_SOPType_TypeDef Type, const uint8_t *pData, uint32_t RetryNumber);
 
 /**
   * @brief  Send bist pattern.
   * @param  PortNum    Number of the port
   * @retval USBPD status
   */
-USBPD_StatusTypeDef  USBPD_PHY_Send_BIST_Pattern(uint32_t Port);
+USBPD_StatusTypeDef  USBPD_PHY_Send_BIST_Pattern(uint32_t PortNum);
 
 /**
   * @brief  Request a Reset on a specified port.
@@ -284,11 +229,11 @@ USBPD_StatusTypeDef  USBPD_PHY_ResetRequest(uint8_t PortNum, USBPD_SOPType_TypeD
 
 /**
   * @brief  Request TCPC to enter a specific BIST test mode.
-  * @param  PortNum  Port number value
+  * @param  PortNum  Number of the port
   * @param  State    Enable BIST carrier mode 2
   * @retval USBPD status
   */
-USBPD_StatusTypeDef  USBPD_TCPM_Send_BIST_Pattern(uint8_t Port, USBPD_FunctionalState State);
+USBPD_StatusTypeDef  USBPD_TCPM_Send_BIST_Pattern(uint8_t PortNum, USBPD_FunctionalState State);
 
 /**
  * @brief  function to set the SinkTxNg
@@ -317,6 +262,28 @@ USBPD_StatusTypeDef  USBPD_PHY_IsResistor_SinkTxOk(uint8_t PortNum);
  * @retval None
   */
 void                 USBPD_PHY_FastRoleSwapSignalling(uint8_t PortNum);
+
+/**
+  * @brief  Enable RX
+  * @param  PortNum    Number of the port.
+  * @retval None
+  */
+void USBPD_PHY_EnableRX(uint8_t PortNum);
+
+/**
+  * @brief  Disable RX
+  * @param  PortNum    Number of the port.
+  * @retval None
+  */
+void USBPD_PHY_DisableRX(uint8_t PortNum);
+
+/**
+  * @brief  Activation or not of CAD detection
+  * @param  PortNum    Number of the port.
+  * @param  State      Activation or deactivation of CAD detection
+  * @retval None
+  */
+void USBPD_TCPM_CADDetection(uint8_t PortNum, USBPD_FunctionalState State);
 
 /**
   * @}
@@ -348,3 +315,4 @@ void                 USBPD_PHY_FastRoleSwapSignalling(uint8_t PortNum);
 #endif /* __USBPD_TCPM_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+

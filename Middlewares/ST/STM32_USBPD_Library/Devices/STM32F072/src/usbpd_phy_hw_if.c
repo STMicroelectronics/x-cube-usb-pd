@@ -6,37 +6,37 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics International N.V. 
+  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics International N.V.
   * All rights reserved.</center></h2>
   *
-  * Redistribution and use in source and binary forms, with or without 
+  * Redistribution and use in source and binary forms, with or without
   * modification, are permitted, provided that the following conditions are met:
   *
-  * 1. Redistribution of source code must retain the above copyright notice, 
+  * 1. Redistribution of source code must retain the above copyright notice,
   *    this list of conditions and the following disclaimer.
   * 2. Redistributions in binary form must reproduce the above copyright notice,
   *    this list of conditions and the following disclaimer in the documentation
   *    and/or other materials provided with the distribution.
-  * 3. Neither the name of STMicroelectronics nor the names of other 
-  *    contributors to this software may be used to endorse or promote products 
+  * 3. Neither the name of STMicroelectronics nor the names of other
+  *    contributors to this software may be used to endorse or promote products
   *    derived from this software without specific written permission.
-  * 4. This software, including modifications and/or derivative works of this 
+  * 4. This software, including modifications and/or derivative works of this
   *    software, must execute solely and exclusively on microcontroller or
   *    microprocessor devices manufactured by or for STMicroelectronics.
-  * 5. Redistribution and use of this software other than as permitted under 
-  *    this license is void and will automatically terminate your rights under 
-  *    this license. 
+  * 5. Redistribution and use of this software other than as permitted under
+  *    this license is void and will automatically terminate your rights under
+  *    this license.
   *
-  * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS" 
-  * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT 
-  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+  * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS"
+  * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT
+  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
   * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
-  * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT 
+  * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT
   * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
   * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, 
-  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
-  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
   * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
   * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *
@@ -69,16 +69,6 @@
 
 /* Private typedef -----------------------------------------------------------*/
 
-/**
-  * @brief USB PD Board Version MB1257B/C
-  */
-typedef enum
-{
-  USBPD_BOARDVERSION_INVALID   = 0,
-  USBPD_BOARDVERSION_MB1257_C  = 1,
-  USBPD_BOARDVERSION_MB1257_B  = 2,
-} USBPD_BoardVersionTypeDef;
-
 /* Private define ------------------------------------------------------------*/
 #define DMA_TIME_ELAPSED        60 /* us */
 #define DMA_TIME_TASK           45 /* us */
@@ -101,24 +91,24 @@ typedef enum
 /*       Refer to @ref ADC_LL_EC_HW_DELAYS for description of ADC timeout     */
 /*       values definition.                                                   */
 
-  /* Timeout values for ADC operations. */
-  /* (calibration, enable settling time, disable settling time, ...)          */
-  /* Values defined to be higher than worst cases: low clock frequency,       */
-  /* maximum prescalers.                                                      */
-  /* Unit: ms                                                                 */
-  #define ADC_CHANNEL_CONF_RDY_TIMEOUT_MS  (   1U)
-  #define ADC_CALIBRATION_TIMEOUT_MS       (   1U)
-  #define ADC_ENABLE_TIMEOUT_MS            (   1U)
-  #define ADC_DISABLE_TIMEOUT_MS           (   1U)
-  #define ADC_STOP_CONVERSION_TIMEOUT_MS   (   1U)
-  #define ADC_CONVERSION_TIMEOUT_MS        (4000U)
+/* Timeout values for ADC operations. */
+/* (calibration, enable settling time, disable settling time, ...)          */
+/* Values defined to be higher than worst cases: low clock frequency,       */
+/* maximum prescalers.                                                      */
+/* Unit: ms                                                                 */
+#define ADC_CHANNEL_CONF_RDY_TIMEOUT_MS  (   1U)
+#define ADC_CALIBRATION_TIMEOUT_MS       (   1U)
+#define ADC_ENABLE_TIMEOUT_MS            (   1U)
+#define ADC_DISABLE_TIMEOUT_MS           (   1U)
+#define ADC_STOP_CONVERSION_TIMEOUT_MS   (   1U)
+#define ADC_CONVERSION_TIMEOUT_MS        (4000U)
 
-  /* Delay between ADC end of calibration and ADC enable.                     */
-  /* Delay estimation in CPU cycles: Case of ADC enable done                  */
-  /* immediately after ADC calibration, ADC clock setting slow                */
-  /* (LL_ADC_CLOCK_ASYNC_DIV32). Use a higher delay if ratio                  */
-  /* (CPU clock / ADC clock) is above 32.                                     */
-  #define ADC_DELAY_CALIB_ENABLE_CPU_CYCLES  (LL_ADC_DELAY_CALIB_ENABLE_ADC_CYCLES * 32)
+/* Delay between ADC end of calibration and ADC enable.                     */
+/* Delay estimation in CPU cycles: Case of ADC enable done                  */
+/* immediately after ADC calibration, ADC clock setting slow                */
+/* (LL_ADC_CLOCK_ASYNC_DIV32). Use a higher delay if ratio                  */
+/* (CPU clock / ADC clock) is above 32.                                     */
+#define ADC_DELAY_CALIB_ENABLE_CPU_CYCLES  (LL_ADC_DELAY_CALIB_ENABLE_ADC_CYCLES * 32)
 #endif /* USE_HAL_ADC */
 
 /* Private macro -------------------------------------------------------------*/
@@ -183,10 +173,10 @@ const USBPD_BSP_GPIOPins_TypeDef USBPDM1_GPIOs[USBPDM1_GPIOn] =
 /* Array of power selection pins used by @ref P-NUCLEO-USB001 */
 static const USBPD_BSP_GPIOPins_TypeDef USBPDM1_POWSELs[USBPDM1_POWSELn] =
 {
-  USBPD_BSP_PIN(GPIOB,7),   /* PORT0PW0 - POWCONN9 */
-  USBPD_BSP_PIN(GPIOB,6),   /* PORT0PW1 - POWCONN11 */
-  USBPD_BSP_PIN(GPIOC,1),   /* PORT1PW0 - POWCONN10 */
-  USBPD_BSP_PIN(GPIOC,9),   /* PORT1PW1 - POWCONN12 */
+  USBPD_BSP_PIN(GPIOB, 7),  /* PORT0PW0 - POWCONN9 */
+  USBPD_BSP_PIN(GPIOB, 6),  /* PORT0PW1 - POWCONN11 */
+  USBPD_BSP_PIN(GPIOC, 1),  /* PORT1PW0 - POWCONN10 */
+  USBPD_BSP_PIN(GPIOC, 9),  /* PORT1PW1 - POWCONN12 */
 };
 
 /* Array of ADC CH pins used by @ref P-NUCLEO-USB001 */
@@ -348,7 +338,7 @@ USBPD_BoardVersionTypeDef USBPD_HW_IF_GetBoardVersion()
   */
 void USBPDM1_DigitalGPIO_Init(void)
 {
-  uint32_t gpio=0;
+  uint32_t gpio = 0;
   GPIO_InitTypeDef  GPIO_InitStruct;
 
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -369,9 +359,6 @@ void USBPDM1_DigitalGPIO_Init(void)
     GPIO_InitStruct.Pin = USBPDM1_POWSELs[gpio].GPIO_Pin;
 
     HAL_GPIO_Init(USBPDM1_POWSELs[gpio].GPIOx, &GPIO_InitStruct);
-
-    /* Turn the pin off */
-    // USBPDM1_GPIO_Off((USBPDM1_GPIO_TypeDef)gpio);
   }
 
   /* Initialize the DRP pin*/
@@ -476,7 +463,7 @@ void USBPDM1_ADC_Init(void)
   uint8_t ch = 0;
 
   /*## Configuration of GPIO used by ADC channels ############################*/
-  
+
 #if defined(USE_HAL_ADC)
   ADC_ChannelConfTypeDef sConfig;
   /* Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion) */
@@ -564,7 +551,7 @@ void USBPDM1_ADC_Init(void)
   /*       Software can be optimized by removing some of these checks, if     */
   /*       they are not relevant considering previous settings and actions    */
   /*       in user application.                                               */
-  if(__LL_ADC_IS_ENABLED_ALL_COMMON_INSTANCE() == 0)
+  if (__LL_ADC_IS_ENABLED_ALL_COMMON_INSTANCE() == 0)
   {
     /* Note: Call of the functions below are commented because they are       */
     /*       useless in this example:                                         */
@@ -575,13 +562,11 @@ void USBPDM1_ADC_Init(void)
     /*       is applied to each ADC instance if ADC instance clock is         */
     /*       set to clock source asynchronous                                 */
     /*       (refer to function "LL_ADC_SetClock()" below).                   */
-    // LL_ADC_SetCommonClock(__LL_ADC_COMMON_INSTANCE(P_NUCLEO_USB001_ADC), LL_ADC_CLOCK_ASYNC_DIV1);
 
     /* Set ADC measurement path to internal channels */
-    // LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(P_NUCLEO_USB001_ADC), LL_ADC_PATH_INTERNAL_NONE);
 
 
-  /*## Configuration of ADC hierarchical scope: multimode ####################*/
+    /*## Configuration of ADC hierarchical scope: multimode ####################*/
 
     /* Note: Feature not available on this STM32 serie */
 
@@ -603,15 +588,6 @@ void USBPDM1_ADC_Init(void)
 
     /* Set ADC clock (conversion clock) */
     LL_ADC_SetClock(P_NUCLEO_USB001_ADC, LL_ADC_CLOCK_SYNC_PCLK_DIV4);
-
-    /* Set ADC data resolution */
-    // LL_ADC_SetResolution(P_NUCLEO_USB001_ADC, LL_ADC_RESOLUTION_12B);
-
-    /* Set ADC conversion data alignment */
-    // LL_ADC_SetResolution(P_NUCLEO_USB001_ADC, LL_ADC_DATA_ALIGN_RIGHT);
-
-    /* Set ADC low power mode */
-    // LL_ADC_SetLowPowerMode(P_NUCLEO_USB001_ADC, LL_ADC_LP_MODE_NONE);
 
     /* Set ADC channels sampling time */
     /* Note: On this STM32 serie, sampling time is common to all channels     */
@@ -642,14 +618,9 @@ void USBPDM1_ADC_Init(void)
   /*       ADC state:                                                         */
   /*       ADC must be disabled or enabled without conversion on going        */
   /*       on group regular.                                                  */
-  //if ((LL_ADC_IsEnabled(P_NUCLEO_USB001_ADC) == 0)               ||
-  //    (LL_ADC_REG_IsConversionOngoing(P_NUCLEO_USB001_ADC) == 0)   )
   {
     /* Set ADC group regular trigger source */
     LL_ADC_REG_SetTriggerSource(P_NUCLEO_USB001_ADC, LL_ADC_REG_TRIG_SOFTWARE);
-
-    /* Set ADC group regular trigger polarity */
-    // LL_ADC_REG_SetTriggerEdge(P_NUCLEO_USB001_ADC, LL_ADC_REG_TRIG_EXT_RISING);
 
     /* Set ADC group regular continuous mode */
     LL_ADC_REG_SetContinuousMode(P_NUCLEO_USB001_ADC, LL_ADC_REG_CONV_CONTINUOUS);
@@ -666,9 +637,6 @@ void USBPDM1_ADC_Init(void)
     /*       affectation to a channel are fixed by channel HW number.         */
     /*       Refer to description of function                                 */
     /*       "LL_ADC_REG_SetSequencerChannels()".                             */
-
-    /* Set ADC group regular sequencer discontinuous mode */
-    // LL_ADC_REG_SetSequencerDiscont(P_NUCLEO_USB001_ADC, LL_ADC_REG_SEQ_DISCONT_DISABLE);
 
     /* Set ADC group regular sequence: channel on rank corresponding to       */
     /* channel number.                                                        */
@@ -702,7 +670,7 @@ void USBPDM1_ADC_Init(void)
   /*       ADC must be disabled or enabled without conversion on going        */
   /*       on either groups regular or injected.                              */
   if ((LL_ADC_IsEnabled(P_NUCLEO_USB001_ADC) == 0)               ||
-      (LL_ADC_REG_IsConversionOngoing(P_NUCLEO_USB001_ADC) == 0)   )
+      (LL_ADC_REG_IsConversionOngoing(P_NUCLEO_USB001_ADC) == 0))
   {
     /* Set ADC channels sampling time */
     /* Note: On this STM32 serie, sampling time is common to all channels     */
@@ -720,18 +688,6 @@ void USBPDM1_ADC_Init(void)
 
   /* Set ADC analog watchdog: thresholds */
   LL_ADC_ConfigAnalogWDThresholds(P_NUCLEO_USB001_ADC, MV2ADC(800), MV2ADC(400));
-
-  /*## Configuration of ADC transversal scope: oversampling ##################*/
-
-  /* Set ADC oversampling scope */
-  // LL_ADC_SetOverSamplingScope(P_NUCLEO_USB001_ADC, LL_ADC_OVS_DISABLE);
-
-  /* Set ADC oversampling parameters */
-  // LL_ADC_ConfigOverSamplingRatioShift(P_NUCLEO_USB001_ADC, LL_ADC_OVS_RATIO_2, LL_ADC_OVS_SHIFT_NONE);
-
-  /*## Configuration of ADC interruptions ####################################*/
-  ///* Enable ADC analog watchdog 1 interruption */
-  //LL_ADC_EnableIT_AWD1(P_NUCLEO_USB001_ADC);
 #endif /* USE_HAL_ADC */
 }
 
@@ -782,10 +738,6 @@ void USBPDM1_ADCDMA_Init(void)
 
   /* Associate the initialized DMA handle to the ADC handle */
   __HAL_LINKDMA(&usbpdm1_hadc, DMA_Handle, DmaHandle);
-
-  /* Peripheral interrupt init*/
-//  HAL_NVIC_SetPriority(ADC1_COMP_IRQn, USBPD_LOWEST_IRQ_PRIO, 0);
-//  HAL_NVIC_EnableIRQ(ADC1_COMP_IRQn);
 #else
   /*## Configuration of NVIC #################################################*/
   /* Configure NVIC to enable DMA interruptions */
@@ -813,7 +765,7 @@ void USBPDM1_ADCDMA_Init(void)
                         LL_DMA_MEMORY_INCREMENT           |
                         LL_DMA_PDATAALIGN_HALFWORD        |
                         LL_DMA_MDATAALIGN_WORD            |
-                        LL_DMA_PRIORITY_HIGH               );
+                        LL_DMA_PRIORITY_HIGH);
 
   /* Set DMA transfer addresses of source and destination */
   LL_DMA_ConfigAddresses(DMA1,
@@ -826,14 +778,6 @@ void USBPDM1_ADCDMA_Init(void)
   LL_DMA_SetDataLength(DMA1,
                        LL_DMA_CHANNEL_1,
                        ADCCONVERTEDVALUES_BUFFER_SIZE);
-
-  /* Enable DMA transfer interruption: transfer complete */
-  //LL_DMA_EnableIT_TC(DMA1,
-  //                   LL_DMA_CHANNEL_1);
-
-  /* Enable DMA transfer interruption: half transfer */
-  //LL_DMA_EnableIT_HT(DMA1,
-  //                   LL_DMA_CHANNEL_1);
 
   /* Enable DMA transfer interruption: transfer error */
   LL_DMA_EnableIT_TE(DMA1,
@@ -899,9 +843,9 @@ void USBPD_HW_IF_GlobalHwInit(void)
 #if !defined(USE_HAL_ADC)
   __IO uint32_t wait_loop_index = 0U;
   //__IO uint32_t backup_setting_adc_dma_transfer = 0U;
-  #if (USE_TIMEOUT == 1)
+#if (USE_TIMEOUT == 1)
   uint32_t Timeout = 0U; /* Variable used for timeout management */
-  #endif /* USE_TIMEOUT */
+#endif /* USE_TIMEOUT */
 #endif /* USE_HAL_ADC */
 
   /* used for the PRL/PE timing */
@@ -911,7 +855,7 @@ void USBPD_HW_IF_GlobalHwInit(void)
 
   /* Configure the ADCx peripheral */
   USBPDM1_ADC_Init();
-  
+
 #if defined(USE_HAL_ADC)
   /* Run the ADC calibration */
   HAL_ADCEx_Calibration_Start(&usbpdm1_hadc);
@@ -949,23 +893,23 @@ void USBPD_HW_IF_GlobalHwInit(void)
     LL_ADC_StartCalibration(P_NUCLEO_USB001_ADC);
 
     /* Poll for ADC effectively calibrated */
-    #if (USE_TIMEOUT == 1)
+#if (USE_TIMEOUT == 1)
     Timeout = ADC_CALIBRATION_TIMEOUT_MS;
-    #endif /* USE_TIMEOUT */
+#endif /* USE_TIMEOUT */
 
     while (LL_ADC_IsCalibrationOnGoing(P_NUCLEO_USB001_ADC) != 0)
     {
-    #if (USE_TIMEOUT == 1)
+#if (USE_TIMEOUT == 1)
       /* Check Systick counter flag to decrement the time-out value */
       if (LL_SYSTICK_IsActiveCounterFlag())
       {
-        if(Timeout-- == 0)
+        if (Timeout-- == 0)
         {
-        /* Time-out occurred. Set LED to blinking mode */
-        LED_Blinking(LED_BLINK_ERROR);
+          /* Time-out occurred. Set LED to blinking mode */
+          LED_Blinking(LED_BLINK_ERROR);
         }
       }
-    #endif /* USE_TIMEOUT */
+#endif /* USE_TIMEOUT */
     }
 
     /* Restore ADC DMA transfer request after calibration */
@@ -976,7 +920,7 @@ void USBPD_HW_IF_GlobalHwInit(void)
     /* Note: Variable divided by 2 to compensate partially                    */
     /*       CPU processing cycles (depends on compilation optimization).     */
     wait_loop_index = (ADC_DELAY_CALIB_ENABLE_CPU_CYCLES >> 1);
-    while(wait_loop_index != 0)
+    while (wait_loop_index != 0)
     {
       wait_loop_index--;
     }
@@ -985,23 +929,23 @@ void USBPD_HW_IF_GlobalHwInit(void)
     LL_ADC_Enable(P_NUCLEO_USB001_ADC);
 
     /* Poll for ADC ready to convert */
-    #if (USE_TIMEOUT == 1)
+#if (USE_TIMEOUT == 1)
     Timeout = ADC_ENABLE_TIMEOUT_MS;
-    #endif /* USE_TIMEOUT */
+#endif /* USE_TIMEOUT */
 
     while (LL_ADC_IsActiveFlag_ADRDY(P_NUCLEO_USB001_ADC) == 0)
     {
-    #if (USE_TIMEOUT == 1)
+#if (USE_TIMEOUT == 1)
       /* Check Systick counter flag to decrement the time-out value */
       if (LL_SYSTICK_IsActiveCounterFlag())
       {
-        if(Timeout-- == 0)
+        if (Timeout-- == 0)
         {
-        /* Time-out occurred. Set LED to blinking mode */
-        LED_Blinking(LED_BLINK_ERROR);
+          /* Time-out occurred. Set LED to blinking mode */
+          LED_Blinking(LED_BLINK_ERROR);
         }
       }
-    #endif /* USE_TIMEOUT */
+#endif /* USE_TIMEOUT */
     }
 
     /* Note: ADC flag ADRDY is not cleared here to be able to check ADC       */
@@ -1025,16 +969,9 @@ void USBPD_HW_IF_GlobalHwInit(void)
   /*       Software can be optimized by removing some of these checks, if     */
   /*       they are not relevant considering previous settings and actions    */
   /*       in user application.                                               */
-  //if ((LL_ADC_IsEnabled(P_NUCLEO_USB001_ADC) == 1)               &&
-  //    (LL_ADC_IsDisableOngoing(P_NUCLEO_USB001_ADC) == 0)        &&
-  //    (LL_ADC_REG_IsConversionOngoing(P_NUCLEO_USB001_ADC) == 0)   )
   {
     LL_ADC_REG_StartConversion(P_NUCLEO_USB001_ADC);
   }
-  //else
-  //{
-  //  /* Error: ADC conversion start could not be performed */
-  //}
 #endif /* USE_HAL_ADC */
 
   USBPDM1_CRC_Init();
@@ -1202,7 +1139,7 @@ void USBPDM1_SPI_Init(uint8_t PortNum)
   LL_GPIO_SetPinPull(LL_SPI_TX_CLK_PORT(PortNum),   LL_SPI_TX_CLK_PIN(PortNum), LL_GPIO_PULL_NO);
 
   /* Configure SPI communication */
-  LL_SPI_SetTransferDirection(TX_SPI(PortNum),LL_SPI_FULL_DUPLEX);
+  LL_SPI_SetTransferDirection(TX_SPI(PortNum), LL_SPI_FULL_DUPLEX);
   LL_SPI_SetClockPhase(TX_SPI(PortNum), LL_SPI_PHASE_1EDGE);
   LL_SPI_SetClockPolarity(TX_SPI(PortNum), LL_SPI_POLARITY_LOW);
   LL_SPI_SetTransferBitOrder(TX_SPI(PortNum), LL_SPI_LSB_FIRST);
@@ -1299,7 +1236,7 @@ void USBPDM1_RX_TIM_Init(uint8_t PortNum)
   TIM_IC_InitTypeDef     sConfigIC;
 
   phtimrx->Instance           = RX_TIM(PortNum);
-  phtimrx->Init.Prescaler     = (HAL_RCC_GetHCLKFreq() / (20 * BMC_TX_FREQ)) - 1 ;    // 3;
+  phtimrx->Init.Prescaler     = (HAL_RCC_GetHCLKFreq() / (20 * BMC_TX_FREQ)) - 1 ;
   phtimrx->Init.CounterMode   = TIM_COUNTERMODE_UP;
   phtimrx->Init.Period        = 255;
   phtimrx->Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -1345,9 +1282,9 @@ void USBPDM1_COUNTTIM_Init(uint8_t PortNum)
 
   TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig;
   TIM_OC_InitTypeDef sConfigOC;
-  
+
   htimcountrx->Instance                 = RX_COUNTTIM(PortNum);
-  htimcountrx->Init.Prescaler           = ( HAL_RCC_GetHCLKFreq() / 1000000 ) - 1; /* 1us Resolution */
+  htimcountrx->Init.Prescaler           = (HAL_RCC_GetHCLKFreq() / 1000000) - 1;   /* 1us Resolution */
   htimcountrx->Init.CounterMode         = TIM_COUNTERMODE_UP;
   htimcountrx->Init.Period              = DMA_TIME_ELAPSED;
   htimcountrx->Init.ClockDivision       = TIM_CLOCKDIVISION_DIV1;
@@ -1403,7 +1340,7 @@ void USBPDM1_TX_DMA_Init(uint8_t PortNum)
   DMA_HandleTypeDef *hdma_tx_spi = &(Ports[PortNum].hdmatx);
   /* Set the DMA handler of the peripheral handler */
   Ports[PortNum].hspitx.hdmatx = hdma_tx_spi;
-  
+
   hdma_tx_spi->Instance                 = TX_DMACH(PortNum);
   hdma_tx_spi->Init.Direction           = DMA_MEMORY_TO_PERIPH;
   hdma_tx_spi->Init.PeriphInc           = DMA_PINC_DISABLE;
@@ -1434,7 +1371,7 @@ void USBPDM1_RX_EnableInterrupt(uint8_t PortNum)
   HAL_TIM_IC_Start_IT(&(Ports[PortNum].htimrx), RX_TIMCH(PortNum));
 #else
   LL_TIM_EnableCounter(RX_TIM(PortNum));
-  HAL_DMA_Start(&(Ports[PortNum].hdmarx), (uint32_t)&((RX_TIM(PortNum))->CCR1), (uint32_t)Ports[PortNum].pRxBuffPtr, PHY_MAX_RAW_SIZE);
+  HAL_DMA_Start(&(Ports[PortNum].hdmarx), (uint32_t) & ((RX_TIM(PortNum))->CCR1), (uint32_t)Ports[PortNum].pRxBuffPtr, PHY_MAX_RAW_SIZE);
   LL_TIM_EnableIT_CC1(RX_TIM(PortNum));
   LL_TIM_CC_EnableChannel(RX_TIM(PortNum), LL_TIM_CHANNEL_CH1);
 #endif /* USE_HAL_TIM */
@@ -1607,28 +1544,28 @@ USBPD_StatusTypeDef USBPD_HW_IF_SendBuffer(uint8_t PortNum, uint8_t *pBuffer, ui
     }
 
     /* Start the timer clocking the SPI */
-  /* Start the timer clocking the SPI */
+    /* Start the timer clocking the SPI */
 #if defined(USE_HAL_TIM)
-  HAL_TIM_PWM_Start(&(Ports[PortNum].htimtx), TX_TIMCH(PortNum));
+    HAL_TIM_PWM_Start(&(Ports[PortNum].htimtx), TX_TIMCH(PortNum));
 #else
-  LL_TIM_CC_EnableChannel(TX_TIM(PortNum), TX_TIMCH(PortNum));
-  if (IS_TIM_BREAK_INSTANCE(TX_TIM(PortNum)))
-  {
-    LL_TIM_EnableAllOutputs(TX_TIM(PortNum));
-  }
-  LL_TIM_EnableCounter(TX_TIM(PortNum));
+    LL_TIM_CC_EnableChannel(TX_TIM(PortNum), TX_TIMCH(PortNum));
+    if (IS_TIM_BREAK_INSTANCE(TX_TIM(PortNum)))
+    {
+      LL_TIM_EnableAllOutputs(TX_TIM(PortNum));
+    }
+    LL_TIM_EnableCounter(TX_TIM(PortNum));
 #endif
 
 #if defined(USE_HAL_SPI)
     /* Start transmission */
     SINGLE_SPI_Transmit_DMA(&(Ports[PortNum].hspitx), Ports[PortNum].pTxBuffPtr, size);
 #else
-   /* Configure SPI DMA TX Addresses parameters */
-   LL_DMA_ConfigAddresses(TX_DMA(PortNum),
-                         TX_DMACH_NUMBER(PortNum),
-                         (uint32_t)Ports[PortNum].pTxBuffPtr,
-                         LL_SPI_DMA_GetRegAddr(TX_SPI(PortNum)),
-                         LL_DMA_GetDataTransferDirection(TX_DMA(PortNum), TX_DMACH_NUMBER(PortNum)));
+    /* Configure SPI DMA TX Addresses parameters */
+    LL_DMA_ConfigAddresses(TX_DMA(PortNum),
+                           TX_DMACH_NUMBER(PortNum),
+                           (uint32_t)Ports[PortNum].pTxBuffPtr,
+                           LL_SPI_DMA_GetRegAddr(TX_SPI(PortNum)),
+                           LL_DMA_GetDataTransferDirection(TX_DMA(PortNum), TX_DMACH_NUMBER(PortNum)));
 
     /* Set SPI DMA transfer lenght */
     LL_DMA_SetDataLength(TX_DMA(PortNum), TX_DMACH_NUMBER(PortNum), size);
@@ -1636,7 +1573,7 @@ USBPD_StatusTypeDef USBPD_HW_IF_SendBuffer(uint8_t PortNum, uint8_t *pBuffer, ui
     /* Set SPI DMA parity */
     if ((size & 0x1U) == 0U)
     {
-       LL_SPI_SetDMAParity_TX(TX_SPI(PortNum), LL_SPI_DMA_PARITY_EVEN);
+      LL_SPI_SetDMAParity_TX(TX_SPI(PortNum), LL_SPI_DMA_PARITY_EVEN);
     }
     else
     {
@@ -1732,7 +1669,7 @@ USBPD_StatusTypeDef HW_IF_CheckBusIdle(uint8_t PortNum)
   HAL_TIM_IC_Start(&(Ports[PortNum].htimrx), RX_TIMCH(PortNum));
 #else
   LL_TIM_IC_SetPolarity(RX_TIM(PortNum), LL_TIM_CHANNEL_CH1, LL_TIM_IC_POLARITY_BOTHEDGE);
-  HAL_DMA_Start(&(Ports[PortNum].hdmarx), (uint32_t)&((RX_TIM(PortNum))->CCR1), (uint32_t)Ports[PortNum].pRxBuffPtr, PHY_MAX_RAW_SIZE);
+  HAL_DMA_Start(&(Ports[PortNum].hdmarx), (uint32_t) & ((RX_TIM(PortNum))->CCR1), (uint32_t)Ports[PortNum].pRxBuffPtr, PHY_MAX_RAW_SIZE);
   LL_TIM_EnableDMAReq_CC1(RX_TIM(PortNum));
   LL_TIM_CC_EnableChannel(RX_TIM(PortNum), LL_TIM_CHANNEL_CH1);
   LL_TIM_EnableCounter(RX_TIM(PortNum));
@@ -1761,9 +1698,6 @@ USBPD_StatusTypeDef HW_IF_CheckBusIdle(uint8_t PortNum)
   /* enable analog watchdog in CCx line to recognize if noise or transmission */
   if (LL_ADC_REG_IsConversionOngoing(P_NUCLEO_USB001_ADC) == 1)
   {
-    /* Stop ADC group regular conversion before modifying AWD parameters */
-//    LL_ADC_REG_StopConversion(P_NUCLEO_USB001_ADC);
-
     adc_conversion_stopped = 1;
   }
 
@@ -1773,10 +1707,8 @@ USBPD_StatusTypeDef HW_IF_CheckBusIdle(uint8_t PortNum)
   /* Set ADC analog watchdog: channels to be monitored */
   LL_ADC_SetAnalogWDMonitChannels(P_NUCLEO_USB001_ADC, __LL_ADC_ANALOGWD_CHANNEL_GROUP(CCPortADCCh, LL_ADC_GROUP_REGULAR));
 
-  if(adc_conversion_stopped != 0)
+  if (adc_conversion_stopped != 0)
   {
-    /* Start ADC group regular conversion */
-//    LL_ADC_REG_StartConversion(P_NUCLEO_USB001_ADC);
   }
 #endif /* USE_HAL_ADC */
 
@@ -2300,7 +2232,8 @@ void DelayElapsedCallback(uint8_t PortNum)
     do
     {
       counter = LL_TIM_GetCounter(RX_COUNTTIM(PortNum));
-    } while (counter < (tim_count + DMA_TIME_DURATION));
+    }
+    while (counter < (tim_count + DMA_TIME_DURATION));
 
     /* wait few us and so check again the dma count */
     tim_count = MIN(counter, DMA_TIME_THRESHOLD2);
@@ -2309,7 +2242,8 @@ void DelayElapsedCallback(uint8_t PortNum)
     do
     {
       counter = LL_TIM_GetCounter(RX_COUNTTIM(PortNum));
-    } while (counter < (tim_count + DMA_TIME_DURATION));
+    }
+    while (counter < (tim_count + DMA_TIME_DURATION));
 #endif /* USE_HAL_TIM */
 
     //GPIOA->BSRR = GPIO_PIN_8;
@@ -2705,6 +2639,7 @@ __STATIC_INLINE void SINGLE_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GP
   GPIOx->PUPDR = temp;
 }
 
+#if defined(USE_HAL_TIM)
 /**
   * @brief  Stops the TIM Output Compare signal generation in interrupt mode.
   * @param  htim    TIM Output Compare handle
@@ -2715,9 +2650,8 @@ __STATIC_INLINE void SINGLE_GPIO_Init(GPIO_TypeDef  *GPIOx, GPIO_InitTypeDef *GP
   *            @arg TIM_CHANNEL_3: TIM Channel 3 selected
   *            @arg TIM_CHANNEL_4: TIM Channel 4 selected
   * @param  tim_it  TIM Channel IT
-  * @retval HAL status
+  * @retval None
   */
-#if defined(USE_HAL_TIM)
 __STATIC_INLINE void SINGLE_TIM_OC_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Channel, uint32_t tim_it)
 {
   /* Check the parameters */
@@ -2738,6 +2672,17 @@ __STATIC_INLINE void SINGLE_TIM_OC_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Cha
   LL_TIM_DisableCounter(htim->Instance);
 }
 #else
+/**
+  * @brief  Stops the TIM Output Compare signal generation in interrupt mode.
+  * @param  PortNum Port Number
+  * @param  Channel TIM Channel to be disabled
+  *          This parameter can be one of the following values:
+  *            @arg TIM_CHANNEL_1: TIM Channel 1 selected
+  *            @arg TIM_CHANNEL_2: TIM Channel 2 selected
+  *            @arg TIM_CHANNEL_3: TIM Channel 3 selected
+  *            @arg TIM_CHANNEL_4: TIM Channel 4 selected
+  * @retval None
+  */
 __STATIC_INLINE void SINGLE_TIM_OC_Stop_IT(uint8_t PortNum, uint32_t Channel)
 {
   LL_TIM_DisableIT_CC1(RX_COUNTTIM(PortNum));
@@ -2752,6 +2697,13 @@ __STATIC_INLINE void SINGLE_TIM_OC_Stop_IT(uint8_t PortNum, uint32_t Channel)
 #endif /* USE_HAL_TIM */
 
 #if defined(USE_HAL_SPI)
+/**
+  * @brief  SPI Transmit
+  * @param  hspi    SPI handle
+  * @param  pData   Pointer on the data
+  * @param  Size    Size of the data
+  * @retval None
+  */
 __STATIC_INLINE void SINGLE_SPI_Transmit_DMA(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size)
 {
   /* Enable the Tx DMA channel */
@@ -2763,6 +2715,7 @@ __STATIC_INLINE void SINGLE_SPI_Transmit_DMA(SPI_HandleTypeDef *hspi, uint8_t *p
 }
 #endif /* USE_HAL_SPI */
 
+#if defined(USE_HAL_TIM)
 /**
   * @brief  Stops the TIM Input Capture measurement in interrupt mode.
   * @param  htim    TIM handle
@@ -2773,9 +2726,8 @@ __STATIC_INLINE void SINGLE_SPI_Transmit_DMA(SPI_HandleTypeDef *hspi, uint8_t *p
   *            @arg TIM_CHANNEL_3: TIM Channel 3 selected
   *            @arg TIM_CHANNEL_4: TIM Channel 4 selected
   * @param  tim_it  TIM Channel IT
-  * @retval HAL status
+  * @retval None
   */
-#if defined(USE_HAL_TIM)
 __STATIC_INLINE void SINGLE_TIM_IC_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Channel, uint32_t tim_it)
 {
   /* Check the parameters */
@@ -2787,6 +2739,17 @@ __STATIC_INLINE void SINGLE_TIM_IC_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Cha
   LL_TIM_DisableCounter(htim->Instance);
 }
 #else
+/**
+  * @brief  Stops the TIM Input Capture measurement in interrupt mode.
+  * @param  PortNum Port Number
+  * @param  Channel TIM Channels to be disabled
+  *          This parameter can be one of the following values:
+  *            @arg TIM_CHANNEL_1: TIM Channel 1 selected
+  *            @arg TIM_CHANNEL_2: TIM Channel 2 selected
+  *            @arg TIM_CHANNEL_3: TIM Channel 3 selected
+  *            @arg TIM_CHANNEL_4: TIM Channel 4 selected
+  * @retval None
+  */
 __STATIC_INLINE void SINGLE_TIM_IC_Stop_IT(uint8_t PortNum, uint32_t Channel)
 {
   LL_TIM_DisableIT_CC1(RX_TIM(PortNum));

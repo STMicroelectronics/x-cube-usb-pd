@@ -406,7 +406,7 @@ typedef struct
                               else \
                                 LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_TIM15); \
                               } while(0)
-                                
+
 #define RX_TIM_CLK_ENABLE(PortNum) do { \
                               if (PortNum==0) \
                                 LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM3); \
@@ -442,11 +442,11 @@ typedef struct
                                 LL_APB1_GRP2_DisableClock(LL_APB1_GRP2_PERIPH_TIM17); \
                               } while(0)
 #endif /* USE_HAL_TIM */
-                                
+
 
 
 /* MSP MACRO */
-                                
+
 #if defined(USE_HAL_TIM)
 #else
 #define TX_TIMCH_GPIO_CLK_ENABLE(PortNum) do { \

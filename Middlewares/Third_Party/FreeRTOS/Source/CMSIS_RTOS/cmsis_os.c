@@ -57,8 +57,8 @@
   ******************************************************************************
   * @file    cmsis_os.c
   * @author  MCD Application Team
-  * @date    03-March-2017
-  * @brief   CMSIS-RTOS API implementation for FreeRTOS V9.0.0
+  * @date    13-July-2017
+  * @brief   CMSIS-RTOS API implementation for FreeRTOS V10.0.1
   ******************************************************************************
   * @attention
   *
@@ -107,6 +107,7 @@
   #define __ASM            __asm                                      
   #define __INLINE         __inline                                     
   #define __STATIC_INLINE  static __inline
+
   #include "cmsis_armcc.h"
 
 /*
@@ -117,7 +118,6 @@
   #define __ASM            __asm                                      /*!< asm keyword for GNU Compiler          */
   #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
   #define __STATIC_INLINE  static inline
-
 
   #include "cmsis_gcc.h"
 

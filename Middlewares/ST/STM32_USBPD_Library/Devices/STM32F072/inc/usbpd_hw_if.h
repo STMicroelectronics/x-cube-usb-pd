@@ -289,7 +289,7 @@ P1 CC2 = ADC DMA Index 4
 #define CAD_tCCDebounce_threshold               100             /**< tCCDebounce threshold = 100ms  */
 #define CAD_tCCDebounceDetach_threshold         10              /**< tCCDebounce detach threshold = 10ms  */
 
-#define CAD_threshold_VBus                      MV2ADC(650)     /**< Vbus Threshold **/
+#define CAD_threshold_VBus                      MV2ADC(600)     /**< Vbus Threshold set to 4566 mV **/
 /* END OF NEW CAD DEFS */
 
 #define BIST_MAX_LENGTH                         (BIST_CARRIER_MODE_MS*600)/(TX_BUFFER_LEN*32)
@@ -297,11 +297,6 @@ P1 CC2 = ADC DMA Index 4
 /* Exported variables --------------------------------------------------------*/
 /* Exported functions --------------------------------------------------------*/
 
-/**
-  * @brief  Check if VBus is present or not
-  * @param  PortNum  port
-  * @retval Return 1 is VBUS is present (0 otherwise)
-  */
 void    USBPD_DMA_PORT1_IRQHandler(void);
 void    USBPD_DMA_PORT0_IRQHandler(void);
 void    USBPD_RX_PORT1_Interrupt_IRQHandler(void);
@@ -466,14 +461,18 @@ void USBPD_HW_IF_GlobalHwInit(void);
   */
 USBPD_StatusTypeDef USBPD_HW_IF_SendBuffer(uint8_t PortNum, uint8_t *pBuffer, uint32_t Bitsize);
 
+#if defined(_SRC) || defined(_DRP)
 /**
   * @brief  Enable the VBUS on a specified port.
-  * @param  PortNum The port handle.
-  * @param  state   ENABLE or DISABLE.
-  * @param  role    The role of the port.
+  * @param  PortNum     The port handle.
+  * @param  state       ENABLE or DISABLE.
+  * @param  Cc          CC pin based on @ref CCxPin_TypeDef
+  * @param  VconnState  VCONN State activation
+  * @param  role        The role of the port.
   * @retval HAL status
   */
 HAL_StatusTypeDef HW_IF_PWR_Enable(uint8_t PortNum, USBPD_FunctionalState state, CCxPin_TypeDef Cc, uint32_t VconnState, USBPD_PortPowerRole_TypeDef role);
+#endif /* _SRC || _DRP */
 
 /**
   * @brief  Disable Discharge path
@@ -568,6 +567,7 @@ void USBPD_HW_IF_Send_BIST_Pattern(uint8_t PortNum);
   */
 void HW_SignalDetachment(uint8_t PortNum, CCxPin_TypeDef cc);
 
+#if defined(USE_HAL_TIM)
 /**
   * @brief  Stops the Input Channel Timer.
   * @param  htim    Timer handler.
@@ -575,10 +575,21 @@ void HW_SignalDetachment(uint8_t PortNum, CCxPin_TypeDef cc);
   * @param  tim_it  timer interrupt.
   * @retval none
   */
-#if defined(USE_HAL_TIM)
 void USBPD_SINGLE_TIM_IC_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Channel, uint32_t tim_it);
 #else
+/**
+  * @brief  Stops the Input Channel Timer.
+  * @param  PortNum Port number
+  * @param  Channel Timer channel.
+  * @retval none
+  */
 void USBPD_SINGLE_TIM_IC_Stop_IT(uint8_t PortNum, uint32_t Channel);
+
+/**
+  * @brief  Output Compare callback in non blocking mode
+  * @param  PortNum Port number
+  * @retval None
+  */
 void DelayElapsedCallback(uint8_t PortNum);
 #endif /* USE_HAL_TIM */
 

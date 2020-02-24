@@ -164,8 +164,8 @@ __ALIGN_BEGIN static uint8_t USBD_BB_CfgDesc[USB_BB_CONFIG_DESC_SIZ]  __ALIGN_EN
   0x01,         /*bConfigurationValue: Configuration value*/
   0x00,         /*iConfiguration: Index of string descriptor describing
   the configuration*/
-  0x80,         /*bmAttributes: bus powered and Support Remote Wake-up */
-  0x32,         /*MaxPower 100 mA: this current is used for detecting Vbus*/
+  0xC0,         /*bmAttributes: bus powered and Support Remote Wake-up */
+  0x00,         /*MaxPower 100 mA: this current is used for detecting Vbus*/
   /* 09 */
 } ;
 

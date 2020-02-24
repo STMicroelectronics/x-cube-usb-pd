@@ -66,21 +66,11 @@ extern "C" {
 
 /* Exported typedef ----------------------------------------------------------*/
 /** @defgroup USBPD_DEVICE_PHY_Exported_TypeDef USBPD DEVICE PHY Exported TypeDef
-  * @brief   The PHY export the callbacks to receive feedbacks from the @ref USBPD_CORE_PRL
+  * @brief   The PHY export the callbacks to receive feedbacks from the USBPD_CORE_PRL
   * @{
   */
 /**
-  * @brief USB PD Board Version MB1257B/C
-  */
-typedef enum
-{
-  USBPD_BOARDVERSION_INVALID   = 0,
-  USBPD_BOARDVERSION_MB1257_C  = 1,
-  USBPD_BOARDVERSION_MB1257_B  = 2,
-} USBPD_BoardVersionTypeDef;
-
-/**
-  * @brief CallBacks exposed by the @ref USBPD_DEVICE_PHY to the @ref USBPD_CORE_PRL
+  * @brief CallBacks exposed by the @ref USBPD_DEVICE_PHY to the USBPD_CORE_PRL
   */
 typedef struct
 {
@@ -108,14 +98,6 @@ typedef struct
    * @retval None
    */
   void (*USBPD_PHY_ResetCompleted)(uint8_t PortNum, USBPD_SOPType_TypeDef Type);
-
-  /**
-   * @brief  Reports the PHY layer discarded last message to sent because the bus is not idle.
-   * @param  PortNum:    The handle of the port
-   * @retval None
-   * @note See Section 5.7 of USB Power Delivery specification Rev2, V1.1
-   */
-  void (*USBPD_PHY_ChannelIdleAfterBusy)(uint8_t PortNum);
 
   /**
    * @brief  Reports to the PRL that a Bist operation has been completed.
@@ -153,9 +135,9 @@ typedef struct
   *      </ul>
   * @{
   */
-USBPD_StatusTypeDef USBPD_PHY_Init(uint8_t PortNum, USBPD_PHY_Callbacks *cbs, uint8_t *pRxBuffer, USBPD_PortPowerRole_TypeDef role, uint32_t SupportedSOP);
+USBPD_StatusTypeDef USBPD_PHY_Init(uint8_t PortNum, const USBPD_PHY_Callbacks *cbs, uint8_t *pRxBuffer, USBPD_PortPowerRole_TypeDef role, uint32_t SupportedSOP);
 void                USBPD_PHY_Reset(uint8_t PortNum);
-uint32_t            USBPD_PHY_GetRetryTimerValue(uint8_t PortNum);
+uint16_t            USBPD_PHY_GetRetryTimerValue(uint8_t PortNum);
 
 USBPD_StatusTypeDef USBPD_PHY_ResetRequest(uint8_t PortNum, USBPD_SOPType_TypeDef Type);
 USBPD_StatusTypeDef USBPD_PHY_SendMessage(uint8_t PortNum, USBPD_SOPType_TypeDef Type, uint8_t *pBuffer, uint16_t Size);
@@ -165,7 +147,9 @@ void                USBPD_PHY_SetResistor_SinkTxNG(uint8_t PortNum);
 void                USBPD_PHY_SetResistor_SinkTxOK(uint8_t PortNum);
 uint8_t             USBPD_PHY_IsResistor_SinkTxOk(uint8_t PortNum);
 void                USBPD_PHY_FastRoleSwapSignalling(uint8_t PortNum);
-void                USBPD_PHY_SOPSupported(uint8_t PortNum,uint32_t SOPSupported);
+void                USBPD_PHY_SOPSupported(uint8_t PortNum, uint32_t SOPSupported);
+void                USBPD_PHY_EnableRX(uint8_t PortNum);
+void                USBPD_PHY_DisableRX(uint8_t PortNum);
 
 /**
   * @}

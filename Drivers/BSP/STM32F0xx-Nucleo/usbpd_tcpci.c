@@ -137,7 +137,7 @@ typedef struct{
 #endif /* _RTOS */
 
 #if defined(_TRACE)
-#define POWER_DEBUG(__MSG__,__SIZE__)   USBPD_TRACE_Add(USBPD_TRACE_DEBUG, PortNum, 0,__MSG__,__SIZE__);
+#define POWER_DEBUG(__MSG__,__SIZE__)   USBPD_TRACE_Add(USBPD_TRACE_DEBUG, PortNum, 0,(uint8_t*)__MSG__,__SIZE__);
 #else
 #define POWER_DEBUG(__MSG__,__SIZE__)
 #endif /* _TRACE */
@@ -198,6 +198,11 @@ TCPC_DrvTypeDef* DevicesDrivers[USBPD_PORT_COUNT] = {
 #endif /* TCPC_FL7101 */
 };
 
+#if defined(_GUI_INTERFACE)
+const uint8_t HWBoardVersionName[] = "STM32F072RB";
+const uint8_t PDTypeName[]         = "TCPM";
+#endif /* _GUI_INTERFACE */
+
 /**
   * @}
   */
@@ -219,6 +224,26 @@ static uint32_t  TCPI_DeInit(I2C_HandleTypeDef *hi2c);
 /** @defgroup STM32F0XX_NUCLEO_TCPI_Functions TCPI Exported Functions
   * @{
   */
+
+#if defined(_GUI_INTERFACE)
+/**
+  * @brief  This method returns HW board version name
+  * @retval HW Board version name
+  */
+const uint8_t* BSP_GetHWBoardVersionName(void)
+{
+  return HWBoardVersionName;
+}
+
+/**
+  * @brief  This method returns HW PD Type name
+  * @retval HW Board version name
+  */
+const uint8_t* BSP_GetPDTypeName(void)
+{
+  return PDTypeName;
+}
+#endif /* _GUI_INTERFACE */
 
 /** @defgroup STM32F0XX_NUCLEO_TCPI_Functions_Grp1 TCPI Exported Functions for I2C Link
   * @{

@@ -10,8 +10,6 @@ This Expansion Package supports various hardware implementations covering most o
    
 ## Boards available
   * ON-FUSB3-STM32 (https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-3rd-party-evaluation-tools/on-fusb3-stm32.html)
-	* P-NUCLEO-USB001 (https://www.st.com/en/evaluation-tools/p-nucleo-usb001.html)
-	* P-NUCLEO-USB002 (https://www.st.com/en/evaluation-tools/p-nucleo-usb002.html)
   
 ## Troubleshooting
 

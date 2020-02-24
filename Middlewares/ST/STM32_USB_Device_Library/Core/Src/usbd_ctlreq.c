@@ -28,7 +28,9 @@
 /* Includes ------------------------------------------------------------------*/
 #include "usbd_ctlreq.h"
 #include "usbd_ioreq.h"
-
+#include "usbpd_core.h"
+#include "usbpd_trace.h"
+#include "string.h"
 
 /** @addtogroup STM32_USBD_STATE_DEVICE_LIBRARY
   * @{
@@ -123,32 +125,37 @@ USBD_StatusTypeDef  USBD_StdDevReq (USBD_HandleTypeDef *pdev , USBD_SetupReqType
   switch (req->bRequest) 
   {
   case USB_REQ_GET_DESCRIPTOR: 
-    
+    USBPD_TRACE_Add(USBPD_TRACE_DEBUG, 0, 0, "USB_REQ_GET_DESCRIPTOR", strlen("USB_REQ_GET_DESCRIPTOR"));
     USBD_GetDescriptor (pdev, req) ;
     break;
     
   case USB_REQ_SET_ADDRESS:                      
+    USBPD_TRACE_Add(USBPD_TRACE_DEBUG, 0, 0, "USB_REQ_SET_ADDRESS", strlen("USB_REQ_SET_ADDRESS"));
     USBD_SetAddress(pdev, req);
     break;
     
-  case USB_REQ_SET_CONFIGURATION:                    
+  case USB_REQ_SET_CONFIGURATION:     
+    USBPD_TRACE_Add(USBPD_TRACE_DEBUG, 0, 0, "USB_REQ_SET_CONFIGURATION", strlen("USB_REQ_SET_CONFIGURATION"));
     USBD_SetConfig (pdev , req);
     break;
     
-  case USB_REQ_GET_CONFIGURATION:                 
+  case USB_REQ_GET_CONFIGURATION:  
+    USBPD_TRACE_Add(USBPD_TRACE_DEBUG, 0, 0, "USB_REQ_GET_CONFIGURATION", strlen("USB_REQ_GET_CONFIGURATION"));
     USBD_GetConfig (pdev , req);
     break;
     
   case USB_REQ_GET_STATUS:                                  
+    USBPD_TRACE_Add(USBPD_TRACE_DEBUG, 0, 0, "USB_REQ_GET_STATUS", strlen("USB_REQ_GET_STATUS"));
     USBD_GetStatus (pdev , req);
     break;
-    
-    
+        
   case USB_REQ_SET_FEATURE:   
+    USBPD_TRACE_Add(USBPD_TRACE_DEBUG, 0, 0, "USB_REQ_SET_FEATURE", strlen("USB_REQ_SET_FEATURE"));
     USBD_SetFeature (pdev , req);    
     break;
     
   case USB_REQ_CLEAR_FEATURE:                                   
+    USBPD_TRACE_Add(USBPD_TRACE_DEBUG, 0, 0, "USB_REQ_CLEAR_FEATURE", strlen("USB_REQ_CLEAR_FEATURE"));
     USBD_ClrFeature (pdev , req);
     break;
     

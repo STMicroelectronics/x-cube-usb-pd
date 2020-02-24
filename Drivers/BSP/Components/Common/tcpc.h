@@ -59,35 +59,63 @@
   * @{
   */
  
+/** @defgroup TCPC_Internal_Constants TCPC Internal Constants
+  * @{
+  */
 #if !defined(__PACKED)
   #define __PACKED
 #endif
+/**
+  * @}
+  */
 
 /** @defgroup TCPC_Exported_Constants TCPC Exported Constants
   * @{
   */
-enum tcpc_cc_voltage_status {
+/** @defgroup TCPC_EC_TYPEC_CC_VOLT TCPC TYPEC CC Voltage Status defines
+  * @{
+  */
+typedef enum  {
   TYPEC_CC_VOLT_OPEN = 0,
   TYPEC_CC_VOLT_RA = 1,
   TYPEC_CC_VOLT_RD = 2,
   TYPEC_CC_VOLT_SNK_DEF = 5,
   TYPEC_CC_VOLT_SNK_1_5 = 6,
   TYPEC_CC_VOLT_SNK_3_0 = 7,
-};
+}TCPC_CC_Volt_Status_TypeDef;
+/**
+  * @}
+  */
 
+/** @defgroup TCPC_EC_TYPEC_CC TCPC TYPEC CC defines
+  * @{
+  */
 typedef enum  {
   TYPEC_CC_RA = 0,
   TYPEC_CC_RP = 1,
   TYPEC_CC_RD = 2,
   TYPEC_CC_OPEN = 3,
 }TCPC_CC_Pull_TypeDef;
+/**
+  * @}
+  */
 
+/** @defgroup TCPC_EC_TYPEC_RP_VALUE TCPC TYPEC RP VALUE defines
+  * @{
+  */
 typedef enum  {
   TYPEC_RP_VALUE_DEFAULT = 0,
   TYPEC_RP_VALUE_1P5A = 1,
   TYPEC_RP_VALUE_3P0A = 2,
 }TCPC_RP_Value_TypeDef;
 
+/**
+  * @}
+  */
+
+/** @defgroup TCPC_EC_TX_TYPE TCPC TX Type defines
+  * @{
+  */
 enum tcpm_transmit_type {
   TCPC_TX_SOP = 0,
   TCPC_TX_SOP_PRIME = 1,
@@ -99,17 +127,35 @@ enum tcpm_transmit_type {
   TCPC_TX_BIST_MODE_2 = 7
 };
 
+/**
+  * @}
+  */
+
+/** @defgroup TCPC_EC_TX_COMPLETE TCPC TX Complete Values defines
+  * @{
+  */
 enum tcpc_transmit_complete {
   TCPC_TX_COMPLETE_SUCCESS =   0,
   TCPC_TX_COMPLETE_DISCARDED = 1,
   TCPC_TX_COMPLETE_FAILED =    2,
 };
 
+/**
+  * @}
+  */
+
+/** @defgroup TCPC_EC_HARD_RESET_VALUE TCPC HARD RESET VALUE defines
+  * @{
+  */
 typedef enum {
   TCPC_HARD_RESET_NONE      = 0, /*!< No hard reset ongoing         */
   TCPC_HARD_RESET_SENT      = 1, /*!< Hard reset has been sent      */
   TCPC_HARD_RESET_RECEIVED  = 2, /*!< Hard reset has been received  */
 }TCPC_hard_reset;
+
+/**
+  * @}
+  */
 
 /** @defgroup TCPC_EC_REG_ALERT TCPC REG_ALERT defines
   * @{
@@ -134,7 +180,7 @@ typedef enum {
 /**
   * @}
   */
-  
+
 /** @defgroup TCPC_EC_REG_ALERT_MASK TCPC TCPC_EC_REG_ALERT_MASK defines
   * @{
   */
@@ -346,8 +392,8 @@ typedef enum {
 /** @defgroup TCPC_EC_REG_MSG_HEADER_INFO TCPC REG_MSG_HEADER_INFO defines
   * @{
   */
-#define TCPC_REG_MSG_HEADER_INFO_SET(__DUALROLE__, __PROLE__) \
-      ((__DUALROLE__) << 3 | (USBPD_SPECIFICATION_REV2 << 1) | (__PROLE__))
+#define TCPC_REG_MSG_HEADER_INFO_SET(__DUALROLE__, __PROLE__, __PD_SPEC__) \
+      ((__DUALROLE__) << 3 | ((__PD_SPEC__) << 1) | (__PROLE__))
 #define TCPC_REG_MSG_HEADER_INFO_DROLE(__REG__) (((__REG__) & 0x8) >> 3)
 #define TCPC_REG_MSG_HEADER_INFO_PROLE(__REG__) ((__REG__) & 0x1)
 /**
@@ -358,6 +404,13 @@ typedef enum {
   * @{
   */
 #define TCPC_REG_RX_DETECT_SOP_HRST_MASK 0x21u
+#define TCPC_REG_RX_DETECT_SOP           (1 << 0)
+#define TCPC_REG_RX_DETECT_SOP1          (1 << 1)
+#define TCPC_REG_RX_DETECT_SOP2          (1 << 2)
+#define TCPC_REG_RX_DETECT_SOP_DBG1      (1 << 3)
+#define TCPC_REG_RX_DETECT_SOP_DBG2      (1 << 4)
+#define TCPC_REG_RX_DETECT_HARDRESET     (1 << 5)
+#define TCPC_REG_RX_DETECT_CABLERESET    (1 << 6)
 /**
   * @}
   */
@@ -380,7 +433,7 @@ typedef enum {
 /**
   * @}
   */
-  
+
 /** @defgroup TCPC_EC_REG_ALERT_VD TCPC REG_ALERT_VD defines
   * @{
   */
@@ -396,6 +449,9 @@ typedef enum {
   * @}
   */
 
+/** @defgroup TCPC_EC_REG_ADDRESS TCPC REG Address defines
+  * @{
+  */
 typedef enum {
   TCPC_REG_VENDOR_ID                   = 0x00u,
   TCPC_REG_PRODUCT_ID                  = 0x02u,
@@ -460,7 +516,15 @@ typedef enum {
   * @}
   */
 
+/**
+  * @}
+  */
+
 /** @defgroup TCPC_Exported_Types TCPC Exported Types
+  * @{
+  */
+
+/** @defgroup TCPC_ET_REG_INFOR TCPC Information Register
   * @{
   */
 
@@ -475,6 +539,14 @@ typedef union {
    uint16_t PD_INTERFACE_REV;
  }b;
 } regInformation_t;
+
+/**
+  * @}
+  */
+
+/** @defgroup TCPC_ET_REG_INFOR TCPC Information Register
+  * @{
+  */
 
 typedef union {
   uint16_t word[2];
@@ -535,6 +607,14 @@ typedef union {
   }s;
 } regAlert_t;
 
+/**
+  * @}
+  */
+
+/** @defgroup TCPC_ET_REG_INFOR TCPC Information Register
+  * @{
+  */
+
 typedef union {
   uint8_t byte[2];
   struct {
@@ -567,6 +647,14 @@ typedef union {
     }u2;
   }s;
 } regStatusMask_t;
+
+/**
+  * @}
+  */
+
+/** @defgroup TCPC_ET_REG_INFOR TCPC Information Register
+  * @{
+  */
 
 typedef union {
   uint8_t byte[5];
@@ -628,6 +716,14 @@ typedef union {
   }s;
 } regControl_t;
 
+/**
+  * @}
+  */
+
+/** @defgroup TCPC_ET_REG_INFOR TCPC Information Register
+  * @{
+  */
+
 typedef struct {
     /* CC_STATUS */
     union {
@@ -669,12 +765,28 @@ typedef struct {
     }u3;
 } regStatus_t;
 
+/**
+  * @}
+  */
+
+/** @defgroup TCPC_ET_REG_INFOR TCPC Information Register
+  * @{
+  */
+
 typedef union {
   uint8_t byte;
   struct {
     uint8_t COMMAND;
   }u;
 } regCommand_t;
+
+/**
+  * @}
+  */
+
+/** @defgroup TCPC_ET_REG_CAPA TCPC Capability Register
+  * @{
+  */
 
 typedef union {
   uint16_t word[3];
@@ -735,6 +847,14 @@ typedef union {
   }s;
 } regCapability_t;
 
+/**
+  * @}
+  */
+
+/** @defgroup TCPC_ET_REG_FRAME_INFO TCPC Frame Information Register
+  * @{
+  */
+
 typedef struct {
     union {
       uint8_t MESSAGE_HEADER_INFO;
@@ -761,6 +881,14 @@ typedef struct {
     }u2;
 } regFrameInfo_t;
 
+/**
+  * @}
+  */
+
+/** @defgroup TCPC_ET_REG_RX_FRAME TCPC RX Frame Register
+  * @{
+  */
+
 typedef union {
   uint8_t byte[4];
   struct {
@@ -772,6 +900,14 @@ typedef union {
   }b;
 } regRXFrame_t;
 
+/**
+  * @}
+  */
+
+/** @defgroup TCPC_ET_REG_TX_FRAME TCPC TX Frame Register
+  * @{
+  */
+
 typedef union {
   uint8_t byte[4];
   struct {
@@ -779,9 +915,17 @@ typedef union {
     uint8_t  TRANSMIT_BYTE_COUNT;
     uint8_t  TX_BUF_HEADER_BYTE_0;
     uint8_t  TX_BUF_HEADER_BYTE_1;
-//    uint8_t  TX_BUF_OBJ[28];
+    uint8_t  TX_BUF_OBJ[28];
   }u;
 } regTXFrame_t;
+
+/**
+  * @}
+  */
+
+/** @defgroup TCPC_ET_REG_VBUS TCPC VBUS Register
+  * @{
+  */
 
 typedef union {
   uint16_t word[5];
@@ -801,6 +945,14 @@ typedef union {
   }s;
 } regVBUS_t;
 
+/**
+  * @}
+  */
+
+/** @defgroup TCPC_ET_REG_DEVICES TCPC Devices Register
+  * @{
+  */
+
 typedef struct 
 {
   regInformation_t    TCPC_Information;
@@ -815,6 +967,18 @@ typedef struct
   regTXFrame_t        TXFrame;
   regVBUS_t           VBUS;
 } DeviceReg_t;
+
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */
+
+/** @defgroup TCPC_Exported_Callback  TCPC Exported Callback
+  * @{
+  */
 
 /** @defgroup TCPC_Driver_structure  TCPC Driver structure
   * @{
@@ -901,9 +1065,10 @@ typedef struct
     * @param  PortNum       PortNum number value
     * @param  PowerRole     Power role based on @ref USBPD_PortPowerRole_TypeDef
     * @param  DataRole      Data role based on @ref USBPD_PortDataRole_TypeDef
+    * @param  Specification PD Specification based on @ref USBPD_SpecRev_TypeDef
     * @retval USBPD status
     */
-  USBPD_StatusTypeDef (*set_msg_header)(uint32_t PortNum, USBPD_PortPowerRole_TypeDef PowerRole, USBPD_PortDataRole_TypeDef DataRole);
+  USBPD_StatusTypeDef (*set_msg_header)(uint32_t PortNum, USBPD_PortPowerRole_TypeDef PowerRole, USBPD_PortDataRole_TypeDef DataRole, USBPD_SpecRev_TypeDef Specification);
   /**
     * @brief  Enable or disable PD reception
     * @param  PortNum       PortNum number value
@@ -974,11 +1139,33 @@ typedef struct
   USBPD_StatusTypeDef (*tcpc_SinkTxOK)(uint32_t PortNum);
 
   /**
-   * @brief  function to check if SinkTxOK
-   * @param  PortNum  Number of the port.
-   * @retval USBPD status based on @ref USBPD_StatusTypeDef
+    * @brief  function to check if SinkTxOK
+    * @param  PortNum  Number of the port.
+    * @retval USBPD status based on @ref USBPD_StatusTypeDef
     */
   USBPD_StatusTypeDef (*tcpc_IfSinkTxOK)(uint32_t PortNum);
+
+  /**
+    * @brief  Enable RX
+    * @param  PortNum    Number of the port.
+    * @retval None
+    */
+  USBPD_StatusTypeDef (*tcpc_EnableRx)(uint32_t PortNum);
+
+  /**
+    * @brief  Disable RX
+    * @param  PortNum    Number of the port.
+    * @retval None
+    */
+  USBPD_StatusTypeDef (*tcpc_DisableRx)(uint32_t PortNum);
+
+  /**
+    * @brief  Activation or not of CAD detection
+    * @param  PortNum    Number of the port.
+    * @param  State      Activation or deactivation of CAD detection
+    * @retval None
+    */
+  USBPD_StatusTypeDef (*tcpc_CADDetection)(uint32_t PortNum, USBPD_FunctionalState State);
 }TCPC_DrvTypeDef;
 
 /**
@@ -1008,3 +1195,4 @@ typedef struct
 #endif /* __TCPC_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+

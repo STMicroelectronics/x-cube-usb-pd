@@ -79,6 +79,7 @@ void                                CAD_Init(uint8_t PortNum, USBPD_SettingsType
 uint32_t                            CAD_StateMachine(uint8_t PortNum, USBPD_CAD_EVENT *Event, CCxPin_TypeDef *CCXX);
 void                                CAD_Enter_ErrorRecovery(uint8_t PortNum);
 CAD_SNK_Source_Current_Adv_Typedef  CAD_GetRPValue(uint8_t PortNum);
+uint32_t                            CAD_Set_ResistorRp(uint8_t PortNum, CAD_RP_Source_Current_Adv_Typedef RpValue);
 
 /**
   * @}

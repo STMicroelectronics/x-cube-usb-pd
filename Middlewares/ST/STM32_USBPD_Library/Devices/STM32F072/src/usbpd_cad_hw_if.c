@@ -2,49 +2,23 @@
   ******************************************************************************
   * @file    usbpd_cad_hw_if.c
   * @author  MCD Application Team
-  * @brief   This file contains CAD interfaces functions.
+  * @brief   This file contains power hardware interface cad functions.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics International N.V.
+  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
-  * Redistribution and use in source and binary forms, with or without
-  * modification, are permitted, provided that the following conditions are met:
-  *
-  * 1. Redistribution of source code must retain the above copyright notice,
-  *    this list of conditions and the following disclaimer.
-  * 2. Redistributions in binary form must reproduce the above copyright notice,
-  *    this list of conditions and the following disclaimer in the documentation
-  *    and/or other materials provided with the distribution.
-  * 3. Neither the name of STMicroelectronics nor the names of other
-  *    contributors to this software may be used to endorse or promote products
-  *    derived from this software without specific written permission.
-  * 4. This software, including modifications and/or derivative works of this
-  *    software, must execute solely and exclusively on microcontroller or
-  *    microprocessor devices manufactured by or for STMicroelectronics.
-  * 5. Redistribution and use of this software other than as permitted under
-  *    this license is void and will automatically terminate your rights under
-  *    this license.
-  *
-  * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS"
-  * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT
-  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-  * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
-  * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT
-  * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
-  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  * This software component is licensed by ST under Ultimate Liberty license
+  * SLA0044, the "License"; You may not use this file except in compliance with
+  * the License. You may obtain a copy of the License at:
+  *                             www.st.com/SLA0044
   *
   ******************************************************************************
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "usbpd_def.h"
+#include "usbpd_core.h"
 #include "usbpd_trace.h"
 #include "usbpd_cad_hw_if.h"
 #include "usbpd_hw_if.h"
@@ -66,21 +40,20 @@
   * @brief CAD State value @ref USBPD_DEVICE_CAD_HW_IF
   * @{
   */
-typedef enum
-{
-  USBPD_CAD_STATE_RESET           =0,  /*!< USBPD CAD State Reset                              */
-  USBPD_CAD_STATE_DETACHED        =1,  /*!< USBPD CAD State No cable detected                  */
-  USBPD_CAD_STATE_ATTACHED_WAIT   =2,  /*!< USBPD CAD State Port partner detected              */
-  USBPD_CAD_STATE_ATTACHED        =3,  /*!< USBPD CAD State Port partner attached              */
-  USBPD_CAD_STATE_EMC             =4,  /*!< USBPD CAD State Electronically Marked Cable detected   */
-  USBPD_CAD_STATE_ATTEMC          =5,  /*!< USBPD CAD State Port Partner detected throug EMC   */
-  USBPD_CAD_STATE_ACCESSORY       =6,  /*!< USBPD CAD State Accessory detected                 */
-  USBPD_CAD_STATE_DEBUG           =7,  /*!< USBPD CAD State Debug detected                     */
-  USBPD_CAD_STATE_SWITCH_TO_SRC   =8,  /*!< USBPD CAD State switch to Source                   */
-  USBPD_CAD_STATE_SWITCH_TO_SNK   =9,  /*!< USBPD CAD State switch to Sink                     */
-  USBPD_CAD_STATE_ATTACHED_LEGACY =10, /*!< USBPD CAD State Port partner attached to legacy cable */
-  USPPD_CAD_STATE_UNKNOW          =11  /*!< USBPD CAD State unknow                             */
-} USBPD_CAD_STATE;
+#define USBPD_CAD_STATE_RESET           0u  /*!< USBPD CAD State Reset                              */
+#define USBPD_CAD_STATE_DETACHED        1u  /*!< USBPD CAD State No cable detected                  */
+#define USBPD_CAD_STATE_ATTACHED_WAIT   2u  /*!< USBPD CAD State Port partner detected              */
+#define USBPD_CAD_STATE_ATTACHED        3u  /*!< USBPD CAD State Port partner attached              */
+#define USBPD_CAD_STATE_EMC             4u  /*!< USBPD CAD State Electronically Marked Cable detected   */
+#define USBPD_CAD_STATE_ATTEMC          5u  /*!< USBPD CAD State Port Partner detected throug EMC   */
+#define USBPD_CAD_STATE_ACCESSORY       6u  /*!< USBPD CAD State Accessory detected                 */
+#define USBPD_CAD_STATE_DEBUG           7u  /*!< USBPD CAD State Debug detected                     */
+#define USBPD_CAD_STATE_SWITCH_TO_SRC   8u  /*!< USBPD CAD State switch to Source                   */
+#define USBPD_CAD_STATE_SWITCH_TO_SNK   9u  /*!< USBPD CAD State switch to Sink                     */
+/*USBPD_CAD_STATE_ATTACHED_LEGACY =10,*/ /*!< USBPD CAD State Port partner attached to legacy cable */
+#define USPPD_CAD_STATE_UNKNOW          11u  /*!< USBPD CAD State unknow                             */
+
+typedef uint32_t USBPD_CAD_STATE;
 /**
   * @}
   */
@@ -88,16 +61,14 @@ typedef enum
 /**
   * @brief USB PD CC lines HW condition
   */
-typedef enum
-{
-  HW_Detachment                         = 0x00,    /*!< Nothing attached                        */
-  HW_Attachment                         = 0x01,    /*!< Sink attached                           */
-  HW_PwrCable_NoSink_Attachment         = 0x02,    /*!< Powered cable without Sink attached     */
-  HW_PwrCable_Sink_Attachment           = 0x03,    /*!< Powered cable with Sink or VCONN-powered Accessory attached   */
-  HW_Debug_Attachment                   = 0x04,    /*!< Debug Accessory Mode attached           */
-  HW_AudioAdapter_Attachment            = 0x05     /*!< Audio Adapter Accessory Mode attached   */
-} CAD_HW_Condition_TypeDef;
+#define HW_Detachment                          0x00u    /*!< Nothing attached   */
+#define HW_Attachment                          0x01u    /*!< Sink attached   */
+#define HW_PwrCable_NoSink_Attachment          0x02u    /*!< Powered cable without Sink attached   */
+#define HW_PwrCable_Sink_Attachment            0x03u    /*!< Powered cable with Sink or VCONN-powered Accessory attached   */
+#define HW_Debug_Attachment                    0x04u    /*!< Debug Accessory Mode attached   */
+#define HW_AudioAdapter_Attachment             0x05u    /*!< Audio Adapter Accessory Mode attached   */
 
+typedef uint32_t CAD_HW_Condition_TypeDef;
 
 /**
   * @brief CAD State value @ref USBPD_DEVICE_CAD_HW_IF
@@ -176,8 +147,10 @@ void CAD_Init(uint8_t PortNum, USBPD_SettingsTypeDef *Settings, USBPD_ParamsType
 {
   CAD_HW_HandleTypeDef *_handle = &CAD_HW_Handles[PortNum];
 
+  /* store the settings and parameters */
   _handle->params = Params;
   Ports[PortNum].params = Params;
+  Ports[PortNum].params->RpResistor = vRp_3_0A;
   _handle->settings = Settings;
   _handle->state = USBPD_CAD_STATE_RESET;
   _handle->cc = CCNONE;
@@ -197,6 +170,29 @@ void CAD_Init(uint8_t PortNum, USBPD_SettingsTypeDef *Settings, USBPD_ParamsType
 }
 
 /**
+  * @brief  CAD enter error recovery state
+  * @param  PortNum     Index of current used port
+  * @retval None
+  */
+void CAD_Enter_ErrorRecovery(uint8_t PortNum)
+{
+  /* remove resistor terminaison
+     switch CAD_StateMachine to Error Recovery state
+     wakeup CAD task */
+}
+
+/**
+  * @brief  Set RPvalue for RP resistor
+  * @param  PortNum     Index of current used port
+  * @param  RpValue     RP value to set in devices based on @ref CAD_RP_Source_Current_Adv_Typedef
+  * @retval 0 success else error
+  */
+uint32_t CAD_Set_ResistorRp(uint8_t PortNum, CAD_RP_Source_Current_Adv_Typedef RpValue)
+{
+  return 1; /* Dynamique update of the resistor is not supported by AFE solution */
+}
+
+/**
   * @brief  CAD State machine
   * @param  PortNum Port
   * @param  Event   Pointer on CAD event based on @ref USBPD_CAD_EVENT
@@ -207,308 +203,103 @@ uint32_t CAD_StateMachine(uint8_t PortNum, USBPD_CAD_EVENT *Event, CCxPin_TypeDe
 {
   CAD_HW_HandleTypeDef *_handle = &CAD_HW_Handles[PortNum];
   uint32_t _timing;
-  
+
   /* set by default event to none */
   *Event = USBPD_CAD_EVENT_NONE;
-  
-  if(_handle->params->PE_SwapOngoing != 0)
+
+  if (_handle->params->PE_SwapOngoing != 0)
   {
     return 2;
   }
 
 
-  do{
-    
-    _timing = 2;
-  
-  /*Check CAD STATE*/
-  switch (_handle->state)
+  do
   {
-      /*CAD STATE DETACHED*/
-    case USBPD_CAD_STATE_RESET:
-    case USBPD_CAD_STATE_SWITCH_TO_SRC:
-    case USBPD_CAD_STATE_SWITCH_TO_SNK:
+
+    _timing = 2;
+
+    /*Check CAD STATE*/
+    switch (_handle->state)
     {
-      if (_handle->settings->CAD_RoleToggle == USBPD_TRUE)
+        /*CAD STATE DETACHED*/
+      case USBPD_CAD_STATE_RESET:
+      case USBPD_CAD_STATE_SWITCH_TO_SRC:
+      case USBPD_CAD_STATE_SWITCH_TO_SNK:
       {
-        _handle->tToogle_start = HAL_GetTick();
-        if (USBPD_CAD_STATE_SWITCH_TO_SRC == _handle->state)
-        {
-          USBPDM1_DeAssertRd(PortNum);
-          USBPDM1_AssertRp(PortNum);
-          _handle->params->PE_PowerRole = USBPD_PORTPOWERROLE_SRC;
-        }
-        if (USBPD_CAD_STATE_SWITCH_TO_SNK == _handle->state)
-        {
-          USBPDM1_DeAssertRp(PortNum);
-          USBPDM1_AssertRd(PortNum);
-          _handle->params->PE_PowerRole = USBPD_PORTPOWERROLE_SNK;
-        }
-      }
-      _handle->state = USBPD_CAD_STATE_DETACHED;
-    }
-    break;
-
-    case USBPD_CAD_STATE_DETACHED:
-    {
-      /* Check CCx HW condition*/
-      _handle->cc = Check_HW(PortNum);
-      /* Change the status on the basis of the HW event given by Check_HW() */
-      if (_handle->CurrentHWcondition != HW_Detachment)
-      {
-        _handle->OldHWCondtion = _handle->CurrentHWcondition;
-
-        if (_handle->CurrentHWcondition == HW_PwrCable_NoSink_Attachment)
-        {
-          _handle->state = USBPD_CAD_STATE_EMC;
-        }
-        else
-        {
-          /* Check if legacy cable have detected (refer to Type-C specification
-             'Legacy Cable Assemblies' */
-          if ((USBPD_PORTPOWERROLE_SNK == _handle->params->PE_PowerRole)
-              && Check_VBus(PortNum)
-              && (vRd_USB == _handle->SNK_Source_Current_Adv))
-          {
-            /* VBUS is already present. Port Partner does not support PD protocol (USB Type A/B)
-               Only Default USB Type-C Current Rp resistor (56 k) has been detected */
-            _handle->state = USBPD_CAD_STATE_ATTACHED_LEGACY;
-            *Event = USBPD_CAD_EVENT_LEGACY;
-          }
-          else
-          {
-            _handle->state = USBPD_CAD_STATE_ATTACHED_WAIT;
-            /* Get the time of this event */
-            CAD_tCCDebounce_start[PortNum] = HAL_GetTick();
-          }
-          break;
-        }
-      }
-      else
-      {
-        _handle->state = USBPD_CAD_STATE_DETACHED;
-
-        /* check if toggle timer ended */
         if (_handle->settings->CAD_RoleToggle == USBPD_TRUE)
         {
-          if ((USBPD_PORTPOWERROLE_SRC == _handle->params->PE_PowerRole)
-              && ((HAL_GetTick() - _handle->tToogle_start) > _handle->settings->CAD_SRCToogleTime))
+          _handle->tToogle_start = HAL_GetTick();
+          if (USBPD_CAD_STATE_SWITCH_TO_SRC == _handle->state)
           {
-            _handle->tToogle_start = HAL_GetTick();
-            _handle->params->PE_PowerRole = USBPD_PORTPOWERROLE_SNK;
-            USBPDM1_DeAssertRp(PortNum);
-            USBPDM1_AssertRd(PortNum);
-          }
-          if ((USBPD_PORTPOWERROLE_SNK == _handle->params->PE_PowerRole)
-              && ((HAL_GetTick() - _handle->tToogle_start) > _handle->settings->CAD_SNKToogleTime))
-          {
-            _handle->tToogle_start = HAL_GetTick();
-            _handle->params->PE_PowerRole = USBPD_PORTPOWERROLE_SRC;
             USBPDM1_DeAssertRd(PortNum);
             USBPDM1_AssertRp(PortNum);
+            _handle->params->PE_PowerRole = USBPD_PORTPOWERROLE_SRC;
+          }
+          if (USBPD_CAD_STATE_SWITCH_TO_SNK == _handle->state)
+          {
+            USBPDM1_DeAssertRp(PortNum);
+            USBPDM1_AssertRd(PortNum);
+            _handle->params->PE_PowerRole = USBPD_PORTPOWERROLE_SNK;
           }
         }
+        _handle->state = USBPD_CAD_STATE_DETACHED;
       }
-    }
-    break;
+      break;
 
-    /*CAD STATE ATTACHED WAIT*/
-    case USBPD_CAD_STATE_ATTACHED_WAIT:
-    {
-      /* Evaluate elapsed time in Attach_Wait state */
-      CAD_tCCDebounce[PortNum] = HAL_GetTick() - CAD_tCCDebounce_start[PortNum];
-      /* Check CCx HW condition*/
-      _handle->cc = Check_HW(PortNum);
-
-      if (!((_handle->CurrentHWcondition == HW_Detachment) || (_handle->CurrentHWcondition == HW_PwrCable_NoSink_Attachment))
-          && (_handle->CurrentHWcondition == _handle->OldHWCondtion))
-      {
-        if ((ADCxConvertedValues[VBUS_INDEX(PortNum)] > 300)
-            && (USBPD_PORTPOWERROLE_SRC == _handle->params->PE_PowerRole))
-        {
-          _handle->state = USBPD_CAD_STATE_ATTACHED_WAIT;
-          /* Get the time of this event */
-          CAD_tCCDebounce_start[PortNum] = HAL_GetTick();
-          break;
-        }
-
-        /* Check tCCDebounce */
-        if (CAD_tCCDebounce[PortNum] > CAD_tCCDebounce_threshold)
-        {
-          /* if tCCDebounce has expired state must be changed*/
-          if (USBPD_PORTPOWERROLE_SRC == _handle->params->PE_PowerRole)
-          {
-            switch (_handle->CurrentHWcondition)
-            {
-              case HW_Attachment:
-                _handle->state = USBPD_CAD_STATE_ATTACHED;
-                *Event = USBPD_CAD_EVENT_ATTACHED;
-                USBPDM1_Set_CC(PortNum, _handle->cc);
-                USBPDM1_RX_EnableInterrupt(PortNum);
-                break;
-
-              case HW_PwrCable_NoSink_Attachment:
-                _handle->state = USBPD_CAD_STATE_EMC;
-                *Event = USBPD_CAD_EVENT_EMC;
-                USBPDM1_Set_CC(PortNum, _handle->cc);
-                USBPDM1_RX_EnableInterrupt(PortNum);
-                break;
-
-              case HW_PwrCable_Sink_Attachment:
-                _handle->state = USBPD_CAD_STATE_ATTEMC;
-                *Event = USBPD_CAD_EVENT_ATTEMC;
-                USBPDM1_Set_CC(PortNum, _handle->cc);
-                USBPDM1_RX_EnableInterrupt(PortNum);
-                break;
-
-              case HW_Debug_Attachment:
-                _handle->state = USBPD_CAD_STATE_DEBUG;
-                *Event = USBPD_CAD_EVENT_DEBUG;
-                break;
-
-              case HW_AudioAdapter_Attachment:
-                HW_SignalDetachment(PortNum, CC2);
-                HW_SignalDetachment(PortNum, CC1);
-                _handle->state = USBPD_CAD_STATE_ACCESSORY;
-                *Event = USBPD_CAD_EVENT_ACCESSORY;
-                break;
-
-              case HW_Detachment:
-              default:
-                break;
-            } /* end of switch */
-            *CCXX = _handle->cc;
-          }
-          else /* Check state transition for SNK role */
-          {
-            if (Check_VBus(PortNum)) /* Check if Vbus is on */
-            {
-              _handle->state = USBPD_CAD_STATE_ATTACHED;
-              USBPDM1_Set_CC(PortNum, _handle->cc);
-              USBPDM1_RX_EnableInterrupt(PortNum);
-              *CCXX = _handle->cc;
-              *Event = USBPD_CAD_EVENT_ATTACHED;
-            }
-          }
-        }
-        /* reset the flag for CAD_tPDDebounce */
-        CAD_tPDDebounce_flag[PortNum] = 0;
-      }
-      else /* CAD_HW_Condition[PortNum] = HW_Detachment */
-      {
-        /*Check tPDDebounce*/
-        if (USBPD_PORTPOWERROLE_SNK == _handle->params->PE_PowerRole)
-        {
-
-          /* start counting of CAD_tPDDebounce */
-          if (CAD_tPDDebounce_flag[PortNum] == 0)
-          {
-            CAD_tPDDebounce_start[PortNum] = HAL_GetTick();
-            CAD_tPDDebounce_flag[PortNum] = 1;
-          }
-          else /* CAD_tPDDebounce already running */
-          {
-            /* evaluate CAD_tPDDebounce */
-            CAD_tPDDebounce[PortNum] = HAL_GetTick() - CAD_tPDDebounce_start[PortNum];
-            if (CAD_tPDDebounce[PortNum] > CAD_tPDDebounce_threshold)
-            {
-              CAD_tPDDebounce_flag[PortNum] = 0;
-              SignalSwitchRole(PortNum, USBPD_CAD_STATE_SWITCH_TO_SRC);
-              _timing = 0;
-            }
-          }
-        }
-        else /* (hcad->PortPowerRole != USBPD_PORTPOWERROLE_SNK)*/
-        {
-          SignalSwitchRole(PortNum, USBPD_CAD_STATE_SWITCH_TO_SNK);
-        }
-      }
-    }
-    break;
-
-    /*CAD STATE ATTACHED*/
-    case USBPD_CAD_STATE_ATTACHED:
-    {
-      if (USBPD_PORTPOWERROLE_SRC == _handle->params->PE_PowerRole)
+      case USBPD_CAD_STATE_DETACHED:
       {
         /* Check CCx HW condition*/
         _handle->cc = Check_HW(PortNum);
+        /* Change the status on the basis of the HW event given by Check_HW() */
+        if (_handle->CurrentHWcondition != HW_Detachment)
+        {
+          _handle->OldHWCondtion = _handle->CurrentHWcondition;
 
-        if (_handle->CurrentHWcondition == HW_Detachment)
-        {
-          SignalDetachment(PortNum);
-          *Event = USBPD_CAD_EVENT_DETACHED;
-          *CCXX = _handle->cc;
+          if (_handle->CurrentHWcondition == HW_PwrCable_NoSink_Attachment)
+          {
+            _handle->state = USBPD_CAD_STATE_EMC;
+          }
+          else
+          {
+#if 0
+            /* Check if legacy cable have detected (refer to Type-C specification
+               'Legacy Cable Assemblies' */
+            if ((USBPD_PORTPOWERROLE_SNK == _handle->params->PE_PowerRole)
+                && Check_VBus(PortNum)
+                && (vRd_USB == _handle->SNK_Source_Current_Adv))
+            {
+              /* VBUS is already present. Port Partner does not support PD protocol (USB Type A/B)
+                 Only Default USB Type-C Current Rp resistor (56 k) has been detected */
+              _handle->state = USBPD_CAD_STATE_ATTACHED_LEGACY;
+              *Event = USBPD_CAD_EVENT_LEGACY;
+            }
+            else
+#endif
+            {
+              _handle->state = USBPD_CAD_STATE_ATTACHED_WAIT;
+              /* Get the time of this event */
+              CAD_tCCDebounce_start[PortNum] = HAL_GetTick();
+            }
+            break;
+          }
         }
-      }
-      else /* hcad->PortPowerRole != USBPD_PORTPOWERROLE_SRC) */
-      {
-        if (Check_VBus(PortNum) == 0) /* Check if Vbus is off */
+        else
         {
-          SignalDetachment(PortNum);
-          *Event = USBPD_CAD_EVENT_DETACHED;
           _handle->state = USBPD_CAD_STATE_DETACHED;
-          *CCXX = _handle->cc;
-        }
-      }
-    }
-    break;
 
-    /*CAD STATE ATTACHED TO LEGACY CABLES */
-    case USBPD_CAD_STATE_ATTACHED_LEGACY:
-    {
-      if (Check_VBus(PortNum) == 0) /* Check if Vbus is off */
-      {
-        SignalDetachment(PortNum);
-        *Event = USBPD_CAD_EVENT_DETACHED;
-        *CCXX = _handle->cc;
-      }
-    }
-    break;
-    /*CAD ELECTRONIC CABLE ATTACHED*/
-    case USBPD_CAD_STATE_EMC:
-    {
-      /* Check CCx HW condition*/
-      _handle->cc = Check_HW(PortNum);
-
-      switch (_handle->CurrentHWcondition)
-      {
-        case HW_Detachment:
-          SignalDetachment(PortNum);
-          /* Forward event information to upper layer */
-          *Event = USBPD_CAD_EVENT_DETACHED;
-          *CCXX = _handle->cc;
-          break;
-        case HW_Attachment:
-          /* Sink has been attached */
-          _handle->OldHWCondtion = _handle->CurrentHWcondition;
-          _handle->state = USBPD_CAD_STATE_ATTACHED_WAIT;
-          /* Get the time of this event */
-          CAD_tCCDebounce_start[PortNum] = HAL_GetTick();
-          break;
-        case HW_PwrCable_Sink_Attachment:
-          /* Sink has been attached */
-          _handle->OldHWCondtion = _handle->CurrentHWcondition;
-          _handle->state = USBPD_CAD_STATE_ATTACHED_WAIT;
-          /* Get the time of this event */
-          CAD_tCCDebounce_start[PortNum] = HAL_GetTick();
-          break;
-        case HW_PwrCable_NoSink_Attachment:
-          /* continue the toggle operation */
           /* check if toggle timer ended */
           if (_handle->settings->CAD_RoleToggle == USBPD_TRUE)
           {
             if ((USBPD_PORTPOWERROLE_SRC == _handle->params->PE_PowerRole)
-                && ((HAL_GetTick() - _handle->tToogle_start) > _handle->settings->CAD_SRCToogleTime))
+                && ((HAL_GetTick() - _handle->tToogle_start) > _handle->settings->CAD_SRCToggleTime))
             {
               _handle->tToogle_start = HAL_GetTick();
               _handle->params->PE_PowerRole = USBPD_PORTPOWERROLE_SNK;
               USBPDM1_DeAssertRp(PortNum);
               USBPDM1_AssertRd(PortNum);
-              _handle->state = USBPD_CAD_STATE_DETACHED;
             }
             if ((USBPD_PORTPOWERROLE_SNK == _handle->params->PE_PowerRole)
-                && ((HAL_GetTick() - _handle->tToogle_start) > _handle->settings->CAD_SNKToogleTime))
+                && ((HAL_GetTick() - _handle->tToogle_start) > _handle->settings->CAD_SNKToggleTime))
             {
               _handle->tToogle_start = HAL_GetTick();
               _handle->params->PE_PowerRole = USBPD_PORTPOWERROLE_SRC;
@@ -516,98 +307,312 @@ uint32_t CAD_StateMachine(uint8_t PortNum, USBPD_CAD_EVENT *Event, CCxPin_TypeDe
               USBPDM1_AssertRp(PortNum);
             }
           }
-        default:
-          break;
+        }
       }
-    }
-    break;
+      break;
 
-    /*CAD electronic cable with Sink ATTACHED*/
-    case USBPD_CAD_STATE_ATTEMC:
-    {
-      if(USBPD_PORTPOWERROLE_SNK == _handle->params->PE_PowerRole)
+      /*CAD STATE ATTACHED WAIT*/
+      case USBPD_CAD_STATE_ATTACHED_WAIT:
       {
-        _handle->state = USBPD_CAD_STATE_ATTACHED;
-      }
-      else
-      {
-        CCxPin_TypeDef _ccxx;
-
+        /* Evaluate elapsed time in Attach_Wait state */
+        CAD_tCCDebounce[PortNum] = HAL_GetTick() - CAD_tCCDebounce_start[PortNum];
         /* Check CCx HW condition*/
-        _ccxx = Check_HW(PortNum);
+        _handle->cc = Check_HW(PortNum);
 
-        if ((_handle->CurrentHWcondition == HW_Detachment)
-            || (_handle->CurrentHWcondition == HW_PwrCable_NoSink_Attachment))
+        if (!((_handle->CurrentHWcondition == HW_Detachment) || (_handle->CurrentHWcondition == HW_PwrCable_NoSink_Attachment))
+            && (_handle->CurrentHWcondition == _handle->OldHWCondtion))
         {
-          *CCXX = _handle->cc = _ccxx;
-          if (_handle->CurrentHWcondition == HW_PwrCable_NoSink_Attachment)
+          if ((ADCxConvertedValues[VBUS_INDEX(PortNum)] > 300)
+              && (USBPD_PORTPOWERROLE_SRC == _handle->params->PE_PowerRole))
           {
-            SignalSwitchRole(PortNum, USBPD_CAD_STATE_EMC);
-            *Event = USBPD_CAD_EVENT_EMC;
+            _handle->state = USBPD_CAD_STATE_ATTACHED_WAIT;
+            /* Get the time of this event */
+            CAD_tCCDebounce_start[PortNum] = HAL_GetTick();
+            break;
           }
-          else
+
+          /* Check tCCDebounce */
+          if (CAD_tCCDebounce[PortNum] > CAD_tCCDebounce_threshold)
+          {
+            /* if tCCDebounce has expired state must be changed*/
+            if (USBPD_PORTPOWERROLE_SRC == _handle->params->PE_PowerRole)
+            {
+              switch (_handle->CurrentHWcondition)
+              {
+                case HW_Attachment:
+                  _handle->state = USBPD_CAD_STATE_ATTACHED;
+                  *Event = USBPD_CAD_EVENT_ATTACHED;
+                  USBPDM1_Set_CC(PortNum, _handle->cc);
+                  USBPDM1_RX_EnableInterrupt(PortNum);
+                  break;
+
+                case HW_PwrCable_NoSink_Attachment:
+                  _handle->state = USBPD_CAD_STATE_EMC;
+                  *Event = USBPD_CAD_EVENT_EMC;
+                  USBPDM1_Set_CC(PortNum, _handle->cc);
+                  USBPDM1_RX_EnableInterrupt(PortNum);
+                  break;
+
+                case HW_PwrCable_Sink_Attachment:
+                  _handle->state = USBPD_CAD_STATE_ATTEMC;
+                  *Event = USBPD_CAD_EVENT_ATTEMC;
+                  USBPDM1_Set_CC(PortNum, _handle->cc);
+                  USBPDM1_RX_EnableInterrupt(PortNum);
+                  break;
+
+                case HW_Debug_Attachment:
+                  _handle->state = USBPD_CAD_STATE_DEBUG;
+                  *Event = USBPD_CAD_EVENT_DEBUG;
+                  break;
+
+                case HW_AudioAdapter_Attachment:
+                  HW_SignalDetachment(PortNum, CC2);
+                  HW_SignalDetachment(PortNum, CC1);
+                  _handle->state = USBPD_CAD_STATE_ACCESSORY;
+                  *Event = USBPD_CAD_EVENT_ACCESSORY;
+                  break;
+
+                case HW_Detachment:
+                default:
+                  break;
+              } /* end of switch */
+              *CCXX = _handle->cc;
+            }
+            else /* Check state transition for SNK role */
+            {
+              if (Check_VBus(PortNum)) /* Check if Vbus is on */
+              {
+                _handle->state = USBPD_CAD_STATE_ATTACHED;
+                USBPDM1_Set_CC(PortNum, _handle->cc);
+                USBPDM1_RX_EnableInterrupt(PortNum);
+                *CCXX = _handle->cc;
+                *Event = USBPD_CAD_EVENT_ATTACHED;
+              }
+            }
+          }
+          /* reset the flag for CAD_tPDDebounce */
+          CAD_tPDDebounce_flag[PortNum] = 0;
+        }
+        else /* CAD_HW_Condition[PortNum] = HW_Detachment */
+        {
+          /*Check tPDDebounce*/
+          if (USBPD_PORTPOWERROLE_SNK == _handle->params->PE_PowerRole)
+          {
+
+            /* start counting of CAD_tPDDebounce */
+            if (CAD_tPDDebounce_flag[PortNum] == 0)
+            {
+              CAD_tPDDebounce_start[PortNum] = HAL_GetTick();
+              CAD_tPDDebounce_flag[PortNum] = 1;
+            }
+            else /* CAD_tPDDebounce already running */
+            {
+              /* evaluate CAD_tPDDebounce */
+              CAD_tPDDebounce[PortNum] = HAL_GetTick() - CAD_tPDDebounce_start[PortNum];
+              if (CAD_tPDDebounce[PortNum] > CAD_tPDDebounce_threshold)
+              {
+                CAD_tPDDebounce_flag[PortNum] = 0;
+                SignalSwitchRole(PortNum, USBPD_CAD_STATE_SWITCH_TO_SRC);
+                _timing = 0;
+              }
+            }
+          }
+          else /* (hcad->PortPowerRole != USBPD_PORTPOWERROLE_SNK)*/
           {
             SignalSwitchRole(PortNum, USBPD_CAD_STATE_SWITCH_TO_SNK);
-            *Event = USBPD_CAD_EVENT_DETACHED;
           }
         }
       }
-    }
-    break;
+      break;
 
-    /*CAD STATE AUDIO ACCESSORY ATTACHED*/
-    case USBPD_CAD_STATE_ACCESSORY:
-    {
-      /* Check CCx HW condition*/
-      _handle->cc = Check_HW(PortNum);
-
-      switch (_handle->CurrentHWcondition)
+      /*CAD STATE ATTACHED*/
+      case USBPD_CAD_STATE_ATTACHED:
       {
-        case HW_PwrCable_NoSink_Attachment:
-        case HW_Detachment:
-          SignalSwitchRole(PortNum, USBPD_CAD_STATE_SWITCH_TO_SNK);
+        if (USBPD_PORTPOWERROLE_SRC == _handle->params->PE_PowerRole)
+        {
+          /* Check CCx HW condition*/
+          _handle->cc = Check_HW(PortNum);
+
+          if (_handle->CurrentHWcondition == HW_Detachment)
+          {
+            SignalDetachment(PortNum);
+            *Event = USBPD_CAD_EVENT_DETACHED;
+            *CCXX = _handle->cc;
+          }
+        }
+        else /* hcad->PortPowerRole != USBPD_PORTPOWERROLE_SRC) */
+        {
+          if (Check_VBus(PortNum) == 0) /* Check if Vbus is off */
+          {
+            SignalDetachment(PortNum);
+            *Event = USBPD_CAD_EVENT_DETACHED;
+            _handle->state = USBPD_CAD_STATE_DETACHED;
+            *CCXX = _handle->cc;
+          }
+        }
+      }
+      break;
+
+#if 0
+      /*CAD STATE ATTACHED TO LEGACY CABLES */
+      case USBPD_CAD_STATE_ATTACHED_LEGACY:
+      {
+        if (Check_VBus(PortNum) == 0) /* Check if Vbus is off */
+        {
+          SignalDetachment(PortNum);
+          *Event = USBPD_CAD_EVENT_DETACHED;
+          *CCXX = _handle->cc;
+        }
+      }
+      break;
+#endif
+      /*CAD ELECTRONIC CABLE ATTACHED*/
+      case USBPD_CAD_STATE_EMC:
+      {
+        /* Check CCx HW condition*/
+        _handle->cc = Check_HW(PortNum);
+
+        switch (_handle->CurrentHWcondition)
+        {
+          case HW_Detachment:
+            SignalDetachment(PortNum);
+            /* Forward event information to upper layer */
+            *Event = USBPD_CAD_EVENT_DETACHED;
+            *CCXX = _handle->cc;
+            break;
+          case HW_Attachment:
+            /* Sink has been attached */
+            _handle->OldHWCondtion = _handle->CurrentHWcondition;
+            _handle->state = USBPD_CAD_STATE_ATTACHED_WAIT;
+            /* Get the time of this event */
+            CAD_tCCDebounce_start[PortNum] = HAL_GetTick();
+            break;
+          case HW_PwrCable_Sink_Attachment:
+            /* Sink has been attached */
+            _handle->OldHWCondtion = _handle->CurrentHWcondition;
+            _handle->state = USBPD_CAD_STATE_ATTACHED_WAIT;
+            /* Get the time of this event */
+            CAD_tCCDebounce_start[PortNum] = HAL_GetTick();
+            break;
+          case HW_PwrCable_NoSink_Attachment:
+            /* continue the toggle operation */
+            /* check if toggle timer ended */
+            if (_handle->settings->CAD_RoleToggle == USBPD_TRUE)
+            {
+              if ((USBPD_PORTPOWERROLE_SRC == _handle->params->PE_PowerRole)
+                  && ((HAL_GetTick() - _handle->tToogle_start) > _handle->settings->CAD_SRCToggleTime))
+              {
+                _handle->tToogle_start = HAL_GetTick();
+                _handle->params->PE_PowerRole = USBPD_PORTPOWERROLE_SNK;
+                USBPDM1_DeAssertRp(PortNum);
+                USBPDM1_AssertRd(PortNum);
+                _handle->state = USBPD_CAD_STATE_DETACHED;
+              }
+              if ((USBPD_PORTPOWERROLE_SNK == _handle->params->PE_PowerRole)
+                  && ((HAL_GetTick() - _handle->tToogle_start) > _handle->settings->CAD_SNKToggleTime))
+              {
+                _handle->tToogle_start = HAL_GetTick();
+                _handle->params->PE_PowerRole = USBPD_PORTPOWERROLE_SRC;
+                USBPDM1_DeAssertRd(PortNum);
+                USBPDM1_AssertRp(PortNum);
+              }
+            }
+          default:
+            break;
+        }
+      }
+      break;
+
+      /*CAD electronic cable with Sink ATTACHED*/
+      case USBPD_CAD_STATE_ATTEMC:
+      {
+        if (USBPD_PORTPOWERROLE_SNK == _handle->params->PE_PowerRole)
+        {
+          _handle->state = USBPD_CAD_STATE_ATTACHED;
+        }
+        else
+        {
+          CCxPin_TypeDef _ccxx;
+
+          /* Check CCx HW condition*/
+          _ccxx = Check_HW(PortNum);
+
+          if ((_handle->CurrentHWcondition == HW_Detachment)
+              || (_handle->CurrentHWcondition == HW_PwrCable_NoSink_Attachment))
+          {
+            *CCXX = _handle->cc = _ccxx;
+            if (_handle->CurrentHWcondition == HW_PwrCable_NoSink_Attachment)
+            {
+              SignalSwitchRole(PortNum, USBPD_CAD_STATE_EMC);
+              *Event = USBPD_CAD_EVENT_EMC;
+            }
+            else
+            {
+              SignalSwitchRole(PortNum, USBPD_CAD_STATE_SWITCH_TO_SNK);
+              *Event = USBPD_CAD_EVENT_DETACHED;
+            }
+          }
+        }
+      }
+      break;
+
+      /*CAD STATE AUDIO ACCESSORY ATTACHED*/
+      case USBPD_CAD_STATE_ACCESSORY:
+      {
+        /* Check CCx HW condition*/
+        _handle->cc = Check_HW(PortNum);
+
+        switch (_handle->CurrentHWcondition)
+        {
+          case HW_PwrCable_NoSink_Attachment:
+          case HW_Detachment:
+            SignalSwitchRole(PortNum, USBPD_CAD_STATE_SWITCH_TO_SNK);
+            *CCXX = _handle->cc;
+            *Event = USBPD_CAD_EVENT_DETACHED;
+            break;
+          case HW_AudioAdapter_Attachment:
+            break;
+          default :
+            break;
+        }
+      }
+      break;
+
+      /* CAD STATE DEBUG ACCESSORY MODE ATTACHED */
+      case USBPD_CAD_STATE_DEBUG:
+      {
+        /* Check CCx HW condition*/
+        _handle->cc = Check_HW(PortNum);
+
+        if (_handle->CurrentHWcondition != HW_Debug_Attachment)
+        {
+          SignalDetachment(PortNum);
           *CCXX = _handle->cc;
           *Event = USBPD_CAD_EVENT_DETACHED;
-          break;
-        case HW_AudioAdapter_Attachment:
-          break;
-        default :
-          break;
+        }
       }
-    }
-    break;
-
-    /* CAD STATE DEBUG ACCESSORY MODE ATTACHED */
-    case USBPD_CAD_STATE_DEBUG:
-    {
-      /* Check CCx HW condition*/
-      _handle->cc = Check_HW(PortNum);
-
-      if (_handle->CurrentHWcondition != HW_Debug_Attachment)
-      {
-        SignalDetachment(PortNum);
-        *CCXX = _handle->cc;
-        *Event = USBPD_CAD_EVENT_DETACHED;
-      }
-    }
-    break;
-
-    default :
       break;
-  }
+
+      default :
+        break;
+    }
 
 #ifdef __DEBUG_CAD
-  if (_handle->state != a_State[PortNum][indexState[PortNum] - 1])
-  {
-    a_State[PortNum][indexState[PortNum]++] = _handle->state;
+    if (_handle->state != a_State[PortNum][indexState[PortNum] - 1])
+    {
+      a_State[PortNum][indexState[PortNum]++] = _handle->state;
 #ifdef _TRACE
-    USBPD_TRACE_Add(USBPD_TRACE_CAD_LOW, PortNum, _handle->state, NULL, 0);
-#endif    
-  }
+      USBPD_TRACE_Add(USBPD_TRACE_CAD_LOW, PortNum, _handle->state, NULL, 0);
+#endif
+    }
 #endif /* __DEBUG_CAD */
-  
-  } while(_timing == 0);
-    
+
+  }
+  while (_timing == 0);
+
+#if !defined(_RTOS)
+  HAL_Delay(1);
+#endif
   return 2;
 }
 
@@ -953,18 +958,6 @@ static inline void SignalSwitchRole(uint8_t PortNum, USBPD_CAD_STATE State)
   HW_SignalDetachment(PortNum, _handle->cc);
   _handle->cc = CCNONE;
   _handle->state = State;
-}
-
-/**
-  * @brief  CA enter in error recovery mode
-  * @param  PortNum port index
-  * @retval None
-  */
-void CAD_Enter_ErrorRecovery(uint8_t PortNum)
-{
-  // remove resistor terminaison
-  // switch CAD_StateMachine to Error Recovery state
-  // wakeup CAD task
 }
 
 /**

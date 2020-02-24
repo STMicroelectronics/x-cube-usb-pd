@@ -1,47 +1,21 @@
+/* USER CODE BEGIN Header */
 /**
   ******************************************************************************
   * @file    usbpd_dpm_user.h
   * @author  MCD Application Team
   * @brief   Header file for usbpd_dpm_user.c file
   ******************************************************************************
-  * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics International N.V. 
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2018 STMicroelectronics. All rights reserved.
   *
-  * Redistribution and use in source and binary forms, with or without 
-  * modification, are permitted, provided that the following conditions are met:
-  *
-  * 1. Redistribution of source code must retain the above copyright notice, 
-  *    this list of conditions and the following disclaimer.
-  * 2. Redistributions in binary form must reproduce the above copyright notice,
-  *    this list of conditions and the following disclaimer in the documentation
-  *    and/or other materials provided with the distribution.
-  * 3. Neither the name of STMicroelectronics nor the names of other 
-  *    contributors to this software may be used to endorse or promote products 
-  *    derived from this software without specific written permission.
-  * 4. This software, including modifications and/or derivative works of this 
-  *    software, must execute solely and exclusively on microcontroller or
-  *    microprocessor devices manufactured by or for STMicroelectronics.
-  * 5. Redistribution and use of this software other than as permitted under 
-  *    this license is void and will automatically terminate your rights under 
-  *    this license. 
-  *
-  * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS" 
-  * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT 
-  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
-  * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
-  * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT 
-  * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, 
-  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
-  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
-  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  * This software component is licensed by ST under Ultimate Liberty license
+  * SLA0044, the "License"; You may not use this file except in compliance with
+  * the License. You may obtain a copy of the License at:
+  *                             www.st.com/SLA0044
   *
   ******************************************************************************
   */
+/* USER CODE END Header */
 
 #ifndef __USBPD_DPM_USER_H_
 #define __USBPD_DPM_USER_H_
@@ -51,28 +25,22 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
+/* USER CODE BEGIN Include */
 #ifdef _RTOS
 #include "cmsis_os.h"
 #endif /* _RTOS */
+/* USER CODE END Include */
 
-/** @addtogroup STM32_USBPD_LIBRARY
+/** @addtogroup STM32_USBPD_APPLICATION
   * @{
   */
 
-/** @addtogroup USBPD_USER
+/** @addtogroup STM32_USBPD_APPLICATION_DPM_USER
   * @{
   */
 
 /* Exported typedef ----------------------------------------------------------*/
-typedef struct
-{
-  USBPD_SNKPowerRequest_TypeDef DPM_SNKRequestedPower;          /*!< Requested Power by the sink board                     */
-  USBPD_MIDB_TypeDef  DPM_ManuInfoPort;                         /*!< Manufacturer information used for the port            */
-  uint32_t PE_DataSwap                                    : 1;  /*!< support data swap                                     */
-  uint32_t PE_VconnSwap                                   : 1;  /*!< support VCONN swap                                    */
-  uint32_t Reserved1                                      :30;  /*!< Reserved bits */
-} USBPD_USER_SettingsTypeDef;
-
+/* USER CODE BEGIN Typedef */
 
 typedef enum {
   DPM_USER_EVENT_TIMER,         /* TIMER EVENT */
@@ -106,21 +74,32 @@ typedef struct
   uint32_t                      DPM_RcvRequestDOMsg;                     /*!< Received request Power Data Object message from the port Partner     */
   volatile uint32_t             DPM_ErrorCode;                           /*!< USB PD Error code                                                    */
   volatile uint8_t              DPM_IsConnected;                         /*!< USB PD connection state                                              */
-  uint16_t                      DPM_Reserved;                            /*!< Reserved bytes                                                       */
-  uint8_t                       FlagSendGetSrcCapaExtended;
-  volatile uint16_t             DPM_TimerSRCExtendedCapa;                /*!< timer to request the extended capa                                   */
+  uint16_t                      DPM_CablePDCapable:1;                    /*!< Flag to keep information that Cable may be PD capable                */
+  uint16_t                      DPM_CableResetOnGoing:1;                 /*!< Flag to manage a cable reset on going                                */
+  uint16_t                      DPM_Reserved:15;                         /*!< Reserved bytes                                                       */
   USBPD_SDB_TypeDef             DPM_RcvStatus;                           /*!< Status received by port partner                                      */
+#if defined(USBPDCORE_SNK_CAPA_EXT)
+  USBPD_SKEDB_TypeDef           DPM_RcvSNKExtendedCapa;                  /*!< SNK Extended Capability received by port partner                     */
+#endif /* USBPDCORE_SNK_CAPA_EXT */
   USBPD_GMIDB_TypeDef           DPM_GetManufacturerInfo;                 /*!< Get Manufacturer Info                                                */
   volatile uint16_t             DPM_TimerAlert;                          /*!< Timer used to monitor current and trig an ALERT                      */
   USBPD_ADO_TypeDef             DPM_SendAlert;                           /*!< Save the Alert sent to port partner                                  */
   USBPD_ADO_TypeDef             DPM_RcvAlert;                            /*!< Save the Alert received by port partner                              */
+#if defined(_GUI_INTERFACE)
+  volatile uint16_t             DPM_TimerMeasReport;                     /*!< Timer used to send measurement report                                */
+#endif /* _GUI_INTERFACE */
+  USBPD_DiscoveryIdentity_TypeDef VDM_DiscoCableIdentify;                /*!< VDM Cable Discovery Identify                                         */
 } USBPD_HandleTypeDef;
+
+typedef void     (*GUI_NOTIFICATION_POST)(uint8_t PortNum, uint16_t EventVal);
+typedef uint32_t (*GUI_NOTIFICATION_FORMAT_SEND)(uint32_t PortNum, uint32_t TypeNotification, uint32_t Value);
+typedef void     (*GUI_SAVE_INFO)(uint8_t PortNum, uint8_t DataId, uint8_t *Ptr, uint32_t Size);
 
 /* Exported define -----------------------------------------------------------*/
 /*
  * USBPD FW version
  */
-#define USBPD_FW_VERSION  0x00191800u
+#define USBPD_FW_VERSION  0x05022020u
 
 /*
  * USBPD Start Port Number
@@ -131,16 +110,20 @@ typedef struct
  * Number af thread defined by user to include in the low power control
  */
 #define USBPD_USER_THREAD_COUNT    0
+/* USER CODE END Define */
+
 /* Exported constants --------------------------------------------------------*/
+/* USER CODE BEGIN Constant */
+
+/* USER CODE END Constant */
+
 /* Exported macro ------------------------------------------------------------*/
+/* USER CODE BEGIN Macro */
+
+/* USER CODE END Macro */
+
 /* Exported variables --------------------------------------------------------*/
-#ifdef _RTOS
-#if defined(USBPD_DPM_USER_C)
-osMessageQId  DPMMsgBox;
-#else
-extern osMessageQId  DPMMsgBox;
-#endif /* USBPD_DPM_USER_C */
-#endif /* _RTOS */
+/* USER CODE BEGIN Private_Variables */
 
 #if !defined(USBPD_DPM_USER_C)
 extern USBPD_HandleTypeDef DPM_Ports[USBPD_PORT_COUNT];
@@ -149,6 +132,9 @@ USBPD_HandleTypeDef DPM_Ports[USBPD_PORT_COUNT] =
 {
   {
     .DPM_Reserved = 0,
+#if defined(USBPDCORE_SNK_CAPA_EXT)
+    .DPM_RcvSNKExtendedCapa = {0},                  /*!< SNK Extended Capability received by port partner                     */
+#endif /* USBPDCORE_SNK_CAPA_EXT */
     .DPM_GetManufacturerInfo = {0},                 /*!< Get Manufacturer Info                                                */
     .DPM_TimerAlert = 0,                            /*!< Timer used to monitor current and trig an ALERT                      */
     .DPM_SendAlert = {0},                           /*!< Save the Alert sent to port partner                                  */
@@ -156,6 +142,8 @@ USBPD_HandleTypeDef DPM_Ports[USBPD_PORT_COUNT] =
   }
 };
 #endif /* !USBPD_DPM_USER_C */
+
+/* USER CODE END Private_Variables */
 
 /* Exported functions --------------------------------------------------------*/
 /** @addtogroup USBPD_USER_EXPORTED_FUNCTIONS
@@ -165,7 +153,7 @@ USBPD_HandleTypeDef DPM_Ports[USBPD_PORT_COUNT] =
   * @{
   */
 USBPD_StatusTypeDef USBPD_DPM_UserInit(void);
-void                USBPD_DPM_UserExecute(void const *argument);
+void                USBPD_DPM_SetNotification_GUI(GUI_NOTIFICATION_FORMAT_SEND PtrFormatSend, GUI_NOTIFICATION_POST PtrPost, GUI_SAVE_INFO PtrSaveInfo);
 void                USBPD_DPM_UserCableDetection(uint8_t PortNum, USBPD_CAD_EVENT State);
 void                USBPD_DPM_WaitForTime(uint32_t Time);
 void                USBPD_DPM_UserTimerCounter(uint8_t PortNum);
@@ -181,14 +169,16 @@ USBPD_StatusTypeDef USBPD_DPM_SetupNewPower(uint8_t PortNum);
 void                USBPD_DPM_HardReset(uint8_t PortNum, USBPD_PortPowerRole_TypeDef CurrentRole, USBPD_HR_Status_TypeDef Status);
 USBPD_StatusTypeDef USBPD_DPM_EvaluatePowerRoleSwap(uint8_t PortNum);
 void                USBPD_DPM_Notification(uint8_t PortNum, USBPD_NotifyEventValue_TypeDef EventVal);
-USBPD_StatusTypeDef USBPD_DPM_IsContractStillValid(uint8_t PortNum);
 void                USBPD_DPM_ExtendedMessageReceived(uint8_t PortNum, USBPD_ExtendedMsg_TypeDef MsgType, uint8_t *ptrData, uint16_t DataSize);
-void                USBPD_DPM_GetDataInfo(uint8_t PortNum, USBPD_CORE_DataInfoType_TypeDef DataId , uint32_t *Ptr, uint32_t *Size);
-void                USBPD_DPM_SetDataInfo(uint8_t PortNum, USBPD_CORE_DataInfoType_TypeDef DataId , uint32_t *Ptr, uint32_t Size);
+void                USBPD_DPM_GetDataInfo(uint8_t PortNum, USBPD_CORE_DataInfoType_TypeDef DataId , uint8_t *Ptr, uint32_t *Size);
+void                USBPD_DPM_SetDataInfo(uint8_t PortNum, USBPD_CORE_DataInfoType_TypeDef DataId , uint8_t *Ptr, uint32_t Size);
 USBPD_StatusTypeDef USBPD_DPM_EvaluateRequest(uint8_t PortNum, USBPD_CORE_PDO_Type_TypeDef *PtrPowerObject);
-void                USBPD_DPM_SNK_EvaluateCapabilities(uint8_t PortNum, uint32_t *PtrRequestData, USBPD_CORE_PDO_Type_TypeDef *PtrPowerObject);
+void                USBPD_DPM_SNK_EvaluateCapabilities(uint8_t PortNum, uint32_t *PtrRequestData, USBPD_CORE_PDO_Type_TypeDef *PtrPowerObjectType);
+uint32_t            USBPD_DPM_SNK_EvaluateMatchWithSRCPDO(uint8_t PortNum, uint32_t SrcPDO, uint32_t* PtrRequestedVoltage, uint32_t* PtrRequestedPower);
 void                USBPD_DPM_PowerRoleSwap(uint8_t PortNum, USBPD_PortPowerRole_TypeDef CurrentRole, USBPD_PRS_Status_TypeDef Status);
 
+USBPD_StatusTypeDef USBPD_DPM_EvaluateVconnSwap(uint8_t PortNum);
+USBPD_StatusTypeDef USBPD_DPM_PE_VconnPwr(uint8_t PortNum, USBPD_FunctionalState State);
 USBPD_StatusTypeDef USBPD_DPM_EvaluateDataRoleSwap(uint8_t PortNum);
 USBPD_FunctionalState USBPD_DPM_IsPowerReady(uint8_t PortNum, USBPD_VSAFE_StatusTypeDef Vsafe);
 
@@ -200,9 +190,11 @@ USBPD_FunctionalState USBPD_DPM_IsPowerReady(uint8_t PortNum, USBPD_VSAFE_Status
 /** @addtogroup USBPD_USER_EXPORTED_FUNCTIONS_GROUP3
   * @{
   */
+/* USER CODE BEGIN Function */
 USBPD_StatusTypeDef USBPD_DPM_RequestHardReset(uint8_t PortNum);
 USBPD_StatusTypeDef USBPD_DPM_RequestCableReset(uint8_t PortNum);
 USBPD_StatusTypeDef USBPD_DPM_RequestGotoMin(uint8_t PortNum);
+USBPD_StatusTypeDef USBPD_DPM_RequestPing(uint8_t PortNum);
 USBPD_StatusTypeDef USBPD_DPM_RequestMessageRequest(uint8_t PortNum, uint8_t IndexSrcPDO, uint16_t RequestedVoltage);
 USBPD_StatusTypeDef USBPD_DPM_RequestGetSourceCapability(uint8_t PortNum);
 USBPD_StatusTypeDef USBPD_DPM_RequestGetSinkCapability(uint8_t PortNum);
@@ -211,8 +203,14 @@ USBPD_StatusTypeDef USBPD_DPM_RequestPowerRoleSwap(uint8_t PortNum);
 USBPD_StatusTypeDef USBPD_DPM_RequestVconnSwap(uint8_t PortNum);
 USBPD_StatusTypeDef USBPD_DPM_RequestSoftReset(uint8_t PortNum, USBPD_SOPType_TypeDef SOPType);
 USBPD_StatusTypeDef USBPD_DPM_RequestSourceCapability(uint8_t PortNum);
+USBPD_StatusTypeDef USBPD_DPM_RequestVDM_DiscoveryIdentify(uint8_t PortNum, USBPD_SOPType_TypeDef SOPType);
+USBPD_StatusTypeDef USBPD_DPM_RequestVDM_DiscoverySVID(uint8_t PortNum, USBPD_SOPType_TypeDef SOPType);
+USBPD_StatusTypeDef USBPD_DPM_RequestVDM_DiscoveryMode(uint8_t PortNum, USBPD_SOPType_TypeDef SOPType, uint16_t SVID);
+USBPD_StatusTypeDef USBPD_DPM_RequestVDM_EnterMode(uint8_t PortNum, USBPD_SOPType_TypeDef SOPType, uint16_t SVID, uint8_t ModeIndex);
+USBPD_StatusTypeDef USBPD_DPM_RequestVDM_ExitMode(uint8_t PortNum, USBPD_SOPType_TypeDef SOPType, uint16_t SVID, uint8_t ModeIndex);
 USBPD_StatusTypeDef USBPD_DPM_RequestAlert(uint8_t PortNum, USBPD_ADO_TypeDef Alert);
 USBPD_StatusTypeDef USBPD_DPM_RequestGetSourceCapabilityExt(uint8_t PortNum);
+USBPD_StatusTypeDef USBPD_DPM_RequestGetSinkCapabilityExt(uint8_t PortNum);
 USBPD_StatusTypeDef USBPD_DPM_RequestGetManufacturerInfo(uint8_t PortNum, USBPD_SOPType_TypeDef SOPType, uint8_t* pManuInfoData);
 USBPD_StatusTypeDef USBPD_DPM_RequestGetStatus(uint8_t PortNum);
 USBPD_StatusTypeDef USBPD_DPM_RequestFastRoleSwap(uint8_t PortNum);
@@ -222,7 +220,8 @@ USBPD_StatusTypeDef USBPD_DPM_RequestGetCountryInfo(uint8_t PortNum, uint16_t Co
 USBPD_StatusTypeDef USBPD_DPM_RequestGetBatteryCapability(uint8_t PortNum, uint8_t *pBatteryCapRef);
 USBPD_StatusTypeDef USBPD_DPM_RequestGetBatteryStatus(uint8_t PortNum, uint8_t *pBatteryStatusRef);
 USBPD_StatusTypeDef USBPD_DPM_RequestSecurityRequest(uint8_t PortNum);
-USBPD_StatusTypeDef USBPD_DPM_RequestFirwmwareUpdate(uint8_t PortNum);
+USBPD_StatusTypeDef USBPD_DPM_RequestFirwmwareUpdate(uint8_t PortNum, USBPD_ExtendedMsg_TypeDef MessageType, uint8_t *pPayload, uint16_t Size);
+/* USER CODE END Function */
 /**
   * @}
   */
@@ -231,11 +230,11 @@ USBPD_StatusTypeDef USBPD_DPM_RequestFirwmwareUpdate(uint8_t PortNum);
   * @}
   */
 
-/** 
+/**
   * @}
   */
 
-/** 
+/**
   * @}
   */
 

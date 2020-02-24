@@ -90,7 +90,9 @@
 
 typedef enum {
   TCPC_REG_VCONN_OCP                      = 0xA0u,
+  TCPC_REG_SLICE                          = 0xA1u,
   TCPC_REG_RESET                          = 0xA2u,
+  TCPC_REG_VD_STAT                        = 0xA3u,
   TCPC_REG_GPIO1_CFG                      = 0xA4u,
   TCPC_REG_GPIO2_CFG                      = 0xA5u,
   TCPC_REG_GPIO_STAT                      = 0xA6u,
@@ -101,6 +103,7 @@ typedef enum {
   TCPC_REG_SNK_FRSWAP                     = 0xB2u,
   TCPC_REG_ALERT_VD                       = 0xB3u,
   TCPC_REG_ALERT_VD_MASK                  = 0xB4u,
+  TCPC_REG_RPVAL_OVERRIDE                 = 0xB5u,
 } USBPD_TCPC_VendorRegisterId;
 
 /* TCPC driver structure */
@@ -122,7 +125,7 @@ USBPD_StatusTypeDef fusb305_tcpc_set_fault_status(uint32_t Port, uint8_t FaultSt
 USBPD_StatusTypeDef fusb305_tcpc_set_cc(uint32_t PortNum, TCPC_CC_Pull_TypeDef Pull, USBPD_FunctionalState State);
 USBPD_StatusTypeDef fusb305_tcpc_set_polarity(uint32_t PortNum, uint8_t Polarity);
 USBPD_StatusTypeDef fusb305_tcpc_set_vconn(uint32_t PortNum, USBPD_FunctionalState State);
-USBPD_StatusTypeDef fusb305_tcpc_set_msg_header(uint32_t PortNum, USBPD_PortPowerRole_TypeDef PowerRole, USBPD_PortDataRole_TypeDef DataRole);
+USBPD_StatusTypeDef fusb305_tcpc_set_msg_header(uint32_t PortNum, USBPD_PortPowerRole_TypeDef PowerRole, USBPD_PortDataRole_TypeDef DataRole, USBPD_SpecRev_TypeDef Specification);
 USBPD_StatusTypeDef fusb305_tcpc_alert_status(uint32_t PortNum, uint16_t *Alert);
 USBPD_StatusTypeDef fusb305_tcpc_set_rx_state(uint32_t Port, TCPC_CC_Pull_TypeDef Pull, USBPD_FunctionalState State, uint32_t SupportedSOP, TCPC_hard_reset HardReset);
 USBPD_StatusTypeDef fusb305_tcpc_set_sop_supported(uint32_t Port, uint32_t SupportedSOP);
@@ -136,6 +139,8 @@ USBPD_StatusTypeDef fusb305_tcpc_set_bist_test_data(uint32_t PortNum, uint8_t En
 USBPD_StatusTypeDef fusb305_tcpc_SinkTxNG(uint32_t PortNum);
 USBPD_StatusTypeDef fusb305_tcpc_SinkTxOK(uint32_t PortNum);
 USBPD_StatusTypeDef fusb305_tcpc_IfSinkTxOk(uint32_t PortNum);
+USBPD_StatusTypeDef fusb305_tcpc_EnableRx(uint32_t PortNum);
+USBPD_StatusTypeDef fusb305_tcpc_DisableRx(uint32_t PortNum);
 /**
   * @}
   */

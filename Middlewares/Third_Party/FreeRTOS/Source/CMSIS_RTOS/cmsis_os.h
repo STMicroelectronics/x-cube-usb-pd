@@ -57,7 +57,7 @@
   ******************************************************************************
   * @file    cmsis_os.h
   * @author  MCD Application Team
-  * @date    03-March-2017
+  * @date    13-July-2017
   * @brief   Header of cmsis_os.c
   *          A new set of APIs are added in addition to existing ones, these APIs 
   *          are specific to FreeRTOS.

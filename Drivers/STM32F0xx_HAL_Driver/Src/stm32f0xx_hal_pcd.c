@@ -309,21 +309,23 @@ HAL_StatusTypeDef HAL_PCD_Start(PCD_HandleTypeDef *hpcd)
   * @retval HAL status
   */
 HAL_StatusTypeDef HAL_PCD_Stop(PCD_HandleTypeDef *hpcd)
-{ 
-  __HAL_LOCK(hpcd); 
-  
-    /* disable all interrupts and force USB reset */
-  hpcd->Instance->CNTR = USB_CNTR_FRES;
-  
+{
+  __HAL_LOCK(hpcd);
+
+  /* disable all interrupts and force USB reset */
+//  hpcd->Instance->CNTR = USB_CNTR_FRES;
+
   /* clear interrupt status register */
   hpcd->Instance->ISTR = 0;
-  
+
   /* switch-off device */
-  hpcd->Instance->CNTR = (USB_CNTR_FRES | USB_CNTR_PDWN);
-  
-  __HAL_UNLOCK(hpcd); 
+//  hpcd->Instance->CNTR = (USB_CNTR_FRES | USB_CNTR_PDWN);
+
+  hpcd->Instance->BCDR &= ~(USB_BCDR_DPPU);
+  __HAL_UNLOCK(hpcd);
   return HAL_OK;
 }
+
 
 /**
   * @brief  This function handles PCD interrupt request.

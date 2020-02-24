@@ -72,7 +72,8 @@ typedef enum {
   TIM_PORT1_CRC,
   TIM_PORT1_RETRY,
   TIM_MAX
-} TIM_identifier;
+}
+TIM_identifier;
 
 #define TIM_MAX_TIME 10000 /*time in us, means 10 ms */
 /* Exported types ------------------------------------------------------------*/

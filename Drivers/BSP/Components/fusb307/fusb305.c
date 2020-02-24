@@ -38,6 +38,9 @@
 #include "usbpd_trace.h"
 #include "usbpd_core.h"
 #include "usbpd_tcpci.h"
+#if defined(_TRACE)
+#include <stdio.h>
+#endif /* _TRACE */
 
 /** @addtogroup TCPC_Driver
   * @{
@@ -74,6 +77,8 @@ TCPC_DrvTypeDef  fusb305_tcpc_drv =
   fusb305_tcpc_SinkTxNG,
   fusb305_tcpc_SinkTxOK,
   fusb305_tcpc_IfSinkTxOk,
+  fusb305_tcpc_EnableRx,
+  fusb305_tcpc_DisableRx,
 };
 
 /**
@@ -99,19 +104,45 @@ TCPC_DrvTypeDef  fusb305_tcpc_drv =
 #endif
 
 #if defined(_TRACE)
-#define FUSB307_DEBUG_NONE     (0)
-#define FUSB307_DEBUG_LEVEL_0  (1 << 0)
-#define FUSB307_DEBUG_LEVEL_1  (1 << 1)
-#define FUSB307_DEBUG_LEVEL_2  (1 << 2)
+#define FUSB307_DEBUG_NONE            (0)
+#define FUSB307_DEBUG_LEVEL_0         (1 << 0)
+#define FUSB307_DEBUG_LEVEL_1         (1 << 1)
+#define FUSB307_DEBUG_LEVEL_2         (1 << 2)
 #endif /* _TRACE */
 
-#define CC_DEBOUNCE_TIMER               4U      /**< tCCDebounce threshold = 4 ms  */
+#define CC_DEBOUNCE_TIMER             4U      /**< tCCDebounce threshold = 4 ms  */
+#define CAD_tVBUSDebounce_threshold   120  /**< tCCDebounce threshold = 120 ms  */
 
-#define USBPD_TCPM_MAX_RX_BUFFER_SIZE         (30U)    /*!< Maximum size of Rx buffer */
+#define USBPD_TCPM_MAX_RX_BUFFER_SIZE (30U)    /*!< Maximum size of Rx buffer */
 
+#define PWR_LOW_VBUS_THRESHOLD        700U  /* vSafe0V set to 700mv */
 /**
   * @}
   */
+typedef enum {
+  Disabled = 0,
+  ErrorRecovery,
+  Unattached,
+  AttachWaitSink,
+  AttachedSink,
+  AttachWaitSource,
+  AttachedSource,
+  TrySource,
+  TryWaitSink,
+  TrySink,
+  TryWaitSource,
+  AudioAccessory,
+  AttachWaitAccessory,
+  UnorientedDebugAccessorySource,
+  OrientedDebugAccessorySource,
+  DebugAccessorySink,
+  PoweredAccessory,
+  UnsupportedAccessory,
+  DelayUnattached,
+  UnattachedWaitSource,
+  IllegalCable
+} TypeCState;
+
 /* Private macro -------------------------------------------------------------*/
 /** @defgroup FUSB305_TCPC_Private_Macros FUSB305 Private Macros
  * @{
@@ -122,7 +153,7 @@ TCPC_DrvTypeDef  fusb305_tcpc_drv =
 
 #if defined(_TRACE)
 #define FUSB307_DEBUG_TRACE(__PORT__, _LEVEL_, __STRING__) \
-  if(FUSB307_DebugLevel & (_LEVEL_)) { USBPD_TRACE_Add(USBPD_TRACE_DEBUG, (__PORT__), 0, (__STRING__), sizeof(__STRING__)-1); }
+  if(FUSB307_DebugLevel & (_LEVEL_)) { USBPD_TRACE_Add(USBPD_TRACE_DEBUG, (__PORT__), 0, (uint8_t*)(__STRING__), sizeof(__STRING__)-1); }
 #else
 #define FUSB307_DEBUG_TRACE(__PORT__, _LEVEL_, __STRING__)
 #endif /* _TRACE */
@@ -141,7 +172,7 @@ uint8_t FUSB307_DebugLevel = FUSB307_DEBUG_LEVEL_0;
 #endif /* _TRACE */
 
 typedef union {
-  uint8_t byte[21];
+  uint8_t byte[22];
   struct {
     union {
       uint8_t VCONN_OCP; /* 0xA0 */
@@ -151,7 +182,13 @@ typedef union {
         uint8_t Reserved:4;
       };
     };
-    uint8_t Vendor_Reserved1;
+    union {
+      uint8_t SLICE; /* 0xA1 */
+      struct {
+        uint8_t SDAC               : 6;
+        uint8_t SDAC_HYS           : 2;
+      };
+    }; /* R/W */
     union {
       uint8_t RESET; /* 0xA2 */
       struct {
@@ -160,7 +197,13 @@ typedef union {
         uint8_t R_Reserved:6;
       };
     };
-    uint8_t Vendor_Reserved2;
+    union {
+      uint8_t VD_STAT; /* 0xA3 */
+      struct {
+        uint8_t VD_PWR                : 4;
+        uint8_t VD_Reserved           : 4;
+      };
+    }; /* Read-only */
     union {
       uint8_t GPIO1_CFG; /* 0xA4 */
       struct {
@@ -255,6 +298,15 @@ typedef union {
         uint8_t M_ALERT_Reserved:1;
       };
     };
+    union {
+      uint8_t RPVAL_OVER; /* 0xB5 */
+      struct {
+        uint8_t RP_VAL2            : 2;
+        uint8_t RP_VAL1            : 2;
+        uint8_t EN_RP_OVR          : 1;
+        /* [7..5] Reserved */
+      };
+    } ; /* R/W */
   };
 } regVendorInfo_t;
 
@@ -265,9 +317,12 @@ static struct fusb305_chip_state {
   USBPD_PortDataRole_TypeDef DataRole ;     /*!< Keep the current data role */
   TCPC_CC_Pull_TypeDef  CC_Pull;            /*!< Keep the current CC pull */
   TCPC_RP_Value_TypeDef RP_Value;           /*!< Keep the current RP Value */
+  TypeCState            TypeC_State;              /* TC state machine current state */
   uint8_t       VConnPresence;              /*!< Presence of VCONN */
   uint8_t       TogglingEnable;             /*!< Toggling activation */
   uint8_t       (*IsSwapOngoing)(uint8_t);  /*!< function used by PHY to avoid Idle BUS check when a swap is ongoing */
+  CCxPin_TypeDef CC_Pin;
+  uint8_t HardReset;
 } state[USBPD_PORT_COUNT];
 
 /**
@@ -278,7 +333,7 @@ static struct fusb305_chip_state {
 /** @defgroup FUSB305_TCPC_Private_Functions FUSB305 Private Functions
  * @{
  */
-static void                 InitializeRegisters(uint32_t Port);
+static USBPD_StatusTypeDef  InitializeRegisters(uint32_t Port);
 static USBPD_StatusTypeDef  tcpc_set_power(uint32_t Port, USBPD_FunctionalState State, TCPC_hard_reset HardReset);
 static USBPD_StatusTypeDef  tcpc_set_alert_mask(uint32_t Port, uint8_t Pull, USBPD_FunctionalState State);
 static USBPD_StatusTypeDef  tcpc_init_power_status_mask(uint32_t Port);
@@ -310,9 +365,15 @@ USBPD_StatusTypeDef fusb305_tcpc_init(uint32_t Port, USBPD_PortPowerRole_TypeDef
 
   /* Reset FUSB305 */
   usbpd_status = USBPD_TCPCI_WriteRegister(Port, 0xA2, (uint8_t*)&power_status, 2);
+  /* Enable IRQ which has been disabled by FreeRTOS services */
+  __enable_irq();
 
   /* all other variables assumed to default to 0 */
-  InitializeRegisters(Port);
+  usbpd_status = InitializeRegisters(Port);
+  if (USBPD_OK != usbpd_status)
+  {
+    goto exit;
+  }
 
   /* Save the CAD callback to check if PR swap is ongoing */
   state[Port].IsSwapOngoing        = IsSwapOngoing;
@@ -343,12 +404,14 @@ USBPD_StatusTypeDef fusb305_tcpc_init(uint32_t Port, USBPD_PortPowerRole_TypeDef
         /* Initialize power_status_mask */
         if (tcpc_init_power_status_mask(Port) != USBPD_OK)
         {
+          usbpd_status = USBPD_ERROR;
           goto exit;
         }
         
         /* Initialize alert mask*/
         if (tcpc_set_alert_mask(Port, TYPEC_CC_OPEN, USBPD_DISABLE) != USBPD_OK)
         {
+          usbpd_status = USBPD_ERROR;
           goto exit;
         }
 
@@ -372,6 +435,7 @@ USBPD_StatusTypeDef fusb305_tcpc_init(uint32_t Port, USBPD_PortPowerRole_TypeDef
         state[Port].Registers.Command.u.COMMAND = TCPC_REG_COMMAND_DISABLE_SRC_VBUS;
         if (USBPD_TCPCI_WriteRegister(Port, TCPC_REG_COMMAND, &state[Port].Registers.Command.u.COMMAND, 1) != USBPD_OK)
         {
+          usbpd_status = USBPD_ERROR;
           goto exit;
         }
 
@@ -379,6 +443,7 @@ USBPD_StatusTypeDef fusb305_tcpc_init(uint32_t Port, USBPD_PortPowerRole_TypeDef
         state[Port].Registers.Command.u.COMMAND = TCPC_REG_COMMAND_DISABLE_VBUS_DETECT;
         if (USBPD_TCPCI_WriteRegister(Port, TCPC_REG_COMMAND, &state[Port].Registers.Command.u.COMMAND, 1) != USBPD_OK)
         {
+          usbpd_status = USBPD_ERROR;
           goto exit;
         }
 
@@ -387,18 +452,21 @@ USBPD_StatusTypeDef fusb305_tcpc_init(uint32_t Port, USBPD_PortPowerRole_TypeDef
         state[Port].Registers.Control.s.u5.b5.DIS_VALRM   = 1;
         if (USBPD_TCPCI_WriteRegister(Port, TCPC_REG_POWER_CONTROL, &state[Port].Registers.Control.s.u5.POWER_CONTROL, 1) != USBPD_OK)
         {
+          usbpd_status = USBPD_ERROR;
           goto exit;
         }
           /* Initialize VBUS Threshold */
         state[Port].Registers.VBUS.s.VBUS_VOLTAGE_ALARM_HI_CFG   = 840;
         if (USBPD_TCPCI_WriteRegister(Port, TCPC_REG_VBUS_VOLTAGE_ALARM_HI_CFG, (uint8_t*)&state[Port].Registers.VBUS.s.VBUS_VOLTAGE_ALARM_HI_CFG, 2) != USBPD_OK)
         {
+          usbpd_status = USBPD_ERROR;
           goto exit;
         }
         
         state[Port].Registers.VBUS.s.VBUS_VOLTAGE_ALARM_LO_CFG   = 32;
         if (USBPD_TCPCI_WriteRegister(Port, TCPC_REG_VBUS_VOLTAGE_ALARM_LO_CFG, (uint8_t*)&state[Port].Registers.VBUS.s.VBUS_VOLTAGE_ALARM_LO_CFG, 2) != USBPD_OK)
         {
+          usbpd_status = USBPD_ERROR;
           goto exit;
         }
 
@@ -417,8 +485,10 @@ USBPD_StatusTypeDef fusb305_tcpc_init(uint32_t Port, USBPD_PortPowerRole_TypeDef
             goto exit;
         }
 
+        state[Port].TypeC_State       = Disabled;
         if (fusb305_tcpc_set_cc(Port, cc_value, USBPD_DISABLE) != USBPD_OK)
         {
+          usbpd_status = USBPD_ERROR;
           goto exit;
         }
         
@@ -426,16 +496,13 @@ USBPD_StatusTypeDef fusb305_tcpc_init(uint32_t Port, USBPD_PortPowerRole_TypeDef
         state[Port].Registers.Command.u.COMMAND = TCPC_REG_COMMAND_LOOK4CONNECTION;
         if (USBPD_TCPCI_WriteRegister(Port, TCPC_REG_COMMAND, &state[Port].Registers.Command.u.COMMAND, 1) != USBPD_OK)
         {
+          usbpd_status = USBPD_ERROR;
           goto exit;
         }
         state[Port].Registers.Alerts.word[0] = TCPC_REG_ALERT_CLEAR_ALL;
         usbpd_status = USBPD_TCPCI_WriteRegister(Port, TCPC_REG_ALERT, (uint8_t*)&state[Port].Registers.Alerts.word[0], 2);
         
         break;
-      }
-      else
-      {
-        return usbpd_status;
       }
     }
   }
@@ -466,7 +533,7 @@ USBPD_StatusTypeDef fusb305_tcpc_get_cc(uint32_t Port, uint32_t *CC1_Level, uint
   if (*CC1_Level != 0xFF)
   {
     uint8_t tab[10] = {0};
-    uint8_t size = sprintf((char*)tab,"CC_S2=%2X", *&state[Port].Registers.Status.u1.CC_STATUS);
+    sprintf((char*)tab,"CC_S2=%2X", *&state[Port].Registers.Status.u1.CC_STATUS);
     FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, tab);
   }
 #endif /* _TRACE */
@@ -477,24 +544,18 @@ USBPD_StatusTypeDef fusb305_tcpc_get_cc(uint32_t Port, uint32_t *CC1_Level, uint
     *CC1_Level = state[Port].Registers.Status.u1.b1.CC1_STAT;
     *CC2_Level = state[Port].Registers.Status.u1.b1.CC2_STAT;
 
-    /* Check if need to keep value of RA */
-    if ((TYPEC_CC_RA != state[Port].Registers.Control.s.u3.b3.CC1_TERM)
-      && (TYPEC_CC_RA != state[Port].Registers.Control.s.u3.b3.CC2_TERM))
-    { 
-      /* Reset VCONN Presence */
-      state[Port].VConnPresence = TYPEC_CC_OPEN;
-    }
-    
     /*
      * If status is not open, then OR in termination to convert to
-     * enum @ref tcpc_cc_voltage_status.
+     * enum @ref TCPC_CC_Volt_Status_TypeDef.
      */
     status = USBPD_OK;
-    if (state[Port].IsSwapOngoing(Port) == 0)
+    if ((state[Port].IsSwapOngoing(Port) == 0) && (state[Port].HardReset == 0U))
     {
+      state[Port].CC_Pin = CCNONE;
       /* Check CC1 pin */
       if (*CC1_Level != TYPEC_CC_VOLT_OPEN)
       {
+        state[Port].CC_Pin = CC1;
         if (((state[Port].TogglingEnable == 0) &&
                 ((TYPEC_CC_RD == state[Port].Registers.Control.s.u3.b3.CC1_TERM)||(state[Port].Registers.Status.u1.b1.CON_RES == 1)))
             ||((state[Port].TogglingEnable == 1) &&
@@ -509,7 +570,8 @@ USBPD_StatusTypeDef fusb305_tcpc_get_cc(uint32_t Port, uint32_t *CC1_Level, uint
         else
         {
           /* Check that on another pin than a RA is present */
-          if (TYPEC_CC_VOLT_RA == *CC2_Level)
+          if ((TYPEC_CC_OPEN != state[Port].Registers.Control.s.u3.b3.CC2_TERM)
+           && (TYPEC_CC_VOLT_RA == *CC2_Level))
           {
             /* RA detected on pin CC2 */
             state[Port].VConnPresence = TYPEC_CC_RA;
@@ -524,6 +586,7 @@ USBPD_StatusTypeDef fusb305_tcpc_get_cc(uint32_t Port, uint32_t *CC1_Level, uint
       /* Check CC2 pin */
       if (*CC2_Level != TYPEC_CC_VOLT_OPEN)
       {
+        state[Port].CC_Pin = CC2;
         if (((state[Port].TogglingEnable == 0) &&
                 ((TYPEC_CC_RD == state[Port].Registers.Control.s.u3.b3.CC2_TERM)||(state[Port].Registers.Status.u1.b1.CON_RES == 1)))
             ||((state[Port].TogglingEnable == 1) &&
@@ -538,7 +601,8 @@ USBPD_StatusTypeDef fusb305_tcpc_get_cc(uint32_t Port, uint32_t *CC1_Level, uint
         else
         {
           /* Check that on another pin than a RA is present */
-          if (TYPEC_CC_VOLT_RA == *CC1_Level)
+          if ((TYPEC_CC_OPEN != state[Port].Registers.Control.s.u3.b3.CC1_TERM)
+            && (TYPEC_CC_VOLT_RA == *CC1_Level))
           {
             /* RA detected on pin CC1 */
             state[Port].VConnPresence = TYPEC_CC_RA;
@@ -592,7 +656,7 @@ USBPD_StatusTypeDef fusb305_tcpc_set_cc(uint32_t Port, TCPC_CC_Pull_TypeDef Pull
   }
 
   /* Update role in TCPC PD header */
-  fusb305_tcpc_set_msg_header(Port, state[Port].PowerRole, state[Port].DataRole);
+  fusb305_tcpc_set_msg_header(Port, state[Port].PowerRole, state[Port].DataRole, state[Port].Registers.FrameInfo.u1.b1.USB_PD_REV);
   
   return USBPD_OK;
 }
@@ -663,11 +727,12 @@ USBPD_StatusTypeDef fusb305_tcpc_set_vconn(uint32_t Port, USBPD_FunctionalState 
   * @param  PortNum   port number value
   * @param  PowerRole Power role
   * @param  DataRole  Data role
+  * @param  Specification   PD Specification version
   * @retval USBPD status
   */
-USBPD_StatusTypeDef fusb305_tcpc_set_msg_header(uint32_t PortNum, USBPD_PortPowerRole_TypeDef PowerRole, USBPD_PortDataRole_TypeDef DataRole)
+USBPD_StatusTypeDef fusb305_tcpc_set_msg_header(uint32_t PortNum, USBPD_PortPowerRole_TypeDef PowerRole, USBPD_PortDataRole_TypeDef DataRole, USBPD_SpecRev_TypeDef Specification)
 {
-  state[PortNum].Registers.FrameInfo.u1.MESSAGE_HEADER_INFO = TCPC_REG_MSG_HEADER_INFO_SET(DataRole, PowerRole);
+  state[PortNum].Registers.FrameInfo.u1.MESSAGE_HEADER_INFO = TCPC_REG_MSG_HEADER_INFO_SET(DataRole, PowerRole, USBPD_SPECIFICATION_REV2);
 
   return USBPD_TCPCI_WriteRegister(PortNum, TCPC_REG_MSG_HEADER_INFO, &state[PortNum].Registers.FrameInfo.u1.MESSAGE_HEADER_INFO, 1);
 }
@@ -699,8 +764,8 @@ USBPD_StatusTypeDef fusb305_tcpc_set_rx_state(uint32_t Port, TCPC_CC_Pull_TypeDe
     state[Port].Registers.FrameInfo.u2.b2.EN_HRD_RST  = 1;
     USBPD_TCPCI_WriteRegister(Port, TCPC_REG_RX_DETECT, (uint8_t*)&state[Port].Registers.FrameInfo.u2.RECEIVE_DETECT, 1);
 
-    /* Set role of CC pins */
-    //fusb305_tcpc_set_cc(Port, state[Port].CC_Pull, State);
+    /* Disable CC interuptions */
+    state[Port].HardReset = 1;
 
     return status;
   }
@@ -722,7 +787,12 @@ USBPD_StatusTypeDef fusb305_tcpc_set_rx_state(uint32_t Port, TCPC_CC_Pull_TypeDe
   {
     /* Set role of CC pins */
     fusb305_tcpc_set_cc(Port, Pull, State);
-    
+
+    if (TYPEC_CC_RD == Pull)
+    {
+      state[Port].TypeC_State = AttachWaitSink;
+    }
+
     if (USBPD_OK == tcpc_set_power(Port, State, HardReset))
     {
       /* Update ALERT mask */
@@ -732,27 +802,10 @@ USBPD_StatusTypeDef fusb305_tcpc_set_rx_state(uint32_t Port, TCPC_CC_Pull_TypeDe
       state[Port].Registers.FrameInfo.u2.RECEIVE_DETECT = SupportedSOP;
       state[Port].Registers.FrameInfo.u2.b2.EN_HRD_RST  = 1;
       USBPD_TCPCI_WriteRegister(Port, TCPC_REG_RX_DETECT, (uint8_t*)&state[Port].Registers.FrameInfo.u2.RECEIVE_DETECT, 1);
+      state[Port].TypeC_State = Disabled;
     }
     else
     {
-#if 1
-      if (state[Port].TogglingEnable == 1)
-      {
-        /* Change power role to restart DRP toggling */
-        if (TYPEC_CC_RP == Pull)
-        {
-          state[Port].PowerRole = USBPD_PORTPOWERROLE_SNK;
-          state[Port].DataRole  = USBPD_PORTDATAROLE_UFP;
-          state[Port].CC_Pull   = TYPEC_CC_RD;
-        }
-        else
-        {
-          state[Port].PowerRole = USBPD_PORTPOWERROLE_SRC;
-          state[Port].DataRole  = USBPD_PORTDATAROLE_DFP;
-          state[Port].CC_Pull   = TYPEC_CC_RP;
-        }
-      }
-#endif
       /* Set role of CC pins */
       fusb305_tcpc_set_cc(Port, state[Port].CC_Pull, USBPD_DISABLE);
 
@@ -785,29 +838,6 @@ USBPD_StatusTypeDef fusb305_tcpc_set_rx_state(uint32_t Port, TCPC_CC_Pull_TypeDe
     state[Port].Registers.Command.u.COMMAND = TCPC_REG_COMMAND_DISABLE_VBUS_DETECT;
     USBPD_TCPCI_WriteRegister(Port, TCPC_REG_COMMAND, &state[Port].Registers.Command.u.COMMAND, 1);
 
-#if 1
-#if 0
-    if ((state[Port].TogglingEnable == 1) && (status == USBPD_OK))
-#else
-    if (state[Port].TogglingEnable == 1)
-#endif
-    {
-      /* Change power role to restart DRP toggling */
-      if (TYPEC_CC_RP == state[Port].CC_Pull)
-      {
-        state[Port].PowerRole = USBPD_PORTPOWERROLE_SNK;
-        state[Port].DataRole  = USBPD_PORTDATAROLE_UFP;
-        state[Port].CC_Pull   = TYPEC_CC_RD;
-      }
-      else
-      {
-        state[Port].PowerRole = USBPD_PORTPOWERROLE_SRC;
-        state[Port].DataRole  = USBPD_PORTDATAROLE_DFP;
-        state[Port].CC_Pull   = TYPEC_CC_RP;
-      }
-    }
-#endif
-
     /* Set CC functionality */
     fusb305_tcpc_set_cc(Port, state[Port].CC_Pull, USBPD_DISABLE);
 
@@ -815,6 +845,38 @@ USBPD_StatusTypeDef fusb305_tcpc_set_rx_state(uint32_t Port, TCPC_CC_Pull_TypeDe
     USBPD_TCPCI_WriteRegister(Port, TCPC_REG_COMMAND, &state[Port].Registers.Command.u.COMMAND, 1);
   }
 
+  return status;
+}
+
+/**
+  * @brief  Enable RX
+  * @param  PortNum    Number of the port.
+  * @retval None
+  */
+USBPD_StatusTypeDef fusb305_tcpc_EnableRx(uint32_t Port)
+{
+  USBPD_StatusTypeDef status = USBPD_OK;
+  /* Enable RX */
+  USBPD_TCPCI_WriteRegister(Port, TCPC_REG_RX_DETECT, (uint8_t*)&state[Port].Registers.FrameInfo.u2.RECEIVE_DETECT, 1);
+  state[Port].HardReset = 0U;
+  return status;
+}
+
+/**
+  * @brief  Disable RX
+  * @param  PortNum    Number of the port.
+  * @retval None
+  */
+USBPD_StatusTypeDef fusb305_tcpc_DisableRx(uint32_t Port)
+{
+  USBPD_StatusTypeDef status = USBPD_OK;
+  /* Disable RX for SOP* */
+  if (0U == state[Port].HardReset)
+  {
+    uint8_t disable = 0;
+    USBPD_TCPCI_WriteRegister(Port, TCPC_REG_RX_DETECT, (uint8_t*)&disable, 1);
+    FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, "DisableRx");
+  }  
   return status;
 }
 
@@ -886,11 +948,14 @@ USBPD_StatusTypeDef fusb305_tcpc_transmit(uint32_t Port, USBPD_SOPType_TypeDef T
   }
   else
   {
+    USBPD_TCPCI_WriteRegister(Port, TCPC_REG_RX_DETECT, (uint8_t*)&state[Port].Registers.FrameInfo.u2.RECEIVE_DETECT, 1);
+
     /* Send Hard Reset, Cable Reset, or BIST Carrier Mode 2 signaling */
     state[Port].Registers.TXFrame.u.TRANSMIT_BYTE_COUNT = 0;
     status = USBPD_TCPCI_WriteRegister(Port, TCPC_REG_TX_BYTE_COUNT, &state[Port].Registers.TXFrame.u.TRANSMIT_BYTE_COUNT, 1);
     state[Port].Registers.TXFrame.u.TRANSMIT = TCPC_REG_TRANSMIT_SET(Type, 0);
     status |= USBPD_TCPCI_WriteRegister(Port, TCPC_REG_TRANSMIT, &state[Port].Registers.TXFrame.u.TRANSMIT, 1);
+    state[Port].HardReset = 1;
   }
 
   return status;
@@ -911,7 +976,7 @@ USBPD_StatusTypeDef fusb305_tcpc_get_power_status(uint32_t Port, uint8_t *PowerS
 
 #if defined(_TRACE)
   uint8_t tab[10] = {0};
-  uint8_t size = sprintf((char*)tab,"power=%2x", *PowerStatus);
+  sprintf((char*)tab,"power=%2x", *PowerStatus);
   FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, tab);
 #endif /* _TRACE */
 
@@ -975,14 +1040,14 @@ USBPD_StatusTypeDef fusb305_tcpc_get_vbus_level(uint32_t Port, uint8_t *VBUSLeve
   {
     previous_vbus = *VBUSLevel;
     sprintf((char*)tab,"Vbus=%2x", previous_vbus);
-    FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, tab);
+    FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_1, tab);
   }
 
   if (previous_vbus_voltage != *VBUSVoltage)
   {
     previous_vbus_voltage = *VBUSVoltage;
     sprintf((char*)tab,"VbusVolt=%d", previous_vbus_voltage);
-    FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, tab);
+    FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_1, tab);
   }
 #endif /* _TRACE */
 
@@ -998,7 +1063,6 @@ USBPD_StatusTypeDef fusb305_tcpc_get_vbus_level(uint32_t Port, uint8_t *VBUSLeve
 USBPD_StatusTypeDef fusb305_tcpc_set_vbus_level(uint32_t Port, USBPD_FunctionalState State)
 {
   uint8_t vbus_level = 0;
-  state[Port].Registers.Control.s.u5.POWER_CONTROL = 0;
   if (USBPD_ENABLE == State)
   {
     uint8_t TimeoutSink = 0;
@@ -1071,6 +1135,7 @@ USBPD_StatusTypeDef fusb305_tcpc_set_vbus_level(uint32_t Port, USBPD_FunctionalS
   {
     uint16_t vbus_voltage = 0;
     /* Enable Force discharge */
+    state[Port].Registers.Control.s.u5.b5.AUTO_DISCH  = 0;
     state[Port].Registers.Control.s.u5.b5.FORCE_DISCH  = 1;
     USBPD_TCPCI_WriteRegister(Port, TCPC_REG_POWER_CONTROL, &state[Port].Registers.Control.s.u5.POWER_CONTROL, 1);
 
@@ -1084,7 +1149,7 @@ USBPD_StatusTypeDef fusb305_tcpc_set_vbus_level(uint32_t Port, USBPD_FunctionalS
 
     /* Wait for VBUS ready */
     fusb305_tcpc_get_vbus_level(Port, &vbus_level, &vbus_voltage);
-    while ((vbus_level != 0) || (vbus_voltage > 800)) {
+    while ((vbus_level != 0) || (vbus_voltage > PWR_LOW_VBUS_THRESHOLD)) {
       /* Disable SOURCE VBUS */
       state[Port].Registers.Command.u.COMMAND = TCPC_REG_COMMAND_DISABLE_SRC_VBUS;
       USBPD_TCPCI_WriteRegister(Port, TCPC_REG_COMMAND, &state[Port].Registers.Command.u.COMMAND, 1);
@@ -1129,14 +1194,45 @@ static USBPD_StatusTypeDef tcpc_set_power(uint32_t Port, USBPD_FunctionalState S
         uint16_t vbus_voltage = 0;
         /* Wait for VBUS ready */
         fusb305_tcpc_get_vbus_level(Port, &vbus_level, &vbus_voltage);
-        while (vbus_voltage > 800)
+        while (vbus_voltage > PWR_LOW_VBUS_THRESHOLD)
         {
           fusb305_tcpc_get_vbus_level(Port, &vbus_level, &vbus_voltage);
         }
-      }
+#if defined(_RTOS)
+        extern uint32_t          HAL_GetTick(void);
+        uint32_t CAD_tVBUSDebounce_start, CAD_tVBUSDebounce;
+        /* Get the time of this event */
+        CAD_tVBUSDebounce_start = HAL_GetTick();
+        /* Evaluate elapsed time in Attach_Wait state */
+        CAD_tVBUSDebounce = HAL_GetTick() - CAD_tVBUSDebounce_start;
+        /* Check tCCDebounce */
+        while (CAD_tVBUSDebounce < CAD_tVBUSDebounce_threshold)
+        {
+          CAD_tVBUSDebounce = HAL_GetTick() - CAD_tVBUSDebounce_start;
+#else
+          USBPD_TIM_Start((Port == USBPD_PORT_0 ? TIM_PORT0_TIMER1 : TIM_PORT1_TIMER1), CAD_tVBUSDebounce_threshold * 1000);
+          /* Check tCCDebounce */
+          while (USBPD_TIM_IsExpired((Port == USBPD_PORT_0 ? TIM_PORT0_TIMER1 : TIM_PORT1_TIMER1)) == 0)
+          {
+#endif /* _RTOS */
+            /* Need to check that line is still connected */
+            uint32_t cc1 = 0xFF, cc2 = 0xFF;
+            if (USBPD_BUSY == fusb305_tcpc_get_cc(Port, &cc1, &cc2))
+            {
+              /* Line has been disconnected */
+              return USBPD_FAIL;
+            }
+            
+            if (CCNONE == state[Port].CC_Pin)
+            {
+              /* Line has been disconnected */
+              return USBPD_FAIL;
+            }
+          }
+        }
 
       /* Enable VCONN */
-      //state[Port].Registers.Control.s.u5.b5.EN_VCONN    = 1;
+      if (TYPEC_CC_RA == state[Port].VConnPresence) state[Port].Registers.Control.s.u5.b5.EN_VCONN    = 1;
       state[Port].Registers.Control.s.u5.b5.AUTO_DISCH  = 1;
       USBPD_TCPCI_WriteRegister(Port, TCPC_REG_POWER_CONTROL, &state[Port].Registers.Control.s.u5.POWER_CONTROL, 1);
 
@@ -1261,8 +1357,8 @@ USBPD_StatusTypeDef fusb305_tcpc_alert(uint32_t Port, uint16_t *Alert)
 #if defined(_TRACE)
   {
     uint8_t tab[15] = {0};
-    uint8_t size = sprintf((char*)tab,"Alert=%2x", *Alert);
-    FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, tab);
+    sprintf((char*)tab,"Alert=%2x", *Alert);
+    FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_1, tab);
   }
 #endif /* _TRACE */
   
@@ -1274,16 +1370,8 @@ USBPD_StatusTypeDef fusb305_tcpc_alert(uint32_t Port, uint16_t *Alert)
   {
     uint16_t alert = (TCPC_REG_ALERT_CLEAR_ALL & ~(TCPC_REG_ALERT_RECEIVE_SOP|TCPC_REG_ALERT_TRANSMIT_COMPLETE));
     usbpd_status = USBPD_TCPCI_WriteRegister(Port, TCPC_REG_ALERT, (uint8_t*)&alert, 2);
-    
     /* Keep only the relevant alerts enabled in the alert mask */
     *Alert &= state[Port].Registers.Alerts.word[1];
-#if defined(_TRACE)
-    {
-      uint8_t tab[15] = {0};
-      uint8_t size = sprintf((char*)tab,"ValidAlert=%2x", *Alert);
-      FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, tab);
-    }
-#endif /* _TRACE */
   }
   return usbpd_status;
 }
@@ -1399,23 +1487,23 @@ USBPD_StatusTypeDef fusb305_tcpc_IfSinkTxOk(uint32_t PortNum)
   * @param  Port port number value
   * @retval none
   */
-static void InitializeRegisters(uint32_t Port)
+static USBPD_StatusTypeDef InitializeRegisters(uint32_t Port)
 {
-  USBPD_TCPCI_ReadRegister(Port, TCPC_REG_VENDOR_ID, (uint8_t*)&state[Port].Registers.TCPC_Information.word[0], 12);
-  USBPD_TCPCI_ReadRegister(Port, TCPC_REG_ALERT, (uint8_t*)&state[Port].Registers.Alerts.word[0], 4);
-  USBPD_TCPCI_ReadRegister(Port, TCPC_REG_POWER_STATUS_MASK, &state[Port].Registers.StatusMask.byte[0], 2);
-  USBPD_TCPCI_ReadRegister(Port, TCPC_REG_CONFIG_STANDARD_OUTPUT, &state[Port].Registers.Control.byte[0], 5);
-  USBPD_TCPCI_ReadRegister(Port, TCPC_REG_CC_STATUS, &state[Port].Registers.Status.u1.CC_STATUS, 1);
-  USBPD_TCPCI_ReadRegister(Port, TCPC_REG_POWER_STATUS, &state[Port].Registers.Status.u2.POWER_STATUS, 1);
-  USBPD_TCPCI_ReadRegister(Port, TCPC_REG_FAULT_STATUS, &state[Port].Registers.Status.u3.FAULT_STATUS, 1);
-  USBPD_TCPCI_ReadRegister(Port, TCPC_REG_COMMAND, &state[Port].Registers.Command.byte, 1);
-  USBPD_TCPCI_ReadRegister(Port, TCPC_REG_DECIVE_CAP1, &state[Port].Registers.Capabilities.byte[0], 6);
-  USBPD_TCPCI_ReadRegister(Port, TCPC_REG_MSG_HEADER_INFO, (uint8_t*)&state[Port].Registers.FrameInfo.u1.MESSAGE_HEADER_INFO, 1);
-  USBPD_TCPCI_ReadRegister(Port, TCPC_REG_RX_DETECT, (uint8_t*)&state[Port].Registers.FrameInfo.u2.RECEIVE_DETECT, 1);
-  USBPD_TCPCI_ReadRegister(Port, TCPC_REG_RX_BYTE_COUNT, &state[Port].Registers.RXFrame.byte[0], 4);
-  USBPD_TCPCI_ReadRegister(Port, TCPC_REG_TRANSMIT, &state[Port].Registers.TXFrame.byte[0], 4);
-  USBPD_TCPCI_ReadRegister(Port, TCPC_REG_VBUS_VOLTAGE, (uint8_t*)&state[Port].Registers.VBUS.word[0], 10);
-  USBPD_TCPCI_ReadRegister(Port, TCPC_REG_VCONN_OCP, (uint8_t*)&state[Port].Vendor.byte[0], 21);
+  USBPD_StatusTypeDef _status;
+  uint8_t register_id = TCPC_REG_VENDOR_ID;
+  _status = USBPD_TCPCI_ReadRegister(Port, register_id, (uint8_t*)&state[Port].Registers.TCPC_Information.word[0], sizeof(DeviceReg_t));
+  if (USBPD_OK != _status)
+  {
+    goto _exit;
+  }
+  register_id = TCPC_REG_VCONN_OCP;
+  _status = USBPD_TCPCI_ReadRegister(Port, register_id, (uint8_t*)&state[Port].Vendor.byte[0], sizeof(regVendorInfo_t));
+  if (USBPD_OK != _status)
+  {
+    goto _exit;
+  }
+_exit:
+  return _status;
 }
 
 /**
@@ -1495,25 +1583,27 @@ static USBPD_StatusTypeDef tcpc_init_power_status_mask(uint32_t Port)
   */
 static void tcpc_set_pin_role(uint32_t Port, uint8_t Pull, USBPD_FunctionalState State)
 {
-#if defined(_TRACE)
-    switch (Pull)
-    {
-      case TYPEC_CC_RA:
-        FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, "tcpc_set_pin_role(RA)");
-        break;
-      case TYPEC_CC_RP:
-        FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, "tcpc_set_pin_role(RP)");
-        break;
-      case TYPEC_CC_RD:
-        FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, "tcpc_set_pin_role(RD)");
-        break;
-      case TYPEC_CC_OPEN:
-        FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, "tcpc_set_pin_role(OPEN)");
-        break;
-      }
-#endif /* _TRACE */
+  uint8_t wasAWSnk = (state[Port].TypeC_State == AttachWaitSink) ? 1 : 0;
+
   if (USBPD_ENABLE == State)
   {
+#if defined(_TRACE)
+        switch (Pull)
+        {
+          case TYPEC_CC_RA:
+            FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, "tcpc_set_pin_role(EN, RA)");
+            break;
+          case TYPEC_CC_RP:
+            FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, "tcpc_set_pin_role(EN, RP)");
+            break;
+          case TYPEC_CC_RD:
+            FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, "tcpc_set_pin_role(EN, RD)");
+            break;
+          case TYPEC_CC_OPEN:
+            FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, "tcpc_set_pin_role(EN, OPEN)");
+            break;
+          }
+#endif /* _TRACE */
 #if 0
     if (TYPEC_CC_OPEN == state[Port].VConnPresence)
     {
@@ -1538,8 +1628,42 @@ static void tcpc_set_pin_role(uint32_t Port, uint8_t Pull, USBPD_FunctionalState
   }
   else
   {
+    if (state[Port].TogglingEnable == 1)
+    {
+      if (wasAWSnk)
+      {
+        state[Port].PowerRole = USBPD_PORTPOWERROLE_SRC;
+        state[Port].DataRole  = USBPD_PORTDATAROLE_DFP;
+        state[Port].CC_Pull   = TYPEC_CC_RP;
+      }
+      else
+      {
+        state[Port].PowerRole = USBPD_PORTPOWERROLE_SNK;
+        state[Port].DataRole  = USBPD_PORTDATAROLE_UFP;
+        state[Port].CC_Pull   = TYPEC_CC_RD;
+      }
+    }
+
+#if defined(_TRACE)
+  switch (state[Port].CC_Pull)
+  {
+    case TYPEC_CC_RA:
+      FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, "tcpc_set_pin_role(DIS, RA)");
+      break;
+    case TYPEC_CC_RP:
+      FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, "tcpc_set_pin_role(DIS, RP)");
+      break;
+    case TYPEC_CC_RD:
+      FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, "tcpc_set_pin_role(DIS, RD)");
+      break;
+    case TYPEC_CC_OPEN:
+      FUSB307_DEBUG_TRACE(Port, FUSB307_DEBUG_LEVEL_0, "tcpc_set_pin_role(DIS, OPEN)");
+      break;
+    }
+#endif /* _TRACE */
     /* Set RP value to 0 to save power */
-    state[Port].Registers.Control.s.u3.ROLE_CONTROL = TCPC_REG_ROLE_CONTROL_SET(state[Port].TogglingEnable, TYPEC_RP_VALUE_1P5A, Pull, Pull);
+    state[Port].Registers.Control.s.u3.ROLE_CONTROL = TCPC_REG_ROLE_CONTROL_SET(state[Port].TogglingEnable, TYPEC_RP_VALUE_1P5A, state[Port].CC_Pull, state[Port].CC_Pull);
+    state[Port].TypeC_State = Unattached;
   }
   USBPD_TCPCI_WriteRegister(Port, TCPC_REG_ROLE_CONTROL, &state[Port].Registers.Control.s.u3.ROLE_CONTROL, 1);
 }

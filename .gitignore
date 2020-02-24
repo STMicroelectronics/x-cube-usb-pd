@@ -1,0 +1,19 @@
+#Ignore modules added by the repo script
+*.bak
+**/*.log
+**/EWARM/*/
+**/EWARM/*.dep
+**/EWARM/*.ewt
+**/EWARM/*.out
+**/EWARM/settings/
+**/MDK-ARM/*/
+**/MDK-ARM/*.lst
+**/MDK-ARM/*.out
+**/MDK-ARM/*vguix.*
+**/STM32CubeIDE/.metadata
+**/STM32CubeIDE/**/*.out
+**/STM32CubeIDE/**/Debug/
+**/STM32CubeIDE/**/Doc/
+**/STM32CubeIDE/**/Drivers/
+**/STM32CubeIDE/**/Example/
+**/STM32CubeIDE/**/.settings/

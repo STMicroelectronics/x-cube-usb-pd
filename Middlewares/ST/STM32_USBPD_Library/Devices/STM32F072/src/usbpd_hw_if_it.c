@@ -6,37 +6,37 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics International N.V. 
+  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics International N.V.
   * All rights reserved.</center></h2>
   *
-  * Redistribution and use in source and binary forms, with or without 
+  * Redistribution and use in source and binary forms, with or without
   * modification, are permitted, provided that the following conditions are met:
   *
-  * 1. Redistribution of source code must retain the above copyright notice, 
+  * 1. Redistribution of source code must retain the above copyright notice,
   *    this list of conditions and the following disclaimer.
   * 2. Redistributions in binary form must reproduce the above copyright notice,
   *    this list of conditions and the following disclaimer in the documentation
   *    and/or other materials provided with the distribution.
-  * 3. Neither the name of STMicroelectronics nor the names of other 
-  *    contributors to this software may be used to endorse or promote products 
+  * 3. Neither the name of STMicroelectronics nor the names of other
+  *    contributors to this software may be used to endorse or promote products
   *    derived from this software without specific written permission.
-  * 4. This software, including modifications and/or derivative works of this 
+  * 4. This software, including modifications and/or derivative works of this
   *    software, must execute solely and exclusively on microcontroller or
   *    microprocessor devices manufactured by or for STMicroelectronics.
-  * 5. Redistribution and use of this software other than as permitted under 
-  *    this license is void and will automatically terminate your rights under 
-  *    this license. 
+  * 5. Redistribution and use of this software other than as permitted under
+  *    this license is void and will automatically terminate your rights under
+  *    this license.
   *
-  * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS" 
-  * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT 
-  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+  * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS"
+  * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT
+  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
   * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
-  * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT 
+  * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT
   * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
   * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, 
-  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
-  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+  * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+  * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
   * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
   * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   *
@@ -99,8 +99,8 @@ __STATIC_INLINE void DMA_IRQHandler(uint8_t PortNum)
   /* Handler DMA TX PORT  */
   if (__HAL_DMA_GET_FLAG(hdma, __HAL_DMA_GET_TC_FLAG_INDEX(&Ports[PortNum].hdmatx)) != RESET)
 #else
-   /* LL DMA TX PORT  */
-  if (LL_DMACH_GET_FLAG_TC(PortNum, TX_DMA(PortNum)) != RESET)   
+  /* LL DMA TX PORT  */
+  if (LL_DMACH_GET_FLAG_TC(PortNum, TX_DMA(PortNum)) != RESET)
 #endif /* USE_HAL_SPI */
   {
     if (Ports[PortNum].State == HAL_USBPD_PORT_STATE_BIST)
@@ -215,7 +215,7 @@ __STATIC_INLINE void RX_TIM_Interrupt_IRQHandler(uint8_t PortNum)
   __HAL_TIM_ENABLE_DMA(&(Ports[PortNum].htimrx), RX_TIM_DMA_CC(PortNum));
   HAL_TIM_IC_Start(&(Ports[PortNum].htimrx), RX_TIMCH(PortNum));
 #else
-  HAL_DMA_Start(&Ports[PortNum].hdmarx, (uint32_t)&((RX_TIM(PortNum))->CCR1), (uint32_t)Ports[PortNum].pRxBuffPtr, PHY_MAX_RAW_SIZE);
+  HAL_DMA_Start(&Ports[PortNum].hdmarx, (uint32_t) & ((RX_TIM(PortNum))->CCR1), (uint32_t)Ports[PortNum].pRxBuffPtr, PHY_MAX_RAW_SIZE);
   LL_TIM_EnableDMAReq_CC1(RX_TIM(PortNum));
   LL_TIM_CC_EnableChannel(RX_TIM(PortNum), RX_TIMCH(PortNum));
   LL_TIM_EnableCounter(RX_TIM(PortNum));
@@ -274,11 +274,11 @@ void ADC1_COMP_IRQHandler(void)
 #else
 #if (0) /* ADC AWD IT not used */
   /* Check whether ADC analog watchdog 1 caused the ADC interruption */
-  if(LL_ADC_IsActiveFlag_AWD1(P_NUCLEO_USB001_ADC) != 0)
+  if (LL_ADC_IsActiveFlag_AWD1(P_NUCLEO_USB001_ADC) != 0)
   {
     /* Clear flag ADC analog watchdog 1 */
     LL_ADC_ClearFlag_AWD1(P_NUCLEO_USB001_ADC);
-    
+
     /* Call interruption treatment function */
     ..._Callback();
   }
@@ -290,6 +290,7 @@ void ADC1_COMP_IRQHandler(void)
 /* ------------------------ OPTIMIZED FUNCTIONS ----------------------------- */
 /* -------------------------------------------------------------------------- */
 
+#if defined(USE_HAL_TIM)
 /**
   * @brief  This function handles TIM interrupts requests.
   * @param  htim  TIM  handle
@@ -297,7 +298,6 @@ void ADC1_COMP_IRQHandler(void)
   * @param  Timit TIM  IT
   * @retval None
   */
-#if defined(USE_HAL_TIM)
 static inline void SINGLE_TIM_IRQHandler(TIM_HandleTypeDef *htim, uint32_t Flag, uint32_t Timit)
 {
   /* Capture compare event */
@@ -325,6 +325,11 @@ static inline void SINGLE_TIM_IRQHandler(TIM_HandleTypeDef *htim, uint32_t Flag,
   }
 }
 #else
+/**
+  * @brief  This function handles TIM interrupts requests.
+  * @param  PortNum The current port number
+  * @retval None
+  */
 static inline void SINGLE_TIM_IRQHandler(uint8_t PortNum)
 {
   /* Capture compare event */
@@ -339,7 +344,7 @@ static inline void SINGLE_TIM_IRQHandler(uint8_t PortNum)
       }
     }
   }
-  
+
   /* TIM Update event */
   if (LL_TIM_IsActiveFlag_UPDATE(RX_COUNTTIM(PortNum)) != RESET)
   {

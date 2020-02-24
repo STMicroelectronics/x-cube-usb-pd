@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VIF xmlns="http://usb.org/VendorInfoFile.xsd">
+  <VIF_Specification>2.04</VIF_Specification>
+  <VIF_App>
+    <Vendor>USB-IF</Vendor>
+    <Name>Vendor Info File Editor</Name>
+    <Version>2.0.1.1</Version>
+  </VIF_App>
+  <Vendor_Name>STMicroelectronics</Vendor_Name>
+  <Model_Part_Number>STM32F072_PD3_DRP</Model_Part_Number>
+  <Product_Revision>1.0</Product_Revision>
+  <TID>0</TID>
+  <VIF_Product_Type value="0">Port Product</VIF_Product_Type>
+  <Component>
+    <Port_Label>0</Port_Label>
+    <Connector_Type value="2">Type-C™</Connector_Type>
+    <USB_PD_Support value="true" />
+    <PD_Port_Type value="4">DRP</PD_Port_Type>
+    <Type_C_State_Machine value="2">DRP</Type_C_State_Machine>
+    <Port_Battery_Powered value="false" />
+    <BC_1_2_Support value="0">None</BC_1_2_Support>
+    <PD_Specification_Revision value="2">Revision 3.0</PD_Specification_Revision>
+    <SOP_Capable value="true" />
+    <SOP_P_Capable value="false" />
+    <SOP_PP_Capable value="true" />
+    <SOP_P_Debug_Capable value="false" />
+    <SOP_PP_Debug_Capable value="false" />
+    <Manufacturer_Info_Supported_Port value="true" />
+    <Manufacturer_Info_VID_Port value="1155">0483</Manufacturer_Info_VID_Port>
+    <Manufacturer_Info_PID_Port value="2">0002</Manufacturer_Info_PID_Port>
+    <USB_Comms_Capable value="false" />
+    <DR_Swap_To_DFP_Supported value="true" />
+    <DR_Swap_To_UFP_Supported value="true" />
+    <Unconstrained_Power value="false" />
+    <VCONN_Swap_To_On_Supported value="true" />
+    <VCONN_Swap_To_Off_Supported value="true" />
+    <Responds_To_Discov_SOP_UFP value="false" />
+    <Responds_To_Discov_SOP_DFP value="false" />
+    <Attempts_Discov_SOP value="false" />
+    <Chunking_Implemented_SOP value="true" />
+    <Unchunked_Extended_Messages_Supported value="false" />
+    <Security_Msgs_Supported_SOP value="false" />
+    <Num_Fixed_Batteries value="0" />
+    <Num_Swappable_Battery_Slots value="0" />
+    <Type_C_Can_Act_As_Host value="false" />
+    <Type_C_Can_Act_As_Device value="false" />
+    <Type_C_Implements_Try_SRC value="false" />
+    <Type_C_Implements_Try_SNK value="false" />
+    <Type_C_Supports_Audio_Accessory value="false" />
+    <Type_C_Is_VCONN_Powered_Accessory value="false" />
+    <Type_C_Is_Debug_Target_SRC value="true" />
+    <Type_C_Is_Debug_Target_SNK value="false" />
+    <Captive_Cable value="false" />
+    <RP_Value value="1">1.5A</RP_Value>
+    <Type_C_Port_On_Hub value="false" />
+    <Type_C_Power_Source value="0">Externally Powered</Type_C_Power_Source>
+    <Type_C_Sources_VCONN value="true" />
+    <Type_C_Is_Alt_Mode_Controller value="false" />
+    <PD_Power_As_Source value="7500">7500 mW</PD_Power_As_Source>
+    <USB_Suspend_May_Be_Cleared value="true" />
+    <Sends_Pings value="false" />
+    <FR_Swap_Type_C_Current_Capability_As_Initial_Sink value="0">FR_Swap not supported</FR_Swap_Type_C_Current_Capability_As_Initial_Sink>
+    <Master_Port value="true" />
+    <Num_Src_PDOs value="1" />
+    <PD_OC_Protection value="false" />
+    <SrcPdoList>
+      <SrcPDO>
+        <Src_PDO_Supply_Type value="0">Fixed</Src_PDO_Supply_Type>
+        <Src_PDO_Peak_Current value="0">100% IOC</Src_PDO_Peak_Current>
+        <Src_PDO_Voltage value="100">5000 mV</Src_PDO_Voltage>
+        <Src_PDO_Max_Current value="150">1500 mA</Src_PDO_Max_Current>
+      </SrcPDO>
+    </SrcPdoList>
+    <PD_Power_As_Sink value="7500">7500 mW</PD_Power_As_Sink>
+    <No_USB_Suspend_May_Be_Set value="true" />
+    <GiveBack_May_Be_Set value="false" />
+    <Higher_Capability_Set value="false" />
+    <FR_Swap_Reqd_Type_C_Current_As_Initial_Source value="0">FR_Swap not supported</FR_Swap_Reqd_Type_C_Current_As_Initial_Source>
+    <Num_Snk_PDOs value="1" />
+    <SnkPdoList>
+      <SnkPDO>
+        <Snk_PDO_Supply_Type value="0">Fixed</Snk_PDO_Supply_Type>
+        <Snk_PDO_Voltage value="100">5000 mV</Snk_PDO_Voltage>
+        <Snk_PDO_Op_Current value="150">1500 mA</Snk_PDO_Op_Current>
+      </SnkPDO>
+    </SnkPdoList>
+    <Accepts_PR_Swap_As_Src value="true" />
+    <Accepts_PR_Swap_As_Snk value="true" />
+    <Requests_PR_Swap_As_Src value="false" />
+    <Requests_PR_Swap_As_Snk value="false" />
+    <FR_Swap_Supported_As_Initial_Sink value="false" />
+    <Product_Total_Source_Power_mW value="0">0 mW</Product_Total_Source_Power_mW>
+    <Port_Source_Power_Type value="0">Assured</Port_Source_Power_Type>
+  </Component>
+</VIF>

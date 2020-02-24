@@ -142,6 +142,11 @@
   * @{
   */
 
+#if defined(_GUI_INTERFACE)
+const uint8_t*          BSP_GetHWBoardVersionName(void);
+const uint8_t*          BSP_GetPDTypeName(void);
+#endif /* _GUI_INTERFACE */
+
 /** @addtogroup STM32F0XX_NUCLEO_TCPI_Functions_Grp1
   * @{
   */
