@@ -2,14 +2,12 @@
   ******************************************************************************
   * @file    camera.h
   * @author  MCD Application Team
-  * @version V1.2.1
-  * @date    02-December-2014
   * @brief   This header file contains the common defines and functions prototypes
   *          for the camera driver.   
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -63,15 +61,19 @@
 /** @defgroup CAMERA_Exported_Types
   * @{
   */ 
-/** 
-  * @brief  CAMERA driver structure definition  
-  */ 
+
+/** @defgroup CAMERA_Driver_structure  Camera Driver structure
+  * @{
+  */
 typedef struct
 {
   void     (*Init)(uint16_t, uint32_t);
   uint16_t (*ReadID)(uint16_t);  
   void     (*Config)(uint16_t, uint32_t, uint32_t, uint32_t);
 }CAMERA_DrvTypeDef;
+/**
+  * @}
+  */
 
 /**
   * @}
@@ -106,10 +108,12 @@ typedef struct
 #define CAMERA_BLACK_WHITE_BW_NEGATIVE  0x02   /* BW and Negative effect      */
 #define CAMERA_BLACK_WHITE_NORMAL       0x03   /* Normal effect               */
                                         
-#define CAMERA_COLOR_EFFECT_ANTIQUE     0x00   /* Antique effect              */
+#define CAMERA_COLOR_EFFECT_NONE        0x00   /* No effects                  */
 #define CAMERA_COLOR_EFFECT_BLUE        0x01   /* Blue effect                 */
 #define CAMERA_COLOR_EFFECT_GREEN       0x02   /* Green effect                */
 #define CAMERA_COLOR_EFFECT_RED         0x03   /* Red effect                  */
+#define CAMERA_COLOR_EFFECT_ANTIQUE     0x04   /* Antique effect              */
+
 /**
   * @}
   */

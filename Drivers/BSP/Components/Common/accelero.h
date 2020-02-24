@@ -2,13 +2,11 @@
   ******************************************************************************
   * @file    accelero.h
   * @author  MCD Application Team
-  * @version V1.2.1
-  * @date    02-December-2014
   * @brief   This header file contains the functions prototypes for the Accelerometer driver.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -61,14 +59,17 @@
 /** @defgroup ACCELERO_Exported_Types
   * @{
   */ 
-/** 
-  * @brief  Accelerometer driver structure definition  
+
+/** @defgroup ACCELERO_Driver_structure  Accelerometer Driver structure
+  * @{
   */
 typedef struct
 {  
   void      (*Init)(uint16_t);
+  void      (*DeInit)(void); 
   uint8_t   (*ReadID)(void);
   void      (*Reset)(void);
+  void      (*LowPower)(void);
   void      (*ConfigIT)(void);
   void      (*EnableIT)(uint8_t);
   void      (*DisableIT)(uint8_t);
@@ -78,7 +79,13 @@ typedef struct
   void      (*FilterCmd)(uint8_t);
   void      (*GetXYZ)(int16_t *);
 }ACCELERO_DrvTypeDef;
+/**
+  * @}
+  */
 
+/** @defgroup ACCELERO_Configuration_structure  Accelerometer Configuration structure
+  * @{
+  */
 
 /* ACCELERO struct */
 typedef struct
@@ -90,6 +97,7 @@ typedef struct
   uint8_t BlockData_Update;                   /* Block Data Update */
   uint8_t Endianness;                         /* Endian Data selection */
   uint8_t AccFull_Scale;                      /* Full Scale selection */
+  uint8_t Communication_Mode;
 }ACCELERO_InitTypeDef;
 
 /* ACCELERO High Pass Filter struct */
@@ -99,16 +107,14 @@ typedef struct
   uint8_t HighPassFilter_CutOff_Frequency;    /* High pass filter cut-off frequency */
   uint8_t HighPassFilter_AOI1;                /* HPF_enabling/disabling for AOI function on interrupt 1 */
   uint8_t HighPassFilter_AOI2;                /* HPF_enabling/disabling for AOI function on interrupt 2 */
+  uint8_t HighPassFilter_Data_Sel;
+  uint8_t HighPassFilter_Stat;
 }ACCELERO_FilterConfigTypeDef;
 
-/* ACCELERO Mag struct */
-typedef struct
-{
-  uint8_t Temperature_Sensor;                /* Temperature sensor enable/disable */
-  uint8_t MagOutput_DataRate;                /* OUT data rate */
-  uint8_t Working_Mode;                      /* operating mode */
-  uint8_t MagFull_Scale;                     /* Full Scale selection */
-}LACCELERO_InitTypeDef;
+/**
+  * @}
+  */
+
 
 /**
   * @}

@@ -2,8 +2,6 @@
   ******************************************************************************
   * @file    cli_console.c
   * @author  System Lab
-  * @version V0.4.0
-  * @date    17-Jan-2017
   * @brief   Console implementation, convert a flow char in a string newline
   *          terminated.
   ******************************************************************************

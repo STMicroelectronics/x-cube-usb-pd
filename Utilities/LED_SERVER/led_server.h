@@ -2,13 +2,11 @@
   ******************************************************************************
   * @file    led_server.h
   * @author  MCD Application Team
-  * @version V1.0.0
-  * @date    06-June-2016
   * @brief   Header file of LED server module
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2016 STMicroelectronics International N.V. 
+  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics International N.V. 
   * All rights reserved.</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without 
@@ -54,7 +52,6 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "usbpd_conf.h"
 
 #ifdef USBPD_LED_SERVER
 #define LED_BSP_TypeDef USBPD_BSP_Led_TypeDef

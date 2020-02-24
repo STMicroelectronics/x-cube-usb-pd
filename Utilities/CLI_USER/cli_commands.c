@@ -2,8 +2,6 @@
   ******************************************************************************
   * @file    cli_commands.c
   * @author  System Lab
-  * @version V0.4.0
-  * @date    17-Jan-2017
   * @brief   CLI Commands defintion and implementation.
   ******************************************************************************
   * @attention
@@ -24,22 +22,19 @@
   *
   ******************************************************************************
   */
-
 #include "cli_api.h"
 
-#include "usbpd_conf.h"
-#include "usbpd_dpm.h"
-#include "usbpd_pe.h"
+#include "usbpd_core.h"
+#include "usbpd_trace.h"
 
 #ifdef USBPD_CLI
 
 /* Includes ------------------------------------------------------------------*/
 #include "cli_commands.h"
 #include "usbpd_def.h"
-#include "usbpd_dpm.h"
-#include "usbpd_pe.h"
-#include "usbpd_cad.h"
-
+#include "usbpd_dpm_user.h"
+#include "usbpd_cad_hw_if.h"
+#include "usbpd_pwr_if.h"
 
 #if USBPD_PORT_COUNT == 1 
 #define PORT_PARAM_ENABLE 0
@@ -109,38 +104,38 @@ static BaseType_t prvPRSwapCommandFunc( char *pcWriteBuffer, size_t xWriteBuffer
  */
 static const CLI_Command_Definition_t xWelcomeCommand =
 {
-	"welcome",
-	"w | welcome : Print out the welcome message\r\n",
-	prvWelcomeCommandFunc, /* The function to run. */
-	0 /* No parameter is expected. */
+  "welcome",
+  "w | welcome : Print out the welcome message\r\n",
+  prvWelcomeCommandFunc, /* The function to run. */
+  0 /* No parameter is expected. */
 };
 static const CLI_Command_Definition_t xWelcomeCommand2 =
 {
-	"w",
-	"",
-	prvWelcomeCommandFunc, /* The function to run. */
-	0 /* No parameter is expected. */
+  "w",
+  "",
+  prvWelcomeCommandFunc, /* The function to run. */
+  0 /* No parameter is expected. */
 };
 /** 
  * brief  Profiles command definition
  */
 static const CLI_Command_Definition_t xProfilesCommand =
 {
-	"profiles",
+  "profiles",
 #if PORT_PARAM_ENABLE == 1        
-	"p | profiles <port>: show the available profiles for the port\r\n",
+  "p | profiles <port>: show the available profiles for the port\r\n",
 #else
-	"p | profiles : show the available profiles \r\n",
+  "p | profiles : show the available profiles \r\n",
 #endif /* PORT_PARAM_ENABLE */
-	prvProfilesCommandFunc, /* The function to run. */
-	PORT_PARAM_ENABLE 
+  prvProfilesCommandFunc, /* The function to run. */
+  PORT_PARAM_ENABLE 
 };
 static const CLI_Command_Definition_t xProfilesCommand2 =
 {
-	"p",
-	"",
-	prvProfilesCommandFunc, /* The function to run. */
-	PORT_PARAM_ENABLE 
+  "p",
+  "",
+  prvProfilesCommandFunc, /* The function to run. */
+  PORT_PARAM_ENABLE 
 };
 
 /** 
@@ -148,42 +143,42 @@ static const CLI_Command_Definition_t xProfilesCommand2 =
  */
 static const CLI_Command_Definition_t xStatusCommand =
 {
-	"status",
+  "status",
 #if PORT_PARAM_ENABLE == 1        
-	"s | status <port> : show the status of the PD comm for the port\r\n",
+  "s | status <port> : show the status of the PD comm for the port\r\n",
 #else
-	"s | status : show the status of the PD comm\r\n",
+  "s | status : show the status of the PD comm\r\n",
 #endif /* PORT_PARAM_ENABLE */
-	prvStatusCommandFunc, /* The function to run. */
-	PORT_PARAM_ENABLE 
+  prvStatusCommandFunc, /* The function to run. */
+  PORT_PARAM_ENABLE 
 };
 static const CLI_Command_Definition_t xStatusCommand2 =
 {
-	"s",
-	"",
-	prvStatusCommandFunc, /* The function to run. */
-	PORT_PARAM_ENABLE 
+  "s",
+  "",
+  prvStatusCommandFunc, /* The function to run. */
+  PORT_PARAM_ENABLE 
 };
 /** 
  * brief  Request command definition
  */
 static const CLI_Command_Definition_t xRequestCommand =
 {
-	"request",
+  "request",
 #if PORT_PARAM_ENABLE == 1        
-	"r | request <port> <profile> : change PD profile (only sink) for the port\r\n",
+  "r | request <port> <profile> : change PD profile (only sink) for the port\r\n",
 #else
-	"r | request <profile> : change PD profile (only consumer)\r\n",
+  "r | request <profile> : change PD profile (only consumer)\r\n",
 #endif /* PORT_PARAM_ENABLE */
-	prvRequestCommandFunc, /* The function to run. */
-	(PORT_PARAM_ENABLE+1) 
+  prvRequestCommandFunc, /* The function to run. */
+  (PORT_PARAM_ENABLE+1) 
 };
 static const CLI_Command_Definition_t xRequestCommand2 =
 {
-	"r",
-	"",
-	prvRequestCommandFunc, /* The function to run. */
-	(PORT_PARAM_ENABLE+1) 
+  "r",
+  "",
+  prvRequestCommandFunc, /* The function to run. */
+  (PORT_PARAM_ENABLE+1) 
 };
 
 /** 
@@ -191,22 +186,22 @@ static const CLI_Command_Definition_t xRequestCommand2 =
  */
 static const CLI_Command_Definition_t xPRSwapCommand =
 {
-	"prswap",
+  "prswap",
 #if PORT_PARAM_ENABLE == 1        
-	"x | prswap <port> : start a power role swap for the port\r\n",
+  "x | prswap <port> : start a power role swap for the port\r\n",
 #else
-	"x | prswap : start a power role swap\r\n",
+  "x | prswap : start a power role swap\r\n",
 #endif /* PORT_PARAM_ENABLE */
-	prvPRSwapCommandFunc, /* The function to run. */
-	PORT_PARAM_ENABLE 
+  prvPRSwapCommandFunc, /* The function to run. */
+  PORT_PARAM_ENABLE 
 };
 
 static const CLI_Command_Definition_t xPRSwapCommand2 =
 {
-	"x",
-	"",
-	prvPRSwapCommandFunc, /* The function to run. */
-	PORT_PARAM_ENABLE 
+  "x",
+  "",
+  prvPRSwapCommandFunc, /* The function to run. */
+  PORT_PARAM_ENABLE 
 };
 /**
  * @}
@@ -217,18 +212,18 @@ static const CLI_Command_Definition_t xPRSwapCommand2 =
  */
 void CLI_RegisterCommands( void )
 {
-	/* Register all the command line commands defined immediately above. */
-	FreeRTOS_CLIRegisterCommand( &xWelcomeCommand );
-	FreeRTOS_CLIRegisterCommand( &xProfilesCommand );
-	FreeRTOS_CLIRegisterCommand( &xStatusCommand );
-	FreeRTOS_CLIRegisterCommand( &xRequestCommand );
-	FreeRTOS_CLIRegisterCommand( &xPRSwapCommand );
+  /* Register all the command line commands defined immediately above. */
+  FreeRTOS_CLIRegisterCommand( &xWelcomeCommand );
+  FreeRTOS_CLIRegisterCommand( &xProfilesCommand );
+  FreeRTOS_CLIRegisterCommand( &xStatusCommand );
+  FreeRTOS_CLIRegisterCommand( &xRequestCommand );
+  FreeRTOS_CLIRegisterCommand( &xPRSwapCommand );
 
-	FreeRTOS_CLIRegisterCommand( &xWelcomeCommand2 );
-	FreeRTOS_CLIRegisterCommand( &xProfilesCommand2 );
-	FreeRTOS_CLIRegisterCommand( &xStatusCommand2 );
-	FreeRTOS_CLIRegisterCommand( &xRequestCommand2 );
-	FreeRTOS_CLIRegisterCommand( &xPRSwapCommand2 );
+  FreeRTOS_CLIRegisterCommand( &xWelcomeCommand2 );
+  FreeRTOS_CLIRegisterCommand( &xProfilesCommand2 );
+  FreeRTOS_CLIRegisterCommand( &xStatusCommand2 );
+  FreeRTOS_CLIRegisterCommand( &xRequestCommand2 );
+  FreeRTOS_CLIRegisterCommand( &xPRSwapCommand2 );
 }
 
 /** @defgroup CLI_Commands_Callbacks CLI Commands Callbacks
@@ -273,10 +268,10 @@ static BaseType_t prvProfilesCommandFunc( char *pcWriteBuffer, size_t xWriteBuff
   static unsigned char cIndex = 0xFF;
 
   static int8_t cConnectionStatus = 0;
-  static USBPD_PortPowerRole_TypeDef cRole = USBPD_PORTPOWERROLE_UNKNOWN;
+  static USBPD_PortPowerRole_TypeDef cRole = USBPD_PORTPOWERROLE_SNK;
   static uint8_t cCondAsSink = 0;
   float voltage = 0, current = 0;
-  
+  uint8_t cDrpSupport = USBPD_FALSE;
   
   /* To avoid warnings */
   ( void ) pcWriteBuffer;
@@ -303,38 +298,44 @@ static BaseType_t prvProfilesCommandFunc( char *pcWriteBuffer, size_t xWriteBuff
     /* show the pdo message type provider / consumer */
     cIndex = 0xFF; /* used to print the title */
     cSection = 0;
-    cRole = USBPD_PORTPOWERROLE_UNKNOWN;
     cConnectionStatus = 0;
 
-    USBPD_PE_CLI_GetCurrentRole(cPort, &cRole, &cConnectionStatus);
-    cCondAsSink = cRole == USBPD_PORTPOWERROLE_SNK;
+    USBPD_DPM_CLI_GetCurrentRole(cPort, &cRole, &cConnectionStatus, &cDrpSupport);
+    cCondAsSink = (cRole == USBPD_PORTPOWERROLE_SNK);
     
     /* get the profiles according to the connection status */
     switch(cConnectionStatus)
     {
     case 0: /* Unplugged */
-      if (cRole == USBPD_PORTPOWERROLE_SNK || cRole == USBPD_PORTPOWERROLE_SRC)
+      if (cDrpSupport == USBPD_TRUE)
+      {
+        strcpy(pcWriteBuffer, "DRP role Unplugged\r\n");
+        cSRCPDOType = 1; /* MY_SRC_PDO */
+        cSNKPDOType = 1; /* MY_SNK_PDO */        
+      }
+      else
       {
         strcpy(pcWriteBuffer, cCondAsSink ? "Sink" : "Source");
         strcat(pcWriteBuffer, " role Unplugged\r\n");
         cSRCPDOType = cCondAsSink ? 0 : 1; /* NO_SRC_PDO : MY_SRC_PDO */
         cSNKPDOType = cCondAsSink ? 1 : 0; /* MY_SNK_PDO : NO_SNK_PDO */
       }
-      else /* DRP */
-      {
-        strcpy(pcWriteBuffer, "DRP role Unplugged\r\n");
-        cSRCPDOType = 1; /* MY_SRC_PDO */
-        cSNKPDOType = 1; /* MY_SNK_PDO */        
-      }
-
       break;
-    case 1: /* Type-C only */
+
+    case 1: /* Default 5v, Type-C only */
       strcpy(pcWriteBuffer, cCondAsSink ? "Sink" : "Source");
       strcat(pcWriteBuffer, " role Type-C only\r\n");
       cSRCPDOType = cCondAsSink ? 0 : 1; /* MY_SRC_PDO */
       cSNKPDOType = cCondAsSink ? 1 : 0; /* MY_SNK_PDO */
       break;
-    case 2: /* Explicit Contract Done */
+    case 2: /* Implicit Contract Done */
+      strcpy(pcWriteBuffer, cCondAsSink ? "Sink" : "Source");
+      strcat(pcWriteBuffer, " role - Implicit contract\r\n");
+        /* as Source in explicit contract it shows the MY_SRC_PDO and RX_SNK_PDO */
+      cSRCPDOType = cCondAsSink ? 2 : 1; /* RX_SRC_PDO : MY_SRC_PDO */
+      cSNKPDOType = cCondAsSink ? 1 : 2; /* MY_SNK_PDO : RX_SNK_PDO */
+      break;
+    case 3: /* Explicit Contract Done */
       strcpy(pcWriteBuffer, cCondAsSink ? "Sink" : "Source");
       strcat(pcWriteBuffer, " role - Explicit contract\r\n");
         /* as Source in explicit contract it shows the MY_SRC_PDO and RX_SNK_PDO */
@@ -345,10 +346,6 @@ static BaseType_t prvProfilesCommandFunc( char *pcWriteBuffer, size_t xWriteBuff
       strcpy( pcWriteBuffer, "Error: unknown connection status\r\n");
       cSRCPDOType = 1; /* MY_SRC_PDO */
       cSNKPDOType = 1; /* MY_SNK_PDO */
-//      cSRCPDOType = 0; /* NO_SRC_PDO */
-//      cSNKPDOType = 0; /* NO_SNK_PDO */
-//      cIndex == 0xFF;
-//      cSection = 0xFF;
       break;
     }
 
@@ -356,15 +353,17 @@ static BaseType_t prvProfilesCommandFunc( char *pcWriteBuffer, size_t xWriteBuff
     memset(aSRCPDOBuffer, 0x00, sizeof(aSRCPDOBuffer));
     if (cSRCPDOType > 0)
     {
-      USBPD_PE_CLI_GetDataInfo(cPort, cSRCPDOType == 1 ? USBPD_CORE_DATATYPE_SRC_PDO : USBPD_CORE_DATATYPE_RCV_SRC_PDO, aSRCPDOBuffer, &cSRCPDONum);
+      USBPD_DPM_GetDataInfo(cPort, cSRCPDOType == 1 ? USBPD_CORE_DATATYPE_SRC_PDO : USBPD_CORE_DATATYPE_RCV_SRC_PDO, aSRCPDOBuffer, &cSRCPDONum);
+      cSRCPDONum /= 4;
     }
     cSNKPDONum = 0;
     memset(aSNKPDOBuffer, 0x00, sizeof(aSNKPDOBuffer));
     if (cSNKPDOType > 0)
     {
-      USBPD_PE_CLI_GetDataInfo(cPort, cSNKPDOType == 1 ? USBPD_CORE_DATATYPE_SNK_PDO : USBPD_CORE_DATATYPE_RCV_SNK_PDO, aSNKPDOBuffer, &cSNKPDONum);
+      USBPD_DPM_GetDataInfo(cPort, cSNKPDOType == 1 ? USBPD_CORE_DATATYPE_SNK_PDO : USBPD_CORE_DATATYPE_RCV_SNK_PDO, aSNKPDOBuffer, &cSNKPDONum);
+      cSNKPDONum /= 4;
     }
-    
+
     return cSection == 0xFF ? pdFALSE : pdTRUE; //continue if ok
   } /* PDO calculation */
 
@@ -402,8 +401,8 @@ static BaseType_t prvProfilesCommandFunc( char *pcWriteBuffer, size_t xWriteBuff
           /* print the current cIndex */
           prvGetVoltageCurrentFromPDO(aSRCPDOBuffer[cIndex], &voltage, &current);
           sprintf( pcWriteBuffer, "%d) %d.%.2dV %d.%.2dA\r\n", cIndex+1,
-        		  (uint16_t)voltage, ((uint16_t)((uint16_t)(voltage*100)%100)),
-        		  (uint16_t)current, ((uint16_t)((uint16_t)(current*100)%100)));
+                   (uint16_t)(voltage/1000), ((uint16_t)((uint16_t)(voltage/10)%100)),
+                   (uint16_t)(current/1000), ((uint16_t)((uint16_t)(current/10)%100)));
           cIndex++;
         }
       }
@@ -450,8 +449,8 @@ static BaseType_t prvProfilesCommandFunc( char *pcWriteBuffer, size_t xWriteBuff
           float voltage = 0, current = 0;
           prvGetVoltageCurrentFromPDO(aSNKPDOBuffer[cIndex], &voltage, &current);
           sprintf( pcWriteBuffer, "%d) %d.%.2dV %d.%.2dA\r\n", cIndex+1,
-        		  (uint16_t)voltage, ((uint16_t)((uint16_t)(voltage*100)%100)),
-        		  (uint16_t)current, ((uint16_t)((uint16_t)(current*100)%100)));
+                   (uint16_t)(voltage/1000), ((uint16_t)((uint16_t)(voltage/10)%100)),
+                   (uint16_t)(current/1000), ((uint16_t)((uint16_t)(current/10)%100)));
           cIndex++;
         }
       }
@@ -478,13 +477,15 @@ static BaseType_t prvProfilesCommandFunc( char *pcWriteBuffer, size_t xWriteBuff
  * @brief  CLI callback for the status command.
  */
 
-#define CONNSTATUSTEXT_COUNT 4
+#define CONNSTATUSTEXT_COUNT 6
 #define CONNSTATUSTEXT_SAFEINDEX(index) (((index) >= 0 && (index)<CONNSTATUSTEXT_COUNT) ? index : 0)
 static char const * connStatusText[CONNSTATUSTEXT_COUNT] = {
   "Status unknown",
   "Unplugged",
-  "Plugged Type-C only",
+  "Default 5V",
+  "Implicit contract",
   "Explicit contract",
+  "Power Transition",
 };
 #define CURRROLETEXT_COUNT 4
 static char const * currRoleText[CURRROLETEXT_COUNT] = {
@@ -505,10 +506,10 @@ static inline uint8_t prvPortPowerRole2Index(USBPD_PortPowerRole_TypeDef PortPow
     ret = 2;
     break;
   //case USBPD_PORTPOWERROLE_DRP:
-  case USBPD_PORTPOWERROLE_DRP_SNK:
-  case USBPD_PORTPOWERROLE_DRP_SRC:
-    ret = 3;
-    break;
+//  case USBPD_PORTPOWERROLE_DRP_SNK:
+//  case USBPD_PORTPOWERROLE_DRP_SRC:
+//    ret = 3;
+//    break;
   default:
     ret = 0;
     break;
@@ -522,10 +523,11 @@ static BaseType_t prvStatusCommandFunc( char *pcWriteBuffer, size_t xWriteBuffer
   static portCHAR cPort = USBPD_DEF_PORT;
   static int8_t connStatus = -1;
 
-  USBPD_PortPowerRole_TypeDef currRole = USBPD_PORTPOWERROLE_UNKNOWN;
+  USBPD_PortPowerRole_TypeDef currRole = USBPD_CABLEPLUG_FROMDFPUFP;
   CCxPin_TypeDef  cc = CCNONE;
   float voltage = 0;
   uint8_t profile = 0;
+  uint8_t cDrpSupport = USBPD_FALSE;
   USBPD_StatusTypeDef res;
   
   /* To avoid warnings */
@@ -555,29 +557,39 @@ static BaseType_t prvStatusCommandFunc( char *pcWriteBuffer, size_t xWriteBuffer
 #endif /* PORT_PARAM_ENABLE */
 
     /* print the connection status and role and eventually the value */
-    USBPD_PE_CLI_GetCurrentRole((uint8_t)cPort, &currRole, &connStatus);
-    sprintf( pcWriteBuffer, "Role: %s - %s", 
-            currRoleText[prvPortPowerRole2Index(currRole)], 
-            connStatusText[CONNSTATUSTEXT_SAFEINDEX(connStatus+1)]
-              );
+    USBPD_DPM_CLI_GetCurrentRole((uint8_t)cPort, &currRole, &connStatus, &cDrpSupport);
+    if (connStatus == 0) /* unplugged */
+    {
+      sprintf( pcWriteBuffer, "Role: %s - %s", 
+               cDrpSupport == USBPD_TRUE ? currRoleText[3] : currRoleText[prvPortPowerRole2Index(currRole)], 
+               connStatusText[CONNSTATUSTEXT_SAFEINDEX(connStatus+1)]
+             );
+    }
+    else
+    {
+      sprintf( pcWriteBuffer, "Role: %s - %s", 
+               currRoleText[prvPortPowerRole2Index(currRole)], 
+               connStatusText[CONNSTATUSTEXT_SAFEINDEX(connStatus+1)]
+             );
+    }
   }
   else
   {
     /* Get the CC line */
-    cc = USBPD_CAD_CLI_GetCCLine(cPort);
+    cc = USBPD_DPM_CLI_GetCCLine(cPort);
 
     /* manage different status */
     switch(connStatus)
     {
     case 0: /* unplugged */
-      //nothing
       strcpy(pcWriteBuffer, "");
       break;
-    case 1: /* Type-C only */
+    case 1: /* Default 5V, Type-C only */
       sprintf(pcWriteBuffer, " CC%d", (int)cc);
       break;
-    case 2: /* Explicit contract done */
-      res = DPM_CLI_GetStatusInfo(cPort, &profile, &voltage, NULL);
+    case 2: /* Implicit contract done */
+    case 3: /* Explicit contract done */
+      res = USBPD_DPM_CLI_GetStatusInfo(cPort, &profile, &voltage, NULL);
       if (res == USBPD_OK)
       {
         sprintf(pcWriteBuffer, " CC%d Profile %d %d.%.2dV", (int)cc, profile, (uint16_t)voltage, ((uint16_t)((uint16_t)(voltage*100)%100)));
@@ -610,7 +622,8 @@ static BaseType_t prvRequestCommandFunc( char *pcWriteBuffer, size_t xWriteBuffe
 
   const char *pcParameter = NULL;
   BaseType_t xParameterStringLength;
-  USBPD_PortPowerRole_TypeDef currRole = USBPD_PORTPOWERROLE_UNKNOWN;
+  USBPD_PortPowerRole_TypeDef currRole = USBPD_CABLEPLUG_FROMDFPUFP;
+  uint8_t cDrpSupport = USBPD_FALSE;
   
   /* To avoid warnings */
   ( void ) pcWriteBuffer;
@@ -638,12 +651,12 @@ static BaseType_t prvRequestCommandFunc( char *pcWriteBuffer, size_t xWriteBuffe
   }
 #endif /* PORT_PARAM_ENABLE */
 
-  USBPD_PE_CLI_GetCurrentRole((uint8_t)cPort, &currRole, &connStatus);
+  USBPD_DPM_CLI_GetCurrentRole((uint8_t)cPort, &currRole, &connStatus, &cDrpSupport);
   
   /* check if the cable is plugged and a contract is reached */
-  if (connStatus != 2)
+  if (connStatus != 3)
   {
-    strcpy(pcWriteBuffer, "Request failed: no concract reached.\r\n");
+    strcpy(pcWriteBuffer, "Request failed: no contract reached.\r\n");
     return pdFALSE;
   }
 
@@ -657,7 +670,8 @@ static BaseType_t prvRequestCommandFunc( char *pcWriteBuffer, size_t xWriteBuffe
   /* get the received source capabilities */
   cSRCPDONum = 0;
   memset(aSRCPDOBuffer, 0x00, sizeof(aSRCPDOBuffer));
-  USBPD_PE_CLI_GetDataInfo(cPort, USBPD_CORE_DATATYPE_RCV_SRC_PDO, aSRCPDOBuffer, &cSRCPDONum);
+  USBPD_DPM_GetDataInfo(cPort, USBPD_CORE_DATATYPE_RCV_SRC_PDO, aSRCPDOBuffer, &cSRCPDONum);
+  cSRCPDONum /= 4;
 
   /* check if there is almost one source capability */
   if (cSRCPDONum == 0)
@@ -693,8 +707,8 @@ static BaseType_t prvRequestCommandFunc( char *pcWriteBuffer, size_t xWriteBuffe
   prvGetVoltageCurrentFromPDO(aSRCPDOBuffer[cPDOIndex-1], &voltage, &current);
   
   sprintf( pcWriteBuffer, "Requested %d : %d.%.2dV %d.%.2dA\r\n", cPDOIndex,
-		  (uint16_t)voltage, ((uint16_t)((uint16_t)(voltage*100)%100)),
-		  (uint16_t)current, ((uint16_t)((uint16_t)(current*100)%100)));
+           (uint16_t)(voltage/1000), ((uint16_t)((uint16_t)(voltage/10)%100)),
+           (uint16_t)(current/1000), ((uint16_t)((uint16_t)(current/10)%100)));
   
   return pdFALSE;
 }
@@ -708,7 +722,8 @@ static BaseType_t prvPRSwapCommandFunc( char *pcWriteBuffer, size_t xWriteBuffer
   static portCHAR cPort = USBPD_DEF_PORT;
   const char *pcParameter = NULL;
   int8_t connStatus = -1;
-  USBPD_PortPowerRole_TypeDef currRole = USBPD_PORTPOWERROLE_UNKNOWN;
+  uint8_t cDrpSupport = USBPD_FALSE;
+  USBPD_PortPowerRole_TypeDef currRole = USBPD_CABLEPLUG_FROMDFPUFP;
 
   /* To avoid warnings */
   ( void ) pcWriteBuffer;
@@ -736,9 +751,9 @@ static BaseType_t prvPRSwapCommandFunc( char *pcWriteBuffer, size_t xWriteBuffer
   }
 #endif /* PORT_PARAM_ENABLE */
 
-  USBPD_PE_CLI_GetCurrentRole((uint8_t)cPort, &currRole, &connStatus);
+  USBPD_DPM_CLI_GetCurrentRole((uint8_t)cPort, &currRole, &connStatus, &cDrpSupport);
   
-  if (connStatus == 2)
+  if (connStatus == (USBPD_POWER_EXPLICITCONTRACT+1))
   {
     sprintf(pcWriteBuffer, "Power role swap on Port %d\r\n", cPort);
     strcat(pcWriteBuffer, "Current role: ");
@@ -746,7 +761,7 @@ static BaseType_t prvPRSwapCommandFunc( char *pcWriteBuffer, size_t xWriteBuffer
     strcat(pcWriteBuffer, "\r\n");
     USBPD_DPM_RequestPowerRoleSwap(cPort);
     osDelay(300);
-    USBPD_PE_CLI_GetCurrentRole((uint8_t)cPort, &currRole, &connStatus);
+    USBPD_DPM_CLI_GetCurrentRole((uint8_t)cPort, &currRole, &connStatus, &cDrpSupport);
     strcat(pcWriteBuffer, "New role: ");
     strcat(pcWriteBuffer,currRoleText[prvPortPowerRole2Index(currRole)]);
     strcat(pcWriteBuffer, "\r\n");
@@ -833,18 +848,27 @@ static void prvCommandThread( void const * argument )
 }
 static inline void prvGetVoltageCurrentFromPDO(uint32_t PdoValue, float *pVoltage, float *pCurrent)
 {
-  USBPD_SRCFixedSupplyPDO_TypeDef pdo;
-  pdo.d32 = PdoValue;
+  USBPD_PDO_TypeDef  pdo;
   
-  /* convert voltage if pointer is not null */
-  if (pVoltage)
+  pdo.d32 = PdoValue;
+  switch(pdo.GenericPDO.PowerObject)
   {
-   *pVoltage = ((float)(pdo.b.VoltageIn50mVunits * 50) / 1000.0);
-  }
-  /* convert current if pointer is not null */
-  if (pCurrent)
-  {
-    *pCurrent = ((float)(pdo.b.MaxCurrentIn10mAunits * 10) / 1000.0);
+  case USBPD_CORE_PDO_TYPE_FIXED:
+    {
+      USBPD_SRCFixedSupplyPDO_TypeDef fixedpdo = pdo.SRCFixedPDO;
+      /* convert voltage if pointer is not null */
+      if (pVoltage)
+      {
+        *pVoltage = PWR_DECODE_50MV(fixedpdo.VoltageIn50mVunits);
+      }
+      /* convert current if pointer is not null */
+      if (pCurrent)
+      {
+        *pCurrent = PWR_DECODE_10MA(fixedpdo.MaxCurrentIn10mAunits);
+      }
+    }
+  default:
+    break;
   }
 }
 

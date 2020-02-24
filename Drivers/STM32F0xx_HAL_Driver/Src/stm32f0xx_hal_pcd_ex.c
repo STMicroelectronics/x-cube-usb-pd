@@ -2,8 +2,6 @@
   ******************************************************************************
   * @file    stm32f0xx_hal_pcd_ex.c
   * @author  MCD Application Team
-  * @version V1.4.0
-  * @date    27-May-2016
   * @brief   Extended PCD HAL module driver.
   *          This file provides firmware functions to manage the following 
   *          functionalities of the USB Peripheral Controller:
@@ -105,9 +103,9 @@ HAL_StatusTypeDef  HAL_PCDEx_PMAConfig(PCD_HandleTypeDef *hpcd,
   PCD_EPTypeDef *ep;
   
   /* initialize ep structure*/
-  if ((0x80 & ep_addr) == 0x80)
+  if ((0x80U & ep_addr) == 0x80U)
   {
-    ep = &hpcd->IN_ep[ep_addr & 0x7F];
+    ep = &hpcd->IN_ep[ep_addr & 0x7FU];
   }
   else
   {
@@ -118,21 +116,143 @@ HAL_StatusTypeDef  HAL_PCDEx_PMAConfig(PCD_HandleTypeDef *hpcd,
   if (ep_kind == PCD_SNG_BUF)
   {
     /*Single Buffer*/
-    ep->doublebuffer = 0;
+    ep->doublebuffer = 0U;
     /*Configure the PMA*/
     ep->pmaadress = (uint16_t)pmaadress;
   }
   else /*USB_DBL_BUF*/
   {
     /*Double Buffer Endpoint*/
-    ep->doublebuffer = 1;
+    ep->doublebuffer = 1U;
     /*Configure the PMA*/
-    ep->pmaaddr0 =  pmaadress & 0xFFFF;
-    ep->pmaaddr1 =  (pmaadress & 0xFFFF0000U) >> 16;
+    ep->pmaaddr0 =  pmaadress & 0xFFFFU;
+    ep->pmaaddr1 =  (pmaadress & 0xFFFF0000U) >> 16U;
   }
   
   return HAL_OK;
 }
+
+/**
+  * @brief  Activate BatteryCharging feature.
+  * @param  hpcd: PCD handle
+  * @retval HAL status
+  */
+HAL_StatusTypeDef HAL_PCDEx_ActivateBCD(PCD_HandleTypeDef *hpcd)
+{
+  USB_TypeDef *USBx = hpcd->Instance;
+  hpcd->battery_charging_active = ENABLE;
+  
+  USBx->BCDR |= (USB_BCDR_BCDEN);
+  /* Enable DCD : Data Contact Detect */
+  //USBx->BCDR |= (USB_BCDR_DCDEN); // DCD not working. should not be enabled.
+  
+  return HAL_OK;  
+}
+
+/**
+  * @brief  Deactivate BatteryCharging feature.
+  * @param  hpcd: PCD handle
+  * @retval HAL status
+  */
+HAL_StatusTypeDef HAL_PCDEx_DeActivateBCD(PCD_HandleTypeDef *hpcd)
+{
+  USB_TypeDef *USBx = hpcd->Instance;
+  hpcd->battery_charging_active = DISABLE;
+
+  USBx->BCDR &= ~(USB_BCDR_PDEN);
+  USBx->BCDR &= ~(USB_BCDR_SDEN);
+  USBx->BCDR &= ~(USB_BCDR_BCDEN);
+  return HAL_OK;
+}
+
+/**
+  * @brief  Handle BatteryCharging Process.
+  * @param  hpcd: PCD handle
+  * @retval HAL status
+  */
+void HAL_PCDEx_BCD_VBUSDetect(PCD_HandleTypeDef *hpcd)
+{
+  USB_TypeDef *USBx = hpcd->Instance;
+  uint32_t tickstart = HAL_GetTick();
+   
+  /* Wait Detect flag or a timeout is happen*/
+//  while ((USBx->BCDR & USB_BCDR_DCDET) == 0)
+//  {
+//    /* Check for the Timeout */
+//    if((HAL_GetTick() - tickstart ) > 1000)
+//    {
+//      HAL_PCDEx_BCD_Callback(hpcd, PCD_BCD_ERROR);
+//      return;
+//    }
+//  }
+
+  /* Compensate that Data Contact Detect is not working */
+  HAL_Delay(300);
+  
+  /* Data Pin Contact ? Check Detect flag */
+  if (USBx->BCDR & USB_BCDR_DCDET)
+  {
+    HAL_PCDEx_BCD_Callback(hpcd, PCD_BCD_CONTACT_DETECTION);
+  }   
+  /* Primary detection: checks if connected to Standard Downstream Port  
+  (without charging capability) */
+  USBx->BCDR &= ~(USB_BCDR_DCDEN);
+  USBx->BCDR |= (USB_BCDR_PDEN);
+  HAL_Delay(300);
+  
+  /* If Charger detect ? */
+  if (USBx->BCDR & USB_BCDR_PDET)
+  {
+    /* Start secondary detection to check connection to Charging Downstream 
+       Port or Dedicated Charging Port */
+    USBx->BCDR &= ~(USB_BCDR_PDEN);
+    USBx->BCDR |= (USB_BCDR_SDEN);
+    HAL_Delay(300);
+    
+    /* If CDP ? */
+    if (USBx->BCDR & USB_BCDR_SDET)
+    {
+      /* Dedicated Charging Port DCP */
+      HAL_PCDEx_BCD_Callback(hpcd, PCD_BCD_DEDICATED_CHARGING_PORT);
+    }
+    else
+    {
+      /* Charging Downstream Port CDP */
+      HAL_PCDEx_BCD_Callback(hpcd, PCD_BCD_CHARGING_DOWNSTREAM_PORT);
+      
+      /* Battery Charging capability discovery finished 
+      Start Enumeration*/
+      HAL_PCDEx_BCD_Callback(hpcd, PCD_BCD_DISCOVERY_COMPLETED);
+    }
+  }
+  else
+  {
+    /* Standard Downstream Port */
+    HAL_PCDEx_BCD_Callback(hpcd, PCD_BCD_STD_DOWNSTREAM_PORT);
+
+    /* Battery Charging capability discovery finished 
+    Start Enumeration*/
+    HAL_PCDEx_BCD_Callback(hpcd, PCD_BCD_DISCOVERY_COMPLETED);
+  }
+}
+
+/**
+  * @brief  Send BatteryCharging message to user layer callback.
+  * @param  hpcd: PCD handle
+  * @param  msg: LPM message
+  * @retval HAL status
+  */
+__weak void HAL_PCDEx_BCD_Callback(PCD_HandleTypeDef *hpcd, PCD_BCD_MsgTypeDef msg)
+{
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(hpcd);
+  UNUSED(msg);
+
+  /* NOTE : This function should not be modified, when the callback is needed,
+            the HAL_PCDEx_BCD_Callback could be implemented in the user file
+   */ 
+}
+
 /**
   * @}
   */

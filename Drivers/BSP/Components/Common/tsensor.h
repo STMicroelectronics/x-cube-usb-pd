@@ -2,14 +2,12 @@
   ******************************************************************************
   * @file    tsensor.h
   * @author  MCD Application Team
-  * @version V1.2.1
-  * @date    02-December-2014
   * @brief   This header file contains the functions prototypes for the
   *          Temperature Sensor driver. 
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -62,8 +60,9 @@
 /** @defgroup TSENSOR_Exported_Types
   * @{
   */ 
-/** 
-  * @brief  Temperature Sensor driver structure definition  
+
+/** @defgroup TSENSOR_Config_structure  Temperature Sensor Configuration structure
+  * @{
   */
 typedef struct
 {
@@ -74,7 +73,13 @@ typedef struct
   uint8_t TemperatureLimitHigh; /* High Temperature Limit Range */
   uint8_t TemperatureLimitLow;  /* Low Temperature Limit Range */
 }TSENSOR_InitTypeDef;
+/**
+  * @}
+  */
 
+/** @defgroup TSENSOR_Driver_structure  Temperature Sensor Driver structure
+  * @{
+  */
 typedef struct
 {  
   void       (*Init)(uint16_t, TSENSOR_InitTypeDef *);
@@ -82,6 +87,10 @@ typedef struct
   uint8_t    (*ReadStatus)(uint16_t);
   uint16_t   (*ReadTemp)(uint16_t); 
 }TSENSOR_DrvTypeDef;
+/**
+  * @}
+  */
+
 /**
   * @}
   */

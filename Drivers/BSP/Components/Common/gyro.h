@@ -2,13 +2,11 @@
   ******************************************************************************
   * @file    gyro.h
   * @author  MCD Application Team
-  * @version V1.2.1
-  * @date    02-December-2014
   * @brief   This header file contains the functions prototypes for the gyroscope driver.
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -62,14 +60,17 @@
 /** @defgroup GYRO_Exported_Types
   * @{
   */
-/** 
-  * @brief  Gyroscope driver structure definition  
-  */ 
+
+/** @defgroup GYRO_Driver_structure  Gyroscope Driver structure
+  * @{
+  */
 typedef struct
 {  
   void       (*Init)(uint16_t);
+  void       (*DeInit)(void); 
   uint8_t    (*ReadID)(void);
   void       (*Reset)(void);
+  void       (*LowPower)(uint16_t);   
   void       (*ConfigIT)(uint16_t); 
   void       (*EnableIT)(uint8_t);
   void       (*DisableIT)(uint8_t);  
@@ -79,6 +80,13 @@ typedef struct
   void       (*FilterCmd)(uint8_t);  
   void       (*GetXYZ)(float *);
 }GYRO_DrvTypeDef;
+/**
+  * @}
+  */
+
+/** @defgroup GYRO_Config_structure  Gyroscope Configuration structure
+  * @{
+  */
 
 typedef struct
 {
@@ -105,6 +113,10 @@ typedef struct
   uint8_t Interrupt_Axes;                     /* X, Y, Z Axes Interrupts */ 
   uint8_t Interrupt_ActiveEdge;               /* Interrupt Active edge */
 }GYRO_InterruptConfigTypeDef;  
+
+/**
+  * @}
+  */
 
 /**
   * @}

@@ -2,8 +2,6 @@
   ******************************************************************************
   * @file    stm32f0xx_hal_msp.c
   * @author  MCD Application Team
-  * @version V1.2.0
-  * @date    17-Jan-2017
   * @brief   This file contains HW interface MSP functions.
   ******************************************************************************
   * @attention
@@ -48,6 +46,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f0xx_hal.h"
 #include "usbpd_hw_if.h"
+#include "stm32f0xx_ll_gpio.h"
 
 /** @addtogroup STM32F0xx_HAL_Examples
   * @{
@@ -78,20 +77,17 @@
 void HAL_MspInit(void)
 {
   __HAL_RCC_SYSCFG_CLK_ENABLE();
-  
-  /* System interrupt init*/
-  /* SysTick_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
-  
   /* Enable the RCC peripheral clock associated to all the selected GPIOs */
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOC_CLK_ENABLE();
+#if defined(GPIOD)
   __HAL_RCC_GPIOD_CLK_ENABLE();
+#endif /* GPIOD */
+#if defined(GPIOF)
   __HAL_RCC_GPIOF_CLK_ENABLE();
-  
+#endif /* GPIOD */
 }
-
 /**
   * @brief ADC MSP Initialization
   * @param hadc: ADC handle pointer
@@ -168,9 +164,11 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   GPIO_InitStruct.Alternate = TX_CLK_SPI_GPIOAF(port_num);
   HAL_GPIO_Init(TX_SCK_GPIOPORT(port_num), &GPIO_InitStruct);
-  
+
+#if defined(USE_HAL_SPI)
   /* TX DMA Initialization */
   USBPDM1_TX_DMA_Init(port_num);
+#endif
 }
 
 /**
@@ -222,7 +220,6 @@ void HAL_CRC_MspDeInit(CRC_HandleTypeDef *hcrc)
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
 {
   uint8_t port_num = GET_PORT_FROM_TIM(htim_base);
-  
   GPIO_InitTypeDef GPIO_InitStruct;
   
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
@@ -272,7 +269,7 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
 void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* htim_base)
 {
   uint8_t port_num = GET_PORT_FROM_TIM(htim_base);
-  
+
   if(IS_TX_TIM(htim_base)) /* TX TIMER IDENTIFIED */
   {
     /* Peripheral clock enable */

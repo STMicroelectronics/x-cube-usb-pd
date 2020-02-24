@@ -2,8 +2,6 @@
   ******************************************************************************
   * @file    stm32f0xx_hal_pcd_ex.h
   * @author  MCD Application Team
-  * @version V1.4.0
-  * @date    27-May-2016
   * @brief   Header file of PCD HAL Extension module.
   ******************************************************************************
   * @attention
@@ -36,8 +34,8 @@
   */ 
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __STM32L0xx_HAL_PCD_EX_H
-#define __STM32L0xx_HAL_PCD_EX_H
+#ifndef __STM32F0xx_HAL_PCD_EX_H
+#define __STM32F0xx_HAL_PCD_EX_H
 
 #ifdef __cplusplus
  extern "C" {
@@ -55,6 +53,17 @@
 /** @addtogroup PCDEx
   * @{
   */ 
+/* Exported types ------------------------------------------------------------*/
+typedef enum  
+{
+  PCD_BCD_ERROR                     = 0xFF, 
+  PCD_BCD_CONTACT_DETECTION         = 0xFE,
+  PCD_BCD_STD_DOWNSTREAM_PORT       = 0xFD,
+  PCD_BCD_CHARGING_DOWNSTREAM_PORT  = 0xFC,
+  PCD_BCD_DEDICATED_CHARGING_PORT   = 0xFB,
+  PCD_BCD_DISCOVERY_COMPLETED       = 0x00,
+  
+}PCD_BCD_MsgTypeDef;
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
@@ -71,6 +80,10 @@ HAL_StatusTypeDef HAL_PCDEx_PMAConfig(PCD_HandleTypeDef *hpcd,
                                      uint16_t ep_addr,
                                      uint16_t ep_kind,
                                      uint32_t pmaadress);
+HAL_StatusTypeDef HAL_PCDEx_ActivateBCD(PCD_HandleTypeDef *hpcd);
+HAL_StatusTypeDef HAL_PCDEx_DeActivateBCD(PCD_HandleTypeDef *hpcd);
+void HAL_PCDEx_BCD_VBUSDetect(PCD_HandleTypeDef *hpcd);
+void HAL_PCDEx_BCD_Callback(PCD_HandleTypeDef *hpcd, PCD_BCD_MsgTypeDef msg);
 /**
   * @}
   */ 

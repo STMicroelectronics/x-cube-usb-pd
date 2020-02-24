@@ -2,14 +2,12 @@
   ******************************************************************************
   * @file    audio.h
   * @author  MCD Application Team
-  * @version V1.2.1
-  * @date    02-December-2014
   * @brief   This header file contains the common defines and functions prototypes
   *          for the Audio driver.  
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2014 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -74,12 +72,14 @@
 /** @defgroup AUDIO_Exported_Types
   * @{
   */
-/** 
-  * @brief  AUDIO driver structure definition
+
+/** @defgroup AUDIO_Driver_structure  Audio Driver structure
+  * @{
   */
 typedef struct
 {
   uint32_t  (*Init)(uint16_t, uint16_t, uint8_t, uint32_t);
+  void      (*DeInit)(void);
   uint32_t  (*ReadID)(uint16_t);
   uint32_t  (*Play)(uint16_t, uint16_t*, uint16_t);
   uint32_t  (*Pause)(uint16_t);
@@ -91,6 +91,9 @@ typedef struct
   uint32_t  (*SetOutputMode)(uint16_t, uint8_t);
   uint32_t  (*Reset)(uint16_t);
 }AUDIO_DrvTypeDef;
+/**
+  * @}
+  */
 
 /**
   * @}
