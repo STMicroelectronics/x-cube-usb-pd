@@ -3,7 +3,8 @@
 **X-CUBE-USB-PD** is an STMicroelectronics original initiative. It uses for USB Type-C and Power Delivery software expansion for STM32Cube (UM2073).
 
 **X-CUBE-USB-PD** is a USB-IF certified Expansion Package and consists of libraries, drivers, sources, APIs and application examples running on STM32F0 
-Series microcontrollers acting as USB Power Delivery controllers or USB Type-C port managers (TCPMs). 
+Series microcontrollers acting as USB Type-C port managers (TCPMs).
+
 Examples are provided to help to develop applications based on USB-PD (Provider, Consumer, DRP, Dual Port and VDM).
 The "Core" of the stack is delivered in library format while the "Device" part, in open source format, offers high level of flexibility to match the design considerations.
 This Expansion Package supports various hardware implementations covering most of the typical USB Type-C use-cases at optimized cost.
