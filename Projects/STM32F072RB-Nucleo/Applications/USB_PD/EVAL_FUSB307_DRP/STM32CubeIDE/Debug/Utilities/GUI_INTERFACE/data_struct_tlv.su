@@ -1,0 +1,9 @@
+data_struct_tlv.c:36:9:TLV_init_encode	24	static
+data_struct_tlv.c:77:10:TLV_add	32	static
+data_struct_tlv.c:118:10:TLV_addValue	32	static
+data_struct_tlv.c:150:6:TLV_UpdateSizeTag	16	static
+data_struct_tlv.c:163:6:TLV_deinit_encode	16	static
+data_struct_tlv.c:178:9:TLV_init_decode	16	static
+data_struct_tlv.c:204:9:TLV_get	24	static
+data_struct_tlv.c:228:6:TLV_deinit_decode	16	static
+data_struct_tlv.c:240:10:TLV_get_string_length	24	static
