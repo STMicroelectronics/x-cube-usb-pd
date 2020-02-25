@@ -1,1164 +1,0 @@
-Dependencies for Project 'Project', Target 'STM32F072RB-Nucleo_EVAL_FUSB307_DRP': (DO NOT MODIFY !)
-F (../../../../../../Drivers/BSP/STM32F0xx-Nucleo/stm32f0xx_nucleo.c)(0x5E1C8668)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_nucleo.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_nucleo.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_nucleo.d)
-I (../../../../../../Drivers/BSP/STM32F0xx-Nucleo/stm32f0xx_nucleo.h)(0x5E1C8668)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (../../../../../../Drivers/BSP/STM32F0xx-Nucleo/usbpd_tcpci.c)(0x5E4D56C9)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\usbpd_tcpci.o --omf_browse stm32f072rb-nucleo\exe\usbpd_tcpci.crf --depend stm32f072rb-nucleo\exe\usbpd_tcpci.d)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_core.h)(0x5E4EAC48)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_def.h)(0x5E4EAC48)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (../../../../../../Drivers/BSP/Components/Common/tcpc.h)(0x5E1C8661)
-I (../../../../../../Drivers/BSP/Components/fusb307/fusb305.h)(0x5E4D399A)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599F2F9C)
-I (../../../../../../Drivers/BSP/STM32F0xx-Nucleo/usbpd_tcpci.h)(0x5E39A36B)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5E39A7B0)
-I (../Inc/FreeRTOSConfig.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h)(0x5E39A7B1)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_trace.h)(0x5E1C9193)
-F (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c)(0x5E39A7B1)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\heap_4.o --omf_browse stm32f072rb-nucleo\exe\heap_4.crf --depend stm32f072rb-nucleo\exe\heap_4.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599F2F9C)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5E39A7B0)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../Inc/FreeRTOSConfig.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h)(0x5E39A7B1)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5E39A7B0)
-F (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/port.c)(0x5E39A7B1)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\port.o --omf_browse stm32f072rb-nucleo\exe\port.crf --depend stm32f072rb-nucleo\exe\port.d)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5E39A7B0)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../Inc/FreeRTOSConfig.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h)(0x5E39A7B1)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5E39A7B0)
-F (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/src/usbpd_trace.c)(0x5E1C9193)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\usbpd_trace.o --omf_browse stm32f072rb-nucleo\exe\usbpd_trace.crf --depend stm32f072rb-nucleo\exe\usbpd_trace.d)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_def.h)(0x5E4EAC48)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_core.h)(0x5E4EAC48)
-I (../../../../../../Drivers/BSP/Components/Common/tcpc.h)(0x5E1C8661)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_trace.h)(0x5E1C9193)
-I (../../../../../../Utilities/TRACER_EMB/tracer_emb.h)(0x5E1C9ED2)
-I (../Inc/tracer_emb_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usart.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h)(0x5E1C866E)
-F (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/src/usbpd_dpm_core.c)(0x5E4EACFB)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\usbpd_dpm_core.o --omf_browse stm32f072rb-nucleo\exe\usbpd_dpm_core.crf --depend stm32f072rb-nucleo\exe\usbpd_dpm_core.d)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_core.h)(0x5E4EAC48)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_def.h)(0x5E4EAC48)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (../../../../../../Drivers/BSP/Components/Common/tcpc.h)(0x5E1C8661)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_trace.h)(0x5E1C9193)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_dpm_core.h)(0x5E4EAC48)
-I (../Inc/usbpd_dpm_user.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5E39A7B0)
-I (../Inc/FreeRTOSConfig.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h)(0x5E39A7B1)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5E39A7B0)
-I (../Inc/usbpd_dpm_conf.h)(0x5E42C27D)
-I (../Inc/usbpd_pdo_defs.h)(0x5E42C27D)
-I (../Inc/usbpd_pdo_defs_Drp_1Port.h)(0x5E42C27D)
-I (../Inc/usbpd_gui_memmap.h)(0x5E42C27D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-I (../Inc/usbpd_pwr_if.h)(0x5E42C27D)
-I (../../../../../../Utilities/GUI_INTERFACE/gui_api.h)(0x5E4D80AE)
-I (../../../../../../Drivers/BSP/STM32F0xx-Nucleo/usbpd_tcpci.h)(0x5E39A36B)
-F (..\..\..\..\..\..\Middlewares\ST\STM32_USBPD_Library\Core\lib\USBPDTCPM_PD3_CONFIG_1_CM0_Keil.lib)(0x5E4EAC49)()
-F (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c)(0x5E39A7B0)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\cmsis_os.o --omf_browse stm32f072rb-nucleo\exe\cmsis_os.crf --depend stm32f072rb-nucleo\exe\cmsis_os.d)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599F2F9C)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5E39A7B0)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../Inc/FreeRTOSConfig.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h)(0x5E39A7B1)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5E39A7B0)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-F (../../../../../../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.c)(0x5E1C866E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_hal_rcc_ex.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_hal_rcc_ex.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_hal_rcc_ex.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (../../../../../../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.c)(0x5E1C866E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_hal_gpio.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_hal_gpio.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_hal_gpio.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (../../../../../../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.c)(0x5E1C866E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_hal_i2c.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_hal_i2c.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_hal_i2c.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (../../../../../../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_utils.c)(0x5E1C866F)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_ll_utils.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_ll_utils.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_ll_utils.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h)(0x5E1C866E)
-F (../../../../../../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.c)(0x5E1C866E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_hal_rcc.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_hal_rcc.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_hal_rcc.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (../../../../../../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.c)(0x5E1C866E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_hal.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_hal.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_hal.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (../../../../../../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c)(0x5E1C866E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_hal_dma.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_hal_dma.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_hal_dma.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (../../../../../../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.c)(0x5E1C866E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_hal_i2c_ex.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_hal_i2c_ex.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_hal_i2c_ex.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (../../../../../../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.c)(0x5E1C866E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_hal_cortex.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_hal_cortex.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_hal_cortex.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (../../../../../../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_ll_exti.c)(0x5E1C866E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_ll_exti.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_ll_exti.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_ll_exti.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_exti.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_uart.c)(0x5E1C866E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_hal_uart.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_hal_uart.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_hal_uart.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_uart_ex.c)(0x5E1C866E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_hal_uart_ex.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_hal_uart_ex.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_hal_uart_ex.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_ll_usart.c)(0x5E1C866F)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_ll_usart.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_ll_usart.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_ll_usart.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usart.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5E1C866E)
-F (..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_ll_rcc.c)(0x5E1C866E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_ll_rcc.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_ll_rcc.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_ll_rcc.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_flash.c)(0x5E1C866E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_hal_flash.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_hal_flash.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_hal_flash.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (..\..\..\..\..\..\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_flash_ex.c)(0x5E1C866E)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_hal_flash_ex.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_hal_flash_ex.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_hal_flash_ex.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (../Src/system_stm32f0xx.c)(0x5E42C27D)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\system_stm32f0xx.o --omf_browse stm32f072rb-nucleo\exe\system_stm32f0xx.crf --depend stm32f072rb-nucleo\exe\system_stm32f0xx.d)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/list.c)(0x5E39A7B0)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\list.o --omf_browse stm32f072rb-nucleo\exe\list.crf --depend stm32f072rb-nucleo\exe\list.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599F2F9C)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5E39A7B0)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../Inc/FreeRTOSConfig.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h)(0x5E39A7B1)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5E39A7B0)
-F (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/queue.c)(0x5E39A7B1)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\queue.o --omf_browse stm32f072rb-nucleo\exe\queue.crf --depend stm32f072rb-nucleo\exe\queue.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599F2F9C)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599F2F9C)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5E39A7B0)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../Inc/FreeRTOSConfig.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h)(0x5E39A7B1)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5E39A7B0)
-F (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/tasks.c)(0x5E39A7B1)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\tasks.o --omf_browse stm32f072rb-nucleo\exe\tasks.crf --depend stm32f072rb-nucleo\exe\tasks.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599F2F9C)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599F2F9C)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5E39A7B0)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../Inc/FreeRTOSConfig.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h)(0x5E39A7B1)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/stack_macros.h)(0x5E39A7B0)
-F (../../../../../../Drivers/BSP/Components/fusb307/fusb305.c)(0x5E4E9A0F)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\fusb305.o --omf_browse stm32f072rb-nucleo\exe\fusb305.crf --depend stm32f072rb-nucleo\exe\fusb305.d)
-I (../../../../../../Drivers/BSP/Components/fusb307/fusb305.h)(0x5E4D399A)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599F2F9C)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_core.h)(0x5E4EAC48)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_def.h)(0x5E4EAC48)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (../../../../../../Drivers/BSP/Components/Common/tcpc.h)(0x5E1C8661)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_trace.h)(0x5E1C9193)
-I (../../../../../../Drivers/BSP/STM32F0xx-Nucleo/usbpd_tcpci.h)(0x5E39A36B)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (../readme.txt)(0x5E42C27D)()
-F (startup_stm32f072xb.s)(0x5E42B893)(--cpu Cortex-M0 -g --apcs=interwork --pd "__MICROLIB SETA 1" -I ../Inc -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include--pd "__UVISION_VERSION SETA 527" --pd "_RTE_ SETA 1" --pd "STM32F072xB SETA 1"--list startup_stm32f072xb.lst --xref -o stm32f072rb-nucleo\exe\startup_stm32f072xb.o --depend stm32f072rb-nucleo\exe\startup_stm32f072xb.d)
-F (../Src/usbpd_dpm_user.c)(0x5E4E9BEC)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\usbpd_dpm_user.o --omf_browse stm32f072rb-nucleo\exe\usbpd_dpm_user.crf --depend stm32f072rb-nucleo\exe\usbpd_dpm_user.d)
-I (../../../../../../Drivers/BSP/STM32F0xx-Nucleo/usbpd_tcpci.h)(0x5E39A36B)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_core.h)(0x5E4EAC48)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_def.h)(0x5E4EAC48)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (../../../../../../Drivers/BSP/Components/Common/tcpc.h)(0x5E1C8661)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/BSP/Components/fusb307/fusb305.h)(0x5E4D399A)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599F2F9C)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_dpm_core.h)(0x5E4EAC48)
-I (../Inc/usbpd_dpm_conf.h)(0x5E42C27D)
-I (../Inc/usbpd_pdo_defs.h)(0x5E42C27D)
-I (../Inc/usbpd_pdo_defs_Drp_1Port.h)(0x5E42C27D)
-I (../Inc/usbpd_gui_memmap.h)(0x5E42C27D)
-I (../Inc/usbpd_pwr_if.h)(0x5E42C27D)
-I (../Inc/usbpd_dpm_user.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5E39A7B0)
-I (../Inc/FreeRTOSConfig.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h)(0x5E39A7B1)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5E39A7B0)
-I (../../../../../../Utilities/GUI_INTERFACE/gui_api.h)(0x5E4D80AE)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_trace.h)(0x5E1C9193)
-I (../Inc/usbpd_vdm_user.h)(0x5E42C27D)
-F (../Src/usbpd_pwr_if.c)(0x5E42C27D)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\usbpd_pwr_if.o --omf_browse stm32f072rb-nucleo\exe\usbpd_pwr_if.crf --depend stm32f072rb-nucleo\exe\usbpd_pwr_if.d)
-I (../Inc/usbpd_pwr_if.h)(0x5E42C27D)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_def.h)(0x5E4EAC48)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_core.h)(0x5E4EAC48)
-I (../../../../../../Drivers/BSP/Components/Common/tcpc.h)(0x5E1C8661)
-I (../../../../../../Drivers/BSP/STM32F0xx-Nucleo/usbpd_tcpci.h)(0x5E39A36B)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-I (../Inc/usbpd_dpm_user.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5E39A7B0)
-I (../Inc/FreeRTOSConfig.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h)(0x5E39A7B1)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_dpm_core.h)(0x5E4EAC48)
-I (../Inc/usbpd_dpm_conf.h)(0x5E42C27D)
-I (../Inc/usbpd_pdo_defs.h)(0x5E42C27D)
-I (../Inc/usbpd_pdo_defs_Drp_1Port.h)(0x5E42C27D)
-I (../Inc/usbpd_gui_memmap.h)(0x5E42C27D)
-I (../../../../../../Utilities/GUI_INTERFACE/gui_api.h)(0x5E4D80AE)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_trace.h)(0x5E1C9193)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599F2F9C)
-F (../Src/stm32f0xx_hal_msp.c)(0x5E42C27D)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_hal_msp.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_hal_msp.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_hal_msp.d)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-F (../Src/main.c)(0x5E4D56B7)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\main.o --omf_browse stm32f072rb-nucleo\exe\main.crf --depend stm32f072rb-nucleo\exe\main.d)
-I (../Inc/main.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5E39A7B0)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../Inc/FreeRTOSConfig.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h)(0x5E39A7B1)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_core.h)(0x5E4EAC48)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_def.h)(0x5E4EAC48)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/BSP/Components/Common/tcpc.h)(0x5E1C8661)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_dpm_core.h)(0x5E4EAC48)
-I (../../../../../../Utilities/GUI_INTERFACE/gui_api.h)(0x5E4D80AE)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h)(0x5E1C866E)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_cortex.h)(0x5E1C866E)
-I (../Inc/usbpd_dpm_user.h)(0x5E42C27D)
-I (../../../../../../Drivers/BSP/STM32F0xx-Nucleo/usbpd_tcpci.h)(0x5E39A36B)
-F (../Src/stm32f0xx_it.c)(0x5E4D56B7)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\stm32f0xx_it.o --omf_browse stm32f072rb-nucleo\exe\stm32f0xx_it.crf --depend stm32f072rb-nucleo\exe\stm32f0xx_it.d)
-I (../Inc/main.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5E39A7B0)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../Inc/FreeRTOSConfig.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h)(0x5E39A7B1)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_core.h)(0x5E4EAC48)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_def.h)(0x5E4EAC48)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/BSP/Components/Common/tcpc.h)(0x5E1C8661)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_dpm_core.h)(0x5E4EAC48)
-I (../../../../../../Utilities/GUI_INTERFACE/gui_api.h)(0x5E4D80AE)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599F2F9C)
-I (../../../../../../Utilities/TRACER_EMB/tracer_emb.h)(0x5E1C9ED2)
-I (../Inc/tracer_emb_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usart.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/BSP/STM32F0xx-Nucleo/usbpd_tcpci.h)(0x5E39A36B)
-I (../Inc/stm32f0xx_it.h)(0x5E4D56B7)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_trace.h)(0x5E1C9193)
-F (..\Src\usbpd_vdm_user.c)(0x5E42C27D)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\usbpd_vdm_user.o --omf_browse stm32f072rb-nucleo\exe\usbpd_vdm_user.crf --depend stm32f072rb-nucleo\exe\usbpd_vdm_user.d)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_core.h)(0x5E4EAC48)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_def.h)(0x5E4EAC48)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (../../../../../../Drivers/BSP/Components/Common/tcpc.h)(0x5E1C8661)
-I (../Inc/usbpd_dpm_conf.h)(0x5E42C27D)
-I (../Inc/usbpd_pdo_defs.h)(0x5E42C27D)
-I (../Inc/usbpd_pdo_defs_Drp_1Port.h)(0x5E42C27D)
-I (../Inc/usbpd_gui_memmap.h)(0x5E42C27D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-I (../Inc/usbpd_pwr_if.h)(0x5E42C27D)
-I (../Inc/usbpd_dpm_user.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5E39A7B0)
-I (../Inc/FreeRTOSConfig.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h)(0x5E39A7B1)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5E39A7B0)
-I (../../../../../../Utilities/GUI_INTERFACE/gui_api.h)(0x5E4D80AE)
-I (../Inc/usbpd_vdm_user.h)(0x5E42C27D)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599F2F9C)
-F (..\..\..\..\..\..\Utilities\TRACER_EMB\tracer_emb.c)(0x5E4BC758)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\tracer_emb.o --omf_browse stm32f072rb-nucleo\exe\tracer_emb.crf --depend stm32f072rb-nucleo\exe\tracer_emb.d)
-I (..\..\..\..\..\..\Utilities\TRACER_EMB\tracer_emb.h)(0x5E1C9ED2)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../Inc/tracer_emb_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usart.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h)(0x5E1C866E)
-I (..\..\..\..\..\..\Utilities\TRACER_EMB\tracer_emb_hw.h)(0x5E1C9ED2)
-F (..\..\..\..\..\..\Utilities\TRACER_EMB\tracer_emb_hw.c)(0x5E1C9ED2)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\tracer_emb_hw.o --omf_browse stm32f072rb-nucleo\exe\tracer_emb_hw.crf --depend stm32f072rb-nucleo\exe\tracer_emb_hw.d)
-I (..\..\..\..\..\..\Utilities\TRACER_EMB\tracer_emb.h)(0x5E1C9ED2)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../Inc/tracer_emb_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usart.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h)(0x5E1C866E)
-I (..\..\..\..\..\..\Utilities\TRACER_EMB\tracer_emb_hw.h)(0x5E1C9ED2)
-F (..\..\..\..\..\..\Utilities\GUI_INTERFACE\bsp_gui.c)(0x5E1C9ED0)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\bsp_gui.o --omf_browse stm32f072rb-nucleo\exe\bsp_gui.crf --depend stm32f072rb-nucleo\exe\bsp_gui.d)
-I (..\..\..\..\..\..\Utilities\GUI_INTERFACE\bsp_gui.h)(0x5E1C9ED0)
-I (../Inc/usbpd_gui_memmap.h)(0x5E42C27D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-I (../Inc/usbpd_pwr_if.h)(0x5E42C27D)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_def.h)(0x5E4EAC48)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (..\..\..\..\..\..\Utilities\GUI_INTERFACE\gui_api.h)(0x5E4D80AE)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599F2F9C)
-I (../Inc/usbpd_dpm_conf.h)(0x5E42C27D)
-I (../Inc/usbpd_pdo_defs.h)(0x5E42C27D)
-I (../Inc/usbpd_pdo_defs_Drp_1Port.h)(0x5E42C27D)
-I (../Inc/usbpd_dpm_user.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5E39A7B0)
-I (../Inc/FreeRTOSConfig.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h)(0x5E39A7B1)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5E39A7B0)
-F (..\..\..\..\..\..\Utilities\GUI_INTERFACE\data_struct_tlv.c)(0x5E1C9ED0)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\data_struct_tlv.o --omf_browse stm32f072rb-nucleo\exe\data_struct_tlv.crf --depend stm32f072rb-nucleo\exe\data_struct_tlv.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599F2F9C)
-I (..\..\..\..\..\..\Utilities\GUI_INTERFACE\data_struct_tlv.h)(0x5E1C9ED0)
-F (..\..\..\..\..\..\Utilities\GUI_INTERFACE\gui_api.c)(0x5E3ACC50)(-c --cpu Cortex-M0 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc -I ../../../../../../Drivers/BSP/STM32F0xx-Nucleo -I ../../../../../../Drivers/CMSIS/Include -I ../../../../../../Drivers/BSP/Components/Common -I ../../../../../../Drivers/BSP/Components/fusb307 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0 -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include -I ../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc -I ../../../../../../Utilities/TRACER_EMB -I ../../../../../../Utilities/GUI_INTERFACE --C99-I.\RTE\_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-IC:\Users\frq07466\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\frq07466\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.0.0\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32F072xB -DSTM32F072xB -DUSE_HAL_DRIVER -DUSE_FULL_LL_DRIVER -DUSE_STM32F0XX_NUCLEO -D_RTOS -DUSBPD_PORT_COUNT="1" -D_DRP -D_SNK -D_TRACE -D_GUI_INTERFACE -D_VCONN_SUPPORT -DUSBPD_TCPM_MODULE_ENABLED -DUSBPD_TCPM_LIB_PD3_CONFIG_1 -D_PPS="USBPD_FALSE" -D_SRC_CAPA_EXT="USBPD_FALSE" -D_ALERT="USBPD_TRUE" -D_BATTERY="USBPD_FALSE" -D_STATUS="USBPD_TRUE" -D_MANU_INFO="USBPD_TRUE"-o stm32f072rb-nucleo\exe\gui_api.o --omf_browse stm32f072rb-nucleo\exe\gui_api.crf --depend stm32f072rb-nucleo\exe\gui_api.d)
-I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599F2F9C)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_core.h)(0x5E4EAC48)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_def.h)(0x5E4EAC48)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_compiler.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599F2F9E)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_armcc.h)(0x5E4EAACA)
-I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599F2F9C)
-I (../../../../../../Drivers/BSP/Components/Common/tcpc.h)(0x5E1C8661)
-I (..\..\..\..\..\..\Utilities\GUI_INTERFACE\gui_api.h)(0x5E4D80AE)
-I (..\..\..\..\..\..\Utilities\GUI_INTERFACE\bsp_gui.h)(0x5E1C9ED0)
-I (../Inc/usbpd_gui_memmap.h)(0x5E42C27D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f072xb.h)(0x5E1C866C)
-I (../../../../../../Drivers/CMSIS/Include/core_cm0.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Include/cmsis_version.h)(0x5E4EAACA)
-I (../../../../../../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h)(0x5E1C866D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5E1C866E)
-I (../Inc/stm32f0xx_hal_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h)(0x5E1C866E)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599F2F9C)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_dma_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_cortex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_flash_ex.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_i2c_ex.h)(0x5E1C866E)
-I (../Inc/usbpd_pwr_if.h)(0x5E42C27D)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599F2F9C)
-I (..\..\..\..\..\..\Utilities\GUI_INTERFACE\data_struct_tlv.h)(0x5E1C9ED0)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_dpm_core.h)(0x5E4EAC48)
-I (../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc/usbpd_trace.h)(0x5E1C9193)
-I (../Inc/usbpd_dpm_user.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x5E39A7B0)
-I (../Inc/FreeRTOSConfig.h)(0x5E42C27D)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0/portmacro.h)(0x5E39A7B1)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x5E39A7B0)
-I (../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x5E39A7B0)
-I (../Inc/usbpd_dpm_conf.h)(0x5E42C27D)
-I (../Inc/usbpd_pdo_defs.h)(0x5E42C27D)
-I (../Inc/usbpd_pdo_defs_Drp_1Port.h)(0x5E42C27D)
-I (../../../../../../Utilities/TRACER_EMB/tracer_emb.h)(0x5E1C9ED2)
-I (../Inc/tracer_emb_conf.h)(0x5E42C27D)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_usart.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h)(0x5E1C866E)
-I (../../../../../../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h)(0x5E1C866E)
-I (../../../../../../Drivers/BSP/STM32F0xx-Nucleo/usbpd_tcpci.h)(0x5E39A36B)
