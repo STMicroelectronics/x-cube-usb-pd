@@ -1,8 +1,0 @@
-usbpd_vdm_user.c:137:13:USBPD_VDM_InformIdentity	40	static
-usbpd_vdm_user.c:190:13:USBPD_VDM_InformSVID	24	static
-usbpd_vdm_user.c:206:13:USBPD_VDM_InformMode	24	static
-usbpd_vdm_user.c:223:13:USBPD_VDM_InformModeEnter	24	static
-usbpd_vdm_user.c:236:13:USBPD_VDM_InformModeExit	24	static
-usbpd_vdm_user.c:253:13:USBPD_VDM_SendSpecific	24	static
-usbpd_vdm_user.c:278:13:USBPD_VDM_InformSpecific	24	static
-usbpd_vdm_user.c:342:21:USBPD_VDM_UserInit	16	static
