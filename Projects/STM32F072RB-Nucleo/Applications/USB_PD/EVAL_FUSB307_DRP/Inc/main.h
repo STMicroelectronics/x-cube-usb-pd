@@ -29,7 +29,9 @@ extern "C" {
 #include "cmsis_os.h"
 #include "usbpd_core.h"
 #include "usbpd_dpm_core.h"
+#if defined(_GUI_INTERFACE)
 #include "gui_api.h"
+#endif /* _GUI_INTERFACE */
 
 #include <string.h>
 /* Private includes ----------------------------------------------------------*/

@@ -41,6 +41,34 @@
 
 /* Exported typedef ----------------------------------------------------------*/
 /* USER CODE BEGIN Typedef */
+#if !defined(_GUI_INTERFACE)
+typedef struct
+{
+  uint32_t PE_DataSwap                                    : 1;  /*!< support data swap                                     */
+  uint32_t PE_VconnSwap                                   : 1;  /*!< support VCONN swap                                    */
+  uint32_t PE_DR_Swap_To_DFP                              : 1U; /*!< If supported, DR Swap to DFP can be accepted or not by the user else directly rejected */
+  uint32_t PE_DR_Swap_To_UFP                              : 1U; /*!< If supported, DR Swap to UFP can be accepted or not by the user else directly rejected */
+  uint32_t Reserved1                                      : 28U;  /*!< Reserved bits */
+  USBPD_SNKPowerRequest_TypeDef DPM_SNKRequestedPower;          /*!< Requested Power by the sink board                     */
+  USBPD_MIDB_TypeDef  DPM_ManuInfoPort;                         /*!< Manufacturer information used for the port            */
+  uint16_t            ReservedManu;                             /*!< Reserved bits to match with Manufacturer information            */
+  uint32_t            ReservedSrcCapa[6];                       /*!< Reserved bits to match with SrcCapa information            */
+#if defined(USBPDCORE_SNK_CAPA_EXT)
+  USBPD_SKEDB_TypeDef DPM_SNKExtendedCapa;                      /*!< SNK Extended Capability                                */
+  uint8_t             ReservedSnkCapa[3];                       /*!< Reserved bits to match with SnkCapaExt information     */
+#else
+  uint32_t            ReservedSnkCapa[6];                       /*!< Reserved bits to match with SnkCapaExt information     */
+#endif /* USBPDCORE_SNK_CAPA_EXT */
+  uint32_t ReservedByte;                                        /*!< Reserved bits */
+} USBPD_USER_SettingsTypeDef;
+
+typedef struct
+{
+  uint32_t XID;               /*!< Value provided by the USB-IF assigned to the product   */
+  uint16_t VID;               /*!< Vendor ID (assigned by the USB-IF)                     */
+  uint16_t PID;               /*!< Product ID (assigned by the manufacturer)              */
+} USBPD_IdSettingsTypeDef;
+#endif /* !_GUI_INTERFACE */
 
 typedef enum {
   DPM_USER_EVENT_TIMER,         /* TIMER EVENT */
