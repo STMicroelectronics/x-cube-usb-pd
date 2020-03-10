@@ -143,6 +143,8 @@ typedef enum {
   IllegalCable
 } TypeCState;
 
+#define GPIO_PIN_SRC_HV       GPIO_PIN_12 /* PB_12 */
+
 /* Private macro -------------------------------------------------------------*/
 /** @defgroup FUSB305_TCPC_Private_Macros FUSB305 Private Macros
  * @{
@@ -157,6 +159,9 @@ typedef enum {
 #else
 #define FUSB307_DEBUG_TRACE(__PORT__, _LEVEL_, __STRING__)
 #endif /* _TRACE */
+
+#define FUSB307_VBUS_LEVEL_LOW(__VOLTAGE__)     ((__VOLTAGE__ - (__VOLTAGE__ / 20U)) / 25U)
+#define FUSB307_VBUS_LEVEL_HIGH(__VOLTAGE__)     ((__VOLTAGE__ + (__VOLTAGE__ / 20U)) / 25U)
 
 /**
   * @}
@@ -338,6 +343,7 @@ static USBPD_StatusTypeDef  tcpc_set_power(uint32_t Port, USBPD_FunctionalState 
 static USBPD_StatusTypeDef  tcpc_set_alert_mask(uint32_t Port, uint8_t Pull, USBPD_FunctionalState State);
 static USBPD_StatusTypeDef  tcpc_init_power_status_mask(uint32_t Port);
 static void                 tcpc_set_pin_role(uint32_t Port, uint8_t Pull, USBPD_FunctionalState Connection);
+void tcpc_set_vbus_alarm(uint8_t PortNum, uint16_t VoltageLow, uint16_t VoltageHigh);
 
 /**
   * @}
@@ -360,6 +366,7 @@ static void                 tcpc_set_pin_role(uint32_t Port, uint8_t Pull, USBPD
   */
 USBPD_StatusTypeDef fusb305_tcpc_init(uint32_t Port, USBPD_PortPowerRole_TypeDef Role, uint8_t ToggleRole, uint8_t (*IsSwapOngoing)(uint8_t))
 {
+  GPIO_InitTypeDef  GPIO_InitStruct = {0};
   USBPD_StatusTypeDef usbpd_status = USBPD_FAIL;
   uint8_t power_status = 1;
 
@@ -377,6 +384,15 @@ USBPD_StatusTypeDef fusb305_tcpc_init(uint32_t Port, USBPD_PortPowerRole_TypeDef
 
   /* Save the CAD callback to check if PR swap is ongoing */
   state[Port].IsSwapOngoing        = IsSwapOngoing;
+
+  /* Configure IOs in output push-pull mode to drive VBUS outputs */
+  GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull  = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+
+  GPIO_InitStruct.Pin = GPIO_PIN_SRC_HV;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  GPIOB->BRR = GPIO_PIN_SRC_HV;
 
   /* 
    * TCPM shall check the state of the TCPC Initialization Status bit when it starts or resets. 
@@ -456,20 +472,8 @@ USBPD_StatusTypeDef fusb305_tcpc_init(uint32_t Port, USBPD_PortPowerRole_TypeDef
           goto exit;
         }
           /* Initialize VBUS Threshold */
-        state[Port].Registers.VBUS.s.VBUS_VOLTAGE_ALARM_HI_CFG   = 840;
-        if (USBPD_TCPCI_WriteRegister(Port, TCPC_REG_VBUS_VOLTAGE_ALARM_HI_CFG, (uint8_t*)&state[Port].Registers.VBUS.s.VBUS_VOLTAGE_ALARM_HI_CFG, 2) != USBPD_OK)
-        {
-          usbpd_status = USBPD_ERROR;
-          goto exit;
-        }
+        tcpc_set_vbus_alarm(Port, FUSB307_VBUS_LEVEL_LOW(800), FUSB307_VBUS_LEVEL_HIGH(20000));
         
-        state[Port].Registers.VBUS.s.VBUS_VOLTAGE_ALARM_LO_CFG   = 32;
-        if (USBPD_TCPCI_WriteRegister(Port, TCPC_REG_VBUS_VOLTAGE_ALARM_LO_CFG, (uint8_t*)&state[Port].Registers.VBUS.s.VBUS_VOLTAGE_ALARM_LO_CFG, 2) != USBPD_OK)
-        {
-          usbpd_status = USBPD_ERROR;
-          goto exit;
-        }
-
         /* Set ROLE_CONTROL for TCPC */
         state[Port].TogglingEnable       = ToggleRole;
         switch(Role)
@@ -1167,6 +1171,33 @@ USBPD_StatusTypeDef fusb305_tcpc_set_vbus_level(uint32_t Port, USBPD_FunctionalS
   return USBPD_OK;
 }
 
+USBPD_StatusTypeDef fusb305_Set_Output_Voltage(uint8_t PortNum, uint16_t Voltage)
+{
+  tcpc_set_vbus_alarm(PortNum, FUSB307_VBUS_LEVEL_LOW(Voltage), FUSB307_VBUS_LEVEL_HIGH(Voltage));
+  if (5000 < Voltage)
+  {
+    state[PortNum].Registers.Control.s.u5.b5.AUTO_DISCH  = 0;
+    USBPD_TCPCI_WriteRegister(PortNum, TCPC_REG_POWER_CONTROL, &state[PortNum].Registers.Control.s.u5.POWER_CONTROL, 1);
+    
+    state[PortNum].Registers.Alerts.s.u3.b3.M_VBUS_ALRM_HI = 1;
+    USBPD_TCPCI_WriteRegister(PortNum, TCPC_REG_ALERT_MASK, (uint8_t*)&state[PortNum].Registers.Alerts.word[1], 2);
+
+    /* GPIO workaround for HV path - connect PB12 TP to SRC_HV TP*/
+#if 0
+    state[PortNum].Registers.Command.u.COMMAND = TCPC_REG_COMMAND_SRC_VBUS_HIGH;
+    USBPD_TCPCI_WriteRegister(PortNum, TCPC_REG_COMMAND, &state[PortNum].Registers.Command.u.COMMAND, 1);
+#else
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_SRC_HV, GPIO_PIN_SET);
+#endif
+  }
+  else
+  {
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_SRC_HV, GPIO_PIN_RESET);
+  }
+  
+  return USBPD_OK;
+}
+
 /**
   * @brief  Set VBUS level
   * @param  Port        Port number value
@@ -1313,7 +1344,9 @@ static USBPD_StatusTypeDef tcpc_set_power(uint32_t Port, USBPD_FunctionalState S
     /* Disable SINK VBUS */
     state[Port].Registers.Command.u.COMMAND = TCPC_REG_COMMAND_DISABLE_SINK_VBUS;
     USBPD_TCPCI_WriteRegister(Port, TCPC_REG_COMMAND, &state[Port].Registers.Command.u.COMMAND, 1);
-    
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_SRC_HV, GPIO_PIN_RESET);
+    tcpc_set_vbus_alarm(Port, FUSB307_VBUS_LEVEL_LOW(800), FUSB307_VBUS_LEVEL_HIGH(20000));
+
     /* Wait for VBUS ready 
        In case of 4.5.4, a CC detach is detected but value of VBUS is kept to higher than 3.76V */
     fusb305_tcpc_get_vbus_level(Port, &vbus_level, &vbus_voltage);
@@ -1666,6 +1699,14 @@ static void tcpc_set_pin_role(uint32_t Port, uint8_t Pull, USBPD_FunctionalState
     state[Port].TypeC_State = Unattached;
   }
   USBPD_TCPCI_WriteRegister(Port, TCPC_REG_ROLE_CONTROL, &state[Port].Registers.Control.s.u3.ROLE_CONTROL, 1);
+}
+
+static void tcpc_set_vbus_alarm(uint8_t PortNum, uint16_t VoltageLow, uint16_t VoltageHigh)
+{
+  state[PortNum].Registers.VBUS.s.VBUS_VOLTAGE_ALARM_HI_CFG   = VoltageHigh;
+  USBPD_TCPCI_WriteRegister(PortNum, TCPC_REG_VBUS_VOLTAGE_ALARM_HI_CFG, (uint8_t*)&state[PortNum].Registers.VBUS.s.VBUS_VOLTAGE_ALARM_HI_CFG, 2);
+  state[PortNum].Registers.VBUS.s.VBUS_VOLTAGE_ALARM_LO_CFG   = VoltageLow;
+  USBPD_TCPCI_WriteRegister(PortNum, TCPC_REG_VBUS_VOLTAGE_ALARM_LO_CFG, (uint8_t*)&state[PortNum].Registers.VBUS.s.VBUS_VOLTAGE_ALARM_LO_CFG, 2);
 }
 
 /**

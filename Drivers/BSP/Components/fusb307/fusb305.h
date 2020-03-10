@@ -141,6 +141,7 @@ USBPD_StatusTypeDef fusb305_tcpc_SinkTxOK(uint32_t PortNum);
 USBPD_StatusTypeDef fusb305_tcpc_IfSinkTxOk(uint32_t PortNum);
 USBPD_StatusTypeDef fusb305_tcpc_EnableRx(uint32_t PortNum);
 USBPD_StatusTypeDef fusb305_tcpc_DisableRx(uint32_t PortNum);
+USBPD_StatusTypeDef fusb305_Set_Output_Voltage(uint8_t PortNum, uint16_t Voltage);
 /**
   * @}
   */

@@ -654,11 +654,9 @@ void USBPD_TCPCI_Delay(uint32_t Delay)
   * @{
   */
 
-USBPD_StatusTypeDef HW_IF_PWR_SetVoltage(uint8_t PortNum, uint16_t voltage)
+USBPD_StatusTypeDef HW_IF_PWR_SetVoltage(uint8_t PortNum, uint16_t Voltage)
 {
-#ifdef TCPC_FL7101
-  PV2105_Set_Output_Voltage(Port, Voltage);
-#endif /* TCPC_FL7101 */
+  fusb305_Set_Output_Voltage(PortNum, Voltage);
   return USBPD_OK;
 }
 
