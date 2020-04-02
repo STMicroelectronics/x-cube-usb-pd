@@ -2147,9 +2147,11 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
         osMessagePut(AlarmMsgBox, (USBPD_PORT_0 << 8 | 0), osWaitForever);
       }
       else
+      {
 #if defined(_TRACE)
         USBPD_TRACE_Add(USBPD_TRACE_DEBUG, USBPD_PORT_0, 0, (uint8_t *) "ALERT IT LOST", sizeof("ALERT IT LOST"));
 #endif /* _TRACE */
+      }
     }
   }
 }

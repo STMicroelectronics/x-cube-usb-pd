@@ -41,6 +41,9 @@
 #if defined(_TRACE)
 #include <stdio.h>
 #endif /* _TRACE */
+#if !defined(_RTOS)
+#include "usbpd_timersserver.h"
+#endif /* !_RTOS */
 
 /** @addtogroup TCPC_Driver
   * @{
