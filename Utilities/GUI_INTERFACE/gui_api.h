@@ -234,7 +234,9 @@ USBPD_GUI_State       GUI_SendNotification(uint8_t PortNum, uint8_t **pMsgToSend
 void                  GUI_PostNotificationMessage(uint8_t PortNum, uint16_t EventVal);
 void                  GUI_SaveInfo(uint8_t PortNum, uint8_t DataId, uint8_t *Ptr, uint32_t Size);
 USBPD_FunctionalState GUI_IsRunning(void);
+#if !defined(USE_STM32_UTILITY_OS)
 void                  GUI_Execute(void);
+#endif /* !USE_STM32_UTILITY_OS */
 /**
   * @}
   */

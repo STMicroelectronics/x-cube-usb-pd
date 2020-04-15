@@ -77,6 +77,18 @@
 
 /* Private function prototypes -----------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+const uint8_t OverFlow_String[] = { TLV_SOF, TLV_SOF, TLV_SOF, TLV_SOF,   /* Buffer header */
+                                    0x32,                                 /* Tag id */
+                                    0x0, 0x0F,                            /* Length */
+                                    0x6,                                  /* Type */
+                                    0x0, 0x0, 0x0, 0x0,                   /* Time   */
+                                    0x0,                                  /* PortNum */
+                                    0x0,                                  /* SOP */
+                                    0x0, 0x0F,                                                    /* Size */
+                                    'T','R','A','C','E',' ','O','V','E','R','_','F','L','O','W',  /* Data */
+                                    TLV_EOF, TLV_EOF, TLV_EOF, TLV_EOF                            /* Buffer end */
+                                  };
+
 /** @defgroup USBPD_CORE_TRACE_Private_Variables USBPD TRACE Private Variables
   * @{
   */
@@ -100,9 +112,12 @@ void USBPD_TRACE_Init(void)
 
   /* Initialize PE trace */
   USBPD_PE_SetTrace(USBPD_TRACE_Add, 3u);
+
+  /* Initialize the overflow detection */
+  (void)TRACER_EMB_EnableOverFlow(OverFlow_String, sizeof(OverFlow_String));
 #else
   return;
-#endif  
+#endif
 }
 
 void USBPD_TRACE_DeInit(void)
@@ -173,7 +188,7 @@ void USBPD_TRACE_Add(TRACE_EVENT Type, uint8_t PortNum, uint8_t Sop, uint8_t *Pt
   }
 
   TRACER_EMB_UnLock();
-  
+
   if (__get_IPSR() == 0 )
   {
     /* Wakeup the trace system, only for trace outside interrupt context */
@@ -181,16 +196,16 @@ void USBPD_TRACE_Add(TRACE_EVENT Type, uint8_t PortNum, uint8_t Sop, uint8_t *Pt
   }
 #else
   return;
-#endif  
+#endif
 }
 
 uint32_t USBPD_TRACE_TX_Process(void)
 {
-#ifdef _TRACE  
+#ifdef _TRACE
   return TRACER_EMB_TX_Process();
 #else
   return 0xFFFFFFFF;
-#endif  
+#endif
 }
 
 /**

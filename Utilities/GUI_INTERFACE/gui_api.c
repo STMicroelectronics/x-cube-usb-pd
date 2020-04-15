@@ -43,6 +43,10 @@
 #endif
 #if defined(_RTOS)
 #include "cmsis_os.h"
+#else
+#if defined(USE_STM32_UTILITY_OS)
+#include "utilities_conf.h"
+#endif /*USE_STM32_UTILITY_OS */
 #endif /*_RTOS*/
 #include "string.h"
 
@@ -569,6 +573,9 @@ static void      UpdateSNKPowerPort0(void);
 static void      UpdateSNKPowerPort1(void);
 #endif /* USBPD_PORT_COUNT==2 */
 #endif /* _SNK) || _DRP */
+#if defined(USE_STM32_UTILITY_OS)
+void                  GUI_Execute(void);
+#endif /* USE_STM32_UTILITY_OS */
 
 /**
   * @}
@@ -641,13 +648,16 @@ USBPD_FunctionalState GUI_Init(const uint8_t* (*CB_HWBoardVersion)(void), const 
   }
   /* Enable IRQ which has been disabled by FreeRTOS services */
   __enable_irq();
-#else
+#else /* RTOS */
   GUI_Start();
+#if defined(USE_STM32_UTILITY_OS)
+  UTIL_SEQ_RegTask(TASK_GUI, 0, GUI_Execute);
+  UTIL_SEQ_SetTask(TASK_GUI, 0);
+#endif /*USE_STM32_UTILITY_OS */
 #endif /* _RTOS */
 
   return _status;
 }
-
 
 void GUI_Start(void)
 {
@@ -793,6 +803,12 @@ void GUI_TimerCounter(void)
     {
       GUI_TimerMeasReport[USBPD_PORT_0]--;
     }
+#if !defined(_RTOS)&&defined(USE_STM32_UTILITY_OS)
+    else
+    {
+      UTIL_SEQ_SetTask(TASK_GUI, 0);
+    }
+#endif /* !_RTOS && USE_STM32_UTILITY_OS */
   }
 #if USBPD_PORT_COUNT==2
   if (1 == GUI_USER_Params[USBPD_PORT_1].u.d.MeasReportActivation)
@@ -801,6 +817,12 @@ void GUI_TimerCounter(void)
     {
       GUI_TimerMeasReport[USBPD_PORT_1]--;
     }
+#if !defined(_RTOS)&&defined(USE_STM32_UTILITY_OS)
+    else
+    {
+      UTIL_SEQ_SetTask(TASK_GUI, 0);
+    }
+#endif /* !_RTOS && USE_STM32_UTILITY_OS */
   }
 #endif /* USBPD_PORT_COUNT == 2 */
 }
@@ -828,6 +850,10 @@ void GUI_CALLBACK_RX(uint8_t Character, uint8_t Error)
 #endif /* osCMSIS < 0x20000U */
 #else
     GUI_Flag = GUI_USER_EVENT_GUI;
+#if defined(USE_STM32_UTILITY_OS)
+    GUI_RXProcess(GUI_Flag);
+    GUI_Flag = GUI_USER_EVENT_NONE;
+#endif /* USE_STM32_UTILITY_OS */
 #endif /* _RTOS */
   }
 }
@@ -881,7 +907,6 @@ uint32_t GUI_RXProcess(uint32_t Event)
       GUI_FormatAndSendNotification(((Event & GUI_PE_PORT_NUM_Msk) >> GUI_PE_PORT_NUM_Pos), GUI_NOTIF_PE_EVENT, type_event);
     }
   }
-
   return 0;
 }
 
@@ -1446,6 +1471,7 @@ USBPD_GUI_State GUI_SendNotification(uint8_t PortNum, uint8_t **pMsgToSend, uint
       gui_state = GUI_STATE_RUNNING;
 
     }
+  
   }
 
   return gui_state;
@@ -1477,9 +1503,12 @@ void GUI_PostNotificationMessage(uint8_t PortNum, uint16_t EventVal)
 #else
     (void)osMessageQueuePut(GUIMsgBox, &event, 0U, 0U);
 #endif /* osCMSIS < 0x20000U */
-    
 #else
     GUI_Flag = event;
+#if defined(USE_STM32_UTILITY_OS)
+    GUI_RXProcess(GUI_Flag);
+    GUI_Flag = GUI_USER_EVENT_NONE;
+#endif /* USE_STM32_UTILITY_OS */
 #endif /* _RTOS */
   }
 }

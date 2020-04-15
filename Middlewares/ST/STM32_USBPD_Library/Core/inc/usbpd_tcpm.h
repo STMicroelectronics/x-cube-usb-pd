@@ -29,7 +29,6 @@ extern "C" {
 #if defined(USBPDCORE_TCPM_SUPPORT)
 
 #include "string.h"
-#include "usbpd_cad.h"
 #include "usbpd_def.h"
 #include "tcpc.h"
 
@@ -252,30 +251,30 @@ void                 USBPD_PHY_SetResistor_SinkTxOK(uint8_t PortNum);
 /**
  * @brief  function to check if SinkTxOK
  * @param  PortNum  Number of the port.
- * @retval USBPD status based on @ref USBPD_StatusTypeDef
+ * @retval USBPD_TRUE or USBPD_FALSE
   */
-USBPD_StatusTypeDef  USBPD_PHY_IsResistor_SinkTxOk(uint8_t PortNum);
+uint8_t               USBPD_PHY_IsResistor_SinkTxOk(uint8_t PortNum);
 
 /**
  * @brief  Trigger in Fast role swap signalling
  * @param  PortNum  Number of the port.
  * @retval None
   */
-void                 USBPD_PHY_FastRoleSwapSignalling(uint8_t PortNum);
+void                  USBPD_PHY_FastRoleSwapSignalling(uint8_t PortNum);
 
 /**
   * @brief  Enable RX
   * @param  PortNum    Number of the port.
   * @retval None
   */
-void USBPD_PHY_EnableRX(uint8_t PortNum);
+void                  USBPD_PHY_EnableRX(uint8_t PortNum);
 
 /**
   * @brief  Disable RX
   * @param  PortNum    Number of the port.
   * @retval None
   */
-void USBPD_PHY_DisableRX(uint8_t PortNum);
+void                  USBPD_PHY_DisableRX(uint8_t PortNum);
 
 /**
   * @brief  Activation or not of CAD detection
@@ -283,7 +282,7 @@ void USBPD_PHY_DisableRX(uint8_t PortNum);
   * @param  State      Activation or deactivation of CAD detection
   * @retval None
   */
-void USBPD_TCPM_CADDetection(uint8_t PortNum, USBPD_FunctionalState State);
+void                  USBPD_TCPM_CADDetection(uint8_t PortNum, USBPD_FunctionalState State);
 
 /**
   * @}

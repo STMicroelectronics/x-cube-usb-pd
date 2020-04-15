@@ -45,7 +45,7 @@
 #endif /* osCMSIS >= 0x20000U */
 #else
 #if defined(USE_STM32_UTILITY_OS)
-#include "usbpd_task.h"
+#include "utilities_conf.h"
 #endif /* USE_STM32_UTILITY_OS */
 #if defined(USBPD_TCPM_MODULE_ENABLED)
 #include "usbpd_timersserver.h"
@@ -1065,7 +1065,7 @@ void USBPD_ALERT_Task(void *queue_id)
     port = (event >> 8);
 #endif /* osCMSIS < 0x20000U */
 #if defined(_TRACE)
-    USBPD_TRACE_Add(USBPD_TRACE_DEBUG, port, ((event.value.v) & 0x00FF), (uint8_t*)"ALERT_TASK", sizeof("ALERT_TASK") - 1);
+    USBPD_TRACE_Add(USBPD_TRACE_TCPM, port, TCPM_TRACE_CORE_ALERT, (uint8_t*)(&(event.value.v)), 4);
 #endif /* _TRACE */
 #if (osCMSIS < 0x20000U)
     USBPD_TCPM_alert(event.value.v);
@@ -1247,7 +1247,6 @@ void USBPD_DPM_CADCallback(uint8_t PortNum, USBPD_CAD_EVENT State, CCxPin_TypeDe
       DPM_Sleep_time[PortNum] = 0xFFFFFFFFU;
 #endif /* USE_STM32_UTILITY_OS */
 #endif /* _RTOS */
-      USBPD_DPM_UserCableDetection(PortNum, State);
       DPM_Params[PortNum].PE_SwapOngoing = USBPD_FALSE;
       DPM_Params[PortNum].ActiveCCIs = CCNONE;
       DPM_Params[PortNum].PE_Power   = USBPD_POWER_NO;
@@ -1256,6 +1255,7 @@ void USBPD_DPM_CADCallback(uint8_t PortNum, USBPD_CAD_EVENT State, CCxPin_TypeDe
       DPM_Params[PortNum].VconnStatus = USBPD_FALSE;
       DPM_CORE_DEBUG_TRACE(PortNum, "Note: VconnStatus=FALSE");
 #endif /* _VCONN_SUPPORT */
+      USBPD_DPM_UserCableDetection(PortNum, State);
       break;
     }
     default :
@@ -1280,11 +1280,12 @@ static void DPM_ManageAttachedState(uint8_t PortNum, USBPD_CAD_EVENT State, CCxP
   (void)USBPD_PE_IsCableConnected(PortNum, 1);
 
   USBPD_DPM_UserCableDetection(PortNum, State);
-#if defined(USBPD_TCPM_MODULE_ENABLED)
-  /* Add a delay to postpone the 1st send of SRC capa
-  FUS305 seems not react correctly if it sent too quickly */
-  USBPD_DPM_WaitForTime(6);
-#endif /* USBPD_TCPM_MODULE_ENABLED */
+  if (USBPD_PORTPOWERROLE_SRC == DPM_Params[PortNum].PE_PowerRole)
+  {
+    /* Add a delay to postpone the 1st send of SRC capa
+    FUS305 seems not react correctly if it sent too quickly */
+    USBPD_DPM_WaitForTime(6);
+  }
 
 #ifdef _RTOS
   /* Create PE task */

@@ -39,7 +39,7 @@ The application can be found in ST website:
 
 ::: {.collapse}
 <input type="checkbox" id="collapse-section12" checked aria-hidden="true">
-<label for="collapse-section12" aria-hidden="true">V1.9.1 / 12-Feb.-2020</label>
+<label for="collapse-section12" aria-hidden="true">V1.10.1 / 14-Apr.-2020</label>
 <div>
 
 ## Main Changes
@@ -51,8 +51,54 @@ The application can be found in ST website:
 
   Headline
   --------
+  User functions for VDM display port should be under switch VDM only
+
+  : Fixed bugs list
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.26
+- System Workbench STM32 (SW4STM32) toolchain V2.7.2
+
+## Supported Devices and boards
+
+  All STM32xx devices implementing a USBPD application able to communicate with CubeMonitor_UCPD
+
+## Backward compatibility
+
+  No compatibility break with previous version
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section12" aria-hidden="true">
+<label for="collapse-section12" aria-hidden="true">V1.10.0 / 07-Apr.-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+
+  Headline
+  --------
+  Move TASK ID from Core/inc/usbpd_task.h yo applications/inc/utilities_conf.h
+  Add switch USE_STM32_UTILITY_OS to integrate SEQUENCER utility - bis
+  Add switch USE_STM32_UTILITY_OS to integrate SEQUENCER utility
   Ticket 81002 - unwanted include file in gui_api.h
-  Remove DPM user functions linked to Display Port if only _VONN_SUPPORT is enabled
+  integration of the new utilities SEQ to handle GUI task in non RTOS mode
 
   : Fixed bugs list
 

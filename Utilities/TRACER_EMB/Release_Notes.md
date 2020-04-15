@@ -33,7 +33,81 @@ This driver is used for the embedded USB-PD tracer used to debug USB-PD applicat
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section3" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section4" checked aria-hidden="true">
+<label for="collapse-section4" aria-hidden="true">V1.4.0 / 14-Apr.-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+
+  Headline
+  --------
+  * Ticket 84461 Indicate when trace is lost
+
+  : Fixed bugs list
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE v1.2.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section4" aria-hidden="true">
+<label for="collapse-section4" aria-hidden="true">V1.3.0 / 26-March-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+
+  Headline
+  --------
+  Improve Usart IRQ Handler execution time in tracer_emb_hw.c
+  Remove commented code sections
+  Update the hardware layer to handle GPDMA
+  Ticket 77333 - DMA usage in tracer_emb_hw needs to be under switch
+  Add 2 macros TRACER_EMB_ENABLECHANNEL and TRACER_EMB_DISABLECHANNEL to be compliant with STM32H7
+
+  : Fixed bugs list
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE v1.2.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section3" aria-hidden="true">
 <label for="collapse-section3" aria-hidden="true">V1.2.0 / 17-June-2019</label>
 <div>
 

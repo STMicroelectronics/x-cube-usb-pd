@@ -115,7 +115,7 @@ to exclude the API function. */
 #define INCLUDE_vTaskSuspend                1
 #define INCLUDE_vTaskDelayUntil             0
 #define INCLUDE_vTaskDelay                  1
-#define INCLUDE_xTaskGetSchedulerState      0
+#define INCLUDE_xTaskGetSchedulerState      1
 #define INCLUDE_eTaskGetState               1
 
 /* When using CMSIS-RTOSv2 set configSUPPORT_STATIC_ALLOCATION to 1

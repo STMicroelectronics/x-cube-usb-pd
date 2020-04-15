@@ -667,7 +667,7 @@ uint32_t USBPD_PE_StateMachine_SNKwVPD(uint8_t PortNum);
   * @param  IsConnected Cable connection status: 1 if connected and 0 is disconnected
   * @retval USBPD status @ref USBPD_OK
   */
-USBPD_StatusTypeDef USBPD_PE_IsCableConnected(uint8_t PortNum, uint8_t IsConnected);
+void USBPD_PE_IsCableConnected(uint8_t PortNum, uint8_t IsConnected);
 
 /**
   * @brief  Increment PE Timers tick

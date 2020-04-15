@@ -102,6 +102,14 @@ void TRACER_EMB_UnLock(void);
 int32_t TRACER_EMB_AllocateBufer(uint32_t Size);
 
 /**
+  * @brief  enable the overflow detection
+  * @param  Data pointer on the overflow string
+  * @param  Size of the overflow string
+  * @retval 0 if success other value indicate an error.
+  */
+int32_t TRACER_EMB_EnableOverFlow(const uint8_t *Data, uint8_t Size);
+
+/**
   * @brief  Main Trace TX process to push data on the media.
   * @retval Timing
   */

@@ -39,6 +39,51 @@ This application has been tested on ON-FUSB3-STM32 board available here:
 
 ::: {.collapse}
 <input type="checkbox" id="collapse-section2" checked aria-hidden="true">
+<label for="collapse-section2" aria-hidden="true">V3.0.0 / 15-Apr.-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+
+  Headline
+  --------
+  Fix an issue during PRS failed (no more detach)
+  Enable correctly all the SOP*
+  Few updates to be aligned with CORE v3.0.0 and memory size used for debug traces
+
+  : Fixed bugs list
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27.1.0
+- STM32CubeIDE toolchain V1.2.1
+
+## Supported Devices and boards
+
+  ON-FUSB3-STM32 board
+
+## Backward compatibility
+
+  Compatibility with USBPD stack from v3.0.0
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section2" aria-hidden="true">
 <label for="collapse-section2" aria-hidden="true">V2.0.1 / 02-Apr.-2020</label>
 <div>
 

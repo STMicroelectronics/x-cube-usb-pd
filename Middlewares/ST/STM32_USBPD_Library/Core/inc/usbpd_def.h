@@ -253,7 +253,7 @@ extern "C" {
 /* Defines for STACK version */
 #define LIB_STACK_VER_POS   12u
 #define LIB_STACK_VER_MSK   (0xFFFu << LIB_STACK_VER_POS)
-#define LIB_STACK_VER       (0x2A0u  << LIB_STACK_VER_POS)
+#define LIB_STACK_VER       (0x310u  << LIB_STACK_VER_POS)
 /* Defines for configuration */
 #define LIB_CONFIG_MSK      0xFFFu
 #define LIB_FULL            0x000u
@@ -1347,7 +1347,8 @@ typedef enum
   USBPD_NOTIFY_GET_SNK_CAP_EXT_RECEIVED = 96u,
   USBPD_NOTIFY_SNK_CAP_EXT_SENT        = 97u,
   USBPD_NOTIFY_SNK_CAP_EXT_RECEIVED    = 98u,
-  USBPD_NOTIFY_ALL                     = USBPD_NOTIFY_SNK_CAP_EXT_RECEIVED + 1u,
+  USBPD_NOTIFY_DETACH                  = 99u,
+  USBPD_NOTIFY_ALL                     = USBPD_NOTIFY_DETACH + 1u,
 } USBPD_NotifyEventValue_TypeDef;
 /**
   * @}

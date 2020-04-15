@@ -35,12 +35,14 @@ This implementation covers features of modules as :
 
 The library is provided in binary format, comes on top of the STM32Cube HAL driver and offers all the APIs required to develop an USB PD application.
 
-The USB-PD library is developed following the Universal Serial Bus Power Delivery Specification Revision 3.0, V1.2 (June 06, 2018) and Universal Serial Bus type-C Cable 
-and Connector Specification, Revision 1.3 (July 14, 2017). It has passed successfully the official certification.
+The USB-PD library is developed following the Universal Serial Bus Power Delivery Specification Revision 3.0, V2.0 (August 29, 2019) and Universal Serial Bus type-C Cable 
+and Connector Specification, Revision 2.0 (August, 2019). It has passed successfully the official certification.
 
 Here is the list of references to user documents:
 
-- UM2552 : USB power delivery User Manual
+- [ST page](https://www.st.com/en/applications/connectivity/usb-type-c-and-power-delivery.html): Key features of the new USB Type-C™ connector
+- [UM2552](https://www.st.com/resource/en/user_manual/dm00598101-managing-usb-power-delivery-systems-with-stm32-microcontrollers-stmicroelectronics.pdf): USB power delivery User Manual
+- [WIKI Page](https://wiki.st.com/stm32mcu/wiki/USB_Power_Delivery_overview): USB Power Delivery overview
 
 :::
 
@@ -48,7 +50,112 @@ Here is the list of references to user documents:
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section23" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section25" checked aria-hidden="true">
+<label for="collapse-section25" aria-hidden="true">V3.1.0 / 14-Apr.-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+
+  Headline
+  --------
+  BIST no more enabled in TCPM
+  Ticket 84461 - Indicate when trace is lost
+  Ticket 84336 - Bad answer to UVDM msge.
+  Ticket 84582 - Hard reset not detected by PE during power negotiation
+  Update to avoid issue to send a control message
+  Add a check on Resistor in case of VBUS lost (manage HardReset Sequence)
+  Update to use a new ID for TCPM trace
+  
+  : Fixed bugs list
+
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE V1.2.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+For TCPM implementation, updates have been done on FUSB307 component (tag v3.0.0).
+
+## Dependencies
+
+Dependancies with TRACER_EMB V1.4.0
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section24" aria-hidden="true">
+<label for="collapse-section24" aria-hidden="true">V3.0.0 / 26-Mar.-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+
+  Headline
+  --------
+  [CORE] Ticket 83457 - Explicit_Contract information not properly sent to UCPD Monitor on DETACH
+  [CORE] Ticket 81963 - Add inside PRL a mechanism to avoid RX buffer overwrite in case of multiple RX
+  [PE] Discard shall be done only if there is incoming message
+  [TCPM] Update for TCPM compilation
+  [PRL] update for TCPC mode
+  [PRL] Ticket 81964 - Add an optionnal mechansime to manage the tx discard and tx abort by UCPD IP
+  [PE] Lecroy TEST.PD.VDM.SNK.7 Unrecognized VID in Unstructured VDM
+  [PE] Ticket 81972 - TD PD.SRC3.E27 and TD PD.SRC3.E28 - Testing Downstream Port
+  [PE] Reset the spec revision + data role in case of HardReset
+  [PE] MQP regression on TD.PD.VNDI3.E10
+  [PE-PRL] Add critical section on the cluster management
+  [PE] state machine SRC wrongly managed at reset
+  [PRL] Rework to avoid usage of reentrant state machine
+  [PE] keep GPTimer only for TCPC compilation
+  [PE] rework of HardReset + ResetDuringSwap + PE Reset
+  [PRL] Code optimizations
+  [PRL] remove the disable RX to avoid overwrite of rx buffer
+  [CORE][TCPM] Reset Supported SOPs to SOP when disconnect
+  Merge of modifications done in usbpd_dpm_core.c files in CubeMx generated projects for Ticket 78939 
+  
+  : Fixed bugs list
+
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE V1.2.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+Implementation of CR Ticket 81963 and Ticket 81964 leads to some interface changes between USBPD Core and USBPD Device driver modules.
+In order to use thise version of USBPD Core module, please ensure version of USBPD Device driver module mentions compatibility with this v3.0.0 USBPD Core.
+(Example for STM32G4xx => use g4_v4.0.0 or higher version of USBPD Device
+         for STM32L5xx => use l5_v2.0.0 or higher version of USBPD Device
+		 ...
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section23" aria-hidden="true">
 <label for="collapse-section23" aria-hidden="true">V2.10.0 / 19-Feb.-2020</label>
 <div>
 
