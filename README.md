@@ -1,6 +1,6 @@
 # X-CUBE-USB-PD MCU Firmware Package
 
-**X-CUBE-USB-PD** is an STMicroelectronics original initiative. It uses for USB Type-C and Power Delivery software expansion for STM32Cube (UM2073).
+**X-CUBE-USB-PD** is an STMicroelectronics original initiative. It uses for USB Type-C and Power Delivery software expansion for STM32Cube [UM2073](https://www.st.com/resource/en/user_manual/dm00288897-stm32-usb-pd-power-delivery-software-expansion-for-stm32cube-stmicroelectronics.pdf).
 
 **X-CUBE-USB-PD** is a USB-IF certified Expansion Package and consists of libraries, drivers, sources, APIs and application examples running on STM32F0 Series microcontrollers acting as USB Type-C port managers (TCPMs).
 
@@ -24,6 +24,9 @@ This Expansion Package is demonstrated on one hardware implementation, but can e
 Series MPUs](https://www.st.com/content/ccc/resource/technical/document/application_note/group1/38/94/1d/41/0e/ba/49/21/DM00536349/files/DM00536349.pdf/jcr:content/translations/en.DM00536349.pdf)
  
  * User manual [UM2552 : Managing USB power delivery stack with STM32 microcontrollers](https://www.st.com/content/ccc/resource/technical/document/user_manual/group1/aa/15/14/5d/f5/b8/4a/fc/DM00598101/files/DM00598101.pdf/jcr:content/translations/en.DM00598101.pdf)
+
+## Release note
+Details about the content of this release are available in the release note [here](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Release_Notes.html).
 
 ## Troubleshooting
 
