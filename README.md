@@ -28,6 +28,17 @@ Series MPUs](https://www.st.com/content/ccc/resource/technical/document/applicat
 ## Release note
 Details about the content of this release are available in the release note [here](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Release_Notes.html).
 
+## Tests result reports
+* Ellisys: Find the latest test report done on Ellisys tool [here](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Documentation/TestResults/Ellisys/x-cube-usbpd-3.1.0%20-%20USB%20Compliance%20Report.html)
+
+* MQP: Find the latest test reports done on MQP tool [PHY PD2.0](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Documentation/TestResults/MQP/MQP_EVAL_FUSB307_DRP_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-iarPHY2_20_2_2020_15_49_2.htm), [POW PD2.0](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Documentation/TestResults/MQP/MQP_EVAL_FUSB307_DRP_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-iarPOW2_20_2_2020_15_58_5.htm), [PROT PD2.0](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Documentation/TestResults/MQP/MQP_EVAL_FUSB307_DRP_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-iarPRO2_20_2_2020_15_54_9.htm), [PROT PD3.0](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Documentation/TestResults/MQP/MQP_EVAL_FUSB307_DRP_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-iarPRO3_20_2_2020_16_0_29.htm) and [POW PD3.0](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Documentation/TestResults/MQP/MQP_EVAL_FUSB307_DRP_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-iarPOW3_20_2_2020_16_7_41.htm), 
+
+## FW User manual
+
+There are two user manual available in this release:
+* [USBPD CORE UM](https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Documentation/USBPD_CORE_RELEASE_User_Manual.chm): User Manual for G0/L5/G4 solutions
+* [USBPD TCPM UM](https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Documentation/USBPD_CORE_TCPM_RELEASE_User_Manual.chm): User Manual for TCPM solutions
+
 ## Troubleshooting
 
 **Caution** : The **Issues** requests are strictly limited to submit problems or suggestions related to the software delivered in this repo 
