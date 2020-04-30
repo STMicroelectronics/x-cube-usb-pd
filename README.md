@@ -15,7 +15,9 @@ This Expansion Package is demonstrated on one hardware implementation, but can e
 * Lowest memory footprint and easy porting within the Cortex™-M series
 * USB-PD 2.0/3.0+PPS compliant, multi-port
 * Tested with TCPC controller from On-SEMI FUSB307B: STM32F072 MCU Type-Port Manager (TCPM) with ON-SEMI FUSB307B Type-C Port Controller (TCPC) evaluation board (DB3623)
-   
+
+Note: MB1303 projects are now supported under STUSB1602 section: https://www.st.com/en/interfaces-and-transceivers/stusb1602.html#tools-software
+
 ## Boards available
   * [ON-FUSB3-STM32](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-3rd-party-evaluation-tools/on-fusb3-stm32.html)
 
