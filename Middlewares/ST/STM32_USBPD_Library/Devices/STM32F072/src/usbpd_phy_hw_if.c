@@ -2079,7 +2079,7 @@ void RX_Init_Hvar(uint8_t PortNum)
   hvar->temp_data =        0;
 
   /* reset the Rx Raw data buffer (in diff edge BMC coded) */
-  memset(Ports[PortNum].pRxBuffPtr, 0, PHY_MAX_RAW_SIZE);
+  //memset(Ports[PortNum].pRxBuffPtr, 0, PHY_MAX_RAW_SIZE);
 
   if (Ports[PortNum].cbs.USBPD_HW_IF_RX_Reset != NULL)
   {
