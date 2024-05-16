@@ -1,9 +1,10 @@
-# X-CUBE-USB-PD MCU Firmware Package is not anymore recommanded for new design
+# X-CUBE-USB-PD MCU Firmware Package is not anymore recommended for new design
 
 **X-CUBE-USB-PD** was an STMicroelectronics original initiative.
 
 **X-CUBE-USB-PD** was a USB-IF certified package for PD2.0 version of the power delivery specification. It consists of libraries, drivers, sources, APIs and application examples running on STM32F0 Series microcontrollers acting as USB Type-C port managers (TCPMs).
 
+>[!IMPORTANT]
 Please note that since this package has been delivered, the USB power delivery PHY block has been integrated in the ST microcontrollers.
 So more integrated and cost effective solutions are available in new STM32 references ([STM32G0](https://www.st.com/en/microcontrollers-microprocessors/stm32g0-series.html), [STM32G4](https://www.st.com/en/microcontrollers-microprocessors/stm32g4-series.html), [STM32L5](https://www.st.com/en/microcontrollers-microprocessors/stm32l5-series.html), [STM32U5](https://www.st.com/en/microcontrollers-microprocessors/stm32u5-series.html), [STM32H5](https://www.st.com/en/microcontrollers-microprocessors/stm32h5-series.html)...).
 Check the ST web page : [USB Type-C and Power Delivery](https://www.st.com/content/st_com/en/ecosystems/stm32-usb-c.html) for more details.
@@ -25,10 +26,8 @@ Details about the content of this release are available in the release note [her
 * MQP: Find the latest test reports done on MQP tool [PHY PD2.0](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Documentation/TestResults/MQP/MQP_EVAL_FUSB307_DRP_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-iarPHY2_20_2_2020_15_49_2.htm), [POW PD2.0](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Documentation/TestResults/MQP/MQP_EVAL_FUSB307_DRP_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-iarPOW2_20_2_2020_15_58_5.htm), [PROT PD2.0](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Documentation/TestResults/MQP/MQP_EVAL_FUSB307_DRP_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-iarPRO2_20_2_2020_15_54_9.htm), [PROT PD3.0](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Documentation/TestResults/MQP/MQP_EVAL_FUSB307_DRP_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-iarPRO3_20_2_2020_16_0_29.htm) and [POW PD3.0](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Documentation/TestResults/MQP/MQP_EVAL_FUSB307_DRP_STM32F072RB-Nucleo_EVAL_FUSB307_DRP-iarPOW3_20_2_2020_16_7_41.htm), 
 
 ## FW User manual
-
-There are two user manual available in this release:
+User manual available in this release:
 * [USBPD CORE UM](https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Documentation/USBPD_CORE_RELEASE_User_Manual.chm): User Manual for G0/L5/G4 solutions
-* [USBPD TCPM UM](https://github.com/STMicroelectronics/x-cube-usb-pd/blob/master/Documentation/USBPD_CORE_TCPM_RELEASE_User_Manual.chm): User Manual for TCPM solutions
 
 ## Troubleshooting
 
